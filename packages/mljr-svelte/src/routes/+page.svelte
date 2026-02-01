@@ -11,6 +11,7 @@
     Modal,
     Tabs,
     Accordion,
+    Carousel,
     themeStore
   } from '$lib';
 
@@ -28,20 +29,11 @@
   let searchValue = $state('');
 
   // Carousel state
-  let carouselIndex = $state(0);
   const carouselSlides = [
     { title: 'Detroit Style', description: 'Angular cuts and futuristic design' },
     { title: 'Rich Colors', description: 'Deep blue primary with orange accents' },
     { title: 'Dark Mode', description: 'Optimized for both light and dark themes' },
   ];
-
-  function nextSlide() {
-    carouselIndex = (carouselIndex + 1) % carouselSlides.length;
-  }
-
-  function prevSlide() {
-    carouselIndex = (carouselIndex - 1 + carouselSlides.length) % carouselSlides.length;
-  }
 
   // Tabs data
   const tabItems = [
@@ -398,35 +390,15 @@
   <!-- Carousel Section -->
   <section id="carousel" class="mljr-mb-8">
     <Card title="Carousel" description="Sliding content with Detroit-style angular design">
-      <div class="mljr-carousel mljr-carousel-hud" style="height: 200px; background: var(--mljr-bg-secondary);">
-        <div class="mljr-carousel-inner" style="transform: translateX(-{carouselIndex * 100}%);">
-          {#each carouselSlides as slide, i}
-            <div class="mljr-carousel-item mljr-flex mljr-items-center mljr-justify-center mljr-flex-col mljr-gap-2">
+      <div style="height: 300px;">
+        <Carousel autoplay={true} interval={3000}>
+          {#each carouselSlides as slide}
+            <div class="mljr-carousel-item mljr-flex mljr-items-center mljr-justify-center mljr-flex-col mljr-gap-2" style="height: 300px;">
               <h3 class="mljr-h3" style="color: var(--mljr-primary-500);">{slide.title}</h3>
               <p class="mljr-text-secondary">{slide.description}</p>
             </div>
           {/each}
-        </div>
-        <button class="mljr-carousel-btn mljr-carousel-btn-prev" onclick={prevSlide} aria-label="Previous slide">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/>
-          </svg>
-        </button>
-        <button class="mljr-carousel-btn mljr-carousel-btn-next" onclick={nextSlide} aria-label="Next slide">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
-          </svg>
-        </button>
-      </div>
-      <div class="mljr-carousel-indicators">
-        {#each carouselSlides as _, i}
-          <button
-            class="mljr-carousel-indicator"
-            class:active={carouselIndex === i}
-            onclick={() => carouselIndex = i}
-            aria-label="Go to slide {i + 1}"
-          ></button>
-        {/each}
+        </Carousel>
       </div>
     </Card>
   </section>

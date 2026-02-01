@@ -1,0 +1,517 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "MLJR Logo CSS" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "MLJR Logo" [ref=e6]
+        - generic [ref=e7]: CSS
+      - navigation [ref=e8]:
+        - link "Buttons" [ref=e9] [cursor=pointer]:
+          - /url: "#buttons"
+        - link "Forms" [ref=e10] [cursor=pointer]:
+          - /url: "#forms"
+        - link "Feedback" [ref=e11] [cursor=pointer]:
+          - /url: "#feedback"
+        - link "Data" [ref=e12] [cursor=pointer]:
+          - /url: "#data"
+        - link "Layout" [ref=e13] [cursor=pointer]:
+          - /url: "#layout"
+      - generic [ref=e14]:
+        - button "Toggle theme" [ref=e15] [cursor=pointer]:
+          - img [ref=e16]
+        - button "Get Started" [ref=e18] [cursor=pointer]
+  - main [ref=e19]:
+    - generic [ref=e20]:
+      - img "MLJR Logo" [ref=e22]
+      - heading "MLJR CSS Framework" [level=1] [ref=e23]
+      - paragraph [ref=e24]: "A TailwindCSS-based CSS framework with Svelte 5 components. Detroit: Become Human inspired design with angular cuts, rich blue primary, and warm orange accents."
+      - generic [ref=e25]:
+        - button "Documentation" [ref=e26] [cursor=pointer]
+        - button "GitHub" [ref=e27] [cursor=pointer]
+    - generic [ref=e29]:
+      - generic [ref=e30]:
+        - heading "Buttons" [level=3] [ref=e31]
+        - paragraph [ref=e32]: Various button styles and states
+      - generic [ref=e33]:
+        - generic [ref=e34]:
+          - heading "Variants" [level=4] [ref=e35]
+          - generic [ref=e36]:
+            - button "Default" [ref=e37] [cursor=pointer]
+            - button "Primary" [ref=e38] [cursor=pointer]
+            - button "Secondary" [ref=e39] [cursor=pointer]
+            - button "Outline Primary" [ref=e40] [cursor=pointer]
+            - button "Outline Secondary" [ref=e41] [cursor=pointer]
+            - button "Ghost" [ref=e42] [cursor=pointer]
+            - button "Link" [ref=e43] [cursor=pointer]
+            - button "Danger" [ref=e44] [cursor=pointer]
+            - button "Success" [ref=e45] [cursor=pointer]
+        - generic [ref=e46]:
+          - heading "Sizes" [level=4] [ref=e47]
+          - generic [ref=e48]:
+            - button "Extra Small" [ref=e49] [cursor=pointer]
+            - button "Small" [ref=e50] [cursor=pointer]
+            - button "Medium" [ref=e51] [cursor=pointer]
+            - button "Large" [ref=e52] [cursor=pointer]
+            - button "Extra Large" [ref=e53] [cursor=pointer]
+        - generic [ref=e54]:
+          - heading "States" [level=4] [ref=e55]
+          - generic [ref=e56]:
+            - button "Loading" [disabled]
+            - button "Disabled" [disabled]
+            - button "Loading" [disabled]
+        - generic [ref=e57]:
+          - heading "Icon Buttons" [level=4] [ref=e58]
+          - generic [ref=e59]:
+            - button [ref=e60] [cursor=pointer]:
+              - img [ref=e61]
+            - button [ref=e63] [cursor=pointer]:
+              - img [ref=e64]
+            - button [ref=e66] [cursor=pointer]:
+              - img [ref=e67]
+    - generic [ref=e70]:
+      - generic [ref=e71]:
+        - heading "Form Components" [level=3] [ref=e72]
+        - paragraph [ref=e73]: Inputs, selects, checkboxes, and switches
+      - generic [ref=e75]:
+        - generic [ref=e76]:
+          - heading "Text Inputs" [level=4] [ref=e77]
+          - generic [ref=e78]:
+            - generic [ref=e79]: Username
+            - textbox "Username" [ref=e81]:
+              - /placeholder: Enter your username
+            - paragraph [ref=e82]: Choose a unique username
+          - generic [ref=e84]:
+            - generic [ref=e85]: Email *
+            - textbox "Email *" [ref=e87]:
+              - /placeholder: email@example.com
+          - generic [ref=e89]:
+            - generic [ref=e90]: Password
+            - textbox "Password" [ref=e92]:
+              - /placeholder: Enter password
+            - paragraph [ref=e93]: Password must be at least 8 characters
+        - generic [ref=e94]:
+          - heading "Select" [level=4] [ref=e95]
+          - generic [ref=e96]:
+            - generic [ref=e97]: Country
+            - combobox "Country" [ref=e99] [cursor=pointer]:
+              - option "Select a country" [selected]
+              - option "United States"
+              - option "United Kingdom"
+              - option "Germany"
+              - option "France"
+              - option "Japan"
+          - generic [ref=e100]:
+            - heading "Checkboxes" [level=4] [ref=e101]
+            - generic [ref=e102]:
+              - generic [ref=e103] [cursor=pointer]:
+                - checkbox "Accept terms and conditions" [ref=e104]
+                - generic [ref=e105]: Accept terms and conditions
+              - generic [ref=e106] [cursor=pointer]:
+                - checkbox "Subscribe to newsletter" [ref=e107]
+                - generic [ref=e108]: Subscribe to newsletter
+              - generic [ref=e109] [cursor=pointer]:
+                - checkbox "Secondary color" [checked] [ref=e110]
+                - generic [ref=e111]: Secondary color
+              - generic [ref=e112] [cursor=pointer]:
+                - checkbox "Disabled checkbox" [disabled] [ref=e113]
+                - generic [ref=e114]: Disabled checkbox
+          - generic [ref=e115]:
+            - heading "Radio Buttons" [level=4] [ref=e116]
+            - generic [ref=e117]:
+              - generic [ref=e118] [cursor=pointer]:
+                - radio "Option 1 (Primary)" [checked] [ref=e119]
+                - generic [ref=e120]: Option 1 (Primary)
+              - generic [ref=e121] [cursor=pointer]:
+                - radio "Option 2" [ref=e122]
+                - generic [ref=e123]: Option 2
+              - generic [ref=e124] [cursor=pointer]:
+                - radio "Secondary Color" [checked] [ref=e125]
+                - generic [ref=e126]: Secondary Color
+          - generic [ref=e127]:
+            - heading "Switches" [level=4] [ref=e128]
+            - generic [ref=e129]:
+              - generic [ref=e130] [cursor=pointer]:
+                - switch "Enable notifications" [checked] [ref=e131]
+                - generic [ref=e132]: Enable notifications
+              - generic [ref=e133] [cursor=pointer]:
+                - switch "Dark mode" [ref=e134]
+                - generic [ref=e135]: Dark mode
+              - generic [ref=e136] [cursor=pointer]:
+                - switch "Secondary color" [ref=e137]
+                - generic [ref=e138]: Secondary color
+              - generic [ref=e139] [cursor=pointer]:
+                - switch "Disabled switch" [disabled] [ref=e140]
+                - generic [ref=e141]: Disabled switch
+    - generic [ref=e143]:
+      - generic [ref=e144]:
+        - heading "Advanced Input Types" [level=3] [ref=e145]
+        - paragraph [ref=e146]: Range sliders, number inputs, search, and file uploads
+      - generic [ref=e148]:
+        - generic [ref=e149]:
+          - heading "Range Slider" [level=4] [ref=e150]
+          - generic [ref=e151]:
+            - generic [ref=e152]: "Volume: 50%"
+            - 'slider "Volume: 50%" [ref=e153] [cursor=pointer]': "50"
+          - generic [ref=e154]:
+            - generic [ref=e155]: Secondary Slider
+            - slider "Secondary Slider" [ref=e156] [cursor=pointer]: "60"
+        - generic [ref=e157]:
+          - heading "Number Input with Spinner" [level=4] [ref=e158]
+          - generic [ref=e159]: Quantity
+          - generic [ref=e160]:
+            - button "Decrease quantity" [ref=e161] [cursor=pointer]:
+              - img [ref=e162]
+            - spinbutton "Quantity" [ref=e164]: "5"
+            - button "Increase quantity" [ref=e165] [cursor=pointer]:
+              - img [ref=e166]
+        - generic [ref=e168]:
+          - heading "Search Input" [level=4] [ref=e169]
+          - generic [ref=e170]:
+            - img
+            - searchbox "Search..." [ref=e171]
+        - generic [ref=e172]:
+          - heading "Color Picker" [level=4] [ref=e173]
+          - generic [ref=e174]:
+            - textbox [ref=e175] [cursor=pointer]: "#0080ff"
+            - generic [ref=e176]: Select a color
+        - generic [ref=e177]:
+          - heading "File Input" [level=4] [ref=e178]
+          - generic [ref=e179] [cursor=pointer]:
+            - button "Choose File" [ref=e180]
+            - generic [ref=e181]:
+              - img [ref=e182]
+              - generic [ref=e184]: Choose File
+        - generic [ref=e185]:
+          - heading "Drop Zone" [level=4] [ref=e186]
+          - generic [ref=e187] [cursor=pointer]:
+            - img [ref=e188]
+            - paragraph [ref=e190]: Drop files here or click to upload
+            - paragraph [ref=e191]: PNG, JPG up to 10MB
+    - generic [ref=e193]:
+      - generic [ref=e194]:
+        - heading "Carousel" [level=3] [ref=e195]
+        - paragraph [ref=e196]: Sliding content with Detroit-style angular design
+      - region "Carousel" [ref=e199]:
+        - generic [ref=e200]:
+          - generic [ref=e201]:
+            - heading "Detroit Style" [level=3] [ref=e202]
+            - paragraph [ref=e203]: Angular cuts and futuristic design
+          - generic [ref=e204]:
+            - heading "Rich Colors" [level=3] [ref=e205]
+            - paragraph [ref=e206]: Deep blue primary with orange accents
+          - generic [ref=e207]:
+            - heading "Dark Mode" [level=3] [ref=e208]
+            - paragraph [ref=e209]: Optimized for both light and dark themes
+        - button "Previous slide" [ref=e210] [cursor=pointer]:
+          - img [ref=e211]
+        - button "Next slide" [ref=e213] [cursor=pointer]:
+          - img [ref=e214]
+        - tablist "Carousel navigation" [ref=e216]:
+          - tab "Go to slide 1" [selected]
+          - tab "Go to slide 2"
+          - tab "Go to slide 3"
+    - generic [ref=e218]:
+      - generic [ref=e219]:
+        - generic [ref=e220]:
+          - heading "Alerts" [level=3] [ref=e221]
+          - paragraph [ref=e222]: Notification and feedback messages
+        - generic [ref=e224]:
+          - alert [ref=e225]:
+            - generic [ref=e226]:
+              - generic [ref=e227]: Information
+              - generic [ref=e228]: This is an informational message for the user.
+          - alert [ref=e229]:
+            - generic [ref=e230]:
+              - generic [ref=e231]: Success
+              - generic [ref=e232]: Operation completed successfully!
+          - alert [ref=e233]:
+            - generic [ref=e234]:
+              - generic [ref=e235]: Warning
+              - generic [ref=e236]: Please review your input before proceeding.
+          - alert [ref=e237]:
+            - generic [ref=e238]:
+              - generic [ref=e239]: Error
+              - generic [ref=e240]: Something went wrong. Please try again.
+          - alert [ref=e241]:
+            - generic [ref=e242]:
+              - generic [ref=e243]: Primary
+              - generic [ref=e244]: This alert can be dismissed.
+            - button "Close" [ref=e245] [cursor=pointer]:
+              - img [ref=e246]
+          - alert [ref=e248]:
+            - generic [ref=e250]: A solid secondary alert without title.
+      - generic [ref=e251]:
+        - generic [ref=e252]:
+          - heading "Badges" [level=3] [ref=e253]
+          - paragraph [ref=e254]: Labels and status indicators
+        - generic [ref=e255]:
+          - generic [ref=e256]:
+            - heading "Default" [level=4] [ref=e257]
+            - generic [ref=e258]:
+              - generic [ref=e259]: Default
+              - generic [ref=e260]: Primary
+              - generic [ref=e261]: Secondary
+              - generic [ref=e262]: Success
+              - generic [ref=e263]: Warning
+              - generic [ref=e264]: Error
+              - generic [ref=e265]: Info
+          - generic [ref=e266]:
+            - heading "Solid" [level=4] [ref=e267]
+            - generic [ref=e268]:
+              - generic [ref=e269]: Primary
+              - generic [ref=e270]: Secondary
+              - generic [ref=e271]: Success
+              - generic [ref=e272]: Warning
+              - generic [ref=e273]: Error
+          - generic [ref=e274]:
+            - heading "Outline" [level=4] [ref=e275]
+            - generic [ref=e276]:
+              - generic [ref=e277]: Primary
+              - generic [ref=e278]: Secondary
+          - generic [ref=e279]:
+            - heading "With Dot" [level=4] [ref=e280]
+            - generic [ref=e281]:
+              - generic [ref=e282]: Online
+              - generic [ref=e283]: Away
+              - generic [ref=e284]: Offline
+          - generic [ref=e285]:
+            - heading "Sizes" [level=4] [ref=e286]
+            - generic [ref=e287]:
+              - generic [ref=e288]: Small
+              - generic [ref=e289]: Medium
+              - generic [ref=e290]: Large
+    - generic [ref=e292]:
+      - generic [ref=e293]:
+        - heading "Modal" [level=3] [ref=e294]
+        - paragraph [ref=e295]: Dialog windows and overlays
+      - generic [ref=e296]:
+        - generic [ref=e297]:
+          - button "Small Modal" [active] [ref=e298] [cursor=pointer]
+          - button "Medium Modal" [ref=e299] [cursor=pointer]
+          - button "Large Modal" [ref=e300] [cursor=pointer]
+        - dialog "Modal Title" [ref=e301]:
+          - generic [ref=e302]:
+            - generic [ref=e303]:
+              - heading "Modal Title" [level=2] [ref=e304]
+              - paragraph [ref=e305]: This is a modal dialog description.
+            - button "Close" [ref=e306] [cursor=pointer]:
+              - img [ref=e307]
+          - generic [ref=e309]:
+            - paragraph [ref=e310]: This is the modal content. You can put any content here including forms, images, or other components.
+            - generic [ref=e311]:
+              - generic [ref=e312]: Example Input
+              - textbox "Example Input" [ref=e314]:
+                - /placeholder: Type something...
+          - generic [ref=e315]:
+            - button "Cancel" [ref=e316] [cursor=pointer]
+            - button "Confirm" [ref=e317] [cursor=pointer]
+    - generic [ref=e319]:
+      - generic [ref=e320]:
+        - generic [ref=e321]:
+          - heading "Tabs" [level=3] [ref=e322]
+          - paragraph [ref=e323]: Tabbed navigation and content
+        - generic [ref=e324]:
+          - generic [ref=e325]:
+            - heading "Default" [level=4] [ref=e326]
+            - generic [ref=e327]:
+              - tablist [ref=e328]:
+                - tab "Overview" [selected] [ref=e329] [cursor=pointer]
+                - tab "Features" [ref=e330] [cursor=pointer]
+                - tab "Pricing" [ref=e331] [cursor=pointer]
+              - tabpanel "Overview" [ref=e333]:
+                - paragraph [ref=e334]: This is the overview content. It provides a general introduction to the topic.
+          - generic [ref=e335]:
+            - heading "Pills Variant" [level=4] [ref=e336]
+            - generic [ref=e337]:
+              - tablist [ref=e338]:
+                - tab "Overview" [selected] [ref=e339] [cursor=pointer]
+                - tab "Features" [ref=e340] [cursor=pointer]
+                - tab "Pricing" [ref=e341] [cursor=pointer]
+              - tabpanel "Overview" [ref=e343]:
+                - paragraph [ref=e344]: "Content for: overview"
+          - generic [ref=e345]:
+            - heading "Secondary Color" [level=4] [ref=e346]
+            - generic [ref=e347]:
+              - tablist [ref=e348]:
+                - tab "Overview" [selected] [ref=e349] [cursor=pointer]
+                - tab "Features" [ref=e350] [cursor=pointer]
+                - tab "Pricing" [ref=e351] [cursor=pointer]
+              - tabpanel "Overview" [ref=e353]:
+                - paragraph [ref=e354]: "Content for: overview"
+      - generic [ref=e355]:
+        - generic [ref=e356]:
+          - heading "Accordion" [level=3] [ref=e357]
+          - paragraph [ref=e358]: Collapsible content sections
+        - generic [ref=e359]:
+          - generic [ref=e360]:
+            - heading "Default" [level=4] [ref=e361]
+            - generic [ref=e362]:
+              - button "What is MLJR CSS?" [ref=e364] [cursor=pointer]:
+                - generic [ref=e365]: What is MLJR CSS?
+                - img [ref=e366]
+              - button "How do I install it?" [ref=e369] [cursor=pointer]:
+                - generic [ref=e370]: How do I install it?
+                - img [ref=e371]
+              - button "Is it compatible with Svelte 5?" [ref=e374] [cursor=pointer]:
+                - generic [ref=e375]: Is it compatible with Svelte 5?
+                - img [ref=e376]
+          - generic [ref=e378]:
+            - heading "Multiple Open" [level=4] [ref=e379]
+            - generic [ref=e380]:
+              - generic [ref=e381]:
+                - button "What is MLJR CSS?" [expanded] [ref=e382] [cursor=pointer]:
+                  - generic [ref=e383]: What is MLJR CSS?
+                  - img [ref=e384]
+                - region "What is MLJR CSS?" [ref=e386]:
+                  - generic [ref=e387]: MLJR CSS is a TailwindCSS-based CSS framework with a beautiful orange/purple color scheme that works seamlessly in both light and dark modes.
+              - button "How do I install it?" [ref=e389] [cursor=pointer]:
+                - generic [ref=e390]: How do I install it?
+                - img [ref=e391]
+              - button "Is it compatible with Svelte 5?" [ref=e394] [cursor=pointer]:
+                - generic [ref=e395]: Is it compatible with Svelte 5?
+                - img [ref=e396]
+          - generic [ref=e398]:
+            - heading "Primary Accent" [level=4] [ref=e399]
+            - generic [ref=e400]:
+              - button "What is MLJR CSS?" [ref=e402] [cursor=pointer]:
+                - generic [ref=e403]: What is MLJR CSS?
+                - img [ref=e404]
+              - button "How do I install it?" [ref=e407] [cursor=pointer]:
+                - generic [ref=e408]: How do I install it?
+                - img [ref=e409]
+              - button "Is it compatible with Svelte 5?" [ref=e412] [cursor=pointer]:
+                - generic [ref=e413]: Is it compatible with Svelte 5?
+                - img [ref=e414]
+    - generic [ref=e416]:
+      - heading "Cards" [level=2] [ref=e417]
+      - generic [ref=e418]:
+        - generic [ref=e419]:
+          - generic [ref=e420]:
+            - heading "Default Card" [level=3] [ref=e421]
+            - paragraph [ref=e422]: A simple card with header
+          - paragraph [ref=e424]: This is a basic card component with a title and description.
+        - generic [ref=e425]:
+          - heading "Primary Card" [level=3] [ref=e427]
+          - paragraph [ref=e429]: A card with primary accent border and shadow.
+        - generic [ref=e430]:
+          - heading "Secondary Card" [level=3] [ref=e432]
+          - paragraph [ref=e434]: A card with secondary accent and large shadow.
+        - button "Interactive Card Click me! This card is interactive and can be clicked." [ref=e435] [cursor=pointer]:
+          - generic [ref=e436]:
+            - heading "Interactive Card" [level=3] [ref=e437]
+            - paragraph [ref=e438]: Click me!
+          - paragraph [ref=e440]: This card is interactive and can be clicked.
+        - generic [ref=e441]:
+          - heading "Card with Footer" [level=3] [ref=e443]
+          - paragraph [ref=e445]: This card has a custom footer with actions.
+          - generic [ref=e447]:
+            - button "Cancel" [ref=e448] [cursor=pointer]
+            - button "Save" [ref=e449] [cursor=pointer]
+        - generic [ref=e450]:
+          - generic [ref=e454]:
+            - heading "Compact Card" [level=3] [ref=e455]
+            - paragraph [ref=e456]: Custom header
+          - paragraph [ref=e458]: A compact card with custom header content.
+    - generic [ref=e460]:
+      - generic [ref=e461]:
+        - heading "Color Palette" [level=3] [ref=e462]
+        - paragraph [ref=e463]: Primary and secondary color scales
+      - generic [ref=e464]:
+        - generic [ref=e465]:
+          - heading "Primary (Detroit Blue)" [level=4] [ref=e466]
+          - generic [ref=e467]:
+            - generic [ref=e468]: "50"
+            - generic [ref=e470]: "100"
+            - generic [ref=e472]: "200"
+            - generic [ref=e474]: "300"
+            - generic [ref=e476]: "400"
+            - generic [ref=e478]: "500"
+            - generic [ref=e480]: "600"
+            - generic [ref=e482]: "700"
+            - generic [ref=e484]: "800"
+            - generic [ref=e486]: "900"
+            - generic [ref=e488]: "950"
+        - generic [ref=e490]:
+          - heading "Secondary (Sunset Orange)" [level=4] [ref=e491]
+          - generic [ref=e492]:
+            - generic [ref=e493]: "50"
+            - generic [ref=e495]: "100"
+            - generic [ref=e497]: "200"
+            - generic [ref=e499]: "300"
+            - generic [ref=e501]: "400"
+            - generic [ref=e503]: "500"
+            - generic [ref=e505]: "600"
+            - generic [ref=e507]: "700"
+            - generic [ref=e509]: "800"
+            - generic [ref=e511]: "900"
+            - generic [ref=e513]: "950"
+        - generic [ref=e515]:
+          - heading "Accent (Purple)" [level=4] [ref=e516]
+          - generic [ref=e517]:
+            - generic [ref=e518]: "50"
+            - generic [ref=e520]: "100"
+            - generic [ref=e522]: "200"
+            - generic [ref=e524]: "300"
+            - generic [ref=e526]: "400"
+            - generic [ref=e528]: "500"
+            - generic [ref=e530]: "600"
+            - generic [ref=e532]: "700"
+            - generic [ref=e534]: "800"
+            - generic [ref=e536]: "900"
+            - generic [ref=e538]: "950"
+        - generic [ref=e540]:
+          - heading "Semantic Colors" [level=4] [ref=e541]
+          - generic [ref=e542]:
+            - generic [ref=e543]: Success
+            - generic [ref=e545]: Warning
+            - generic [ref=e547]: Error
+            - generic [ref=e549]: Info
+  - contentinfo [ref=e551]:
+    - generic [ref=e552]:
+      - generic [ref=e553]:
+        - generic [ref=e554]:
+          - link "MLJR Logo CSS" [ref=e555] [cursor=pointer]:
+            - /url: /
+            - img "MLJR Logo" [ref=e556]
+            - generic [ref=e557]: CSS
+          - paragraph [ref=e558]: A TailwindCSS-based CSS framework with Svelte 5 components. Beautiful, accessible, and easy to use.
+          - generic [ref=e559]:
+            - link "GitHub" [ref=e560] [cursor=pointer]:
+              - /url: https://github.com
+              - img [ref=e561]
+            - link "Twitter" [ref=e563] [cursor=pointer]:
+              - /url: https://x.com
+              - img [ref=e564]
+        - generic [ref=e566]:
+          - heading "Documentation" [level=4] [ref=e567]
+          - generic [ref=e568]:
+            - button "Getting Started" [ref=e569] [cursor=pointer]
+            - button "Components" [ref=e570] [cursor=pointer]
+            - button "Customization" [ref=e571] [cursor=pointer]
+            - button "Examples" [ref=e572] [cursor=pointer]
+        - generic [ref=e573]:
+          - heading "Resources" [level=4] [ref=e574]
+          - generic [ref=e575]:
+            - link "GitHub" [ref=e576] [cursor=pointer]:
+              - /url: https://github.com
+            - link "npm" [ref=e577] [cursor=pointer]:
+              - /url: https://npmjs.com
+            - button "Changelog" [ref=e578] [cursor=pointer]
+            - button "Contributing" [ref=e579] [cursor=pointer]
+        - generic [ref=e580]:
+          - heading "Community" [level=4] [ref=e581]
+          - generic [ref=e582]:
+            - button "Discord" [ref=e583] [cursor=pointer]
+            - link "Twitter" [ref=e584] [cursor=pointer]:
+              - /url: https://x.com
+            - link "Stack Overflow" [ref=e585] [cursor=pointer]:
+              - /url: https://stackoverflow.com
+      - generic [ref=e586]:
+        - paragraph [ref=e587]: © 2024 MLJR CSS. All rights reserved.
+        - generic [ref=e588]:
+          - button "Privacy Policy" [ref=e589] [cursor=pointer]
+          - button "Terms of Service" [ref=e590] [cursor=pointer]
+```

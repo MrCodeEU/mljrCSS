@@ -1,10 +1,11 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
+  import { onMount } from 'svelte';
   
   const browser = typeof window !== 'undefined';
 
   interface Props {
-    items: Array<{ id: string; content: Snippet }>;
+    children: Snippet;
     autoplay?: boolean;
     interval?: number;
     loop?: boolean;
@@ -16,7 +17,7 @@
   }
 
   let {
-    items,
+    children,
     autoplay = false,
     interval = 5000,
     loop = true,
@@ -30,6 +31,8 @@
   let currentIndex = $state(0);
   let autoplayTimer: ReturnType<typeof setTimeout> | undefined = $state();
   let isPaused = $state(false);
+  let carouselInnerRef: HTMLDivElement | undefined = $state();
+  let slideCount = $state(0);
 
   const carouselClasses = $derived(
     [
@@ -51,15 +54,27 @@
       .join(' ')
   );
 
+  onMount(() => {
+    if (carouselInnerRef) {
+      slideCount = carouselInnerRef.children.length;
+    }
+  });
+
+  $effect(() => {
+    if (carouselInnerRef) {
+      slideCount = carouselInnerRef.children.length;
+    }
+  });
+
   function goToSlide(index: number) {
-    if (index >= 0 && index < items.length) {
+    if (index >= 0 && index < slideCount) {
       currentIndex = index;
       resetAutoplay();
     }
   }
 
   function nextSlide() {
-    if (currentIndex < items.length - 1) {
+    if (currentIndex < slideCount - 1) {
       currentIndex++;
     } else if (loop) {
       currentIndex = 0;
@@ -71,7 +86,7 @@
     if (currentIndex > 0) {
       currentIndex--;
     } else if (loop) {
-      currentIndex = items.length - 1;
+      currentIndex = slideCount - 1;
     }
     resetAutoplay();
   }
@@ -101,7 +116,7 @@
   });
 </script>
 
-<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 <div
   class={carouselClasses}
   role="region"
@@ -116,24 +131,14 @@
   }}
 >
   <div
+    bind:this={carouselInnerRef}
     class="mljr-carousel-inner"
     style={variant !== 'fade' ? `transform: translateX(-${currentIndex * 100}%)` : undefined}
   >
-    {#each items as item, index (item.id)}
-      <div
-        class="mljr-carousel-item"
-        class:active={variant === 'fade' && index === currentIndex}
-        role="group"
-        aria-roledescription="slide"
-        aria-label={`Slide ${index + 1} of ${items.length}`}
-        aria-hidden={index !== currentIndex}
-      >
-        {@render item.content()}
-      </div>
-    {/each}
+    {@render children()}
   </div>
 
-  {#if showControls && items.length > 1}
+  {#if showControls && slideCount > 1}
     <button
       type="button"
       class="mljr-carousel-btn mljr-carousel-btn-prev"
@@ -151,7 +156,7 @@
       class="mljr-carousel-btn mljr-carousel-btn-next"
       onclick={nextSlide}
       aria-label="Next slide"
-      disabled={!loop && currentIndex === items.length - 1}
+      disabled={!loop && currentIndex === slideCount - 1}
     >
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <polyline points="9 18 15 12 9 6"></polyline>
@@ -159,9 +164,9 @@
     </button>
   {/if}
 
-  {#if showIndicators && items.length > 1}
+  {#if showIndicators && slideCount > 1}
     <div class={indicatorClasses} role="tablist" aria-label="Carousel navigation">
-      {#each items as item, index (item.id)}
+      {#each Array(slideCount) as _, index}
         <button
           type="button"
           class="mljr-carousel-indicator"
@@ -170,7 +175,6 @@
           role="tab"
           aria-selected={index === currentIndex}
           aria-label={`Go to slide ${index + 1}`}
-          aria-controls={`carousel-item-${item.id}`}
         ></button>
       {/each}
     </div>
