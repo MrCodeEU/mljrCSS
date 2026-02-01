@@ -8,6 +8,12 @@
   width: 100%;
   overflow: hidden;
   clip-path: var(--mljr-clip-card);
+  outline: none;
+}
+
+.mljr-carousel:focus-visible {
+  outline: 2px solid var(--mljr-ring);
+  outline-offset: 2px;
 }
 
 .mljr-carousel-inner {
@@ -15,6 +21,7 @@
   flex-wrap: nowrap;
   width: 100%;
   transition: transform var(--mljr-transition-slow);
+  will-change: transform;
 }
 
 .mljr-carousel-item {
@@ -22,6 +29,14 @@
   width: 100%;
   min-width: 100%;
   display: block;
+  overflow: hidden;
+}
+
+.mljr-carousel-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Peek variant - shows partial next slide */

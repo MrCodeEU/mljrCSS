@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import { onMount } from 'svelte';
   
   const browser = typeof window !== 'undefined';
 
@@ -31,8 +30,11 @@
   let currentIndex = $state(0);
   let autoplayTimer: ReturnType<typeof setTimeout> | undefined = $state();
   let isPaused = $state(false);
-  let carouselInnerRef: HTMLDivElement | undefined = $state();
+  let carouselRef: HTMLDivElement | undefined = $state();
+  let innerRef: HTMLDivElement | undefined = $state();
   let slideCount = $state(0);
+  let touchStartX = $state(0);
+  let touchEndX = $state(0);
 
   const carouselClasses = $derived(
     [
@@ -54,15 +56,21 @@
       .join(' ')
   );
 
-  onMount(() => {
-    if (carouselInnerRef) {
-      slideCount = carouselInnerRef.children.length;
-    }
-  });
-
+  // Count slides after mount and when children change
   $effect(() => {
-    if (carouselInnerRef) {
-      slideCount = carouselInnerRef.children.length;
+    if (innerRef && browser) {
+      // Use RAF to ensure DOM is fully rendered
+      requestAnimationFrame(() => {
+        if (innerRef) {
+          const items = innerRef.querySelectorAll('.mljr-carousel-item');
+          slideCount = items.length;
+          
+          // Ensure currentIndex is valid
+          if (currentIndex >= slideCount && slideCount > 0) {
+            currentIndex = 0;
+          }
+        }
+      });
     }
   });
 
@@ -92,8 +100,10 @@
   }
 
   function resetAutoplay() {
-    if (autoplay && !isPaused) {
+    if (autoplayTimer) {
       clearTimeout(autoplayTimer);
+    }
+    if (autoplay && !isPaused && browser) {
       autoplayTimer = setTimeout(nextSlide, interval);
     }
   }
@@ -105,35 +115,86 @@
     } else if (e.key === 'ArrowRight') {
       e.preventDefault();
       nextSlide();
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      goToSlide(0);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      goToSlide(slideCount - 1);
     }
   }
 
+  function handleTouchStart(e: TouchEvent) {
+    touchStartX = e.touches[0].clientX;
+  }
+
+  function handleTouchMove(e: TouchEvent) {
+    touchEndX = e.touches[0].clientX;
+  }
+
+  function handleTouchEnd() {
+    const diff = touchStartX - touchEndX;
+    const threshold = 50;
+
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    }
+
+    touchStartX = 0;
+    touchEndX = 0;
+  }
+
+  function pauseAutoplay() {
+    isPaused = true;
+    if (autoplayTimer) {
+      clearTimeout(autoplayTimer);
+    }
+  }
+
+  function resumeAutoplay() {
+    isPaused = false;
+    resetAutoplay();
+  }
+
+  // Setup and cleanup autoplay
   $effect(() => {
-    if (autoplay && !isPaused && browser) {
+    if (autoplay && !isPaused && browser && slideCount > 1) {
       autoplayTimer = setTimeout(nextSlide, interval);
-      return () => clearTimeout(autoplayTimer);
+      return () => {
+        if (autoplayTimer) {
+          clearTimeout(autoplayTimer);
+        }
+      };
     }
   });
 </script>
 
-<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
+  bind:this={carouselRef}
   class={carouselClasses}
   role="region"
   aria-label="Carousel"
   aria-roledescription="carousel"
+  aria-live={autoplay ? 'polite' : 'off'}
   tabindex="0"
   onkeydown={handleKeydown}
-  onmouseenter={() => (isPaused = true)}
-  onmouseleave={() => {
-    isPaused = false;
-    resetAutoplay();
-  }}
+  onmouseenter={pauseAutoplay}
+  onmouseleave={resumeAutoplay}
+  ontouchstart={handleTouchStart}
+  ontouchmove={handleTouchMove}
+  ontouchend={handleTouchEnd}
 >
   <div
-    bind:this={carouselInnerRef}
+    bind:this={innerRef}
     class="mljr-carousel-inner"
-    style={variant !== 'fade' ? `transform: translateX(-${currentIndex * 100}%)` : undefined}
+    style:transform={variant !== 'fade' ? `translateX(-${currentIndex * 100}%)` : undefined}
+    role="list"
+    aria-label="Slides"
   >
     {@render children()}
   </div>
@@ -144,9 +205,10 @@
       class="mljr-carousel-btn mljr-carousel-btn-prev"
       onclick={prevSlide}
       aria-label="Previous slide"
+      aria-controls="carousel-slides"
       disabled={!loop && currentIndex === 0}
     >
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <polyline points="15 18 9 12 15 6"></polyline>
       </svg>
     </button>
@@ -156,9 +218,10 @@
       class="mljr-carousel-btn mljr-carousel-btn-next"
       onclick={nextSlide}
       aria-label="Next slide"
+      aria-controls="carousel-slides"
       disabled={!loop && currentIndex === slideCount - 1}
     >
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <polyline points="9 18 15 12 9 6"></polyline>
       </svg>
     </button>
@@ -175,6 +238,7 @@
           role="tab"
           aria-selected={index === currentIndex}
           aria-label={`Go to slide ${index + 1}`}
+          aria-controls={`slide-${index}`}
         ></button>
       {/each}
     </div>
