@@ -1,0 +1,286 @@
+/* ============================================
+   MLJR CSS Framework - Typography
+   Detroit: Become Human inspired
+   Clean, thin, geometric - using Inter with light weights
+   ============================================ */
+
+/* Headings - Inter with lighter weights for Detroit minimalist style */
+.mljr-h1 {
+  font-family: var(--mljr-font-display);
+  font-size: var(--mljr-text-4xl);
+  font-weight: 300;
+  line-height: var(--mljr-leading-tight);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mljr-h2 {
+  font-family: var(--mljr-font-display);
+  font-size: var(--mljr-text-3xl);
+  font-weight: 300;
+  line-height: var(--mljr-leading-tight);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.mljr-h3 {
+  font-family: var(--mljr-font-display);
+  font-size: var(--mljr-text-2xl);
+  font-weight: 400;
+  line-height: var(--mljr-leading-tight);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.mljr-h4 {
+  font-family: var(--mljr-font-display);
+  font-size: var(--mljr-text-xl);
+  font-weight: 400;
+  line-height: var(--mljr-leading-tight);
+  letter-spacing: 0.03em;
+}
+
+.mljr-h5 {
+  font-family: var(--mljr-font-display);
+  font-size: var(--mljr-text-lg);
+  font-weight: 400;
+  line-height: var(--mljr-leading-tight);
+  letter-spacing: 0.02em;
+}
+
+.mljr-h6 {
+  font-family: var(--mljr-font-display);
+  font-size: var(--mljr-text-base);
+  font-weight: 400;
+  line-height: var(--mljr-leading-tight);
+  letter-spacing: 0.02em;
+}
+
+/* Paragraph */
+.mljr-p {
+  font-size: var(--mljr-text-base);
+  line-height: var(--mljr-leading-relaxed);
+  color: var(--mljr-text-secondary);
+}
+
+.mljr-lead {
+  font-size: var(--mljr-text-xl);
+  line-height: var(--mljr-leading-relaxed);
+  color: var(--mljr-text-secondary);
+}
+
+.mljr-small {
+  font-size: var(--mljr-text-sm);
+  line-height: var(--mljr-leading-normal);
+}
+
+.mljr-muted {
+  color: var(--mljr-text-muted);
+}
+
+/* Links */
+.mljr-link {
+  color: var(--mljr-primary-600);
+  text-decoration: none;
+  transition: color var(--mljr-transition-fast);
+}
+
+.mljr-link:hover {
+  color: var(--mljr-primary-700);
+  text-decoration: underline;
+}
+
+.mljr-link:focus-visible {
+  outline: 2px solid var(--mljr-ring);
+  outline-offset: 2px;
+  border-radius: var(--mljr-radius-sm);
+}
+
+.mljr-link--secondary {
+  color: var(--mljr-secondary-600);
+}
+
+.mljr-link--secondary:hover {
+  color: var(--mljr-secondary-700);
+}
+
+/* Code */
+.mljr-code {
+  font-family: var(--mljr-font-mono);
+  font-size: var(--mljr-text-sm);
+  background-color: var(--mljr-bg-tertiary);
+  padding: 0.125rem 0.375rem;
+  border-radius: var(--mljr-radius-sm);
+}
+
+.mljr-pre {
+  font-family: var(--mljr-font-mono);
+  font-size: var(--mljr-text-sm);
+  background-color: var(--mljr-bg-tertiary);
+  padding: var(--mljr-space-4);
+  border-radius: var(--mljr-radius-md);
+  overflow-x: auto;
+}
+
+/* Blockquote */
+.mljr-blockquote {
+  padding-left: var(--mljr-space-4);
+  border-left: 4px solid var(--mljr-primary-500);
+  font-style: italic;
+  color: var(--mljr-text-secondary);
+}
+
+/* Lists */
+.mljr-list {
+  padding-left: var(--mljr-space-6);
+  list-style-type: disc;
+}
+
+.mljr-list li {
+  margin-bottom: var(--mljr-space-1);
+}
+
+.mljr-list-ordered {
+  padding-left: var(--mljr-space-6);
+  list-style-type: decimal;
+}
+
+.mljr-list-ordered li {
+  margin-bottom: var(--mljr-space-1);
+}
+
+/* Prose - for content areas */
+.mljr-prose {
+  max-width: 65ch;
+  color: var(--mljr-text);
+}
+
+.mljr-prose > * + * {
+  margin-top: var(--mljr-space-4);
+}
+
+.mljr-prose h1,
+.mljr-prose h2,
+.mljr-prose h3,
+.mljr-prose h4 {
+  font-family: var(--mljr-font-display);
+  margin-top: var(--mljr-space-8);
+  margin-bottom: var(--mljr-space-4);
+  letter-spacing: 0.03em;
+}
+
+.mljr-prose h1 {
+  font-size: var(--mljr-text-4xl);
+  font-weight: 700;
+  line-height: var(--mljr-leading-tight);
+  text-transform: uppercase;
+}
+
+.mljr-prose h2 {
+  font-size: var(--mljr-text-3xl);
+  font-weight: 600;
+  line-height: var(--mljr-leading-tight);
+  text-transform: uppercase;
+}
+
+.mljr-prose h3 {
+  font-size: var(--mljr-text-2xl);
+  font-weight: 600;
+  line-height: var(--mljr-leading-tight);
+}
+
+.mljr-prose h4 {
+  font-size: var(--mljr-text-xl);
+  font-weight: 600;
+  line-height: var(--mljr-leading-tight);
+}
+
+.mljr-prose p {
+  line-height: var(--mljr-leading-relaxed);
+}
+
+.mljr-prose a {
+  color: var(--mljr-primary-600);
+  text-decoration: underline;
+}
+
+.mljr-prose a:hover {
+  color: var(--mljr-primary-700);
+}
+
+.mljr-prose strong {
+  font-weight: 600;
+  color: var(--mljr-text);
+}
+
+.mljr-prose ul,
+.mljr-prose ol {
+  padding-left: var(--mljr-space-6);
+}
+
+.mljr-prose ul {
+  list-style-type: disc;
+}
+
+.mljr-prose ol {
+  list-style-type: decimal;
+}
+
+.mljr-prose li {
+  margin-bottom: var(--mljr-space-2);
+}
+
+.mljr-prose blockquote {
+  padding-left: var(--mljr-space-4);
+  border-left: 4px solid var(--mljr-primary-500);
+  font-style: italic;
+  color: var(--mljr-text-secondary);
+}
+
+.mljr-prose code {
+  font-family: var(--mljr-font-mono);
+  font-size: var(--mljr-text-sm);
+  background-color: var(--mljr-bg-tertiary);
+  padding: 0.125rem 0.375rem;
+  border-radius: var(--mljr-radius-sm);
+}
+
+.mljr-prose pre {
+  font-family: var(--mljr-font-mono);
+  font-size: var(--mljr-text-sm);
+  background-color: var(--mljr-bg-tertiary);
+  padding: var(--mljr-space-4);
+  border-radius: var(--mljr-radius-md);
+  overflow-x: auto;
+}
+
+.mljr-prose pre code {
+  background: none;
+  padding: 0;
+}
+
+.mljr-prose hr {
+  margin: var(--mljr-space-8) 0;
+  border-color: var(--mljr-border);
+}
+
+.mljr-prose img {
+  border-radius: var(--mljr-radius-md);
+}
+
+.mljr-prose table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mljr-prose th,
+.mljr-prose td {
+  padding: var(--mljr-space-2) var(--mljr-space-3);
+  border: 1px solid var(--mljr-border);
+  text-align: left;
+}
+
+.mljr-prose th {
+  background-color: var(--mljr-bg-secondary);
+  font-weight: 600;
+}

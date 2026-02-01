@@ -1,0 +1,177 @@
+/* ============================================
+   MLJR CSS Framework - Alert Component
+   ============================================ */
+
+.mljr-alert {
+  display: flex;
+  gap: var(--mljr-space-3);
+  padding: var(--mljr-space-4);
+  border-radius: 0;
+  clip-path: var(--mljr-clip-btn);
+  font-size: var(--mljr-text-sm);
+  line-height: var(--mljr-leading-normal);
+}
+
+.mljr-alert-icon {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.mljr-alert-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.mljr-alert-title {
+  font-weight: 600;
+  margin-bottom: var(--mljr-space-1);
+}
+
+.mljr-alert-description {
+  opacity: 0.9;
+}
+
+.mljr-alert-close {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+  background: none;
+  border: none;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity var(--mljr-transition-fast);
+}
+
+.mljr-alert-close:hover {
+  opacity: 1;
+}
+
+/* Default Alert */
+.mljr-alert-default {
+  background-color: var(--mljr-bg-secondary);
+  border: 1px solid var(--mljr-border);
+  color: var(--mljr-text);
+}
+
+/* Info Alert */
+.mljr-alert-info {
+  background-color: rgb(59 130 246 / 0.1);
+  border: 1px solid rgb(59 130 246 / 0.2);
+  color: var(--mljr-info-dark);
+}
+
+.dark .mljr-alert-info,
+[data-theme="dark"] .mljr-alert-info {
+  background-color: rgb(59 130 246 / 0.15);
+  border-color: rgb(59 130 246 / 0.3);
+  color: var(--mljr-info-light);
+}
+
+/* Success Alert (Teal-green - colorblind friendly) */
+.mljr-alert-success {
+  background-color: rgb(0 166 124 / 0.1);
+  border: 1px solid rgb(0 166 124 / 0.25);
+  color: var(--mljr-success-dark);
+}
+
+.dark .mljr-alert-success,
+[data-theme="dark"] .mljr-alert-success {
+  background-color: rgb(0 166 124 / 0.15);
+  border-color: rgb(0 166 124 / 0.35);
+  color: var(--mljr-success-light);
+}
+
+/* Warning Alert */
+.mljr-alert-warning {
+  background-color: rgb(234 179 8 / 0.1);
+  border: 1px solid rgb(234 179 8 / 0.2);
+  color: var(--mljr-warning-dark);
+}
+
+.dark .mljr-alert-warning,
+[data-theme="dark"] .mljr-alert-warning {
+  background-color: rgb(234 179 8 / 0.15);
+  border-color: rgb(234 179 8 / 0.3);
+  color: var(--mljr-warning-light);
+}
+
+/* Error Alert (Deep Crimson - very distinct from orange) */
+.mljr-alert-error {
+  background-color: rgb(185 28 28 / 0.1);
+  border: 1px solid rgb(185 28 28 / 0.25);
+  color: var(--mljr-error-dark);
+}
+
+.dark .mljr-alert-error,
+[data-theme="dark"] .mljr-alert-error {
+  background-color: rgb(185 28 28 / 0.15);
+  border-color: rgb(185 28 28 / 0.35);
+  color: var(--mljr-error-light);
+}
+
+/* Primary Alert (Rich Blue) */
+.mljr-alert-primary {
+  background-color: rgb(0 128 255 / 0.1);
+  border: 1px solid rgb(0 128 255 / 0.25);
+  color: var(--mljr-primary-700);
+}
+
+.dark .mljr-alert-primary,
+[data-theme="dark"] .mljr-alert-primary {
+  background-color: rgb(0 128 255 / 0.15);
+  border-color: rgb(0 128 255 / 0.35);
+  color: var(--mljr-primary-300);
+}
+
+/* Secondary Alert (Rich Orange) */
+.mljr-alert-secondary {
+  background-color: rgb(255 140 0 / 0.1);
+  border: 1px solid rgb(255 140 0 / 0.25);
+  color: var(--mljr-secondary-700);
+}
+
+.dark .mljr-alert-secondary,
+[data-theme="dark"] .mljr-alert-secondary {
+  background-color: rgb(255 140 0 / 0.15);
+  border-color: rgb(255 140 0 / 0.35);
+  color: var(--mljr-secondary-300);
+}
+
+/* Solid Variants */
+.mljr-alert-info-solid {
+  background-color: var(--mljr-info);
+  border: none;
+  color: white;
+}
+
+.mljr-alert-success-solid {
+  background-color: var(--mljr-success);
+  border: none;
+  color: white;
+}
+
+.mljr-alert-warning-solid {
+  background-color: var(--mljr-warning);
+  border: none;
+  color: var(--mljr-gray-900);
+}
+
+.mljr-alert-error-solid {
+  background-color: var(--mljr-error);
+  border: none;
+  color: white;
+}
+
+.mljr-alert-primary-solid {
+  background-color: var(--mljr-primary-600);
+  border: none;
+  color: white;
+}
+
+.mljr-alert-secondary-solid {
+  background-color: var(--mljr-secondary-600);
+  border: none;
+  color: white;
+}

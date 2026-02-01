@@ -1,0 +1,527 @@
+/* ============================================
+   MLJR CSS Framework - Utilities
+   ============================================ */
+
+/* Display */
+.mljr-hidden { display: none; }
+.mljr-block { display: block; }
+.mljr-inline { display: inline; }
+.mljr-inline-block { display: inline-block; }
+
+/* Visibility */
+.mljr-visible { visibility: visible; }
+.mljr-invisible { visibility: hidden; }
+
+/* Overflow */
+.mljr-overflow-auto { overflow: auto; }
+.mljr-overflow-hidden { overflow: hidden; }
+.mljr-overflow-scroll { overflow: scroll; }
+.mljr-overflow-x-auto { overflow-x: auto; }
+.mljr-overflow-y-auto { overflow-y: auto; }
+
+/* Position */
+.mljr-relative { position: relative; }
+.mljr-absolute { position: absolute; }
+.mljr-fixed { position: fixed; }
+.mljr-sticky { position: sticky; }
+
+/* Inset */
+.mljr-inset-0 { inset: 0; }
+.mljr-top-0 { top: 0; }
+.mljr-right-0 { right: 0; }
+.mljr-bottom-0 { bottom: 0; }
+.mljr-left-0 { left: 0; }
+
+/* Z-index */
+.mljr-z-0 { z-index: 0; }
+.mljr-z-10 { z-index: 10; }
+.mljr-z-20 { z-index: 20; }
+.mljr-z-30 { z-index: 30; }
+.mljr-z-40 { z-index: 40; }
+.mljr-z-50 { z-index: 50; }
+
+/* Width & Height */
+.mljr-w-full { width: 100%; }
+.mljr-w-auto { width: auto; }
+.mljr-w-screen { width: 100vw; }
+.mljr-h-full { height: 100%; }
+.mljr-h-auto { height: auto; }
+.mljr-h-screen { height: 100vh; }
+.mljr-min-h-screen { min-height: 100vh; }
+
+/* Margin */
+.mljr-m-0 { margin: 0; }
+.mljr-m-auto { margin: auto; }
+.mljr-mx-auto { margin-left: auto; margin-right: auto; }
+.mljr-my-auto { margin-top: auto; margin-bottom: auto; }
+.mljr-mt-0 { margin-top: 0; }
+.mljr-mt-1 { margin-top: var(--mljr-space-1); }
+.mljr-mt-2 { margin-top: var(--mljr-space-2); }
+.mljr-mt-3 { margin-top: var(--mljr-space-3); }
+.mljr-mt-4 { margin-top: var(--mljr-space-4); }
+.mljr-mt-6 { margin-top: var(--mljr-space-6); }
+.mljr-mt-8 { margin-top: var(--mljr-space-8); }
+.mljr-mb-0 { margin-bottom: 0; }
+.mljr-mb-1 { margin-bottom: var(--mljr-space-1); }
+.mljr-mb-2 { margin-bottom: var(--mljr-space-2); }
+.mljr-mb-3 { margin-bottom: var(--mljr-space-3); }
+.mljr-mb-4 { margin-bottom: var(--mljr-space-4); }
+.mljr-mb-6 { margin-bottom: var(--mljr-space-6); }
+.mljr-mb-8 { margin-bottom: var(--mljr-space-8); }
+
+/* Padding */
+.mljr-p-0 { padding: 0; }
+.mljr-p-1 { padding: var(--mljr-space-1); }
+.mljr-p-2 { padding: var(--mljr-space-2); }
+.mljr-p-3 { padding: var(--mljr-space-3); }
+.mljr-p-4 { padding: var(--mljr-space-4); }
+.mljr-p-6 { padding: var(--mljr-space-6); }
+.mljr-p-8 { padding: var(--mljr-space-8); }
+.mljr-px-4 { padding-left: var(--mljr-space-4); padding-right: var(--mljr-space-4); }
+.mljr-py-4 { padding-top: var(--mljr-space-4); padding-bottom: var(--mljr-space-4); }
+
+/* Text */
+.mljr-text-left { text-align: left; }
+.mljr-text-center { text-align: center; }
+.mljr-text-right { text-align: right; }
+.mljr-text-justify { text-align: justify; }
+
+.mljr-text-xs { font-size: var(--mljr-text-xs); }
+.mljr-text-sm { font-size: var(--mljr-text-sm); }
+.mljr-text-base { font-size: var(--mljr-text-base); }
+.mljr-text-lg { font-size: var(--mljr-text-lg); }
+.mljr-text-xl { font-size: var(--mljr-text-xl); }
+.mljr-text-2xl { font-size: var(--mljr-text-2xl); }
+.mljr-text-3xl { font-size: var(--mljr-text-3xl); }
+.mljr-text-4xl { font-size: var(--mljr-text-4xl); }
+
+.mljr-font-normal { font-weight: 400; }
+.mljr-font-medium { font-weight: 500; }
+.mljr-font-semibold { font-weight: 600; }
+.mljr-font-bold { font-weight: 700; }
+
+.mljr-uppercase { text-transform: uppercase; }
+.mljr-lowercase { text-transform: lowercase; }
+.mljr-capitalize { text-transform: capitalize; }
+
+.mljr-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mljr-line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.mljr-line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Colors */
+.mljr-text-primary { color: var(--mljr-primary-600); }
+.mljr-text-secondary { color: var(--mljr-secondary-600); }
+.mljr-text-success { color: var(--mljr-success); }
+.mljr-text-warning { color: var(--mljr-warning); }
+.mljr-text-error { color: var(--mljr-error); }
+.mljr-text-info { color: var(--mljr-info); }
+.mljr-text-muted { color: var(--mljr-text-muted); }
+
+.mljr-bg-primary { background-color: var(--mljr-primary-600); }
+.mljr-bg-secondary { background-color: var(--mljr-secondary-600); }
+.mljr-bg-success { background-color: var(--mljr-success); }
+.mljr-bg-warning { background-color: var(--mljr-warning); }
+.mljr-bg-error { background-color: var(--mljr-error); }
+.mljr-bg-info { background-color: var(--mljr-info); }
+
+/* Border */
+.mljr-border { border: 1px solid var(--mljr-border); }
+.mljr-border-0 { border: none; }
+.mljr-border-t { border-top: 1px solid var(--mljr-border); }
+.mljr-border-b { border-bottom: 1px solid var(--mljr-border); }
+.mljr-border-l { border-left: 1px solid var(--mljr-border); }
+.mljr-border-r { border-right: 1px solid var(--mljr-border); }
+
+.mljr-rounded { border-radius: var(--mljr-radius); }
+.mljr-rounded-sm { border-radius: var(--mljr-radius-sm); }
+.mljr-rounded-md { border-radius: var(--mljr-radius-md); }
+.mljr-rounded-lg { border-radius: var(--mljr-radius-lg); }
+.mljr-rounded-xl { border-radius: var(--mljr-radius-xl); }
+.mljr-rounded-full { border-radius: var(--mljr-radius-full); }
+.mljr-rounded-none { border-radius: 0; }
+
+/* Shadow */
+.mljr-shadow-sm { box-shadow: var(--mljr-shadow-sm); }
+.mljr-shadow { box-shadow: var(--mljr-shadow); }
+.mljr-shadow-md { box-shadow: var(--mljr-shadow-md); }
+.mljr-shadow-lg { box-shadow: var(--mljr-shadow-lg); }
+.mljr-shadow-xl { box-shadow: var(--mljr-shadow-xl); }
+.mljr-shadow-none { box-shadow: none; }
+
+/* Opacity */
+.mljr-opacity-0 { opacity: 0; }
+.mljr-opacity-25 { opacity: 0.25; }
+.mljr-opacity-50 { opacity: 0.5; }
+.mljr-opacity-75 { opacity: 0.75; }
+.mljr-opacity-100 { opacity: 1; }
+
+/* Cursor */
+.mljr-cursor-pointer { cursor: pointer; }
+.mljr-cursor-not-allowed { cursor: not-allowed; }
+.mljr-cursor-wait { cursor: wait; }
+
+/* Pointer Events */
+.mljr-pointer-events-none { pointer-events: none; }
+.mljr-pointer-events-auto { pointer-events: auto; }
+
+/* User Select */
+.mljr-select-none { user-select: none; }
+.mljr-select-text { user-select: text; }
+.mljr-select-all { user-select: all; }
+
+/* Screen Reader Only */
+.mljr-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus Ring */
+.mljr-focus-ring:focus-visible {
+  outline: 2px solid var(--mljr-ring);
+  outline-offset: 2px;
+}
+
+/* Transition */
+.mljr-transition { transition: all var(--mljr-transition); }
+.mljr-transition-fast { transition: all var(--mljr-transition-fast); }
+.mljr-transition-slow { transition: all var(--mljr-transition-slow); }
+.mljr-transition-none { transition: none; }
+
+/* Animation */
+.mljr-animate-spin {
+  animation: mljr-spin 1s linear infinite;
+}
+
+.mljr-animate-pulse {
+  animation: mljr-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.mljr-animate-bounce {
+  animation: mljr-bounce 1s infinite;
+}
+
+@keyframes mljr-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes mljr-bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+/* Responsive Utilities */
+@media (min-width: 640px) {
+  .mljr-sm\:hidden { display: none; }
+  .mljr-sm\:block { display: block; }
+  .mljr-sm\:flex { display: flex; }
+  .mljr-sm\:grid { display: grid; }
+}
+
+@media (min-width: 768px) {
+  .mljr-md\:hidden { display: none; }
+  .mljr-md\:block { display: block; }
+  .mljr-md\:flex { display: flex; }
+  .mljr-md\:grid { display: grid; }
+}
+
+@media (min-width: 1024px) {
+  .mljr-lg\:hidden { display: none; }
+  .mljr-lg\:block { display: block; }
+  .mljr-lg\:flex { display: flex; }
+  .mljr-lg\:grid { display: grid; }
+}
+
+/* ============================================
+   Detroit: Become Human Inspired Effects
+   Ice blue primary, orange/purple accent
+   ============================================ */
+
+/* Glow utilities */
+.mljr-glow-primary {
+  box-shadow: var(--mljr-glow-primary);
+}
+
+.mljr-glow-primary-sm {
+  box-shadow: var(--mljr-glow-primary-sm);
+}
+
+.mljr-glow-secondary {
+  box-shadow: var(--mljr-glow-secondary);
+}
+
+.mljr-glow-secondary-sm {
+  box-shadow: var(--mljr-glow-secondary-sm);
+}
+
+/* Hover glow effects */
+.mljr-hover-glow-primary:hover {
+  box-shadow: var(--mljr-glow-primary);
+  transition: box-shadow var(--mljr-transition);
+}
+
+.mljr-hover-glow-secondary:hover {
+  box-shadow: var(--mljr-glow-secondary);
+  transition: box-shadow var(--mljr-transition);
+}
+
+/* Gradient text */
+.mljr-gradient-text-primary {
+  background: linear-gradient(135deg, var(--mljr-primary-500) 0%, var(--mljr-primary-700) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.mljr-gradient-text-secondary {
+  background: linear-gradient(135deg, var(--mljr-secondary-400) 0%, var(--mljr-secondary-600) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Geometric corner accent */
+.mljr-corner-accent {
+  position: relative;
+}
+
+.mljr-corner-accent::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, transparent 50%, var(--mljr-primary-500) 50%);
+}
+
+.mljr-corner-accent-secondary::after {
+  background: linear-gradient(135deg, transparent 50%, var(--mljr-secondary-500) 50%);
+}
+
+/* Scan line effect (subtle) - ice blue */
+.mljr-scanline {
+  position: relative;
+  overflow: hidden;
+}
+
+.mljr-scanline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--mljr-primary-500) 50%, transparent 100%);
+  animation: mljr-scan 3s ease-in-out infinite;
+  opacity: 0.4;
+}
+
+@keyframes mljr-scan {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Angular border (Detroit-style) */
+.mljr-angular-border {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% 100%,
+    12px 100%,
+    0 calc(100% - 12px)
+  );
+}
+
+/* LED status indicator */
+.mljr-led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.mljr-led-primary {
+  background: var(--mljr-primary-500);
+  box-shadow: 0 0 8px var(--mljr-primary-500);
+}
+
+.mljr-led-secondary {
+  background: var(--mljr-secondary-500);
+  box-shadow: 0 0 8px var(--mljr-secondary-500);
+}
+
+.mljr-led-success {
+  background: var(--mljr-success);
+  box-shadow: 0 0 8px var(--mljr-success);
+}
+
+.mljr-led-pulse {
+  animation: mljr-led-pulse 2s ease-in-out infinite;
+}
+
+@keyframes mljr-led-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+}
+
+/* Clip path utilities */
+.mljr-clip-btn { clip-path: var(--mljr-clip-btn); }
+.mljr-clip-card { clip-path: var(--mljr-clip-card); }
+.mljr-clip-modal { clip-path: var(--mljr-clip-modal); }
+.mljr-clip-sm { clip-path: var(--mljr-clip-sm); }
+.mljr-clip-angular-tr { clip-path: var(--mljr-clip-angular-tr); }
+.mljr-clip-angular-bl { clip-path: var(--mljr-clip-angular-bl); }
+
+/*
+ * Pseudo-element border utility - creates borders that follow clip-path
+ * Usage: Add .mljr-angular-border-* to element, it will use ::before/::after
+ * Note: Element needs position: relative and the clip-path class
+ */
+.mljr-angular-border-btn,
+.mljr-angular-border-card,
+.mljr-angular-border-sm {
+  position: relative;
+}
+
+.mljr-angular-border-btn::before,
+.mljr-angular-border-card::before,
+.mljr-angular-border-sm::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--mljr-border);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.mljr-angular-border-btn::after,
+.mljr-angular-border-card::after,
+.mljr-angular-border-sm::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: var(--mljr-bg);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.mljr-angular-border-btn::before,
+.mljr-angular-border-btn::after { clip-path: var(--mljr-clip-btn); }
+
+.mljr-angular-border-card::before,
+.mljr-angular-border-card::after { clip-path: var(--mljr-clip-card); }
+
+.mljr-angular-border-sm::before,
+.mljr-angular-border-sm::after { clip-path: var(--mljr-clip-sm); }
+
+/* HUD border */
+.mljr-border-hud {
+  border: var(--mljr-border-hud);
+}
+
+.mljr-border-hud-strong {
+  border: var(--mljr-border-hud-strong);
+}
+
+/* LED ring indicator */
+.mljr-led-ring {
+  position: relative;
+}
+
+.mljr-led-ring::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--mljr-primary-500);
+  box-shadow: 0 0 12px var(--mljr-primary-500);
+  animation: mljr-led-pulse 2s ease-in-out infinite;
+}
+
+/* Accent color utilities */
+.mljr-glow-accent {
+  box-shadow: var(--mljr-glow-accent);
+}
+
+.mljr-led-accent {
+  background: var(--mljr-accent-500);
+  box-shadow: 0 0 8px var(--mljr-accent-500);
+}
+
+/* Intense glow for dark mode highlights */
+.mljr-glow-primary-intense {
+  box-shadow: var(--mljr-glow-primary-intense);
+}
+
+/* Display font utility */
+.mljr-font-display {
+  font-family: var(--mljr-font-display);
+}
+
+/* HUD text style */
+.mljr-text-hud {
+  font-family: var(--mljr-font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--mljr-primary-400);
+}
+
+/* Gradient text with accent */
+.mljr-gradient-text-accent {
+  background: linear-gradient(135deg, var(--mljr-accent-400) 0%, var(--mljr-accent-600) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Multi-color gradient (brand colors) */
+.mljr-gradient-text-brand {
+  background: linear-gradient(135deg, var(--mljr-primary-400) 0%, var(--mljr-accent-500) 50%, var(--mljr-secondary-500) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

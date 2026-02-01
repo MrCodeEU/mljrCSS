@@ -1,0 +1,211 @@
+/* ============================================
+   MLJR CSS Framework - Card Component
+   Detroit: Become Human inspired
+   ============================================ */
+
+.mljr-card {
+  background-color: var(--mljr-bg);
+  clip-path: var(--mljr-clip-card);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Border using pseudo-elements */
+.mljr-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--mljr-border);
+  clip-path: var(--mljr-clip-card);
+  z-index: -1;
+}
+
+.mljr-card::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: var(--mljr-bg);
+  clip-path: var(--mljr-clip-card);
+  z-index: -1;
+}
+
+/* Shadow variants */
+.mljr-card-shadow { box-shadow: var(--mljr-shadow); }
+.mljr-card-shadow-md { box-shadow: var(--mljr-shadow-md); }
+.mljr-card-shadow-lg { box-shadow: var(--mljr-shadow-lg); }
+
+/* Card Header */
+.mljr-card-header {
+  padding: var(--mljr-space-4) var(--mljr-space-6);
+  border-bottom: 1px solid var(--mljr-border);
+}
+
+.mljr-card-title {
+  font-family: var(--mljr-font-display);
+  font-size: var(--mljr-text-lg);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--mljr-text);
+}
+
+.mljr-card-description {
+  margin-top: var(--mljr-space-1);
+  font-size: var(--mljr-text-sm);
+  color: var(--mljr-text-secondary);
+}
+
+/* Card Body */
+.mljr-card-body { padding: var(--mljr-space-6); }
+.mljr-card-body-sm { padding: var(--mljr-space-4); }
+.mljr-card-body-lg { padding: var(--mljr-space-8); }
+
+/* Card Footer */
+.mljr-card-footer {
+  padding: var(--mljr-space-4) var(--mljr-space-6);
+  border-top: 1px solid var(--mljr-border);
+  background-color: var(--mljr-bg-secondary);
+}
+
+/* Card Image */
+.mljr-card-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Compact Card */
+.mljr-card-compact .mljr-card-header {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.mljr-card-compact .mljr-card-footer {
+  border-top: none;
+  background-color: transparent;
+  padding-top: 0;
+}
+
+/* Interactive Card */
+.mljr-card-interactive {
+  cursor: pointer;
+  transition: all var(--mljr-transition);
+}
+
+.mljr-card-interactive:hover {
+  box-shadow: var(--mljr-shadow-md);
+  transform: translateY(-2px);
+}
+
+.mljr-card-interactive:hover::before {
+  background: var(--mljr-primary-400);
+}
+
+.dark .mljr-card-interactive:hover,
+[data-theme="dark"] .mljr-card-interactive:hover {
+  box-shadow: var(--mljr-shadow-md), var(--mljr-glow-primary-sm);
+}
+
+.mljr-card-interactive:focus-visible {
+  outline: 2px solid var(--mljr-ring);
+  outline-offset: 2px;
+}
+
+/* Color accent variants */
+.mljr-card-primary::before { background: var(--mljr-primary-500); }
+.mljr-card-secondary::before { background: var(--mljr-secondary-500); }
+
+/* Glow variants */
+.mljr-card-glow { transition: box-shadow var(--mljr-transition); }
+.mljr-card-glow:hover { box-shadow: var(--mljr-glow-primary); }
+.mljr-card-glow-secondary:hover { box-shadow: var(--mljr-glow-secondary); }
+
+/* Detroit HUD-style card */
+.mljr-card-detroit {
+  background: linear-gradient(135deg, var(--mljr-bg) 0%, var(--mljr-bg-secondary) 100%);
+  clip-path: var(--mljr-clip-angular-tr);
+}
+
+.mljr-card-detroit::before {
+  clip-path: var(--mljr-clip-angular-tr);
+  background: rgb(0 128 255 / 0.5);
+}
+
+.mljr-card-detroit::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, transparent 50%, var(--mljr-primary-500) 50%);
+  clip-path: none;
+}
+
+.dark .mljr-card-detroit,
+[data-theme="dark"] .mljr-card-detroit {
+  box-shadow: var(--mljr-glow-primary-sm);
+}
+
+.dark .mljr-card-detroit:hover,
+[data-theme="dark"] .mljr-card-detroit:hover {
+  box-shadow: var(--mljr-glow-primary);
+}
+
+/* HUD panel card */
+.mljr-card-hud {
+  background: rgba(0, 128, 255, 0.05);
+  border: var(--mljr-border-hud);
+  clip-path: var(--mljr-clip-angular-tr);
+}
+
+.mljr-card-hud::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--mljr-primary-500), transparent);
+  clip-path: none;
+}
+
+.mljr-card-hud::after { display: none; }
+
+.dark .mljr-card-hud,
+[data-theme="dark"] .mljr-card-hud {
+  background: rgba(0, 128, 255, 0.08);
+  box-shadow: inset 0 1px 15px rgba(0, 128, 255, 0.1);
+}
+
+/* Card Grid */
+.mljr-card-grid {
+  display: grid;
+  gap: var(--mljr-space-6);
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+/* Horizontal Card */
+.mljr-card-horizontal {
+  display: flex;
+}
+
+.mljr-card-horizontal .mljr-card-image {
+  width: 200px;
+  object-fit: cover;
+}
+
+.mljr-card-horizontal .mljr-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 640px) {
+  .mljr-card-horizontal {
+    flex-direction: column;
+  }
+
+  .mljr-card-horizontal .mljr-card-image {
+    width: 100%;
+  }
+}

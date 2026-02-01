@@ -1,0 +1,56 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./src/**/*.css'],
+  darkMode: ['class', '[data-theme="dark"]'],
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: '#e6f3ff',
+          100: '#cce7ff',
+          200: '#99cfff',
+          300: '#66b7ff',
+          400: '#339eff',
+          500: '#0080ff',
+          600: '#0066cc',
+          700: '#004d99',
+          800: '#003366',
+          900: '#001a33',
+          950: '#000d1a',
+        },
+        secondary: {
+          50: '#fff4e6',
+          100: '#ffe8cc',
+          200: '#ffd199',
+          300: '#ffba66',
+          400: '#ffa333',
+          500: '#ff8c00',
+          600: '#cc7000',
+          700: '#995400',
+          800: '#663800',
+          900: '#331c00',
+          950: '#1a0e00',
+        },
+        accent: {
+          50: '#f5e6ff',
+          100: '#ebccff',
+          200: '#d699ff',
+          300: '#c266ff',
+          400: '#ad33ff',
+          500: '#9900ff',
+          600: '#7a00cc',
+          700: '#5c0099',
+          800: '#3d0066',
+          900: '#1f0033',
+          950: '#0f001a',
+        },
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+      },
+    },
+  },
+  plugins: [],
+};

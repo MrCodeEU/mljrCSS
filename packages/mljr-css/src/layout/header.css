@@ -1,0 +1,223 @@
+/* ============================================
+   MLJR CSS Framework - Header Component
+   ============================================ */
+
+.mljr-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 4rem;
+  background-color: var(--mljr-bg);
+  border-bottom: 1px solid var(--mljr-border);
+}
+
+.mljr-header-sticky {
+  position: sticky;
+  top: 0;
+  z-index: var(--mljr-z-sticky);
+}
+
+.mljr-header-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--mljr-z-fixed);
+}
+
+.mljr-header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 0 var(--mljr-space-4);
+}
+
+@media (min-width: 640px) {
+  .mljr-header-container {
+    padding: 0 var(--mljr-space-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .mljr-header-container {
+    padding: 0 var(--mljr-space-8);
+  }
+}
+
+/* Logo */
+.mljr-header-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--mljr-space-2);
+  font-size: var(--mljr-text-xl);
+  font-weight: 700;
+  color: var(--mljr-text);
+  text-decoration: none;
+}
+
+.mljr-header-logo:hover {
+  color: var(--mljr-primary-600);
+}
+
+.mljr-header-logo img {
+  height: 2rem;
+  width: auto;
+}
+
+/* Navigation */
+.mljr-header-nav {
+  display: none;
+  align-items: center;
+  gap: var(--mljr-space-1);
+}
+
+@media (min-width: 768px) {
+  .mljr-header-nav {
+    display: flex;
+  }
+}
+
+.mljr-header-nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--mljr-space-1);
+  padding: var(--mljr-space-2) var(--mljr-space-3);
+  font-size: var(--mljr-text-sm);
+  font-weight: 500;
+  color: var(--mljr-text-secondary);
+  text-decoration: none;
+  border-radius: var(--mljr-radius);
+  transition: all var(--mljr-transition-fast);
+}
+
+.mljr-header-nav-link:hover {
+  color: var(--mljr-text);
+  background-color: var(--mljr-bg-secondary);
+}
+
+.mljr-header-nav-link.active {
+  color: var(--mljr-primary-500);
+  background-color: rgb(232 114 43 / 0.1);
+  position: relative;
+}
+
+.dark .mljr-header-nav-link.active,
+[data-theme="dark"] .mljr-header-nav-link.active {
+  box-shadow: inset 0 -2px 0 var(--mljr-primary-500);
+}
+
+/* Actions */
+.mljr-header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--mljr-space-2);
+}
+
+/* Mobile menu toggle */
+.mljr-header-menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: var(--mljr-radius);
+  color: var(--mljr-text);
+  cursor: pointer;
+  transition: background-color var(--mljr-transition-fast);
+}
+
+.mljr-header-menu-toggle:hover {
+  background-color: var(--mljr-bg-secondary);
+}
+
+@media (min-width: 768px) {
+  .mljr-header-menu-toggle {
+    display: none;
+  }
+}
+
+/* Mobile menu */
+.mljr-header-mobile-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--mljr-bg);
+  border-bottom: 1px solid var(--mljr-border);
+  padding: var(--mljr-space-4);
+  box-shadow: var(--mljr-shadow-lg);
+}
+
+.mljr-header-mobile-menu.open {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .mljr-header-mobile-menu {
+    display: none !important;
+  }
+}
+
+.mljr-header-mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mljr-space-1);
+}
+
+.mljr-header-mobile-link {
+  display: flex;
+  align-items: center;
+  gap: var(--mljr-space-2);
+  padding: var(--mljr-space-3);
+  font-size: var(--mljr-text-base);
+  font-weight: 500;
+  color: var(--mljr-text);
+  text-decoration: none;
+  border-radius: var(--mljr-radius);
+  transition: background-color var(--mljr-transition-fast);
+}
+
+.mljr-header-mobile-link:hover {
+  background-color: var(--mljr-bg-secondary);
+}
+
+.mljr-header-mobile-link.active {
+  color: var(--mljr-primary-500);
+  background-color: rgb(232 114 43 / 0.1);
+  border-left: 3px solid var(--mljr-primary-500);
+}
+
+/* Transparent header variant */
+.mljr-header-transparent {
+  background-color: transparent;
+  border-bottom: none;
+}
+
+.mljr-header-transparent.mljr-header-scrolled {
+  background-color: var(--mljr-bg);
+  border-bottom: 1px solid var(--mljr-border);
+  box-shadow: var(--mljr-shadow);
+}
+
+/* Dark header variant */
+.mljr-header-dark {
+  background-color: var(--mljr-gray-900);
+  border-bottom-color: var(--mljr-gray-800);
+}
+
+.mljr-header-dark .mljr-header-logo,
+.mljr-header-dark .mljr-header-nav-link,
+.mljr-header-dark .mljr-header-menu-toggle {
+  color: var(--mljr-gray-100);
+}
+
+.mljr-header-dark .mljr-header-nav-link:hover {
+  color: white;
+  background-color: var(--mljr-gray-800);
+}

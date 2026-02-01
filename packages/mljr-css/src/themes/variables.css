@@ -1,0 +1,211 @@
+/* ============================================
+   MLJR CSS Framework - Design Tokens
+   Detroit: Become Human inspired theme
+   Ice blue primary with orange/purple accent
+   ============================================ */
+
+:root {
+  /* Primary Colors (Detroit Blue - rich, saturated blue) */
+  --mljr-primary-50: #e6f3ff;
+  --mljr-primary-100: #cce7ff;
+  --mljr-primary-200: #99cfff;
+  --mljr-primary-300: #66b7ff;
+  --mljr-primary-400: #339eff;
+  --mljr-primary-500: #0080ff;
+  --mljr-primary-600: #0066cc;
+  --mljr-primary-700: #004d99;
+  --mljr-primary-800: #003366;
+  --mljr-primary-900: #001a33;
+  --mljr-primary-950: #000d1a;
+
+  /* Secondary Colors (Sunset Orange - rich, saturated warm accent) */
+  --mljr-secondary-50: #fff4e6;
+  --mljr-secondary-100: #ffe8cc;
+  --mljr-secondary-200: #ffd199;
+  --mljr-secondary-300: #ffba66;
+  --mljr-secondary-400: #ffa333;
+  --mljr-secondary-500: #ff8c00;
+  --mljr-secondary-600: #cc7000;
+  --mljr-secondary-700: #995400;
+  --mljr-secondary-800: #663800;
+  --mljr-secondary-900: #331c00;
+  --mljr-secondary-950: #1a0e00;
+
+  /* Accent Colors (Purple - rich, saturated violet) */
+  --mljr-accent-50: #f5e6ff;
+  --mljr-accent-100: #ebccff;
+  --mljr-accent-200: #d699ff;
+  --mljr-accent-300: #c266ff;
+  --mljr-accent-400: #ad33ff;
+  --mljr-accent-500: #9900ff;
+  --mljr-accent-600: #7a00cc;
+  --mljr-accent-700: #5c0099;
+  --mljr-accent-800: #3d0066;
+  --mljr-accent-900: #1f0033;
+  --mljr-accent-950: #0f001a;
+
+  /* Neutral Colors (Deep space tones) */
+  --mljr-gray-50: #f8fafc;
+  --mljr-gray-100: #f0f4f8;
+  --mljr-gray-200: #e2e8f0;
+  --mljr-gray-300: #c9d4e2;
+  --mljr-gray-400: #94a3b8;
+  --mljr-gray-500: #64748b;
+  --mljr-gray-600: #475569;
+  --mljr-gray-700: #334155;
+  --mljr-gray-800: #1e293b;
+  --mljr-gray-900: #0f172a;
+  --mljr-gray-950: #020617;
+
+  /* Semantic Colors - High contrast, colorblind-friendly */
+  /* Success: Teal-leaning green (distinct from red for colorblind) */
+  --mljr-success: #00a67c;
+  --mljr-success-light: #34d399;
+  --mljr-success-dark: #047857;
+  /* Warning: Rich amber/gold */
+  --mljr-warning: #f59e0b;
+  --mljr-warning-light: #fbbf24;
+  --mljr-warning-dark: #d97706;
+  /* Error: Deep crimson (very distinct from orange) */
+  --mljr-error: #b91c1c;
+  --mljr-error-light: #ef4444;
+  --mljr-error-dark: #7f1d1d;
+  /* Info: Rich blue */
+  --mljr-info: #0284c7;
+  --mljr-info-light: #38bdf8;
+  --mljr-info-dark: #0369a1;
+
+  /* Light Mode Theme Colors */
+  --mljr-bg: #ffffff;
+  --mljr-bg-secondary: var(--mljr-gray-50);
+  --mljr-bg-tertiary: var(--mljr-gray-100);
+  --mljr-text: var(--mljr-gray-900);
+  --mljr-text-secondary: var(--mljr-gray-600);
+  --mljr-text-muted: var(--mljr-gray-400);
+  --mljr-border: var(--mljr-gray-200);
+  --mljr-border-strong: var(--mljr-gray-300);
+  --mljr-ring: var(--mljr-primary-500);
+
+  /* Shadows */
+  --mljr-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --mljr-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --mljr-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --mljr-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --mljr-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* Glow Effects (subtle, Detroit-style) */
+  --mljr-glow-primary: 0 0 8px rgb(0 128 255 / 0.35);
+  --mljr-glow-primary-sm: 0 0 4px rgb(0 128 255 / 0.3);
+  --mljr-glow-primary-intense: 0 0 12px rgb(0 128 255 / 0.45);
+  --mljr-glow-secondary: 0 0 8px rgb(255 140 0 / 0.3);
+  --mljr-glow-secondary-sm: 0 0 4px rgb(255 140 0 / 0.25);
+  --mljr-glow-accent: 0 0 8px rgb(153 0 255 / 0.3);
+  --mljr-glow-error: 0 0 8px rgb(220 38 38 / 0.35);
+  --mljr-glow-success: 0 0 8px rgb(0 166 124 / 0.35);
+
+  /* Geometric Detroit-style clip paths and angles */
+  --mljr-skew: -2deg;
+  /* Corner cut sizes - LARGER for visibility */
+  --mljr-cut-sm: 10px;
+  --mljr-cut-md: 14px;
+  --mljr-cut-lg: 20px;
+  --mljr-cut-xl: 24px;
+  /* Both corners cut (TR + BL) - default Detroit style */
+  --mljr-clip-btn: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  --mljr-clip-card: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+  --mljr-clip-modal: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+  --mljr-clip-lg: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px));
+  /* Single corner cuts */
+  --mljr-clip-angular-tr: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+  --mljr-clip-angular-bl: polygon(0 0, 100% 0, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+  /* Small elements (checkbox, badge, etc) - TR + BL */
+  --mljr-clip-sm: polygon(0 0, calc(100% - 5px) 0, 100% 5px, 100% 100%, 5px 100%, 0 calc(100% - 5px));
+  /* HUD borders */
+  --mljr-border-hud: 1px solid rgb(0 128 255 / 0.5);
+  --mljr-border-hud-strong: 1px solid rgb(0 128 255 / 0.8);
+
+  /* Spacing Scale */
+  --mljr-space-1: 0.25rem;
+  --mljr-space-2: 0.5rem;
+  --mljr-space-3: 0.75rem;
+  --mljr-space-4: 1rem;
+  --mljr-space-5: 1.25rem;
+  --mljr-space-6: 1.5rem;
+  --mljr-space-8: 2rem;
+  --mljr-space-10: 2.5rem;
+  --mljr-space-12: 3rem;
+  --mljr-space-16: 4rem;
+
+  /* Border Radius */
+  --mljr-radius-sm: 0.25rem;
+  --mljr-radius: 0.375rem;
+  --mljr-radius-md: 0.5rem;
+  --mljr-radius-lg: 0.75rem;
+  --mljr-radius-xl: 1rem;
+  --mljr-radius-full: 9999px;
+
+  /* Typography - Detroit style (Inter for clean, thin look) */
+  --mljr-font-display: 'Inter', system-ui, sans-serif;
+  --mljr-font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --mljr-font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+
+  --mljr-text-xs: 0.75rem;
+  --mljr-text-sm: 0.875rem;
+  --mljr-text-base: 1rem;
+  --mljr-text-lg: 1.125rem;
+  --mljr-text-xl: 1.25rem;
+  --mljr-text-2xl: 1.5rem;
+  --mljr-text-3xl: 1.875rem;
+  --mljr-text-4xl: 2.25rem;
+
+  /* Line Heights */
+  --mljr-leading-tight: 1.25;
+  --mljr-leading-normal: 1.5;
+  --mljr-leading-relaxed: 1.625;
+
+  /* Transitions */
+  --mljr-transition-fast: 150ms ease;
+  --mljr-transition: 200ms ease;
+  --mljr-transition-slow: 300ms ease;
+
+  /* Z-index Scale */
+  --mljr-z-dropdown: 1000;
+  --mljr-z-sticky: 1020;
+  --mljr-z-fixed: 1030;
+  --mljr-z-modal-backdrop: 1040;
+  --mljr-z-modal: 1050;
+  --mljr-z-popover: 1060;
+  --mljr-z-tooltip: 1070;
+}
+
+/* Dark Mode (Deep Space aesthetic) */
+.dark,
+[data-theme="dark"] {
+  --mljr-bg: #0d1117;
+  --mljr-bg-secondary: #161b22;
+  --mljr-bg-tertiary: #21262d;
+  --mljr-text: #f0f6fc;
+  --mljr-text-secondary: #c9d1d9;
+  --mljr-text-muted: #6e7681;
+  --mljr-border: #30363d;
+  --mljr-border-strong: #484f58;
+
+  /* Stronger shadows with subtle glow in dark mode */
+  --mljr-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --mljr-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.4);
+  --mljr-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+  --mljr-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+  --mljr-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.5);
+
+  /* Enhanced glow effects for dark mode - subtle but visible */
+  --mljr-glow-primary: 0 0 10px rgb(0 128 255 / 0.4);
+  --mljr-glow-primary-sm: 0 0 6px rgb(0 128 255 / 0.35);
+  --mljr-glow-primary-intense: 0 0 16px rgb(0 128 255 / 0.55);
+  --mljr-glow-secondary: 0 0 10px rgb(255 140 0 / 0.35);
+  --mljr-glow-secondary-sm: 0 0 6px rgb(255 140 0 / 0.3);
+  --mljr-glow-accent: 0 0 10px rgb(153 0 255 / 0.35);
+  --mljr-glow-error: 0 0 10px rgb(220 38 38 / 0.4);
+  --mljr-glow-success: 0 0 10px rgb(0 166 124 / 0.4);
+  --mljr-border-hud: 1px solid rgb(0 128 255 / 0.6);
+  --mljr-border-hud-strong: 1px solid rgb(0 128 255 / 0.85);
+}

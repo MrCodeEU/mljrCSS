@@ -1,0 +1,215 @@
+/* ============================================
+   MLJR CSS Framework - Badge Component
+   ============================================ */
+
+.mljr-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mljr-space-1);
+  padding: 0.125rem var(--mljr-space-2);
+  font-size: var(--mljr-text-xs);
+  font-weight: 500;
+  line-height: var(--mljr-leading-normal);
+  /* Angular Detroit-style corners (TR + BL) */
+  clip-path: var(--mljr-clip-sm);
+  white-space: nowrap;
+}
+
+/* Default Badge */
+.mljr-badge-default {
+  background-color: var(--mljr-bg-tertiary);
+  color: var(--mljr-text);
+}
+
+/* Primary Badge (Rich Blue) */
+.mljr-badge-primary {
+  background-color: rgb(0 128 255 / 0.15);
+  color: var(--mljr-primary-700);
+}
+
+.dark .mljr-badge-primary,
+[data-theme="dark"] .mljr-badge-primary {
+  background-color: rgb(0 128 255 / 0.2);
+  color: var(--mljr-primary-300);
+}
+
+/* Secondary Badge (Rich Orange) */
+.mljr-badge-secondary {
+  background-color: rgb(255 140 0 / 0.15);
+  color: var(--mljr-secondary-700);
+}
+
+.dark .mljr-badge-secondary,
+[data-theme="dark"] .mljr-badge-secondary {
+  background-color: rgb(255 140 0 / 0.2);
+  color: var(--mljr-secondary-300);
+}
+
+/* Success Badge (Teal-green) */
+.mljr-badge-success {
+  background-color: rgb(0 166 124 / 0.15);
+  color: var(--mljr-success-dark);
+}
+
+.dark .mljr-badge-success,
+[data-theme="dark"] .mljr-badge-success {
+  background-color: rgb(0 166 124 / 0.2);
+  color: var(--mljr-success-light);
+}
+
+/* Warning Badge */
+.mljr-badge-warning {
+  background-color: rgb(234 179 8 / 0.15);
+  color: var(--mljr-warning-dark);
+}
+
+.dark .mljr-badge-warning,
+[data-theme="dark"] .mljr-badge-warning {
+  background-color: rgb(234 179 8 / 0.2);
+  color: var(--mljr-warning-light);
+}
+
+/* Error Badge (Deep Crimson) */
+.mljr-badge-error {
+  background-color: rgb(185 28 28 / 0.15);
+  color: var(--mljr-error-dark);
+}
+
+.dark .mljr-badge-error,
+[data-theme="dark"] .mljr-badge-error {
+  background-color: rgb(185 28 28 / 0.2);
+  color: var(--mljr-error-light);
+}
+
+/* Info Badge */
+.mljr-badge-info {
+  background-color: rgb(59 130 246 / 0.15);
+  color: var(--mljr-info-dark);
+}
+
+.dark .mljr-badge-info,
+[data-theme="dark"] .mljr-badge-info {
+  background-color: rgb(59 130 246 / 0.2);
+  color: var(--mljr-info-light);
+}
+
+/* Solid Variants */
+.mljr-badge-primary-solid {
+  background: linear-gradient(135deg, var(--mljr-primary-500) 0%, var(--mljr-primary-700) 100%);
+  color: white;
+}
+
+.mljr-badge-secondary-solid {
+  background: linear-gradient(135deg, var(--mljr-secondary-500) 0%, var(--mljr-secondary-700) 100%);
+  color: white;
+}
+
+.mljr-badge-success-solid {
+  background-color: var(--mljr-success);
+  color: white;
+}
+
+.mljr-badge-warning-solid {
+  background-color: var(--mljr-warning);
+  color: var(--mljr-gray-900);
+}
+
+.mljr-badge-error-solid {
+  background-color: var(--mljr-error);
+  color: white;
+}
+
+.mljr-badge-info-solid {
+  background-color: var(--mljr-info);
+  color: white;
+}
+
+/* Outline Variants - using pseudo-elements for borders that follow clip-path */
+.mljr-badge-outline,
+.mljr-badge-outline-primary,
+.mljr-badge-outline-secondary {
+  position: relative;
+  background-color: transparent;
+}
+
+.mljr-badge-outline::before,
+.mljr-badge-outline-primary::before,
+.mljr-badge-outline-secondary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  clip-path: var(--mljr-clip-sm);
+  z-index: -1;
+}
+
+.mljr-badge-outline::after,
+.mljr-badge-outline-primary::after,
+.mljr-badge-outline-secondary::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: var(--mljr-bg);
+  clip-path: var(--mljr-clip-sm);
+  z-index: -1;
+}
+
+.mljr-badge-outline { color: var(--mljr-text); }
+.mljr-badge-outline::before { background: currentColor; }
+
+.mljr-badge-outline-primary { color: var(--mljr-primary-500); }
+.mljr-badge-outline-primary::before { background: var(--mljr-primary-500); }
+
+.mljr-badge-outline-secondary { color: var(--mljr-secondary-500); }
+.mljr-badge-outline-secondary::before { background: var(--mljr-secondary-500); }
+
+/* Badge Sizes */
+.mljr-badge-sm {
+  padding: 0 var(--mljr-space-1);
+  font-size: 0.625rem;
+}
+
+.mljr-badge-lg {
+  padding: var(--mljr-space-1) var(--mljr-space-3);
+  font-size: var(--mljr-text-sm);
+}
+
+/* Badge with Dot */
+.mljr-badge-dot {
+  padding-left: var(--mljr-space-1);
+}
+
+.mljr-badge-dot::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  /* Diamond shape for Detroit style */
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  background-color: currentColor;
+}
+
+/* Removable Badge */
+.mljr-badge-removable {
+  padding-right: var(--mljr-space-1);
+}
+
+.mljr-badge-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  padding: 0;
+  margin-left: var(--mljr-space-1);
+  background: none;
+  border: none;
+  /* Angular remove button */
+  clip-path: var(--mljr-clip-sm);
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity var(--mljr-transition-fast), background-color var(--mljr-transition-fast);
+}
+
+.mljr-badge-remove:hover {
+  opacity: 1;
+  background-color: rgb(0 0 0 / 0.1);
+}

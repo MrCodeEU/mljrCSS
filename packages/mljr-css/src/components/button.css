@@ -1,0 +1,335 @@
+/* ============================================
+   MLJR CSS Framework - Button Component
+   Detroit: Become Human inspired
+   Angular corners with proper border following
+   ============================================ */
+
+.mljr-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--mljr-space-2);
+  padding: var(--mljr-space-2) var(--mljr-space-4);
+  font-family: var(--mljr-font-display);
+  font-size: var(--mljr-text-sm);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: var(--mljr-leading-normal);
+  border: none;
+  clip-path: var(--mljr-clip-btn);
+  cursor: pointer;
+  transition: all var(--mljr-transition-fast);
+  white-space: nowrap;
+  user-select: none;
+  position: relative;
+}
+
+.mljr-btn:focus-visible {
+  outline: 2px solid var(--mljr-ring);
+  outline-offset: 2px;
+}
+
+.mljr-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Primary Button */
+.mljr-btn-primary {
+  background: linear-gradient(135deg, var(--mljr-primary-500) 0%, var(--mljr-primary-700) 100%);
+  color: white;
+}
+
+.mljr-btn-primary:hover {
+  background: linear-gradient(135deg, var(--mljr-primary-400) 0%, var(--mljr-primary-600) 100%);
+  box-shadow: var(--mljr-glow-primary-sm);
+}
+
+.mljr-btn-primary:active {
+  background: linear-gradient(135deg, var(--mljr-primary-600) 0%, var(--mljr-primary-800) 100%);
+}
+
+/* Secondary Button (Warm orange accent) */
+.mljr-btn-secondary {
+  background: linear-gradient(135deg, var(--mljr-secondary-500) 0%, var(--mljr-secondary-700) 100%);
+  color: white;
+}
+
+.mljr-btn-secondary:hover {
+  background: linear-gradient(135deg, var(--mljr-secondary-400) 0%, var(--mljr-secondary-600) 100%);
+  box-shadow: var(--mljr-glow-secondary-sm);
+}
+
+.mljr-btn-secondary:active {
+  background: linear-gradient(135deg, var(--mljr-secondary-600) 0%, var(--mljr-secondary-800) 100%);
+}
+
+/* Outline buttons use pseudo-element for border that follows clip-path */
+.mljr-btn-outline-primary,
+.mljr-btn-outline-secondary {
+  background-color: transparent;
+}
+
+.mljr-btn-outline-primary { color: var(--mljr-primary-500); }
+.mljr-btn-outline-secondary { color: var(--mljr-secondary-500); }
+
+.mljr-btn-outline-primary::before,
+.mljr-btn-outline-secondary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  clip-path: var(--mljr-clip-btn);
+  z-index: -1;
+}
+
+.mljr-btn-outline-primary::before { background: var(--mljr-primary-500); }
+.mljr-btn-outline-secondary::before { background: var(--mljr-secondary-500); }
+
+.mljr-btn-outline-primary::after,
+.mljr-btn-outline-secondary::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: var(--mljr-bg);
+  clip-path: var(--mljr-clip-btn);
+  z-index: -1;
+  transition: background var(--mljr-transition-fast);
+}
+
+.mljr-btn-outline-primary:hover::after {
+  background: linear-gradient(135deg, var(--mljr-primary-500) 0%, var(--mljr-primary-700) 100%);
+}
+
+.mljr-btn-outline-secondary:hover::after {
+  background: linear-gradient(135deg, var(--mljr-secondary-500) 0%, var(--mljr-secondary-700) 100%);
+}
+
+.mljr-btn-outline-primary:hover,
+.mljr-btn-outline-secondary:hover {
+  color: white;
+}
+
+.mljr-btn-outline-primary:hover { box-shadow: var(--mljr-glow-primary-sm); }
+.mljr-btn-outline-secondary:hover { box-shadow: var(--mljr-glow-secondary-sm); }
+
+/* Ghost Button */
+.mljr-btn-ghost {
+  background-color: transparent;
+  color: var(--mljr-text);
+}
+
+.mljr-btn-ghost:hover {
+  background-color: var(--mljr-bg-tertiary);
+}
+
+/* Link Button */
+.mljr-btn-link {
+  background-color: transparent;
+  color: var(--mljr-primary-600);
+  padding: 0;
+  clip-path: none;
+}
+
+.mljr-btn-link:hover {
+  color: var(--mljr-primary-700);
+  text-decoration: underline;
+}
+
+/* Danger Button */
+.mljr-btn-danger {
+  background: linear-gradient(135deg, var(--mljr-error) 0%, var(--mljr-error-dark) 100%);
+  color: white;
+}
+
+.mljr-btn-danger:hover {
+  background: linear-gradient(135deg, var(--mljr-error-light) 0%, var(--mljr-error) 100%);
+  box-shadow: var(--mljr-glow-error);
+}
+
+/* Success Button */
+.mljr-btn-success {
+  background: linear-gradient(135deg, var(--mljr-success) 0%, var(--mljr-success-dark) 100%);
+  color: white;
+}
+
+.mljr-btn-success:hover {
+  background: linear-gradient(135deg, var(--mljr-success-light) 0%, var(--mljr-success) 100%);
+  box-shadow: var(--mljr-glow-success);
+}
+
+/* Button Sizes */
+.mljr-btn-xs {
+  padding: var(--mljr-space-1) var(--mljr-space-2);
+  font-size: var(--mljr-text-xs);
+}
+
+.mljr-btn-sm {
+  padding: var(--mljr-space-1) var(--mljr-space-3);
+  font-size: var(--mljr-text-sm);
+}
+
+.mljr-btn-lg {
+  padding: var(--mljr-space-3) var(--mljr-space-6);
+  font-size: var(--mljr-text-base);
+}
+
+.mljr-btn-xl {
+  padding: var(--mljr-space-4) var(--mljr-space-8);
+  font-size: var(--mljr-text-lg);
+}
+
+/* Full Width Button */
+.mljr-btn-block {
+  width: 100%;
+}
+
+/* Icon Button */
+.mljr-btn-icon {
+  padding: var(--mljr-space-2);
+  aspect-ratio: 1;
+}
+
+.mljr-btn-icon.mljr-btn-xs,
+.mljr-btn-icon.mljr-btn-sm {
+  padding: var(--mljr-space-1);
+}
+
+.mljr-btn-icon.mljr-btn-lg { padding: var(--mljr-space-3); }
+.mljr-btn-icon.mljr-btn-xl { padding: var(--mljr-space-4); }
+
+/* Button Group */
+.mljr-btn-group {
+  display: inline-flex;
+}
+
+.mljr-btn-group > .mljr-btn {
+  clip-path: none;
+}
+
+.mljr-btn-group > .mljr-btn:first-child {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+
+.mljr-btn-group > .mljr-btn:last-child {
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+}
+
+.mljr-btn-group > .mljr-btn:not(:first-child) {
+  margin-left: -1px;
+}
+
+/* Loading State */
+.mljr-btn-loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.mljr-btn-loading::after {
+  content: "";
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  clip-path: none;
+  animation: mljr-spin 0.6s linear infinite;
+}
+
+.mljr-btn-primary.mljr-btn-loading::after,
+.mljr-btn-secondary.mljr-btn-loading::after,
+.mljr-btn-danger.mljr-btn-loading::after,
+.mljr-btn-success.mljr-btn-loading::after {
+  border-color: white;
+  border-right-color: transparent;
+}
+
+@keyframes mljr-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   Detroit Style Variants - Angular/HUD buttons
+   ============================================ */
+
+/* Detroit angular button - larger cuts */
+.mljr-btn-detroit {
+  clip-path: var(--mljr-clip-card);
+}
+
+.mljr-btn-detroit.mljr-btn-outline-primary::before,
+.mljr-btn-detroit.mljr-btn-outline-primary::after,
+.mljr-btn-detroit.mljr-btn-outline-secondary::before,
+.mljr-btn-detroit.mljr-btn-outline-secondary::after {
+  clip-path: var(--mljr-clip-card);
+}
+
+.mljr-btn-detroit:hover {
+  box-shadow: var(--mljr-glow-primary);
+}
+
+/* HUD outline button */
+.mljr-btn-hud {
+  background: transparent;
+  color: var(--mljr-primary-400);
+  clip-path: var(--mljr-clip-card);
+}
+
+.mljr-btn-hud::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgb(0 128 255 / 0.5);
+  clip-path: var(--mljr-clip-card);
+  z-index: -1;
+}
+
+.mljr-btn-hud::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: var(--mljr-bg);
+  clip-path: var(--mljr-clip-card);
+  z-index: -1;
+  transition: background var(--mljr-transition-fast);
+}
+
+.mljr-btn-hud:hover::after {
+  background: rgba(0, 128, 255, 0.15);
+}
+
+.mljr-btn-hud:hover {
+  box-shadow: var(--mljr-glow-primary-sm);
+}
+
+.dark .mljr-btn-hud::after,
+[data-theme="dark"] .mljr-btn-hud::after {
+  background: var(--mljr-bg);
+}
+
+.dark .mljr-btn-hud:hover::after,
+[data-theme="dark"] .mljr-btn-hud:hover::after {
+  background: rgba(0, 128, 255, 0.2);
+}
+
+/* Accent button (purple) */
+.mljr-btn-accent {
+  background: linear-gradient(135deg, var(--mljr-accent-500) 0%, var(--mljr-accent-700) 100%);
+  color: white;
+}
+
+.mljr-btn-accent:hover {
+  background: linear-gradient(135deg, var(--mljr-accent-400) 0%, var(--mljr-accent-600) 100%);
+  box-shadow: var(--mljr-glow-accent);
+}
+
+/* Glow enhancement for dark mode */
+.dark .mljr-btn-primary:hover,
+[data-theme="dark"] .mljr-btn-primary:hover { box-shadow: var(--mljr-glow-primary); }
+
+.dark .mljr-btn-detroit:hover,
+[data-theme="dark"] .mljr-btn-detroit:hover { box-shadow: var(--mljr-glow-primary-intense); }

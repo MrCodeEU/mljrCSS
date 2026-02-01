@@ -1,0 +1,155 @@
+/* ============================================
+   MLJR CSS Framework - Carousel Component
+   Detroit: Become Human inspired
+   ============================================ */
+
+.mljr-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  clip-path: var(--mljr-clip-card);
+}
+
+.mljr-carousel-inner {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  transition: transform var(--mljr-transition-slow);
+}
+
+.mljr-carousel-item {
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 100%;
+}
+
+/* Peek variant - shows partial next slide */
+.mljr-carousel-peek .mljr-carousel-item {
+  flex: 0 0 85%;
+  padding-right: var(--mljr-space-4);
+}
+
+/* Navigation Buttons */
+.mljr-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--mljr-bg);
+  border: 2px solid var(--mljr-primary-500);
+  color: var(--mljr-primary-500);
+  cursor: pointer;
+  z-index: 10;
+  clip-path: var(--mljr-clip-sm);
+  transition: all var(--mljr-transition-fast);
+  box-shadow: 0 0 8px rgb(0 128 255 / 0.3);
+}
+
+.mljr-carousel-btn:hover {
+  background-color: var(--mljr-primary-500);
+  color: white;
+  box-shadow: 0 0 12px rgb(0 128 255 / 0.5);
+}
+
+.mljr-carousel-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(0 128 255 / 0.3), 0 0 12px rgb(0 128 255 / 0.4);
+}
+
+.mljr-carousel-btn:active { background-color: var(--mljr-primary-600); }
+.mljr-carousel-btn-prev { left: var(--mljr-space-2); }
+.mljr-carousel-btn-next { right: var(--mljr-space-2); }
+
+/* Dark mode buttons */
+.dark .mljr-carousel-btn,
+[data-theme="dark"] .mljr-carousel-btn {
+  background-color: var(--mljr-bg-tertiary);
+  box-shadow: 0 0 10px rgb(0 128 255 / 0.4);
+}
+
+/* Indicators */
+.mljr-carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: var(--mljr-space-2);
+  padding: var(--mljr-space-4);
+}
+
+.mljr-carousel-indicator {
+  width: 2rem;
+  height: 0.25rem;
+  background-color: var(--mljr-border-strong);
+  border: none;
+  cursor: pointer;
+  clip-path: polygon(0 0, calc(100% - 3px) 0, 100% 100%, 3px 100%);
+  transition: all var(--mljr-transition-fast);
+}
+
+.mljr-carousel-indicator:hover { background-color: var(--mljr-primary-400); }
+
+.mljr-carousel-indicator.active,
+.mljr-carousel-indicator[aria-selected="true"] {
+  background-color: var(--mljr-primary-500);
+  box-shadow: 0 0 6px rgb(0 128 255 / 0.4);
+}
+
+/* Diamond indicators */
+.mljr-carousel-indicators-diamond .mljr-carousel-indicator {
+  width: 0.75rem;
+  height: 0.75rem;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.dark .mljr-carousel-indicator.active,
+[data-theme="dark"] .mljr-carousel-indicator.active {
+  box-shadow: 0 0 8px rgb(0 128 255 / 0.5);
+}
+
+/* HUD border variant */
+.mljr-carousel-hud {
+  border: 2px solid var(--mljr-primary-500);
+  background: var(--mljr-bg-secondary);
+}
+
+.dark .mljr-carousel-hud,
+[data-theme="dark"] .mljr-carousel-hud {
+  border-color: var(--mljr-primary-400);
+  box-shadow: 0 0 12px rgb(0 128 255 / 0.2);
+}
+
+/* Autoplay indicator */
+.mljr-carousel-autoplay-indicator {
+  position: absolute;
+  bottom: var(--mljr-space-4);
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2px;
+  background: var(--mljr-primary-500);
+  animation: mljr-carousel-progress 5s linear infinite;
+}
+
+@keyframes mljr-carousel-progress {
+  0% { width: 0; opacity: 1; }
+  100% { width: 60%; opacity: 0.5; }
+}
+
+/* Fade variant */
+.mljr-carousel-fade .mljr-carousel-inner { position: relative; }
+
+.mljr-carousel-fade .mljr-carousel-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity var(--mljr-transition-slow);
+}
+
+.mljr-carousel-fade .mljr-carousel-item.active {
+  position: relative;
+  opacity: 1;
+}

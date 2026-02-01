@@ -1,0 +1,649 @@
+/* ============================================
+   MLJR CSS Framework - Input Component
+   Detroit: Become Human inspired
+   ============================================ */
+
+/* Shared angular border container base */
+.mljr-input-container,
+.mljr-textarea-container,
+.mljr-select-container,
+.mljr-search,
+.mljr-number-input {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.mljr-input-container::before,
+.mljr-textarea-container::before,
+.mljr-select-container::before,
+.mljr-search::before,
+.mljr-number-input::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--mljr-border);
+  clip-path: var(--mljr-clip-btn);
+  z-index: 0;
+  transition: background-color var(--mljr-transition-fast);
+  pointer-events: none;
+}
+
+.mljr-input-container::after,
+.mljr-textarea-container::after,
+.mljr-select-container::after,
+.mljr-search::after,
+.mljr-number-input::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: var(--mljr-bg);
+  clip-path: var(--mljr-clip-btn);
+  z-index: 0;
+  transition: background-color var(--mljr-transition-fast);
+  pointer-events: none;
+}
+
+.mljr-input-container:hover::before,
+.mljr-textarea-container:hover::before,
+.mljr-select-container:hover::before {
+  background: var(--mljr-border-strong);
+}
+
+.mljr-input-container:focus-within::before,
+.mljr-textarea-container:focus-within::before,
+.mljr-select-container:focus-within::before,
+.mljr-search:focus-within::before,
+.mljr-number-input:focus-within::before {
+  background: var(--mljr-primary-500);
+}
+
+.mljr-input-container:focus-within::after,
+.mljr-textarea-container:focus-within::after,
+.mljr-select-container:focus-within::after {
+  box-shadow: 0 0 0 2px rgb(0 128 255 / 0.2), 0 0 8px rgb(0 128 255 / 0.15);
+}
+
+/* Shared input/textarea base styles */
+.mljr-input,
+.mljr-textarea {
+  display: block;
+  width: 100%;
+  padding: var(--mljr-space-2) var(--mljr-space-3);
+  font-size: var(--mljr-text-sm);
+  line-height: var(--mljr-leading-normal);
+  color: var(--mljr-text);
+  background-color: transparent;
+  border: none;
+  clip-path: var(--mljr-clip-btn);
+  position: relative;
+  z-index: 1;
+  transition: box-shadow var(--mljr-transition-fast);
+}
+
+.mljr-input::placeholder,
+.mljr-textarea::placeholder {
+  color: var(--mljr-text-muted);
+}
+
+.mljr-input:focus,
+.mljr-textarea:focus {
+  outline: none;
+}
+
+.mljr-input:disabled,
+.mljr-textarea:disabled {
+  background-color: var(--mljr-bg-secondary);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.mljr-input:read-only {
+  background-color: var(--mljr-bg-secondary);
+}
+
+.mljr-textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Standalone input/textarea (without container) - fallback with box-shadow */
+.mljr-input:not(.mljr-input-container .mljr-input),
+.mljr-textarea:not(.mljr-textarea-container .mljr-textarea) {
+  background-color: var(--mljr-bg);
+  box-shadow: inset 0 0 0 1px var(--mljr-border);
+}
+
+.mljr-input:not(.mljr-input-container .mljr-input):hover,
+.mljr-textarea:not(.mljr-textarea-container .mljr-textarea):hover {
+  box-shadow: inset 0 0 0 1px var(--mljr-border-strong);
+}
+
+.mljr-input:not(.mljr-input-container .mljr-input):focus,
+.mljr-textarea:not(.mljr-textarea-container .mljr-textarea):focus {
+  box-shadow: inset 0 0 0 1px var(--mljr-primary-500), 0 0 0 2px rgb(0 128 255 / 0.2), 0 0 8px rgb(0 128 255 / 0.15);
+}
+
+/* Input Sizes */
+.mljr-input-sm {
+  padding: var(--mljr-space-1) var(--mljr-space-2);
+  font-size: var(--mljr-text-xs);
+}
+
+.mljr-input-lg {
+  padding: var(--mljr-space-3) var(--mljr-space-4);
+  font-size: var(--mljr-text-base);
+}
+
+/* Input/Select States - with container */
+.mljr-input-container-error::before,
+.mljr-select-container-error::before {
+  background: var(--mljr-error) !important;
+}
+
+.mljr-input-container-error:focus-within::after,
+.mljr-select-container-error:focus-within::after {
+  box-shadow: 0 0 0 2px rgb(185 28 28 / 0.2), 0 0 8px rgb(185 28 28 / 0.15);
+}
+
+.mljr-input-container-success::before {
+  background: var(--mljr-success) !important;
+}
+
+.mljr-input-container-success:focus-within::after {
+  box-shadow: 0 0 0 2px rgb(0 166 124 / 0.2), 0 0 8px rgb(0 166 124 / 0.15);
+}
+
+/* Input States - standalone fallback */
+.mljr-input-error:not(.mljr-input-container .mljr-input) {
+  box-shadow: inset 0 0 0 1px var(--mljr-error);
+}
+
+.mljr-input-error:not(.mljr-input-container .mljr-input):focus {
+  box-shadow: inset 0 0 0 1px var(--mljr-error), 0 0 0 2px rgb(185 28 28 / 0.2);
+}
+
+.mljr-input-success:not(.mljr-input-container .mljr-input) {
+  box-shadow: inset 0 0 0 1px var(--mljr-success);
+}
+
+.mljr-input-success:not(.mljr-input-container .mljr-input):focus {
+  box-shadow: inset 0 0 0 1px var(--mljr-success), 0 0 0 2px rgb(0 166 124 / 0.2);
+}
+
+/* Input with Icon */
+.mljr-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.mljr-input-icon-left {
+  position: absolute;
+  left: var(--mljr-space-3);
+  pointer-events: none;
+  color: var(--mljr-text-muted);
+}
+
+.mljr-input-icon-right {
+  position: absolute;
+  right: var(--mljr-space-3);
+  pointer-events: none;
+  color: var(--mljr-text-muted);
+}
+
+.mljr-input-wrapper .mljr-input-icon-left + .mljr-input {
+  padding-left: var(--mljr-space-10);
+}
+
+.mljr-input-wrapper .mljr-input:has(+ .mljr-input-icon-right),
+.mljr-input--icon-right {
+  padding-right: var(--mljr-space-10);
+}
+
+/* Form Group */
+.mljr-form-group {
+  margin-bottom: var(--mljr-space-4);
+}
+
+/* Label */
+.mljr-label {
+  display: block;
+  margin-bottom: var(--mljr-space-1);
+  font-size: var(--mljr-text-sm);
+  font-weight: 500;
+  color: var(--mljr-text);
+}
+
+.mljr-label-required::after {
+  content: " *";
+  color: var(--mljr-error);
+}
+
+/* Helper Text */
+.mljr-input-helper {
+  margin-top: var(--mljr-space-1);
+  font-size: var(--mljr-text-xs);
+  color: var(--mljr-text-muted);
+}
+
+.mljr-input-error-text {
+  margin-top: var(--mljr-space-1);
+  font-size: var(--mljr-text-xs);
+  color: var(--mljr-error);
+}
+
+/* ============================================
+   Detroit Style Input Variants
+   ============================================ */
+
+/* Detroit angular input with left accent */
+.mljr-input-detroit {
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+  border-left: 2px solid var(--mljr-primary-500);
+  border-radius: 0;
+  background: linear-gradient(90deg, rgba(0, 128, 255, 0.03) 0%, transparent 20%);
+}
+
+.mljr-input-detroit:focus {
+  border-left-color: var(--mljr-primary-400);
+  box-shadow: inset 2px 0 8px rgba(0, 128, 255, 0.1), 0 0 8px rgba(0, 128, 255, 0.2);
+}
+
+/* HUD-style input */
+.mljr-input-hud {
+  background: rgba(0, 128, 255, 0.05);
+  border: var(--mljr-border-hud);
+  border-radius: 0;
+  clip-path: var(--mljr-clip-corner-sm);
+}
+
+.mljr-input-hud:focus {
+  background: rgba(0, 128, 255, 0.08);
+  border-color: var(--mljr-primary-400);
+  box-shadow: var(--mljr-glow-primary-sm);
+}
+
+.dark .mljr-input-hud,
+[data-theme="dark"] .mljr-input-hud {
+  background: rgba(0, 128, 255, 0.08);
+}
+
+.dark .mljr-input-hud:focus,
+[data-theme="dark"] .mljr-input-hud:focus {
+  background: rgba(0, 128, 255, 0.12);
+  box-shadow: var(--mljr-glow-primary);
+}
+
+/* ============================================
+   Range Slider - Detroit Angular Style
+   ============================================ */
+
+.mljr-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: var(--mljr-border);
+  outline: none;
+  cursor: pointer;
+  clip-path: polygon(0 0, calc(100% - 3px) 0, 100% 3px, 100% 100%, 3px 100%, 0 calc(100% - 3px));
+}
+
+.mljr-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  background: var(--mljr-primary-500);
+  cursor: pointer;
+  clip-path: var(--mljr-clip-sm);
+  border: none;
+  transition: all var(--mljr-transition-fast);
+}
+
+.mljr-range::-moz-range-thumb {
+  width: 1.25rem;
+  height: 1.25rem;
+  background: var(--mljr-primary-500);
+  cursor: pointer;
+  clip-path: var(--mljr-clip-sm);
+  border: none;
+  transition: all var(--mljr-transition-fast);
+}
+
+.mljr-range::-webkit-slider-thumb:hover {
+  background: var(--mljr-primary-400);
+  box-shadow: 0 0 8px rgb(0 128 255 / 0.4);
+}
+
+.mljr-range::-moz-range-thumb:hover {
+  background: var(--mljr-primary-400);
+  box-shadow: 0 0 8px rgb(0 128 255 / 0.4);
+}
+
+.mljr-range:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgb(0 128 255 / 0.25), 0 0 8px rgb(0 128 255 / 0.3);
+}
+
+.mljr-range:focus::-moz-range-thumb {
+  box-shadow: 0 0 0 3px rgb(0 128 255 / 0.25), 0 0 8px rgb(0 128 255 / 0.3);
+}
+
+/* Range with progress fill */
+.mljr-range-filled {
+  background: linear-gradient(to right, var(--mljr-primary-500) 0%, var(--mljr-primary-500) var(--mljr-range-value, 50%), var(--mljr-border) var(--mljr-range-value, 50%));
+}
+
+/* Secondary range */
+.mljr-range-secondary::-webkit-slider-thumb {
+  background: var(--mljr-secondary-500);
+}
+
+.mljr-range-secondary::-moz-range-thumb {
+  background: var(--mljr-secondary-500);
+}
+
+.mljr-range-secondary::-webkit-slider-thumb:hover {
+  background: var(--mljr-secondary-400);
+  box-shadow: 0 0 8px rgb(255 140 0 / 0.4);
+}
+
+.mljr-range-secondary::-moz-range-thumb:hover {
+  background: var(--mljr-secondary-400);
+  box-shadow: 0 0 8px rgb(255 140 0 / 0.4);
+}
+
+/* ============================================
+   Number Input with Spinner
+   ============================================ */
+
+.mljr-number-input {
+  display: flex;
+  align-items: stretch;
+}
+
+.mljr-number-input .mljr-input {
+  text-align: center;
+  box-shadow: none;
+  background: transparent;
+  -moz-appearance: textfield;
+}
+
+.mljr-number-input .mljr-input::-webkit-inner-spin-button,
+.mljr-number-input .mljr-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.mljr-number-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  background: var(--mljr-bg-secondary);
+  border: none;
+  cursor: pointer;
+  color: var(--mljr-text);
+  transition: all var(--mljr-transition-fast);
+  position: relative;
+  z-index: 1;
+}
+
+.mljr-number-btn:hover {
+  background: var(--mljr-primary-500);
+  color: white;
+}
+
+.mljr-number-btn:active {
+  background: var(--mljr-primary-600);
+}
+
+.mljr-number-btn-decrement {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+}
+
+.mljr-number-btn-increment {
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+}
+
+/* ============================================
+   Search Input
+   ============================================ */
+
+.mljr-search-input {
+  width: 100%;
+  padding-left: var(--mljr-space-10);
+  padding-right: var(--mljr-space-10);
+  background: transparent;
+  border: none;
+  clip-path: var(--mljr-clip-btn);
+  position: relative;
+  z-index: 1;
+}
+
+.mljr-search-input:focus {
+  outline: none;
+}
+
+.mljr-search-icon {
+  position: absolute;
+  left: var(--mljr-space-3);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--mljr-text-muted);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.mljr-search-clear {
+  position: absolute;
+  right: var(--mljr-space-2);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--mljr-text-muted);
+  cursor: pointer;
+  z-index: 2;
+  clip-path: var(--mljr-clip-sm);
+  transition: all var(--mljr-transition-fast);
+}
+
+.mljr-search-clear:hover {
+  background: var(--mljr-bg-tertiary);
+  color: var(--mljr-text);
+}
+
+/* ============================================
+   Color Picker
+   ============================================ */
+
+.mljr-color-picker {
+  display: flex;
+  align-items: center;
+  gap: var(--mljr-space-2);
+}
+
+.mljr-color-input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  clip-path: var(--mljr-clip-sm);
+}
+
+.mljr-color-input::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.mljr-color-input::-webkit-color-swatch {
+  border: none;
+  clip-path: var(--mljr-clip-sm);
+}
+
+.mljr-color-input::-moz-color-swatch {
+  border: none;
+  clip-path: var(--mljr-clip-sm);
+}
+
+.mljr-color-preview {
+  width: 2.5rem;
+  height: 2.5rem;
+  clip-path: var(--mljr-clip-sm);
+  position: relative;
+}
+
+.mljr-color-preview::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--mljr-border-strong);
+  clip-path: var(--mljr-clip-sm);
+  z-index: -1;
+}
+
+.mljr-color-preview::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: var(--mljr-color-value, var(--mljr-primary-500));
+  clip-path: var(--mljr-clip-sm);
+}
+
+/* ============================================
+   File Input
+   ============================================ */
+
+.mljr-file-input {
+  position: relative;
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.mljr-file-input input[type="file"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.mljr-file-input-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mljr-space-2);
+  padding: var(--mljr-space-2) var(--mljr-space-4);
+  font-size: var(--mljr-text-sm);
+  font-weight: 500;
+  color: var(--mljr-text);
+  background: var(--mljr-bg);
+  clip-path: var(--mljr-clip-btn);
+  transition: all var(--mljr-transition-fast);
+  position: relative;
+}
+
+.mljr-file-input-label::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--mljr-border-strong);
+  clip-path: var(--mljr-clip-btn);
+  z-index: -1;
+}
+
+.mljr-file-input-label::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: var(--mljr-bg);
+  clip-path: var(--mljr-clip-btn);
+  z-index: -1;
+  transition: background-color var(--mljr-transition-fast);
+}
+
+.mljr-file-input:hover .mljr-file-input-label::before {
+  background: var(--mljr-primary-500);
+}
+
+.mljr-file-input:hover .mljr-file-input-label::after {
+  background: var(--mljr-bg-secondary);
+}
+
+.mljr-file-input:hover .mljr-file-input-label {
+  color: var(--mljr-primary-500);
+}
+
+/* Drop zone */
+.mljr-drop-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--mljr-space-2);
+  padding: var(--mljr-space-8);
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  clip-path: var(--mljr-clip-card);
+  transition: all var(--mljr-transition-fast);
+}
+
+.mljr-drop-zone::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--mljr-border);
+  clip-path: var(--mljr-clip-card);
+  z-index: -1;
+}
+
+.mljr-drop-zone::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: var(--mljr-bg);
+  clip-path: var(--mljr-clip-card);
+  z-index: -1;
+  /* Dashed border effect using gradient */
+  background-image:
+    repeating-linear-gradient(0deg, var(--mljr-border), var(--mljr-border) 8px, transparent 8px, transparent 16px),
+    repeating-linear-gradient(90deg, var(--mljr-border), var(--mljr-border) 8px, transparent 8px, transparent 16px);
+  background-size: 1px 100%, 100% 1px;
+  background-position: 0 0, 0 0;
+  background-repeat: repeat-y, repeat-x;
+}
+
+.mljr-drop-zone:hover::before,
+.mljr-drop-zone.dragging::before {
+  background: var(--mljr-primary-500);
+}
+
+.mljr-drop-zone.dragging {
+  background: rgb(0 128 255 / 0.05);
+}
+
+.mljr-drop-zone-icon {
+  width: 3rem;
+  height: 3rem;
+  color: var(--mljr-text-muted);
+}
+
+.mljr-drop-zone-text {
+  font-size: var(--mljr-text-sm);
+  color: var(--mljr-text-secondary);
+}
+
+.mljr-drop-zone-hint {
+  font-size: var(--mljr-text-xs);
+  color: var(--mljr-text-muted);
+}

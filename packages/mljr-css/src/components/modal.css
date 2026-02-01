@@ -1,0 +1,232 @@
+/* ============================================
+   MLJR CSS Framework - Modal Component
+   Detroit: Become Human inspired
+   ============================================ */
+
+/* Modal Backdrop */
+.mljr-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--mljr-z-modal-backdrop);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 20, 30, 0.8) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--mljr-space-4);
+}
+
+.mljr-modal-backdrop[data-state="open"] { animation: mljr-fade-in var(--mljr-transition); }
+.mljr-modal-backdrop[data-state="closed"] { animation: mljr-fade-out var(--mljr-transition); }
+
+/* Modal Container */
+.mljr-modal {
+  position: relative;
+  z-index: var(--mljr-z-modal);
+  width: 100%;
+  max-width: 32rem;
+  max-height: calc(100vh - var(--mljr-space-8));
+  background-color: var(--mljr-bg);
+  clip-path: var(--mljr-clip-modal);
+  box-shadow: var(--mljr-shadow-xl);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Border using pseudo-elements */
+.mljr-modal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--mljr-border);
+  clip-path: var(--mljr-clip-modal);
+  z-index: -1;
+}
+
+.mljr-modal::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: var(--mljr-bg);
+  clip-path: var(--mljr-clip-modal);
+  z-index: -1;
+}
+
+.mljr-modal[data-state="open"] { animation: mljr-scale-in var(--mljr-transition); }
+.mljr-modal[data-state="closed"] { animation: mljr-scale-out var(--mljr-transition); }
+
+/* Modal Sizes */
+.mljr-modal-sm { max-width: 24rem; }
+.mljr-modal-lg { max-width: 48rem; }
+.mljr-modal-xl { max-width: 64rem; }
+.mljr-modal-full {
+  max-width: calc(100vw - var(--mljr-space-8));
+  max-height: calc(100vh - var(--mljr-space-8));
+}
+
+/* Modal Header */
+.mljr-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--mljr-space-4);
+  padding: var(--mljr-space-6);
+  border-bottom: 1px solid var(--mljr-border);
+}
+
+.mljr-modal-title {
+  font-family: var(--mljr-font-display);
+  font-size: var(--mljr-text-lg);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--mljr-text);
+}
+
+.mljr-modal-description {
+  margin-top: var(--mljr-space-1);
+  font-size: var(--mljr-text-sm);
+  color: var(--mljr-text-secondary);
+}
+
+.mljr-modal-close {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--mljr-text-muted);
+  cursor: pointer;
+  transition: all var(--mljr-transition-fast);
+}
+
+.mljr-modal-close:hover {
+  background-color: var(--mljr-bg-tertiary);
+  color: var(--mljr-text);
+}
+
+.mljr-modal-close:focus-visible {
+  outline: 2px solid var(--mljr-ring);
+  outline-offset: 2px;
+}
+
+/* Modal Body */
+.mljr-modal-body {
+  flex: 1;
+  padding: var(--mljr-space-6);
+  overflow-y: auto;
+}
+
+/* Modal Footer */
+.mljr-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--mljr-space-3);
+  padding: var(--mljr-space-4) var(--mljr-space-6);
+  border-top: 1px solid var(--mljr-border);
+  background-color: var(--mljr-bg-secondary);
+}
+
+.mljr-modal-footer-between { justify-content: space-between; }
+
+/* Animations */
+@keyframes mljr-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes mljr-fade-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes mljr-scale-in { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+@keyframes mljr-scale-out { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.95); } }
+
+/* Drawer variant */
+.mljr-modal-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  max-width: 24rem;
+  max-height: 100vh;
+  border-left: 1px solid var(--mljr-border);
+  clip-path: none;
+}
+
+.mljr-modal-drawer[data-state="open"] { animation: mljr-slide-in-right var(--mljr-transition); }
+.mljr-modal-drawer[data-state="closed"] { animation: mljr-slide-out-right var(--mljr-transition); }
+
+.mljr-modal-drawer-left {
+  right: auto;
+  left: 0;
+  border-left: none;
+  border-right: 1px solid var(--mljr-border);
+}
+
+.mljr-modal-drawer-left[data-state="open"] { animation: mljr-slide-in-left var(--mljr-transition); }
+.mljr-modal-drawer-left[data-state="closed"] { animation: mljr-slide-out-left var(--mljr-transition); }
+
+@keyframes mljr-slide-in-right { from { transform: translateX(100%); } to { transform: translateX(0); } }
+@keyframes mljr-slide-out-right { from { transform: translateX(0); } to { transform: translateX(100%); } }
+@keyframes mljr-slide-in-left { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+@keyframes mljr-slide-out-left { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+
+/* Detroit HUD-style modal */
+.mljr-modal-detroit {
+  clip-path: var(--mljr-clip-angular-tr);
+  border: var(--mljr-border-hud);
+  box-shadow: var(--mljr-glow-primary), var(--mljr-shadow-xl);
+}
+
+.mljr-modal-detroit::before,
+.mljr-modal-detroit::after {
+  clip-path: var(--mljr-clip-angular-tr);
+}
+
+.mljr-modal-detroit .mljr-modal-header {
+  background: linear-gradient(90deg, rgba(0, 128, 255, 0.1) 0%, transparent 50%);
+  border-bottom-color: rgba(0, 128, 255, 0.2);
+}
+
+.mljr-modal-detroit .mljr-modal-footer {
+  background: rgba(0, 128, 255, 0.05);
+  border-top-color: rgba(0, 128, 255, 0.2);
+}
+
+.dark .mljr-modal-detroit,
+[data-theme="dark"] .mljr-modal-detroit {
+  background: linear-gradient(135deg, var(--mljr-bg) 0%, var(--mljr-bg-secondary) 100%);
+  box-shadow: var(--mljr-glow-primary-intense), var(--mljr-shadow-xl);
+}
+
+/* HUD panel modal */
+.mljr-modal-hud {
+  background: rgba(13, 17, 23, 0.96);
+  border: var(--mljr-border-hud-strong);
+  backdrop-filter: blur(6px);
+  clip-path: none;
+}
+
+.mljr-modal-hud::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--mljr-primary-500), transparent);
+  clip-path: none;
+}
+
+.mljr-modal-hud::after { display: none; }
+
+.mljr-modal-hud .mljr-modal-header {
+  background: transparent;
+  border-bottom-color: rgba(0, 128, 255, 0.3);
+}
+
+.mljr-modal-hud .mljr-modal-title { color: var(--mljr-primary-400); }
+
+.mljr-modal-hud .mljr-modal-footer {
+  background: transparent;
+  border-top-color: rgba(0, 128, 255, 0.3);
+}
