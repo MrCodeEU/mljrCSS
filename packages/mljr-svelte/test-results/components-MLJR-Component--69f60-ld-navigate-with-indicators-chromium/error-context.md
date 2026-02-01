@@ -194,307 +194,352 @@
       - generic [ref=e194]:
         - heading "Carousel" [level=3] [ref=e195]
         - paragraph [ref=e196]: Sliding content with Detroit-style angular design
-      - region "Carousel" [ref=e199]:
-        - generic [ref=e200]:
-          - generic [ref=e201]:
-            - heading "Detroit Style" [level=3] [ref=e202]
-            - paragraph [ref=e203]: Angular cuts and futuristic design
-          - generic [ref=e204]:
-            - heading "Rich Colors" [level=3] [ref=e205]
-            - paragraph [ref=e206]: Deep blue primary with orange accents
-          - generic [ref=e207]:
-            - heading "Dark Mode" [level=3] [ref=e208]
-            - paragraph [ref=e209]: Optimized for both light and dark themes
-        - button "Previous slide" [ref=e210] [cursor=pointer]:
-          - img [ref=e211]
-        - button "Next slide" [ref=e213] [cursor=pointer]:
-          - img [ref=e214]
-        - tablist "Carousel navigation" [ref=e216]:
-          - tab "Go to slide 1"
-          - tab "Go to slide 2" [selected]
-          - tab "Go to slide 3"
-    - generic [ref=e218]:
-      - generic [ref=e219]:
-        - generic [ref=e220]:
-          - heading "Alerts" [level=3] [ref=e221]
-          - paragraph [ref=e222]: Notification and feedback messages
-        - generic [ref=e224]:
-          - alert [ref=e225]:
-            - generic [ref=e226]:
-              - generic [ref=e227]: Information
-              - generic [ref=e228]: This is an informational message for the user.
-          - alert [ref=e229]:
-            - generic [ref=e230]:
-              - generic [ref=e231]: Success
-              - generic [ref=e232]: Operation completed successfully!
-          - alert [ref=e233]:
-            - generic [ref=e234]:
-              - generic [ref=e235]: Warning
-              - generic [ref=e236]: Please review your input before proceeding.
-          - alert [ref=e237]:
-            - generic [ref=e238]:
-              - generic [ref=e239]: Error
-              - generic [ref=e240]: Something went wrong. Please try again.
-          - alert [ref=e241]:
-            - generic [ref=e242]:
-              - generic [ref=e243]: Primary
-              - generic [ref=e244]: This alert can be dismissed.
-            - button "Close" [ref=e245] [cursor=pointer]:
-              - img [ref=e246]
-          - alert [ref=e248]:
-            - generic [ref=e250]: A solid secondary alert without title.
-      - generic [ref=e251]:
-        - generic [ref=e252]:
-          - heading "Badges" [level=3] [ref=e253]
-          - paragraph [ref=e254]: Labels and status indicators
-        - generic [ref=e255]:
-          - generic [ref=e256]:
-            - heading "Default" [level=4] [ref=e257]
-            - generic [ref=e258]:
-              - generic [ref=e259]: Default
-              - generic [ref=e260]: Primary
-              - generic [ref=e261]: Secondary
-              - generic [ref=e262]: Success
-              - generic [ref=e263]: Warning
-              - generic [ref=e264]: Error
-              - generic [ref=e265]: Info
-          - generic [ref=e266]:
-            - heading "Solid" [level=4] [ref=e267]
-            - generic [ref=e268]:
-              - generic [ref=e269]: Primary
-              - generic [ref=e270]: Secondary
-              - generic [ref=e271]: Success
-              - generic [ref=e272]: Warning
-              - generic [ref=e273]: Error
-          - generic [ref=e274]:
-            - heading "Outline" [level=4] [ref=e275]
-            - generic [ref=e276]:
-              - generic [ref=e277]: Primary
-              - generic [ref=e278]: Secondary
-          - generic [ref=e279]:
-            - heading "With Dot" [level=4] [ref=e280]
+      - generic [ref=e197]:
+        - generic [ref=e198]:
+          - heading "Content Carousel with Autoplay" [level=4] [ref=e199]
+          - region "Carousel" [ref=e201]:
+            - list "Slides" [ref=e202]:
+              - listitem [ref=e203]:
+                - heading "Detroit Style" [level=3] [ref=e204]
+                - paragraph [ref=e205]: Angular cuts and futuristic design
+              - listitem [ref=e206]:
+                - heading "Rich Colors" [level=3] [ref=e207]
+                - paragraph [ref=e208]: Deep blue primary with orange accents
+              - listitem [ref=e209]:
+                - heading "Dark Mode" [level=3] [ref=e210]
+                - paragraph [ref=e211]: Optimized for both light and dark themes
+            - button "Previous slide" [ref=e212] [cursor=pointer]:
+              - img [ref=e213]
+            - button "Next slide" [ref=e215] [cursor=pointer]:
+              - img [ref=e216]
+            - tablist "Carousel navigation" [ref=e218]:
+              - tab "Go to slide 1"
+              - tab "Go to slide 2" [selected]
+              - tab "Go to slide 3"
+        - generic [ref=e219]:
+          - heading "Image Carousel (Manual)" [level=4] [ref=e220]
+          - region "Carousel" [ref=e222]:
+            - list "Slides" [ref=e223]:
+              - listitem [ref=e224]:
+                - img "MLJR Logo" [ref=e225]
+              - listitem [ref=e226]:
+                - img "MLJR Horizontal Logo" [ref=e227]
+              - listitem [ref=e228]:
+                - img "MLJR Vertical Logo" [ref=e229]
+            - button "Previous slide" [ref=e230] [cursor=pointer]:
+              - img [ref=e231]
+            - button "Next slide" [ref=e233] [cursor=pointer]:
+              - img [ref=e234]
+            - tablist "Carousel navigation" [ref=e236]:
+              - tab "Go to slide 1" [selected]
+              - tab "Go to slide 2"
+              - tab "Go to slide 3"
+        - generic [ref=e237]:
+          - heading "Peek Variant (Shows Next Slide)" [level=4] [ref=e238]
+          - region "Carousel" [ref=e240]:
+            - list "Slides" [ref=e241]:
+              - listitem [ref=e242]:
+                - heading "Card 1" [level=4] [ref=e243]
+                - paragraph [ref=e244]: First card with some content
+                - generic [ref=e246]: Featured
+              - listitem [ref=e247]:
+                - heading "Card 2" [level=4] [ref=e248]
+                - paragraph [ref=e249]: Second card with more info
+                - generic [ref=e251]: Featured
+              - listitem [ref=e252]:
+                - heading "Card 3" [level=4] [ref=e253]
+                - paragraph [ref=e254]: Third card to showcase
+                - generic [ref=e256]: Featured
+            - button "Previous slide" [ref=e257] [cursor=pointer]:
+              - img [ref=e258]
+            - button "Next slide" [ref=e260] [cursor=pointer]:
+              - img [ref=e261]
+            - tablist "Carousel navigation" [ref=e263]:
+              - tab "Go to slide 1"
+              - tab "Go to slide 2" [selected]
+              - tab "Go to slide 3"
+    - generic [ref=e265]:
+      - generic [ref=e266]:
+        - generic [ref=e267]:
+          - heading "Alerts" [level=3] [ref=e268]
+          - paragraph [ref=e269]: Notification and feedback messages
+        - generic [ref=e271]:
+          - alert [ref=e272]:
+            - generic [ref=e273]:
+              - generic [ref=e274]: Information
+              - generic [ref=e275]: This is an informational message for the user.
+          - alert [ref=e276]:
+            - generic [ref=e277]:
+              - generic [ref=e278]: Success
+              - generic [ref=e279]: Operation completed successfully!
+          - alert [ref=e280]:
             - generic [ref=e281]:
-              - generic [ref=e282]: Online
-              - generic [ref=e283]: Away
-              - generic [ref=e284]: Offline
-          - generic [ref=e285]:
-            - heading "Sizes" [level=4] [ref=e286]
-            - generic [ref=e287]:
-              - generic [ref=e288]: Small
-              - generic [ref=e289]: Medium
-              - generic [ref=e290]: Large
-    - generic [ref=e292]:
-      - generic [ref=e293]:
-        - heading "Modal" [level=3] [ref=e294]
-        - paragraph [ref=e295]: Dialog windows and overlays
-      - generic [ref=e297]:
-        - button "Small Modal" [ref=e298] [cursor=pointer]
-        - button "Medium Modal" [ref=e299] [cursor=pointer]
-        - button "Large Modal" [ref=e300] [cursor=pointer]
-    - generic [ref=e302]:
-      - generic [ref=e303]:
-        - generic [ref=e304]:
-          - heading "Tabs" [level=3] [ref=e305]
-          - paragraph [ref=e306]: Tabbed navigation and content
-        - generic [ref=e307]:
-          - generic [ref=e308]:
-            - heading "Default" [level=4] [ref=e309]
-            - generic [ref=e310]:
-              - tablist [ref=e311]:
-                - tab "Overview" [selected] [ref=e312] [cursor=pointer]
-                - tab "Features" [ref=e313] [cursor=pointer]
-                - tab "Pricing" [ref=e314] [cursor=pointer]
-              - tabpanel "Overview" [ref=e316]:
-                - paragraph [ref=e317]: This is the overview content. It provides a general introduction to the topic.
-          - generic [ref=e318]:
-            - heading "Pills Variant" [level=4] [ref=e319]
-            - generic [ref=e320]:
-              - tablist [ref=e321]:
-                - tab "Overview" [selected] [ref=e322] [cursor=pointer]
-                - tab "Features" [ref=e323] [cursor=pointer]
-                - tab "Pricing" [ref=e324] [cursor=pointer]
-              - tabpanel "Overview" [ref=e326]:
-                - paragraph [ref=e327]: "Content for: overview"
-          - generic [ref=e328]:
-            - heading "Secondary Color" [level=4] [ref=e329]
-            - generic [ref=e330]:
-              - tablist [ref=e331]:
-                - tab "Overview" [selected] [ref=e332] [cursor=pointer]
-                - tab "Features" [ref=e333] [cursor=pointer]
-                - tab "Pricing" [ref=e334] [cursor=pointer]
-              - tabpanel "Overview" [ref=e336]:
-                - paragraph [ref=e337]: "Content for: overview"
-      - generic [ref=e338]:
-        - generic [ref=e339]:
-          - heading "Accordion" [level=3] [ref=e340]
-          - paragraph [ref=e341]: Collapsible content sections
-        - generic [ref=e342]:
-          - generic [ref=e343]:
-            - heading "Default" [level=4] [ref=e344]
-            - generic [ref=e345]:
-              - button "What is MLJR CSS?" [ref=e347] [cursor=pointer]:
-                - generic [ref=e348]: What is MLJR CSS?
-                - img [ref=e349]
-              - button "How do I install it?" [ref=e352] [cursor=pointer]:
-                - generic [ref=e353]: How do I install it?
-                - img [ref=e354]
-              - button "Is it compatible with Svelte 5?" [ref=e357] [cursor=pointer]:
-                - generic [ref=e358]: Is it compatible with Svelte 5?
-                - img [ref=e359]
-          - generic [ref=e361]:
-            - heading "Multiple Open" [level=4] [ref=e362]
-            - generic [ref=e363]:
-              - generic [ref=e364]:
-                - button "What is MLJR CSS?" [expanded] [ref=e365] [cursor=pointer]:
-                  - generic [ref=e366]: What is MLJR CSS?
-                  - img [ref=e367]
-                - region "What is MLJR CSS?" [ref=e369]:
-                  - generic [ref=e370]: MLJR CSS is a TailwindCSS-based CSS framework with a beautiful orange/purple color scheme that works seamlessly in both light and dark modes.
-              - button "How do I install it?" [ref=e372] [cursor=pointer]:
-                - generic [ref=e373]: How do I install it?
-                - img [ref=e374]
-              - button "Is it compatible with Svelte 5?" [ref=e377] [cursor=pointer]:
-                - generic [ref=e378]: Is it compatible with Svelte 5?
-                - img [ref=e379]
-          - generic [ref=e381]:
-            - heading "Primary Accent" [level=4] [ref=e382]
-            - generic [ref=e383]:
-              - button "What is MLJR CSS?" [ref=e385] [cursor=pointer]:
-                - generic [ref=e386]: What is MLJR CSS?
-                - img [ref=e387]
-              - button "How do I install it?" [ref=e390] [cursor=pointer]:
-                - generic [ref=e391]: How do I install it?
-                - img [ref=e392]
-              - button "Is it compatible with Svelte 5?" [ref=e395] [cursor=pointer]:
-                - generic [ref=e396]: Is it compatible with Svelte 5?
-                - img [ref=e397]
-    - generic [ref=e399]:
-      - heading "Cards" [level=2] [ref=e400]
-      - generic [ref=e401]:
-        - generic [ref=e402]:
-          - generic [ref=e403]:
-            - heading "Default Card" [level=3] [ref=e404]
-            - paragraph [ref=e405]: A simple card with header
-          - paragraph [ref=e407]: This is a basic card component with a title and description.
-        - generic [ref=e408]:
-          - heading "Primary Card" [level=3] [ref=e410]
-          - paragraph [ref=e412]: A card with primary accent border and shadow.
-        - generic [ref=e413]:
-          - heading "Secondary Card" [level=3] [ref=e415]
-          - paragraph [ref=e417]: A card with secondary accent and large shadow.
-        - button "Interactive Card Click me! This card is interactive and can be clicked." [ref=e418] [cursor=pointer]:
-          - generic [ref=e419]:
-            - heading "Interactive Card" [level=3] [ref=e420]
-            - paragraph [ref=e421]: Click me!
-          - paragraph [ref=e423]: This card is interactive and can be clicked.
-        - generic [ref=e424]:
-          - heading "Card with Footer" [level=3] [ref=e426]
-          - paragraph [ref=e428]: This card has a custom footer with actions.
-          - generic [ref=e430]:
-            - button "Cancel" [ref=e431] [cursor=pointer]
-            - button "Save" [ref=e432] [cursor=pointer]
-        - generic [ref=e433]:
-          - generic [ref=e437]:
-            - heading "Compact Card" [level=3] [ref=e438]
-            - paragraph [ref=e439]: Custom header
-          - paragraph [ref=e441]: A compact card with custom header content.
-    - generic [ref=e443]:
-      - generic [ref=e444]:
-        - heading "Color Palette" [level=3] [ref=e445]
-        - paragraph [ref=e446]: Primary and secondary color scales
-      - generic [ref=e447]:
-        - generic [ref=e448]:
-          - heading "Primary (Detroit Blue)" [level=4] [ref=e449]
+              - generic [ref=e282]: Warning
+              - generic [ref=e283]: Please review your input before proceeding.
+          - alert [ref=e284]:
+            - generic [ref=e285]:
+              - generic [ref=e286]: Error
+              - generic [ref=e287]: Something went wrong. Please try again.
+          - alert [ref=e288]:
+            - generic [ref=e289]:
+              - generic [ref=e290]: Primary
+              - generic [ref=e291]: This alert can be dismissed.
+            - button "Close" [ref=e292] [cursor=pointer]:
+              - img [ref=e293]
+          - alert [ref=e295]:
+            - generic [ref=e297]: A solid secondary alert without title.
+      - generic [ref=e298]:
+        - generic [ref=e299]:
+          - heading "Badges" [level=3] [ref=e300]
+          - paragraph [ref=e301]: Labels and status indicators
+        - generic [ref=e302]:
+          - generic [ref=e303]:
+            - heading "Default" [level=4] [ref=e304]
+            - generic [ref=e305]:
+              - generic [ref=e306]: Default
+              - generic [ref=e307]: Primary
+              - generic [ref=e308]: Secondary
+              - generic [ref=e309]: Success
+              - generic [ref=e310]: Warning
+              - generic [ref=e311]: Error
+              - generic [ref=e312]: Info
+          - generic [ref=e313]:
+            - heading "Solid" [level=4] [ref=e314]
+            - generic [ref=e315]:
+              - generic [ref=e316]: Primary
+              - generic [ref=e317]: Secondary
+              - generic [ref=e318]: Success
+              - generic [ref=e319]: Warning
+              - generic [ref=e320]: Error
+          - generic [ref=e321]:
+            - heading "Outline" [level=4] [ref=e322]
+            - generic [ref=e323]:
+              - generic [ref=e324]: Primary
+              - generic [ref=e325]: Secondary
+          - generic [ref=e326]:
+            - heading "With Dot" [level=4] [ref=e327]
+            - generic [ref=e328]:
+              - generic [ref=e329]: Online
+              - generic [ref=e330]: Away
+              - generic [ref=e331]: Offline
+          - generic [ref=e332]:
+            - heading "Sizes" [level=4] [ref=e333]
+            - generic [ref=e334]:
+              - generic [ref=e335]: Small
+              - generic [ref=e336]: Medium
+              - generic [ref=e337]: Large
+    - generic [ref=e339]:
+      - generic [ref=e340]:
+        - heading "Modal" [level=3] [ref=e341]
+        - paragraph [ref=e342]: Dialog windows and overlays
+      - generic [ref=e344]:
+        - button "Small Modal" [ref=e345] [cursor=pointer]
+        - button "Medium Modal" [ref=e346] [cursor=pointer]
+        - button "Large Modal" [ref=e347] [cursor=pointer]
+    - generic [ref=e349]:
+      - generic [ref=e350]:
+        - generic [ref=e351]:
+          - heading "Tabs" [level=3] [ref=e352]
+          - paragraph [ref=e353]: Tabbed navigation and content
+        - generic [ref=e354]:
+          - generic [ref=e355]:
+            - heading "Default" [level=4] [ref=e356]
+            - generic [ref=e357]:
+              - tablist [ref=e358]:
+                - tab "Overview" [selected] [ref=e359] [cursor=pointer]
+                - tab "Features" [ref=e360] [cursor=pointer]
+                - tab "Pricing" [ref=e361] [cursor=pointer]
+              - tabpanel "Overview" [ref=e363]:
+                - paragraph [ref=e364]: This is the overview content. It provides a general introduction to the topic.
+          - generic [ref=e365]:
+            - heading "Pills Variant" [level=4] [ref=e366]
+            - generic [ref=e367]:
+              - tablist [ref=e368]:
+                - tab "Overview" [selected] [ref=e369] [cursor=pointer]
+                - tab "Features" [ref=e370] [cursor=pointer]
+                - tab "Pricing" [ref=e371] [cursor=pointer]
+              - tabpanel "Overview" [ref=e373]:
+                - paragraph [ref=e374]: "Content for: overview"
+          - generic [ref=e375]:
+            - heading "Secondary Color" [level=4] [ref=e376]
+            - generic [ref=e377]:
+              - tablist [ref=e378]:
+                - tab "Overview" [selected] [ref=e379] [cursor=pointer]
+                - tab "Features" [ref=e380] [cursor=pointer]
+                - tab "Pricing" [ref=e381] [cursor=pointer]
+              - tabpanel "Overview" [ref=e383]:
+                - paragraph [ref=e384]: "Content for: overview"
+      - generic [ref=e385]:
+        - generic [ref=e386]:
+          - heading "Accordion" [level=3] [ref=e387]
+          - paragraph [ref=e388]: Collapsible content sections
+        - generic [ref=e389]:
+          - generic [ref=e390]:
+            - heading "Default" [level=4] [ref=e391]
+            - generic [ref=e392]:
+              - button "What is MLJR CSS?" [ref=e394] [cursor=pointer]:
+                - generic [ref=e395]: What is MLJR CSS?
+                - img [ref=e396]
+              - button "How do I install it?" [ref=e399] [cursor=pointer]:
+                - generic [ref=e400]: How do I install it?
+                - img [ref=e401]
+              - button "Is it compatible with Svelte 5?" [ref=e404] [cursor=pointer]:
+                - generic [ref=e405]: Is it compatible with Svelte 5?
+                - img [ref=e406]
+          - generic [ref=e408]:
+            - heading "Multiple Open" [level=4] [ref=e409]
+            - generic [ref=e410]:
+              - generic [ref=e411]:
+                - button "What is MLJR CSS?" [expanded] [ref=e412] [cursor=pointer]:
+                  - generic [ref=e413]: What is MLJR CSS?
+                  - img [ref=e414]
+                - region "What is MLJR CSS?" [ref=e416]:
+                  - generic [ref=e417]: MLJR CSS is a TailwindCSS-based CSS framework with a beautiful orange/purple color scheme that works seamlessly in both light and dark modes.
+              - button "How do I install it?" [ref=e419] [cursor=pointer]:
+                - generic [ref=e420]: How do I install it?
+                - img [ref=e421]
+              - button "Is it compatible with Svelte 5?" [ref=e424] [cursor=pointer]:
+                - generic [ref=e425]: Is it compatible with Svelte 5?
+                - img [ref=e426]
+          - generic [ref=e428]:
+            - heading "Primary Accent" [level=4] [ref=e429]
+            - generic [ref=e430]:
+              - button "What is MLJR CSS?" [ref=e432] [cursor=pointer]:
+                - generic [ref=e433]: What is MLJR CSS?
+                - img [ref=e434]
+              - button "How do I install it?" [ref=e437] [cursor=pointer]:
+                - generic [ref=e438]: How do I install it?
+                - img [ref=e439]
+              - button "Is it compatible with Svelte 5?" [ref=e442] [cursor=pointer]:
+                - generic [ref=e443]: Is it compatible with Svelte 5?
+                - img [ref=e444]
+    - generic [ref=e446]:
+      - heading "Cards" [level=2] [ref=e447]
+      - generic [ref=e448]:
+        - generic [ref=e449]:
           - generic [ref=e450]:
-            - generic [ref=e451]: "50"
-            - generic [ref=e453]: "100"
-            - generic [ref=e455]: "200"
-            - generic [ref=e457]: "300"
-            - generic [ref=e459]: "400"
-            - generic [ref=e461]: "500"
-            - generic [ref=e463]: "600"
-            - generic [ref=e465]: "700"
-            - generic [ref=e467]: "800"
-            - generic [ref=e469]: "900"
-            - generic [ref=e471]: "950"
-        - generic [ref=e473]:
-          - heading "Secondary (Sunset Orange)" [level=4] [ref=e474]
-          - generic [ref=e475]:
-            - generic [ref=e476]: "50"
-            - generic [ref=e478]: "100"
-            - generic [ref=e480]: "200"
-            - generic [ref=e482]: "300"
-            - generic [ref=e484]: "400"
-            - generic [ref=e486]: "500"
-            - generic [ref=e488]: "600"
-            - generic [ref=e490]: "700"
-            - generic [ref=e492]: "800"
-            - generic [ref=e494]: "900"
-            - generic [ref=e496]: "950"
-        - generic [ref=e498]:
-          - heading "Accent (Purple)" [level=4] [ref=e499]
-          - generic [ref=e500]:
-            - generic [ref=e501]: "50"
-            - generic [ref=e503]: "100"
-            - generic [ref=e505]: "200"
-            - generic [ref=e507]: "300"
-            - generic [ref=e509]: "400"
-            - generic [ref=e511]: "500"
-            - generic [ref=e513]: "600"
-            - generic [ref=e515]: "700"
-            - generic [ref=e517]: "800"
-            - generic [ref=e519]: "900"
-            - generic [ref=e521]: "950"
-        - generic [ref=e523]:
-          - heading "Semantic Colors" [level=4] [ref=e524]
-          - generic [ref=e525]:
-            - generic [ref=e526]: Success
-            - generic [ref=e528]: Warning
-            - generic [ref=e530]: Error
-            - generic [ref=e532]: Info
-  - contentinfo [ref=e534]:
-    - generic [ref=e535]:
-      - generic [ref=e536]:
-        - generic [ref=e537]:
-          - link "MLJR Logo CSS" [ref=e538] [cursor=pointer]:
+            - heading "Default Card" [level=3] [ref=e451]
+            - paragraph [ref=e452]: A simple card with header
+          - paragraph [ref=e454]: This is a basic card component with a title and description.
+        - generic [ref=e455]:
+          - heading "Primary Card" [level=3] [ref=e457]
+          - paragraph [ref=e459]: A card with primary accent border and shadow.
+        - generic [ref=e460]:
+          - heading "Secondary Card" [level=3] [ref=e462]
+          - paragraph [ref=e464]: A card with secondary accent and large shadow.
+        - button "Interactive Card Click me! This card is interactive and can be clicked." [ref=e465] [cursor=pointer]:
+          - generic [ref=e466]:
+            - heading "Interactive Card" [level=3] [ref=e467]
+            - paragraph [ref=e468]: Click me!
+          - paragraph [ref=e470]: This card is interactive and can be clicked.
+        - generic [ref=e471]:
+          - heading "Card with Footer" [level=3] [ref=e473]
+          - paragraph [ref=e475]: This card has a custom footer with actions.
+          - generic [ref=e477]:
+            - button "Cancel" [ref=e478] [cursor=pointer]
+            - button "Save" [ref=e479] [cursor=pointer]
+        - generic [ref=e480]:
+          - generic [ref=e484]:
+            - heading "Compact Card" [level=3] [ref=e485]
+            - paragraph [ref=e486]: Custom header
+          - paragraph [ref=e488]: A compact card with custom header content.
+    - generic [ref=e490]:
+      - generic [ref=e491]:
+        - heading "Color Palette" [level=3] [ref=e492]
+        - paragraph [ref=e493]: Primary and secondary color scales
+      - generic [ref=e494]:
+        - generic [ref=e495]:
+          - heading "Primary (Detroit Blue)" [level=4] [ref=e496]
+          - generic [ref=e497]:
+            - generic [ref=e498]: "50"
+            - generic [ref=e500]: "100"
+            - generic [ref=e502]: "200"
+            - generic [ref=e504]: "300"
+            - generic [ref=e506]: "400"
+            - generic [ref=e508]: "500"
+            - generic [ref=e510]: "600"
+            - generic [ref=e512]: "700"
+            - generic [ref=e514]: "800"
+            - generic [ref=e516]: "900"
+            - generic [ref=e518]: "950"
+        - generic [ref=e520]:
+          - heading "Secondary (Sunset Orange)" [level=4] [ref=e521]
+          - generic [ref=e522]:
+            - generic [ref=e523]: "50"
+            - generic [ref=e525]: "100"
+            - generic [ref=e527]: "200"
+            - generic [ref=e529]: "300"
+            - generic [ref=e531]: "400"
+            - generic [ref=e533]: "500"
+            - generic [ref=e535]: "600"
+            - generic [ref=e537]: "700"
+            - generic [ref=e539]: "800"
+            - generic [ref=e541]: "900"
+            - generic [ref=e543]: "950"
+        - generic [ref=e545]:
+          - heading "Accent (Purple)" [level=4] [ref=e546]
+          - generic [ref=e547]:
+            - generic [ref=e548]: "50"
+            - generic [ref=e550]: "100"
+            - generic [ref=e552]: "200"
+            - generic [ref=e554]: "300"
+            - generic [ref=e556]: "400"
+            - generic [ref=e558]: "500"
+            - generic [ref=e560]: "600"
+            - generic [ref=e562]: "700"
+            - generic [ref=e564]: "800"
+            - generic [ref=e566]: "900"
+            - generic [ref=e568]: "950"
+        - generic [ref=e570]:
+          - heading "Semantic Colors" [level=4] [ref=e571]
+          - generic [ref=e572]:
+            - generic [ref=e573]: Success
+            - generic [ref=e575]: Warning
+            - generic [ref=e577]: Error
+            - generic [ref=e579]: Info
+  - contentinfo [ref=e581]:
+    - generic [ref=e582]:
+      - generic [ref=e583]:
+        - generic [ref=e584]:
+          - link "MLJR Logo CSS" [ref=e585] [cursor=pointer]:
             - /url: /
-            - img "MLJR Logo" [ref=e539]
-            - generic [ref=e540]: CSS
-          - paragraph [ref=e541]: A TailwindCSS-based CSS framework with Svelte 5 components. Beautiful, accessible, and easy to use.
-          - generic [ref=e542]:
-            - link "GitHub" [ref=e543] [cursor=pointer]:
+            - img "MLJR Logo" [ref=e586]
+            - generic [ref=e587]: CSS
+          - paragraph [ref=e588]: A TailwindCSS-based CSS framework with Svelte 5 components. Beautiful, accessible, and easy to use.
+          - generic [ref=e589]:
+            - link "GitHub" [ref=e590] [cursor=pointer]:
               - /url: https://github.com
-              - img [ref=e544]
-            - link "Twitter" [ref=e546] [cursor=pointer]:
+              - img [ref=e591]
+            - link "Twitter" [ref=e593] [cursor=pointer]:
               - /url: https://x.com
-              - img [ref=e547]
-        - generic [ref=e549]:
-          - heading "Documentation" [level=4] [ref=e550]
-          - generic [ref=e551]:
-            - button "Getting Started" [ref=e552] [cursor=pointer]
-            - button "Components" [ref=e553] [cursor=pointer]
-            - button "Customization" [ref=e554] [cursor=pointer]
-            - button "Examples" [ref=e555] [cursor=pointer]
-        - generic [ref=e556]:
-          - heading "Resources" [level=4] [ref=e557]
-          - generic [ref=e558]:
-            - link "GitHub" [ref=e559] [cursor=pointer]:
+              - img [ref=e594]
+        - generic [ref=e596]:
+          - heading "Documentation" [level=4] [ref=e597]
+          - generic [ref=e598]:
+            - button "Getting Started" [ref=e599] [cursor=pointer]
+            - button "Components" [ref=e600] [cursor=pointer]
+            - button "Customization" [ref=e601] [cursor=pointer]
+            - button "Examples" [ref=e602] [cursor=pointer]
+        - generic [ref=e603]:
+          - heading "Resources" [level=4] [ref=e604]
+          - generic [ref=e605]:
+            - link "GitHub" [ref=e606] [cursor=pointer]:
               - /url: https://github.com
-            - link "npm" [ref=e560] [cursor=pointer]:
+            - link "npm" [ref=e607] [cursor=pointer]:
               - /url: https://npmjs.com
-            - button "Changelog" [ref=e561] [cursor=pointer]
-            - button "Contributing" [ref=e562] [cursor=pointer]
-        - generic [ref=e563]:
-          - heading "Community" [level=4] [ref=e564]
-          - generic [ref=e565]:
-            - button "Discord" [ref=e566] [cursor=pointer]
-            - link "Twitter" [ref=e567] [cursor=pointer]:
+            - button "Changelog" [ref=e608] [cursor=pointer]
+            - button "Contributing" [ref=e609] [cursor=pointer]
+        - generic [ref=e610]:
+          - heading "Community" [level=4] [ref=e611]
+          - generic [ref=e612]:
+            - button "Discord" [ref=e613] [cursor=pointer]
+            - link "Twitter" [ref=e614] [cursor=pointer]:
               - /url: https://x.com
-            - link "Stack Overflow" [ref=e568] [cursor=pointer]:
+            - link "Stack Overflow" [ref=e615] [cursor=pointer]:
               - /url: https://stackoverflow.com
-      - generic [ref=e569]:
-        - paragraph [ref=e570]: © 2024 MLJR CSS. All rights reserved.
-        - generic [ref=e571]:
-          - button "Privacy Policy" [ref=e572] [cursor=pointer]
-          - button "Terms of Service" [ref=e573] [cursor=pointer]
+      - generic [ref=e616]:
+        - paragraph [ref=e617]: © 2024 MLJR CSS. All rights reserved.
+        - generic [ref=e618]:
+          - button "Privacy Policy" [ref=e619] [cursor=pointer]
+          - button "Terms of Service" [ref=e620] [cursor=pointer]
 ```
