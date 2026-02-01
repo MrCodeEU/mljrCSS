@@ -22,7 +22,6 @@
   width: 100%;
   transition: transform var(--mljr-transition-slow);
   will-change: transform;
-  pointer-events: none;
 }
 
 .mljr-carousel-item {
@@ -31,7 +30,6 @@
   min-width: 100%;
   display: block;
   overflow: hidden;
-  pointer-events: auto;
 }
 
 .mljr-carousel-item img {
@@ -66,7 +64,6 @@
   clip-path: var(--mljr-clip-sm);
   transition: all var(--mljr-transition-fast);
   box-shadow: var(--mljr-shadow-md);
-  pointer-events: auto;
 }
 
 .mljr-carousel-btn:hover:not(:disabled) {
@@ -109,7 +106,6 @@
   gap: var(--mljr-space-2);
   padding: var(--mljr-space-2);
   z-index: 50;
-  pointer-events: auto;
 }
 
 .mljr-carousel-indicator {
