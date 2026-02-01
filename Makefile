@@ -1,4 +1,4 @@
-.PHONY: install build dev clean test package release help setup start
+.PHONY: install build dev clean test test-unit test-e2e test-watch test-ui test-coverage package release help setup start
 
 # Default target
 help:
@@ -11,6 +11,12 @@ help:
 	@echo "  make dev         - Start development server"
 	@echo "  make clean       - Remove all build artifacts and node_modules"
 	@echo "  make check       - Run type checking"
+	@echo "  make test        - Run all tests (unit + e2e + accessibility)"
+	@echo "  make test-unit   - Run unit tests only"
+	@echo "  make test-watch  - Run tests in watch mode"
+	@echo "  make test-ui     - Run tests with interactive UI"
+	@echo "  make test-coverage - Run tests with coverage report"
+	@echo "  make test-e2e    - Run end-to-end tests"
 	@echo "  make package     - Package Svelte components for distribution"
 	@echo "  make changeset   - Create a new changeset"
 	@echo "  make release     - Build and publish packages"
@@ -62,6 +68,37 @@ clean:
 # Type checking
 check:
 	pnpm --filter mljr-svelte check
+
+# Testing
+test: test-unit test-e2e
+	@echo ""
+	@echo "All tests completed successfully!"
+
+test-unit:
+	@echo "Running unit tests..."
+	pnpm --filter mljr-svelte test
+
+test-watch:
+	pnpm --filter mljr-svelte test:watch
+
+test-ui:
+	pnpm --filter mljr-svelte test:ui
+
+test-coverage:
+	@echo "Running tests with coverage..."
+	pnpm --filter mljr-svelte test:coverage
+	@echo ""
+	@echo "Coverage report generated in packages/mljr-svelte/coverage/"
+
+test-e2e:
+	@echo "Running end-to-end tests..."
+	pnpm --filter mljr-svelte test:e2e
+
+test-e2e-ui:
+	pnpm --filter mljr-svelte test:e2e:ui
+
+test-e2e-debug:
+	pnpm --filter mljr-svelte test:e2e:debug
 
 # Package for distribution
 package:
