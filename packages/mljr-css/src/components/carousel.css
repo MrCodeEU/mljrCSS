@@ -22,6 +22,7 @@
   width: 100%;
   transition: transform var(--mljr-transition-slow);
   will-change: transform;
+  pointer-events: none;
 }
 
 .mljr-carousel-item {
@@ -30,6 +31,7 @@
   min-width: 100%;
   display: block;
   overflow: hidden;
+  pointer-events: auto;
 }
 
 .mljr-carousel-item img {
@@ -60,10 +62,11 @@
   border: 2px solid var(--mljr-primary-500);
   color: var(--mljr-primary-500);
   cursor: pointer;
-  z-index: 10;
+  z-index: 50;
   clip-path: var(--mljr-clip-sm);
   transition: all var(--mljr-transition-fast);
   box-shadow: var(--mljr-shadow-md);
+  pointer-events: auto;
 }
 
 .mljr-carousel-btn:hover:not(:disabled) {
@@ -105,7 +108,8 @@
   justify-content: center;
   gap: var(--mljr-space-2);
   padding: var(--mljr-space-2);
-  z-index: 10;
+  z-index: 50;
+  pointer-events: auto;
 }
 
 .mljr-carousel-indicator {
@@ -116,6 +120,8 @@
   cursor: pointer;
   clip-path: polygon(0 0, calc(100% - 3px) 0, 100% 100%, 3px 100%);
   transition: all var(--mljr-transition-fast);
+  opacity: 1;
+  visibility: visible;
 }
 
 .mljr-carousel-indicator:hover { background-color: var(--mljr-primary-400); }

@@ -138,6 +138,11 @@
   animation: mljr-tab-content-in var(--mljr-transition) ease-out;
 }
 
+.mljr-tabs-panel:not([hidden]) {
+  display: block;
+  animation: mljr-tab-content-in var(--mljr-transition) ease-out;
+}
+
 /* Tab content slide-in animation */
 @keyframes mljr-tab-content-in {
   0% {
