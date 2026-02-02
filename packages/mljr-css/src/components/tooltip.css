@@ -1,0 +1,177 @@
+/* ============================================
+   MLJR CSS Framework - Tooltip Component
+   Detroit: Become Human inspired
+   Default style features cut corners, HUD border,
+   and corner accents
+   ============================================ */
+
+.mljr-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.mljr-tooltip-content {
+  position: absolute;
+  z-index: var(--mljr-z-tooltip);
+  padding: var(--mljr-space-2) var(--mljr-space-3);
+  font-family: var(--mljr-font-display);
+  font-size: var(--mljr-text-sm);
+  line-height: var(--mljr-leading-tight);
+  letter-spacing: 0.02em;
+  color: var(--mljr-primary-100);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--mljr-transition-fast), visibility var(--mljr-transition-fast);
+  pointer-events: none;
+  /* Detroit default: cut corners */
+  clip-path: var(--mljr-clip-sm);
+  background: transparent;
+}
+
+/* Border layer using pseudo-element to follow clip-path */
+.mljr-tooltip-content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--mljr-primary-500);
+  clip-path: var(--mljr-clip-sm);
+  z-index: -2;
+  opacity: 0.7;
+}
+
+/* Inner background */
+.mljr-tooltip-content::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: var(--mljr-bg-tertiary);
+  clip-path: var(--mljr-clip-sm);
+  z-index: -1;
+}
+
+/* HUD corner accents - using additional spans */
+.mljr-tooltip-accent-tl,
+.mljr-tooltip-accent-br {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border: 1px solid var(--mljr-primary-400);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.mljr-tooltip-accent-tl {
+  top: 2px;
+  left: 2px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.mljr-tooltip-accent-br {
+  bottom: 2px;
+  right: 2px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Positions */
+.mljr-tooltip-top .mljr-tooltip-content {
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.mljr-tooltip-bottom .mljr-tooltip-content {
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.mljr-tooltip-left .mljr-tooltip-content {
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.mljr-tooltip-right .mljr-tooltip-content {
+  left: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Show on hover/focus */
+.mljr-tooltip:hover .mljr-tooltip-content,
+.mljr-tooltip:focus-within .mljr-tooltip-content,
+.mljr-tooltip-visible .mljr-tooltip-content {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Glow effect on show */
+.mljr-tooltip:hover .mljr-tooltip-content,
+.mljr-tooltip:focus-within .mljr-tooltip-content,
+.mljr-tooltip-visible .mljr-tooltip-content {
+  box-shadow: var(--mljr-glow-primary-sm);
+}
+
+/* Dark mode - enhanced glow */
+.dark .mljr-tooltip-content::before,
+[data-theme="dark"] .mljr-tooltip-content::before {
+  opacity: 0.8;
+}
+
+.dark .mljr-tooltip:hover .mljr-tooltip-content,
+.dark .mljr-tooltip:focus-within .mljr-tooltip-content,
+.dark .mljr-tooltip-visible .mljr-tooltip-content,
+[data-theme="dark"] .mljr-tooltip:hover .mljr-tooltip-content,
+[data-theme="dark"] .mljr-tooltip:focus-within .mljr-tooltip-content,
+[data-theme="dark"] .mljr-tooltip-visible .mljr-tooltip-content {
+  box-shadow: var(--mljr-glow-primary);
+}
+
+/* Size variants */
+.mljr-tooltip-sm .mljr-tooltip-content {
+  padding: var(--mljr-space-1) var(--mljr-space-2);
+  font-size: var(--mljr-text-xs);
+}
+
+.mljr-tooltip-lg .mljr-tooltip-content {
+  padding: var(--mljr-space-3) var(--mljr-space-4);
+  font-size: var(--mljr-text-base);
+}
+
+/* Color variants - changes border glow color */
+.mljr-tooltip-secondary .mljr-tooltip-content::before {
+  background: var(--mljr-secondary-500);
+}
+
+.mljr-tooltip-secondary .mljr-tooltip-content {
+  color: var(--mljr-secondary-100);
+}
+
+.mljr-tooltip-secondary .mljr-tooltip-accent-tl,
+.mljr-tooltip-secondary .mljr-tooltip-accent-br {
+  border-color: var(--mljr-secondary-400);
+}
+
+.mljr-tooltip-secondary:hover .mljr-tooltip-content {
+  box-shadow: var(--mljr-glow-secondary-sm);
+}
+
+.mljr-tooltip-accent .mljr-tooltip-content::before {
+  background: var(--mljr-accent-500);
+}
+
+.mljr-tooltip-accent .mljr-tooltip-content {
+  color: var(--mljr-accent-100);
+}
+
+.mljr-tooltip-accent .mljr-tooltip-accent-tl,
+.mljr-tooltip-accent .mljr-tooltip-accent-br {
+  border-color: var(--mljr-accent-400);
+}
+
+.mljr-tooltip-accent:hover .mljr-tooltip-content {
+  box-shadow: var(--mljr-glow-accent);
+}

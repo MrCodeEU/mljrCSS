@@ -106,6 +106,7 @@
   /* Geometric Detroit-style clip paths and angles */
   --mljr-skew: -2deg;
   /* Corner cut sizes - LARGER for visibility */
+  --mljr-cut-xs: 6px;
   --mljr-cut-sm: 10px;
   --mljr-cut-md: 14px;
   --mljr-cut-lg: 20px;
@@ -118,11 +119,24 @@
   /* Single corner cuts */
   --mljr-clip-angular-tr: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
   --mljr-clip-angular-bl: polygon(0 0, 100% 0, 100% 100%, 14px 100%, 0 calc(100% - 14px));
-  /* Small elements (checkbox, badge, etc) - TR + BL */
-  --mljr-clip-sm: polygon(0 0, calc(100% - 5px) 0, 100% 5px, 100% 100%, 5px 100%, 0 calc(100% - 5px));
-  /* HUD borders */
-  --mljr-border-hud: 1px solid rgb(0 128 255 / 0.5);
-  --mljr-border-hud-strong: 1px solid rgb(0 128 255 / 0.8);
+  /* Small elements (checkbox, badge, tooltip) - TR + BL */
+  --mljr-clip-sm: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
+  --mljr-clip-xs: polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px));
+  /* HUD borders - more prominent */
+  --mljr-border-hud: 1px solid rgb(0 128 255 / 0.6);
+  --mljr-border-hud-strong: 2px solid rgb(0 128 255 / 0.85);
+  /* HUD corner accent sizes */
+  --mljr-hud-accent-sm: 8px;
+  --mljr-hud-accent-md: 12px;
+  --mljr-hud-accent-lg: 16px;
+  --mljr-hud-accent-xl: 20px;
+
+  /* Gradient definitions */
+  --mljr-gradient-primary: linear-gradient(135deg, var(--mljr-primary-400) 0%, var(--mljr-primary-600) 100%);
+  --mljr-gradient-secondary: linear-gradient(135deg, var(--mljr-secondary-400) 0%, var(--mljr-secondary-600) 100%);
+  --mljr-gradient-accent: linear-gradient(135deg, var(--mljr-accent-400) 0%, var(--mljr-accent-600) 100%);
+  --mljr-gradient-brand: linear-gradient(135deg, var(--mljr-primary-400) 0%, var(--mljr-accent-500) 50%, var(--mljr-secondary-500) 100%);
+  --mljr-gradient-hud: linear-gradient(135deg, rgba(0, 128, 255, 0.1) 0%, rgba(0, 128, 255, 0.05) 100%);
 
   /* Spacing Scale */
   --mljr-space-1: 0.25rem;

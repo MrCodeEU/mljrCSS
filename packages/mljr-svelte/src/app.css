@@ -17,6 +17,12 @@
 @import 'mljr-css/src/components/modal.css';
 @import 'mljr-css/src/components/tabs.css';
 @import 'mljr-css/src/components/accordion.css';
+@import 'mljr-css/src/components/carousel.css';
+@import 'mljr-css/src/components/tooltip.css';
+@import 'mljr-css/src/components/progress.css';
+@import 'mljr-css/src/components/skeleton.css';
+@import 'mljr-css/src/components/avatar.css';
+@import 'mljr-css/src/components/divider.css';
 @import 'mljr-css/src/utilities/utilities.css';
 
 /* Tailwind layers - must come after @import */

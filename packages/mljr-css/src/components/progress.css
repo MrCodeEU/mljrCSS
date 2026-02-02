@@ -1,0 +1,210 @@
+/* ============================================
+   MLJR CSS Framework - Progress Component
+   Detroit: Become Human inspired
+   Default style with cut corners, HUD border,
+   and corner accents
+   ============================================ */
+
+.mljr-progress {
+  position: relative;
+  width: 100%;
+  height: 0.75rem;
+  /* Detroit default: cut corners */
+  clip-path: var(--mljr-clip-sm);
+  background: transparent;
+  overflow: visible;
+}
+
+/* Border layer using pseudo-element to follow clip-path */
+.mljr-progress::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--mljr-primary-500);
+  clip-path: var(--mljr-clip-sm);
+  z-index: 0;
+  opacity: 0.5;
+}
+
+/* Inner background */
+.mljr-progress::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: var(--mljr-bg-tertiary);
+  clip-path: var(--mljr-clip-sm);
+  z-index: 1;
+}
+
+.mljr-progress-bar {
+  position: relative;
+  height: 100%;
+  z-index: 2;
+  /* Detroit gradient fill */
+  background: var(--mljr-gradient-primary);
+  clip-path: var(--mljr-clip-xs);
+  transition: width var(--mljr-transition-slow);
+  box-shadow: var(--mljr-glow-primary-sm);
+  margin: 1px;
+}
+
+/* HUD corner accents wrapper */
+.mljr-progress-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.mljr-progress-accent-tl,
+.mljr-progress-accent-br {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border: 1px solid var(--mljr-primary-400);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.mljr-progress-accent-tl {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.mljr-progress-accent-br {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Color Variants */
+.mljr-progress-secondary::before {
+  background: var(--mljr-secondary-500);
+}
+
+.mljr-progress-secondary .mljr-progress-bar {
+  background: var(--mljr-gradient-secondary);
+  box-shadow: var(--mljr-glow-secondary-sm);
+}
+
+.mljr-progress-accent::before {
+  background: var(--mljr-accent-500);
+}
+
+.mljr-progress-accent .mljr-progress-bar {
+  background: var(--mljr-gradient-accent);
+  box-shadow: var(--mljr-glow-accent);
+}
+
+.mljr-progress-success .mljr-progress-bar {
+  background: linear-gradient(135deg, var(--mljr-success-light) 0%, var(--mljr-success) 100%);
+  box-shadow: var(--mljr-glow-success);
+}
+
+.mljr-progress-warning .mljr-progress-bar {
+  background: linear-gradient(135deg, var(--mljr-warning-light) 0%, var(--mljr-warning) 100%);
+}
+
+.mljr-progress-error .mljr-progress-bar {
+  background: linear-gradient(135deg, var(--mljr-error-light) 0%, var(--mljr-error) 100%);
+  box-shadow: var(--mljr-glow-error);
+}
+
+/* Sizes */
+.mljr-progress-sm {
+  height: 0.5rem;
+}
+
+.mljr-progress-md {
+  height: 0.75rem;
+}
+
+.mljr-progress-lg {
+  height: 1rem;
+}
+
+.mljr-progress-xl {
+  height: 1.5rem;
+}
+
+/* Indeterminate state */
+.mljr-progress-indeterminate .mljr-progress-bar {
+  width: 30% !important;
+  animation: mljr-progress-indeterminate 1.5s ease-in-out infinite;
+}
+
+@keyframes mljr-progress-indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(400%);
+  }
+}
+
+/* Striped animation */
+.mljr-progress-striped .mljr-progress-bar {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+}
+
+.mljr-progress-striped-animated .mljr-progress-bar {
+  animation: mljr-progress-stripes 1s linear infinite;
+}
+
+@keyframes mljr-progress-stripes {
+  0% { background-position: 1rem 0; }
+  100% { background-position: 0 0; }
+}
+
+/* With label */
+.mljr-progress-labeled {
+  display: flex;
+  align-items: center;
+  gap: var(--mljr-space-3);
+}
+
+.mljr-progress-labeled .mljr-progress-wrapper {
+  flex: 1;
+}
+
+.mljr-progress-label {
+  font-family: var(--mljr-font-display);
+  font-size: var(--mljr-text-sm);
+  font-weight: 500;
+  color: var(--mljr-primary-400);
+  min-width: 3rem;
+  text-align: right;
+  letter-spacing: 0.05em;
+}
+
+/* Dark mode - enhanced glow */
+.dark .mljr-progress::before,
+[data-theme="dark"] .mljr-progress::before {
+  opacity: 0.6;
+}
+
+.dark .mljr-progress .mljr-progress-bar,
+[data-theme="dark"] .mljr-progress .mljr-progress-bar {
+  box-shadow: var(--mljr-glow-primary);
+}
+
+.dark .mljr-progress-secondary .mljr-progress-bar,
+[data-theme="dark"] .mljr-progress-secondary .mljr-progress-bar {
+  box-shadow: var(--mljr-glow-secondary);
+}
+
+.dark .mljr-progress-accent .mljr-progress-bar,
+[data-theme="dark"] .mljr-progress-accent .mljr-progress-bar {
+  box-shadow: var(--mljr-glow-accent);
+}

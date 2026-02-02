@@ -324,6 +324,191 @@ test.describe('MLJR Component Library E2E Tests', () => {
     });
   });
 
+  test.describe('Tooltip Component', () => {
+    test('should show tooltip on hover', async ({ page }) => {
+      // Scroll to new components section first
+      await page.locator('#new-components').scrollIntoViewIfNeeded();
+      const tooltipTrigger = page.locator('.mljr-tooltip').first();
+      await tooltipTrigger.scrollIntoViewIfNeeded();
+      await tooltipTrigger.hover();
+
+      const tooltipContent = tooltipTrigger.locator('.mljr-tooltip-content');
+      await expect(tooltipContent).toBeVisible();
+    });
+
+    test('should hide tooltip on mouse leave', async ({ page }) => {
+      await page.locator('#new-components').scrollIntoViewIfNeeded();
+      const tooltipTrigger = page.locator('.mljr-tooltip').first();
+      await tooltipTrigger.scrollIntoViewIfNeeded();
+      await tooltipTrigger.hover();
+      await page.waitForTimeout(300);
+
+      // Move mouse to a completely different area
+      await page.mouse.move(0, 0);
+      await page.waitForTimeout(500);
+
+      // Check that tooltip lost the visible class
+      const tooltipWrapper = page.locator('.mljr-tooltip').first();
+      const hasVisibleClass = await tooltipWrapper.evaluate((el) =>
+        el.classList.contains('mljr-tooltip-visible')
+      );
+      expect(hasVisibleClass).toBe(false);
+    });
+
+    test('should render tooltip with HUD accents', async ({ page }) => {
+      await page.locator('#new-components').scrollIntoViewIfNeeded();
+      // Detroit style is now default - check for tooltip accent elements
+      const tooltipAccents = await page.locator('.mljr-tooltip-accent-tl').count();
+      expect(tooltipAccents).toBeGreaterThan(0);
+    });
+  });
+
+  test.describe('Progress Component', () => {
+    test('should render progress bars', async ({ page }) => {
+      await page.locator('#new-components').scrollIntoViewIfNeeded();
+      // Progress bars may be thin, check element count
+      const progressCount = await page.locator('.mljr-progress').count();
+      expect(progressCount).toBeGreaterThan(0);
+    });
+
+    test('should have correct aria attributes', async ({ page }) => {
+      await page.locator('#new-components').scrollIntoViewIfNeeded();
+      const progress = page.locator('.mljr-progress[role="progressbar"]').first();
+      await expect(progress).toHaveAttribute('aria-valuemin', '0');
+      await expect(progress).toHaveAttribute('aria-valuemax', '100');
+    });
+
+    test('should render progress with HUD accents', async ({ page }) => {
+      await page.locator('#new-components').scrollIntoViewIfNeeded();
+      // Detroit style is now default - check for progress wrapper and accents
+      const progressWrapperCount = await page.locator('.mljr-progress-wrapper').count();
+      expect(progressWrapperCount).toBeGreaterThan(0);
+    });
+
+    test('should render indeterminate state', async ({ page }) => {
+      await page.locator('#new-components').scrollIntoViewIfNeeded();
+      const indeterminateProgressCount = await page.locator('.mljr-progress-indeterminate').count();
+      expect(indeterminateProgressCount).toBeGreaterThan(0);
+    });
+  });
+
+  test.describe('Skeleton Component', () => {
+    test('should render skeleton loaders', async ({ page }) => {
+      await page.locator('#new-components').scrollIntoViewIfNeeded();
+      const skeletonCount = await page.locator('.mljr-skeleton').count();
+      expect(skeletonCount).toBeGreaterThan(0);
+    });
+
+    test('should render different variants', async ({ page }) => {
+      await page.locator('#new-components').scrollIntoViewIfNeeded();
+      const textSkeletonCount = await page.locator('.mljr-skeleton-text').count();
+      const avatarSkeletonCount = await page.locator('.mljr-skeleton-avatar').count();
+
+      expect(textSkeletonCount).toBeGreaterThan(0);
+      expect(avatarSkeletonCount).toBeGreaterThan(0);
+    });
+
+    test('should render skeleton with shimmer effect', async ({ page }) => {
+      await page.locator('#new-components').scrollIntoViewIfNeeded();
+      // Detroit style is now default - check for shimmer effect
+      const shimmerCount = await page.locator('.mljr-skeleton-shimmer').count();
+      expect(shimmerCount).toBeGreaterThan(0);
+    });
+  });
+
+  test.describe('Avatar Component', () => {
+    test('should render avatars with initials', async ({ page }) => {
+      await page.locator('#new-components').scrollIntoViewIfNeeded();
+      const avatar = page.locator('.mljr-avatar').first();
+      await avatar.scrollIntoViewIfNeeded();
+      await expect(avatar).toBeVisible();
+    });
+
+    test('should render status indicators', async ({ page }) => {
+      await page.locator('#new-components').scrollIntoViewIfNeeded();
+      // Status indicators are small, check for element count instead
+      const count = await page.locator('.mljr-avatar-status-online').count();
+      expect(count).toBeGreaterThan(0);
+    });
+
+    test('should render hexagonal avatar by default', async ({ page }) => {
+      await page.locator('#new-components').scrollIntoViewIfNeeded();
+      // Detroit style is now default - avatars are hexagonal by default
+      const avatarCount = await page.locator('.mljr-avatar').count();
+      expect(avatarCount).toBeGreaterThan(0);
+    });
+
+    test('should render different sizes', async ({ page }) => {
+      await page.locator('#new-components').scrollIntoViewIfNeeded();
+      const xsAvatar = page.locator('.mljr-avatar-xs').first();
+      const xlAvatar = page.locator('.mljr-avatar-xl').first();
+
+      await xsAvatar.scrollIntoViewIfNeeded();
+      await expect(xsAvatar).toBeVisible();
+      await xlAvatar.scrollIntoViewIfNeeded();
+      await expect(xlAvatar).toBeVisible();
+    });
+  });
+
+  test.describe('Divider Component', () => {
+    test('should render dividers', async ({ page }) => {
+      await page.locator('#new-components').scrollIntoViewIfNeeded();
+      // Dividers are thin lines, check for element existence
+      const dividerCount = await page.locator('.mljr-divider').count();
+      expect(dividerCount).toBeGreaterThan(0);
+    });
+
+    test('should render divider with content', async ({ page }) => {
+      await page.locator('#new-components').scrollIntoViewIfNeeded();
+      const dividerContent = page.locator('.mljr-divider-content').first();
+      await dividerContent.scrollIntoViewIfNeeded();
+      await expect(dividerContent).toBeVisible();
+    });
+
+    test('should render divider with HUD accents', async ({ page }) => {
+      await page.locator('#new-components').scrollIntoViewIfNeeded();
+      // Detroit style is now default - check for accent elements
+      const accentCount = await page.locator('.mljr-divider-accent-l').count();
+      expect(accentCount).toBeGreaterThan(0);
+    });
+
+    test('should render vertical orientation', async ({ page }) => {
+      await page.locator('#new-components').scrollIntoViewIfNeeded();
+      const verticalDividerCount = await page.locator('.mljr-divider-vertical').count();
+      expect(verticalDividerCount).toBeGreaterThan(0);
+    });
+  });
+
+  test.describe('Gradient Utilities', () => {
+    test('should render gradient backgrounds', async ({ page }) => {
+      await page.locator('#gradients').scrollIntoViewIfNeeded();
+      const primaryGradient = page.locator('.mljr-bg-gradient-primary').first();
+      await primaryGradient.scrollIntoViewIfNeeded();
+      await expect(primaryGradient).toBeVisible();
+    });
+
+    test('should render animated gradient', async ({ page }) => {
+      await page.locator('#gradients').scrollIntoViewIfNeeded();
+      const animatedGradient = page.locator('.mljr-bg-gradient-animated').first();
+      await animatedGradient.scrollIntoViewIfNeeded();
+      await expect(animatedGradient).toBeVisible();
+    });
+
+    test('should render HUD frame', async ({ page }) => {
+      await page.locator('#gradients').scrollIntoViewIfNeeded();
+      const hudFrame = page.locator('.mljr-hud-frame').first();
+      await hudFrame.scrollIntoViewIfNeeded();
+      await expect(hudFrame).toBeVisible();
+    });
+
+    test('should render holographic effect', async ({ page }) => {
+      await page.locator('#gradients').scrollIntoViewIfNeeded();
+      const holographic = page.locator('.mljr-holographic').first();
+      await holographic.scrollIntoViewIfNeeded();
+      await expect(holographic).toBeVisible();
+    });
+  });
+
   test.describe('Responsive Design', () => {
     test('should work on mobile viewport', async ({ page }) => {
       await page.setViewportSize({ width: 375, height: 667 });

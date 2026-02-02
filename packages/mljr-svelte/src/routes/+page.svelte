@@ -12,8 +12,16 @@
     Tabs,
     Accordion,
     Carousel,
+    Tooltip,
+    Progress,
+    Skeleton,
+    Avatar,
+    Divider,
     themeStore
   } from '$lib';
+
+  // Progress state
+  let progressValue = $state(65);
 
   // Modal state
   let modalOpen = $state(false);
@@ -395,16 +403,14 @@
         <h4 class="mljr-h5 mljr-mb-3">Content Carousel with Autoplay</h4>
         <div style="height: 300px;">
           <Carousel autoplay={true} interval={3000}>
-            {#each carouselSlides as slide, index}
-              <div 
-                class="mljr-carousel-item mljr-flex mljr-items-center mljr-justify-center mljr-flex-col mljr-gap-2" 
+            {#each carouselSlides as slide}
+              <li
+                class="mljr-carousel-item mljr-flex mljr-items-center mljr-justify-center mljr-flex-col mljr-gap-2"
                 style="height: 300px; background: linear-gradient(135deg, var(--mljr-primary-500) 0%, var(--mljr-secondary-500) 100%); padding: 2rem;"
-                role="listitem"
-                id={`slide-${index}`}
               >
                 <h3 class="mljr-h3" style="color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">{slide.title}</h3>
                 <p class="mljr-text-xl" style="color: rgba(255,255,255,0.9); text-align: center; max-width: 600px;">{slide.description}</p>
-              </div>
+              </li>
             {/each}
           </Carousel>
         </div>
@@ -415,21 +421,21 @@
         <h4 class="mljr-h5 mljr-mb-3">Image Carousel (Manual)</h4>
         <div style="height: 200px;">
           <Carousel loop={true} showIndicators={true} showControls={true} autoplay={false}>
-            <div class="mljr-carousel-item mljr-flex mljr-items-center mljr-justify-center" style="height: 200px; background-color: var(--mljr-bg-secondary);" role="listitem" id="slide-0">
+            <li class="mljr-carousel-item mljr-flex mljr-items-center mljr-justify-center" style="height: 200px; background-color: var(--mljr-bg-secondary);">
               <img src="/Logo.png" alt="MLJR Logo" style="max-height: 150px; object-fit: contain;" />
-            </div>
-            <div class="mljr-carousel-item mljr-flex mljr-items-center mljr-justify-center" style="height: 200px; background-color: var(--mljr-bg-tertiary);" role="listitem" id="slide-1">
+            </li>
+            <li class="mljr-carousel-item mljr-flex mljr-items-center mljr-justify-center" style="height: 200px; background-color: var(--mljr-bg-tertiary);">
               <img src="/Logo-h.png" alt="MLJR Horizontal Logo" style="max-height: 150px; object-fit: contain;" />
-            </div>
-            <div class="mljr-carousel-item mljr-flex mljr-items-center mljr-justify-center" style="height: 200px; background-color: var(--mljr-bg-secondary);" role="listitem" id="slide-2">
+            </li>
+            <li class="mljr-carousel-item mljr-flex mljr-items-center mljr-justify-center" style="height: 200px; background-color: var(--mljr-bg-secondary);">
               <img src="/Logo-v.png" alt="MLJR Vertical Logo" style="max-height: 150px; object-fit: contain;" />
-            </div>
+            </li>
           </Carousel>
         </div>
       </div>
 
       <!-- Card Carousel with Peek -->
-      <div>
+      <div class="mljr-mb-6">
         <h4 class="mljr-h5 mljr-mb-3">Peek Variant (Shows Next Slide)</h4>
         <div style="height: 250px;">
           <Carousel variant="peek" autoplay={true} interval={4000} indicatorStyle="diamond">
@@ -437,21 +443,313 @@
               { title: 'Card 1', desc: 'First card with some content', color: 'var(--mljr-primary-500)' },
               { title: 'Card 2', desc: 'Second card with more info', color: 'var(--mljr-secondary-500)' },
               { title: 'Card 3', desc: 'Third card to showcase', color: 'var(--mljr-accent-500)' }
-            ] as card, index}
-              <div 
-                class="mljr-carousel-item mljr-p-6 mljr-bg-card mljr-rounded-lg" 
+            ] as card}
+              <li
+                class="mljr-carousel-item mljr-p-6 mljr-bg-card mljr-rounded-lg"
                 style="height: 250px; border: 2px solid {card.color};"
-                role="listitem"
-                id={`slide-${index}`}
               >
                 <h4 class="mljr-h4 mljr-mb-3" style="color: {card.color};">{card.title}</h4>
                 <p class="mljr-text-secondary">{card.desc}</p>
                 <div class="mljr-mt-4">
                   <Badge variant="primary">Featured</Badge>
                 </div>
-              </div>
+              </li>
             {/each}
           </Carousel>
+        </div>
+      </div>
+
+      <!-- Detroit Carousel with LED indicators -->
+      <div>
+        <h4 class="mljr-h5 mljr-mb-3">Detroit Variant with LED Indicators</h4>
+        <div style="height: 200px;">
+          <Carousel variant="detroit" indicatorStyle="led" loop={true}>
+            {#each [
+              { title: 'HUD Interface', desc: 'Futuristic Detroit-style design' },
+              { title: 'LED Indicators', desc: 'Glowing status indicators' },
+              { title: 'Angular Design', desc: 'Sharp cuts and modern aesthetics' }
+            ] as slide}
+              <li
+                class="mljr-carousel-item mljr-flex mljr-items-center mljr-justify-center mljr-flex-col mljr-gap-2"
+                style="height: 200px; background: var(--mljr-bg-tertiary);"
+              >
+                <h3 class="mljr-h4 mljr-text-hud">{slide.title}</h3>
+                <p class="mljr-text-secondary">{slide.desc}</p>
+              </li>
+            {/each}
+          </Carousel>
+        </div>
+      </div>
+    </Card>
+  </section>
+
+  <!-- New Components Section -->
+  <section id="new-components" class="mljr-mb-8">
+    <h2 class="mljr-h2 mljr-mb-4">New Components</h2>
+    <p class="mljr-text-secondary mljr-mb-6">All components feature Detroit: Become Human inspired styling by default with cut corners, HUD borders, and corner accents.</p>
+
+    <div class="mljr-grid mljr-grid-cols-1 mljr-lg:grid-cols-2 mljr-gap-6 mljr-mb-6">
+      <!-- Tooltip -->
+      <Card title="Tooltip" description="HUD-style hover hints with cut corners and glow">
+        <div class="mljr-mb-6">
+          <h4 class="mljr-h5 mljr-mb-3">Positions</h4>
+          <div class="mljr-flex mljr-flex-wrap mljr-gap-4 mljr-items-center">
+            <Tooltip content="Tooltip on top" position="top">
+              <Button variant="outline-primary">Top</Button>
+            </Tooltip>
+            <Tooltip content="Tooltip on bottom" position="bottom">
+              <Button variant="outline-primary">Bottom</Button>
+            </Tooltip>
+            <Tooltip content="Tooltip on left" position="left">
+              <Button variant="outline-primary">Left</Button>
+            </Tooltip>
+            <Tooltip content="Tooltip on right" position="right">
+              <Button variant="outline-primary">Right</Button>
+            </Tooltip>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="mljr-h5 mljr-mb-3">With Delay</h4>
+          <Tooltip content="Appears after 500ms" position="bottom" delay={500}>
+            <Button variant="ghost">Hover and wait...</Button>
+          </Tooltip>
+        </div>
+      </Card>
+
+      <!-- Progress -->
+      <Card title="Progress" description="Detroit-style progress bars with cut corners and glow">
+        <div class="mljr-mb-6">
+          <h4 class="mljr-h5 mljr-mb-3">Color Variants</h4>
+          <div class="mljr-flex mljr-flex-col mljr-gap-4">
+            <Progress value={progressValue} />
+            <Progress value={45} variant="secondary" />
+            <Progress value={80} variant="accent" />
+            <Progress value={60} variant="success" />
+            <Progress value={30} variant="warning" />
+          </div>
+        </div>
+
+        <div class="mljr-mb-6">
+          <h4 class="mljr-h5 mljr-mb-3">Sizes</h4>
+          <div class="mljr-flex mljr-flex-col mljr-gap-4">
+            <Progress value={50} size="sm" />
+            <Progress value={50} size="md" />
+            <Progress value={50} size="lg" />
+            <Progress value={50} size="xl" />
+          </div>
+        </div>
+
+        <div class="mljr-mb-6">
+          <h4 class="mljr-h5 mljr-mb-3">Striped & Animated</h4>
+          <div class="mljr-flex mljr-flex-col mljr-gap-4">
+            <Progress value={60} size="lg" striped />
+            <Progress value={70} size="lg" striped animated />
+          </div>
+        </div>
+
+        <div class="mljr-mb-6">
+          <h4 class="mljr-h5 mljr-mb-3">With Label</h4>
+          <Progress value={progressValue} showLabel size="lg" />
+        </div>
+
+        <div>
+          <h4 class="mljr-h5 mljr-mb-3">Indeterminate</h4>
+          <Progress indeterminate size="lg" />
+        </div>
+      </Card>
+    </div>
+
+    <div class="mljr-grid mljr-grid-cols-1 mljr-lg:grid-cols-2 mljr-gap-6 mljr-mb-6">
+      <!-- Skeleton -->
+      <Card title="Skeleton" description="Detroit-style loading placeholders with ice blue shimmer">
+        <div class="mljr-mb-6">
+          <h4 class="mljr-h5 mljr-mb-3">Text Lines</h4>
+          <div class="mljr-flex mljr-flex-col mljr-gap-3">
+            <Skeleton variant="text" />
+            <Skeleton variant="text" width="75%" />
+            <Skeleton variant="text" width="50%" />
+          </div>
+        </div>
+
+        <div class="mljr-mb-6">
+          <h4 class="mljr-h5 mljr-mb-3">Avatar (Hexagonal)</h4>
+          <div class="mljr-flex mljr-gap-4 mljr-items-center">
+            <Skeleton variant="avatar" size="sm" />
+            <Skeleton variant="avatar" />
+            <Skeleton variant="avatar" size="lg" />
+            <Skeleton variant="avatar" size="xl" />
+          </div>
+        </div>
+
+        <div class="mljr-mb-6">
+          <h4 class="mljr-h5 mljr-mb-3">Card & Button</h4>
+          <div class="mljr-flex mljr-gap-4 mljr-items-start">
+            <Skeleton variant="button" />
+            <Skeleton variant="card" width="150px" height="80px" />
+          </div>
+        </div>
+
+        <div>
+          <h4 class="mljr-h5 mljr-mb-3">Pulse Animation</h4>
+          <div class="mljr-flex mljr-gap-4 mljr-items-center">
+            <Skeleton variant="avatar" size="sm" pulse />
+            <Skeleton variant="avatar" pulse />
+            <Skeleton variant="avatar" size="lg" pulse />
+          </div>
+        </div>
+      </Card>
+
+      <!-- Avatar -->
+      <Card title="Avatar" description="Hexagonal Detroit-style avatars with LED status indicators">
+        <div class="mljr-mb-6">
+          <h4 class="mljr-h5 mljr-mb-3">Sizes (Hexagonal Default)</h4>
+          <div class="mljr-flex mljr-gap-4 mljr-items-center">
+            <Avatar size="xs" initials="XS" />
+            <Avatar size="sm" initials="SM" />
+            <Avatar size="md" initials="MD" />
+            <Avatar size="lg" initials="LG" />
+            <Avatar size="xl" initials="XL" />
+            <Avatar size="2xl" initials="2X" />
+          </div>
+        </div>
+
+        <div class="mljr-mb-6">
+          <h4 class="mljr-h5 mljr-mb-3">LED Status Indicators</h4>
+          <div class="mljr-flex mljr-gap-4 mljr-items-center">
+            <Avatar initials="ON" status="online" />
+            <Avatar initials="AW" status="away" variant="secondary" />
+            <Avatar initials="BS" status="busy" variant="accent" />
+            <Avatar initials="OF" status="offline" />
+          </div>
+        </div>
+
+        <div class="mljr-mb-6">
+          <h4 class="mljr-h5 mljr-mb-3">With Glow Ring</h4>
+          <div class="mljr-flex mljr-gap-4 mljr-items-center">
+            <Avatar initials="PR" ring />
+            <Avatar initials="SC" ring="secondary" variant="secondary" />
+            <Avatar initials="AC" ring="accent" variant="accent" />
+          </div>
+        </div>
+
+        <div>
+          <h4 class="mljr-h5 mljr-mb-3">Fallback</h4>
+          <div class="mljr-flex mljr-gap-4 mljr-items-center">
+            <Avatar src="/nonexistent.jpg" alt="John Doe" />
+            <Avatar alt="Jane Smith" />
+          </div>
+        </div>
+      </Card>
+    </div>
+
+    <!-- Divider -->
+    <Card title="Divider" description="Detroit-style separators with gradient glow and HUD accents">
+      <div class="mljr-mb-6">
+        <h4 class="mljr-h5 mljr-mb-3">Default (Gradient with Glow)</h4>
+        <Divider />
+      </div>
+
+      <div class="mljr-mb-6">
+        <h4 class="mljr-h5 mljr-mb-3">With HUD Content</h4>
+        <Divider>SECTION</Divider>
+        <div class="mljr-mt-4">
+          <Divider align="left">START</Divider>
+        </div>
+      </div>
+
+      <div class="mljr-mb-6">
+        <h4 class="mljr-h5 mljr-mb-3">Color Variants</h4>
+        <div class="mljr-flex mljr-flex-col mljr-gap-4">
+          <Divider>PRIMARY</Divider>
+          <Divider variant="secondary">SECONDARY</Divider>
+          <Divider variant="accent">ACCENT</Divider>
+        </div>
+      </div>
+
+      <div class="mljr-mb-6">
+        <h4 class="mljr-h5 mljr-mb-3">Styles</h4>
+        <div class="mljr-flex mljr-flex-col mljr-gap-4">
+          <Divider style="solid">SOLID</Divider>
+          <Divider style="dashed">DASHED</Divider>
+          <Divider thickness="thick">THICK</Divider>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="mljr-h5 mljr-mb-3">Vertical</h4>
+        <div class="mljr-flex mljr-items-center mljr-gap-4" style="height: 80px;">
+          <span>Item 1</span>
+          <Divider orientation="vertical" />
+          <span>Item 2</span>
+          <Divider orientation="vertical" variant="secondary" />
+          <span>Item 3</span>
+          <Divider orientation="vertical" variant="accent" />
+          <span>Item 4</span>
+        </div>
+      </div>
+    </Card>
+  </section>
+
+  <!-- Gradients Section -->
+  <section id="gradients" class="mljr-mb-8">
+    <Card title="Gradient Utilities" description="Background gradients and effects">
+      <div class="mljr-mb-6">
+        <h4 class="mljr-h5 mljr-mb-3">Background Gradients</h4>
+        <div class="mljr-grid mljr-grid-cols-2 mljr-md:grid-cols-4 mljr-gap-4">
+          <div class="mljr-bg-gradient-primary mljr-p-4 mljr-rounded-lg mljr-text-center" style="color: white;">
+            Primary
+          </div>
+          <div class="mljr-bg-gradient-secondary mljr-p-4 mljr-rounded-lg mljr-text-center" style="color: white;">
+            Secondary
+          </div>
+          <div class="mljr-bg-gradient-accent mljr-p-4 mljr-rounded-lg mljr-text-center" style="color: white;">
+            Accent
+          </div>
+          <div class="mljr-bg-gradient-brand mljr-p-4 mljr-rounded-lg mljr-text-center" style="color: white;">
+            Brand
+          </div>
+        </div>
+      </div>
+
+      <div class="mljr-mb-6">
+        <h4 class="mljr-h5 mljr-mb-3">Animated Gradient</h4>
+        <div class="mljr-bg-gradient-animated mljr-p-6 mljr-rounded-lg mljr-text-center" style="color: white;">
+          Animated gradient background that shifts colors
+        </div>
+      </div>
+
+      <div class="mljr-mb-6">
+        <h4 class="mljr-h5 mljr-mb-3">Detroit Mesh Gradient</h4>
+        <div class="mljr-bg-mesh-detroit mljr-p-6 mljr-rounded-lg mljr-border">
+          <p>Subtle mesh gradient with Detroit blue, purple, and orange tones</p>
+        </div>
+      </div>
+
+      <div class="mljr-mb-6">
+        <h4 class="mljr-h5 mljr-mb-3">Border Gradients</h4>
+        <div class="mljr-flex mljr-gap-4">
+          <div class="mljr-border-gradient-primary mljr-p-4">
+            Primary Border
+          </div>
+          <div class="mljr-border-gradient-brand mljr-p-4">
+            Brand Border
+          </div>
+        </div>
+      </div>
+
+      <div class="mljr-mb-6">
+        <h4 class="mljr-h5 mljr-mb-3">HUD Frame Effect</h4>
+        <div class="mljr-hud-frame mljr-p-6">
+          <p class="mljr-text-hud mljr-text-sm mljr-mb-2">SYSTEM STATUS</p>
+          <p>HUD-style frame with corner accents, perfect for futuristic interfaces</p>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="mljr-h5 mljr-mb-3">Holographic Shimmer</h4>
+        <div class="mljr-holographic mljr-bg-gradient-primary mljr-p-6 mljr-rounded-lg" style="color: white;">
+          Holographic shimmer effect that sweeps across the element
         </div>
       </div>
     </Card>
