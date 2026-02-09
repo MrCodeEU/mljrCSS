@@ -1,0 +1,184 @@
+/* ============================================
+   MLJR CSS Framework - Table Component
+   Claymorphism: Soft rounded table wrapper
+   ============================================ */
+
+.mljr-table-wrapper {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--mljr-radius-lg);
+  box-shadow: var(--mljr-clay-shadow-sm);
+  border: 1px solid var(--mljr-border);
+  background: var(--mljr-bg);
+}
+
+.mljr-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--mljr-text-sm);
+  font-family: var(--mljr-font-sans);
+}
+
+.mljr-table th,
+.mljr-table td,
+.mljr-table-th,
+.mljr-table-td {
+  padding: var(--mljr-space-3) var(--mljr-space-4);
+  text-align: left;
+  border-bottom: 1px solid var(--mljr-border);
+}
+
+.mljr-table th,
+.mljr-table-th,
+.mljr-table-header th {
+  font-weight: 600;
+  font-size: var(--mljr-text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--mljr-text-secondary);
+  background: var(--mljr-bg-secondary);
+}
+
+.mljr-table td,
+.mljr-table-td {
+  color: var(--mljr-text);
+}
+
+.mljr-table tbody tr,
+.mljr-table-body .mljr-table-row {
+  transition: background-color var(--mljr-transition-fast);
+}
+
+.mljr-table tbody tr:hover,
+.mljr-table-body .mljr-table-row:hover {
+  background: var(--mljr-bg-secondary);
+}
+
+.mljr-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Striped variant */
+.mljr-table-striped tbody tr:nth-child(even) {
+  background: var(--mljr-bg-secondary);
+}
+
+.mljr-table-striped tbody tr:nth-child(even):hover {
+  background: var(--mljr-bg-tertiary);
+}
+
+/* Compact variant */
+.mljr-table-compact th,
+.mljr-table-compact td {
+  padding: var(--mljr-space-2) var(--mljr-space-3);
+}
+
+/* Bordered variant */
+.mljr-table-bordered th,
+.mljr-table-bordered td {
+  border: 1px solid var(--mljr-border);
+}
+
+/* Selection styling */
+.mljr-table tbody tr.mljr-table-selected {
+  background: var(--mljr-primary-50);
+}
+
+.mljr-table tbody tr.mljr-table-selected td {
+  color: var(--mljr-primary-700);
+}
+
+.dark .mljr-table tbody tr.mljr-table-selected,
+[data-theme="dark"] .mljr-table tbody tr.mljr-table-selected {
+  background: rgba(249, 115, 22, 0.1);
+}
+
+.dark .mljr-table tbody tr.mljr-table-selected td,
+[data-theme="dark"] .mljr-table tbody tr.mljr-table-selected td {
+  color: var(--mljr-primary-400);
+}
+
+/* Sortable headers */
+.mljr-table th.mljr-table-sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: color var(--mljr-transition-fast);
+}
+
+.mljr-table th.mljr-table-sortable:hover {
+  color: var(--mljr-primary-600);
+}
+
+.mljr-table th.mljr-table-sortable::after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: var(--mljr-space-2);
+  vertical-align: middle;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid currentColor;
+  opacity: 0.3;
+}
+
+.mljr-table th.mljr-table-sort-asc::after {
+  border-top: none;
+  border-bottom: 4px solid currentColor;
+  opacity: 1;
+}
+
+.mljr-table th.mljr-table-sort-desc::after {
+  opacity: 1;
+}
+
+/* Empty state */
+.mljr-table-empty {
+  text-align: center;
+  padding: var(--mljr-space-8) var(--mljr-space-4);
+  color: var(--mljr-text-muted);
+}
+
+/* Responsive stacked table on small screens */
+@media (max-width: 640px) {
+  .mljr-table-responsive thead {
+    display: none;
+  }
+
+  .mljr-table-responsive tbody tr {
+    display: block;
+    margin-bottom: var(--mljr-space-4);
+    border: 1px solid var(--mljr-border);
+    border-radius: var(--mljr-radius-md);
+    overflow: hidden;
+  }
+
+  .mljr-table-responsive tbody td {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--mljr-border);
+  }
+
+  .mljr-table-responsive tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--mljr-text-secondary);
+  }
+
+  .mljr-table-responsive tbody td:last-child {
+    border-bottom: none;
+  }
+}
+
+/* Dark mode */
+.dark .mljr-table-wrapper,
+[data-theme="dark"] .mljr-table-wrapper {
+  background: var(--mljr-bg-secondary);
+  border-color: var(--mljr-border);
+}
+
+.dark .mljr-table th,
+[data-theme="dark"] .mljr-table th {
+  background: var(--mljr-bg-tertiary);
+}

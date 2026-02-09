@@ -5,7 +5,7 @@
     children: Snippet;
     content: string;
     position?: 'top' | 'bottom' | 'left' | 'right';
-    variant?: 'primary' | 'secondary' | 'accent';
+    variant?: 'primary' | 'secondary';
     size?: 'sm' | 'md' | 'lg';
     delay?: number;
     class?: string;
@@ -66,9 +66,6 @@
 >
   {@render children()}
   <div class="mljr-tooltip-content" role="tooltip" aria-hidden={!isVisible}>
-    <!-- HUD corner accents -->
-    <span class="mljr-tooltip-accent-tl"></span>
-    <span class="mljr-tooltip-accent-br"></span>
     {content}
   </div>
 </div>

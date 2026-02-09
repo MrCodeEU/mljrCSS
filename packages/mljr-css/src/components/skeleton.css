@@ -1,83 +1,34 @@
 /* ============================================
    MLJR CSS Framework - Skeleton Component
-   Detroit: Become Human inspired
-   Default style with cut corners, HUD border,
-   and corner accents
+   Claymorphism: Soft rounded loading placeholders
    ============================================ */
 
 .mljr-skeleton {
   position: relative;
   overflow: hidden;
-  /* Detroit default: cut corners */
-  clip-path: var(--mljr-clip-sm);
-  background: transparent;
+  border-radius: var(--mljr-radius-md);
+  background-color: var(--mljr-bg-tertiary);
+  box-shadow: var(--mljr-clay-inset-sm);
 }
 
-/* Border layer using pseudo-element to follow clip-path */
-.mljr-skeleton::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--mljr-primary-500);
-  clip-path: var(--mljr-clip-sm);
-  z-index: 0;
-  opacity: 0.3;
-}
-
-/* Inner background */
-.mljr-skeleton::after {
-  content: '';
-  position: absolute;
-  inset: 1px;
-  background: var(--mljr-bg-tertiary);
-  clip-path: var(--mljr-clip-sm);
-  z-index: 1;
-}
-
-/* Detroit-style ice blue shimmer */
+/* Soft warm shimmer */
 .mljr-skeleton-shimmer {
   position: absolute;
-  inset: 1px;
-  z-index: 2;
+  inset: 0;
+  z-index: 1;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(0, 128, 255, 0.2) 50%,
+    rgba(249, 115, 22, 0.08) 50%,
     transparent 100%
   );
   transform: translateX(-100%);
   animation: mljr-skeleton-shimmer 2s ease-in-out infinite;
-  clip-path: var(--mljr-clip-sm);
 }
 
 @keyframes mljr-skeleton-shimmer {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
-}
-
-/* HUD corner accents */
-.mljr-skeleton-accent-tl,
-.mljr-skeleton-accent-br {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  border: 1px solid var(--mljr-primary-400);
-  pointer-events: none;
-  z-index: 3;
-}
-
-.mljr-skeleton-accent-tl {
-  top: 0;
-  left: 0;
-  border-right: none;
-  border-bottom: none;
-}
-
-.mljr-skeleton-accent-br {
-  bottom: 0;
-  right: 0;
-  border-left: none;
-  border-top: none;
 }
 
 /* Size Variants */
@@ -102,14 +53,7 @@
 .mljr-skeleton-avatar {
   width: 3rem;
   height: 3rem;
-  /* Detroit hexagonal avatar shape */
-  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-}
-
-.mljr-skeleton-avatar::before,
-.mljr-skeleton-avatar::after,
-.mljr-skeleton-avatar .mljr-skeleton-shimmer {
-  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  border-radius: 30%;
 }
 
 .mljr-skeleton-avatar-sm {
@@ -127,57 +71,27 @@
   height: 5rem;
 }
 
-/* Circle variant (non-Detroit) */
+/* Circle variant */
 .mljr-skeleton-circle {
-  clip-path: circle(50%);
-}
-
-.mljr-skeleton-circle::before,
-.mljr-skeleton-circle::after,
-.mljr-skeleton-circle .mljr-skeleton-shimmer {
-  clip-path: circle(50%);
+  border-radius: var(--mljr-radius-full);
 }
 
 .mljr-skeleton-card {
   height: 12rem;
   width: 100%;
-  clip-path: var(--mljr-clip-card);
-}
-
-.mljr-skeleton-card::before,
-.mljr-skeleton-card::after,
-.mljr-skeleton-card .mljr-skeleton-shimmer {
-  clip-path: var(--mljr-clip-card);
-}
-
-.mljr-skeleton-card .mljr-skeleton-accent-tl,
-.mljr-skeleton-card .mljr-skeleton-accent-br {
-  width: 10px;
-  height: 10px;
+  border-radius: var(--mljr-radius-xl);
 }
 
 .mljr-skeleton-button {
   height: 2.5rem;
   width: 8rem;
-  clip-path: var(--mljr-clip-btn);
-}
-
-.mljr-skeleton-button::before,
-.mljr-skeleton-button::after,
-.mljr-skeleton-button .mljr-skeleton-shimmer {
-  clip-path: var(--mljr-clip-btn);
+  border-radius: var(--mljr-radius-lg);
 }
 
 .mljr-skeleton-image {
   width: 100%;
   height: 10rem;
-  clip-path: var(--mljr-clip-card);
-}
-
-.mljr-skeleton-image::before,
-.mljr-skeleton-image::after,
-.mljr-skeleton-image .mljr-skeleton-shimmer {
-  clip-path: var(--mljr-clip-card);
+  border-radius: var(--mljr-radius-lg);
 }
 
 /* Skeleton group for multiple lines */
@@ -210,11 +124,30 @@
   display: none;
 }
 
-/* Dark mode - enhanced glow */
-.dark .mljr-skeleton::before,
-[data-theme="dark"] .mljr-skeleton::before {
-  opacity: 0.4;
-  box-shadow: var(--mljr-glow-primary-sm);
+/* Color variants */
+.mljr-skeleton-secondary .mljr-skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(20, 184, 166, 0.1) 50%,
+    transparent 100%
+  );
+}
+
+.mljr-skeleton-accent .mljr-skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(168, 85, 247, 0.1) 50%,
+    transparent 100%
+  );
+}
+
+/* Dark mode */
+.dark .mljr-skeleton,
+[data-theme="dark"] .mljr-skeleton {
+  background-color: var(--mljr-bg-secondary);
+  box-shadow: var(--mljr-clay-inset-sm);
 }
 
 .dark .mljr-skeleton-shimmer,
@@ -222,44 +155,7 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(0, 128, 255, 0.3) 50%,
+    rgba(249, 115, 22, 0.12) 50%,
     transparent 100%
   );
-}
-
-/* Color variants */
-.mljr-skeleton-secondary::before {
-  background: var(--mljr-secondary-500);
-}
-
-.mljr-skeleton-secondary .mljr-skeleton-shimmer {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 140, 0, 0.2) 50%,
-    transparent 100%
-  );
-}
-
-.mljr-skeleton-secondary .mljr-skeleton-accent-tl,
-.mljr-skeleton-secondary .mljr-skeleton-accent-br {
-  border-color: var(--mljr-secondary-400);
-}
-
-.mljr-skeleton-accent::before {
-  background: var(--mljr-accent-500);
-}
-
-.mljr-skeleton-accent .mljr-skeleton-shimmer {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(153, 0, 255, 0.2) 50%,
-    transparent 100%
-  );
-}
-
-.mljr-skeleton-accent .mljr-skeleton-accent-tl,
-.mljr-skeleton-accent .mljr-skeleton-accent-br {
-  border-color: var(--mljr-accent-400);
 }

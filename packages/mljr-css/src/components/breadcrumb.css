@@ -1,0 +1,100 @@
+/* ============================================
+   MLJR CSS Framework - Breadcrumb Component
+   Claymorphism: Soft rounded navigation
+   ============================================ */
+
+.mljr-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--mljr-space-1);
+  font-size: var(--mljr-text-sm);
+  font-family: var(--mljr-font-sans);
+}
+
+.mljr-breadcrumb-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mljr-space-1);
+  color: var(--mljr-text-muted);
+}
+
+.mljr-breadcrumb-link {
+  color: var(--mljr-text-secondary);
+  text-decoration: none;
+  padding: var(--mljr-space-1) var(--mljr-space-3);
+  border-radius: var(--mljr-radius-sm);
+  transition: all var(--mljr-transition-fast);
+}
+
+.mljr-breadcrumb-link:hover {
+  color: var(--mljr-primary-600);
+  background: var(--mljr-bg-secondary);
+  box-shadow: var(--mljr-clay-shadow-sm);
+  transform: translateY(-1px);
+}
+
+.mljr-breadcrumb-link:focus-visible {
+  outline: 3px solid var(--mljr-primary-300);
+  outline-offset: 2px;
+}
+
+/* Current/Active item */
+.mljr-breadcrumb-item-active .mljr-breadcrumb-link,
+.mljr-breadcrumb-link[aria-current="page"] {
+  color: var(--mljr-primary-600);
+  font-weight: 500;
+  background: var(--mljr-bg-secondary);
+  box-shadow: var(--mljr-clay-shadow-sm);
+}
+
+/* Separator */
+.mljr-breadcrumb-separator {
+  color: var(--mljr-text-muted);
+  margin: 0 var(--mljr-space-1);
+  user-select: none;
+  font-size: 0.875em;
+}
+
+/* Contained variant - soft panel background */
+.mljr-breadcrumb-contained {
+  background: var(--mljr-bg);
+  padding: var(--mljr-space-2) var(--mljr-space-4);
+  border-radius: var(--mljr-radius-lg);
+  box-shadow: var(--mljr-clay-shadow-sm);
+  border: 1px solid var(--mljr-border);
+}
+
+.mljr-breadcrumb-contained .mljr-breadcrumb-link:hover {
+  background: var(--mljr-bg-tertiary);
+}
+
+/* Size variants */
+.mljr-breadcrumb-sm {
+  font-size: var(--mljr-text-xs);
+  gap: var(--mljr-space-1);
+}
+
+.mljr-breadcrumb-sm .mljr-breadcrumb-link {
+  padding: var(--mljr-space-1) var(--mljr-space-2);
+}
+
+.mljr-breadcrumb-lg {
+  font-size: var(--mljr-text-base);
+}
+
+.mljr-breadcrumb-lg .mljr-breadcrumb-link {
+  padding: var(--mljr-space-2) var(--mljr-space-4);
+}
+
+/* Dark mode */
+.dark .mljr-breadcrumb-contained,
+[data-theme="dark"] .mljr-breadcrumb-contained {
+  background: var(--mljr-bg-secondary);
+  border-color: var(--mljr-border);
+}
+
+.dark .mljr-breadcrumb-link:hover,
+[data-theme="dark"] .mljr-breadcrumb-link:hover {
+  background: var(--mljr-bg-tertiary);
+}

@@ -1,15 +1,17 @@
 import { defineConfig } from 'vitest/config';
-import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { sveltekit } from '@sveltejs/kit/vite';
 
 export default defineConfig({
   plugins: [sveltekit()],
   test: {
-    globals: true,
-    environment: 'happy-dom',
-    setupFiles: ['./src/tests/setup.ts'],
-    include: ['src/**/*.{test,spec}.{js,ts}'],
-    exclude: ['**/node_modules/**', '**/dist/**', '**/e2e/**', '**/*.spec.ts'],
+    browser: {
+      enabled: true,
+      name: 'chromium',
+      provider: 'playwright',
+    },
+    include: ['src/**/*.svelte.{test,spec}.{js,ts}'],
+    exclude: ['**/node_modules/**', '**/dist/**', '**/e2e/**'],
+    setupFiles: ['./src/tests/setup-browser.ts'],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],

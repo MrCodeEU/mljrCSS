@@ -1,7 +1,6 @@
 /* ============================================
    MLJR CSS Framework - Divider Component
-   Detroit: Become Human inspired
-   Default style with gradient glow and HUD aesthetic
+   Claymorphism: Soft 3D embossed divider lines
    ============================================ */
 
 .mljr-divider {
@@ -12,38 +11,23 @@
   position: relative;
 }
 
-/* Detroit default: gradient line with glow */
+/* Claymorphism default: soft embossed line */
 .mljr-divider::before,
 .mljr-divider::after {
   content: '';
   flex: 1;
-  height: 2px;
-  background: linear-gradient(90deg, transparent 0%, var(--mljr-primary-500) 50%, transparent 100%);
-  box-shadow: 0 0 8px rgba(0, 128, 255, 0.4);
-}
-
-/* HUD corner accents for divider */
-.mljr-divider-accent-l,
-.mljr-divider-accent-r {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border: 1px solid var(--mljr-primary-400);
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-}
-
-.mljr-divider-accent-l {
-  left: 0;
-  border-right: none;
-  border-bottom: none;
-}
-
-.mljr-divider-accent-r {
-  right: 0;
-  border-left: none;
-  border-top: none;
+  height: 3px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.8) 0%,
+    var(--mljr-border) 50%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
+  border-radius: var(--mljr-radius-full);
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.9),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.05),
+    0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 /* No content - single line */
@@ -51,19 +35,19 @@
   display: none;
 }
 
-.mljr-divider:empty::before {
-  background: linear-gradient(90deg, var(--mljr-primary-500) 0%, transparent 100%);
-}
-
 /* With content */
 .mljr-divider-content {
   padding: 0 var(--mljr-space-4);
-  font-family: var(--mljr-font-display);
   font-size: var(--mljr-text-xs);
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--mljr-primary-400);
+  letter-spacing: 0.1em;
+  color: var(--mljr-text-muted);
   white-space: nowrap;
+  background-color: var(--mljr-bg);
+  border-radius: var(--mljr-radius-full);
+  box-shadow: var(--mljr-clay-shadow-sm);
+  padding: var(--mljr-space-1) var(--mljr-space-3);
 }
 
 /* Vertical orientation */
@@ -77,94 +61,121 @@
 
 .mljr-divider-vertical::before,
 .mljr-divider-vertical::after {
-  width: 2px;
+  width: 3px;
   height: 100%;
   flex: 1;
-  background: linear-gradient(180deg, transparent 0%, var(--mljr-primary-500) 50%, transparent 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.8) 0%,
+    var(--mljr-border) 50%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
+  box-shadow:
+    inset 1px 0 2px rgba(255, 255, 255, 0.9),
+    inset -1px 0 1px rgba(0, 0, 0, 0.05),
+    1px 0 2px rgba(0, 0, 0, 0.05);
 }
 
 .mljr-divider-vertical .mljr-divider-content {
-  padding: var(--mljr-space-2) 0;
+  padding: var(--mljr-space-2) var(--mljr-space-1);
   writing-mode: vertical-rl;
   text-orientation: mixed;
 }
 
-.mljr-divider-vertical .mljr-divider-accent-l,
-.mljr-divider-vertical .mljr-divider-accent-r {
-  left: 50%;
-  transform: translateX(-50%);
-  top: auto;
+/* Color Variants - Soft gradient lines */
+.mljr-divider-primary::before,
+.mljr-divider-primary::after {
+  background: linear-gradient(
+    180deg,
+    var(--mljr-primary-200) 0%,
+    var(--mljr-primary-400) 50%,
+    var(--mljr-primary-300) 100%
+  );
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.5),
+    0 2px 4px rgba(249, 115, 22, 0.2);
 }
 
-.mljr-divider-vertical .mljr-divider-accent-l {
-  top: 0;
-  border: 1px solid var(--mljr-primary-400);
-  border-bottom: none;
-  border-right: none;
+.mljr-divider-primary .mljr-divider-content {
+  color: var(--mljr-primary-600);
+  background: linear-gradient(135deg, var(--mljr-primary-50) 0%, var(--mljr-primary-100) 100%);
+  box-shadow:
+    4px 4px 8px rgba(249, 115, 22, 0.15),
+    -3px -3px 6px rgba(255, 255, 255, 0.9);
 }
 
-.mljr-divider-vertical .mljr-divider-accent-r {
-  bottom: 0;
-  border: 1px solid var(--mljr-primary-400);
-  border-top: none;
-  border-left: none;
-}
-
-/* Color Variants */
 .mljr-divider-secondary::before,
 .mljr-divider-secondary::after {
-  background: linear-gradient(90deg, transparent 0%, var(--mljr-secondary-500) 50%, transparent 100%);
-  box-shadow: 0 0 8px rgba(255, 140, 0, 0.4);
+  background: linear-gradient(
+    180deg,
+    var(--mljr-secondary-200) 0%,
+    var(--mljr-secondary-400) 50%,
+    var(--mljr-secondary-300) 100%
+  );
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.5),
+    0 2px 4px rgba(168, 85, 247, 0.2);
 }
 
 .mljr-divider-secondary .mljr-divider-content {
-  color: var(--mljr-secondary-400);
-}
-
-.mljr-divider-secondary .mljr-divider-accent-l,
-.mljr-divider-secondary .mljr-divider-accent-r {
-  border-color: var(--mljr-secondary-400);
+  color: var(--mljr-secondary-600);
+  background: linear-gradient(135deg, var(--mljr-secondary-50) 0%, var(--mljr-secondary-100) 100%);
+  box-shadow:
+    4px 4px 8px rgba(168, 85, 247, 0.15),
+    -3px -3px 6px rgba(255, 255, 255, 0.9);
 }
 
 .mljr-divider-accent::before,
 .mljr-divider-accent::after {
-  background: linear-gradient(90deg, transparent 0%, var(--mljr-accent-500) 50%, transparent 100%);
-  box-shadow: 0 0 8px rgba(153, 0, 255, 0.4);
+  background: linear-gradient(
+    180deg,
+    var(--mljr-accent-200) 0%,
+    var(--mljr-accent-400) 50%,
+    var(--mljr-accent-300) 100%
+  );
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.5),
+    0 2px 4px rgba(20, 184, 166, 0.2);
 }
 
 .mljr-divider-accent .mljr-divider-content {
-  color: var(--mljr-accent-400);
+  color: var(--mljr-accent-600);
+  background: linear-gradient(135deg, var(--mljr-accent-50) 0%, var(--mljr-accent-100) 100%);
+  box-shadow:
+    4px 4px 8px rgba(20, 184, 166, 0.15),
+    -3px -3px 6px rgba(255, 255, 255, 0.9);
 }
 
-.mljr-divider-accent .mljr-divider-accent-l,
-.mljr-divider-accent .mljr-divider-accent-r {
-  border-color: var(--mljr-accent-400);
+/* Gradient style - smooth color transition */
+.mljr-divider-gradient::before,
+.mljr-divider-gradient::after {
+  height: 4px;
+  background: var(--mljr-gradient-primary);
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    0 2px 6px rgba(249, 115, 22, 0.25);
 }
 
-/* Solid style (non-gradient) */
-.mljr-divider-solid::before,
-.mljr-divider-solid::after {
-  background: var(--mljr-primary-500);
-  box-shadow: none;
-}
-
-/* Subtle style */
+/* Subtle style - minimal emboss */
 .mljr-divider-subtle::before,
 .mljr-divider-subtle::after {
   height: 1px;
   background: var(--mljr-border);
-  box-shadow: none;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .mljr-divider-subtle .mljr-divider-content {
   color: var(--mljr-text-muted);
+  background: transparent;
+  box-shadow: none;
 }
 
 /* Dashed style */
 .mljr-divider-dashed::before,
 .mljr-divider-dashed::after {
   background: transparent;
-  border-top: 2px dashed var(--mljr-primary-500);
+  border-top: 2px dashed var(--mljr-border);
   height: 0;
   box-shadow: none;
 }
@@ -172,7 +183,7 @@
 .mljr-divider-dashed.mljr-divider-vertical::before,
 .mljr-divider-dashed.mljr-divider-vertical::after {
   border-top: none;
-  border-left: 2px dashed var(--mljr-primary-500);
+  border-left: 2px dashed var(--mljr-border);
   width: 0;
 }
 
@@ -206,33 +217,33 @@
 
 .mljr-divider-thick::before,
 .mljr-divider-thick::after {
-  height: 3px;
+  height: 4px;
 }
 
 .mljr-divider-thick.mljr-divider-vertical::before,
 .mljr-divider-thick.mljr-divider-vertical::after {
-  width: 3px;
+  width: 4px;
   height: auto;
 }
 
-/* Dark mode - enhanced glow */
+/* Dark mode */
 .dark .mljr-divider::before,
 .dark .mljr-divider::after,
 [data-theme="dark"] .mljr-divider::before,
 [data-theme="dark"] .mljr-divider::after {
-  box-shadow: 0 0 12px rgba(0, 128, 255, 0.5);
+  background: linear-gradient(
+    180deg,
+    rgba(68, 64, 60, 0.8) 0%,
+    var(--mljr-border) 50%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  box-shadow:
+    inset 0 1px 2px rgba(68, 64, 60, 0.5),
+    0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.dark .mljr-divider-secondary::before,
-.dark .mljr-divider-secondary::after,
-[data-theme="dark"] .mljr-divider-secondary::before,
-[data-theme="dark"] .mljr-divider-secondary::after {
-  box-shadow: 0 0 12px rgba(255, 140, 0, 0.5);
-}
-
-.dark .mljr-divider-accent::before,
-.dark .mljr-divider-accent::after,
-[data-theme="dark"] .mljr-divider-accent::before,
-[data-theme="dark"] .mljr-divider-accent::after {
-  box-shadow: 0 0 12px rgba(153, 0, 255, 0.5);
+.dark .mljr-divider-content,
+[data-theme="dark"] .mljr-divider-content {
+  background-color: var(--mljr-bg-secondary);
+  box-shadow: var(--mljr-clay-shadow-sm);
 }

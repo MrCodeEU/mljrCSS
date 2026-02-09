@@ -1,22 +1,28 @@
 /* ============================================
    MLJR CSS Framework - Tabs Component
+   Claymorphism: Soft rounded tabs with clay shadows
    ============================================ */
 
 .mljr-tabs {
   width: 100%;
 }
 
-/* Tab List */
+/* Tab List - Default now has soft clay styling */
 .mljr-tabs-list {
   display: flex;
-  border-bottom: 1px solid var(--mljr-border);
+  background-color: var(--mljr-bg-secondary);
+  border-radius: var(--mljr-radius-xl);
+  padding: var(--mljr-space-1);
+  gap: var(--mljr-space-1);
+  box-shadow: var(--mljr-clay-inset-sm);
+  border: 1px solid var(--mljr-frosted-border);
 }
 
 .mljr-tabs-list-center { justify-content: center; }
 .mljr-tabs-list-end { justify-content: flex-end; }
 .mljr-tabs-list-stretch .mljr-tab { flex: 1; }
 
-/* Tab Trigger */
+/* Tab Trigger - Soft rounded with clay effect */
 .mljr-tab {
   display: inline-flex;
   align-items: center;
@@ -26,82 +32,46 @@
   font-size: var(--mljr-text-sm);
   font-weight: 500;
   color: var(--mljr-text-secondary);
-  background: none;
+  background: transparent;
   border: none;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
   cursor: pointer;
-  transition: color var(--mljr-transition), border-color var(--mljr-transition), box-shadow var(--mljr-transition), background-color var(--mljr-transition);
+  transition: all var(--mljr-transition-fast);
   white-space: nowrap;
   position: relative;
+  border-radius: var(--mljr-radius-lg);
 }
 
 .mljr-tab:hover {
   color: var(--mljr-text);
+  background-color: var(--mljr-bg-tertiary);
 }
 
 .mljr-tab:focus-visible {
-  outline: 2px solid var(--mljr-ring);
+  outline: 3px solid var(--mljr-primary-300);
   outline-offset: -2px;
+  border-radius: var(--mljr-radius-lg);
 }
 
 .mljr-tab[aria-selected="true"],
 .mljr-tab.mljr-tab-active {
-  color: var(--mljr-primary-500);
-  border-bottom-color: var(--mljr-primary-500);
-  animation: mljr-tab-activate 300ms ease-out;
-  background: linear-gradient(180deg, transparent 0%, rgb(0 128 255 / 0.05) 100%);
+  color: var(--mljr-primary-600);
+  background-color: var(--mljr-bg);
+  box-shadow: var(--mljr-clay-shadow-sm);
 }
 
-/* Active tab glow animation - more prominent */
-@keyframes mljr-tab-activate {
-  0% {
-    border-bottom-color: transparent;
-    background: transparent;
-    transform: translateY(0);
-  }
-  30% {
-    border-bottom-color: var(--mljr-primary-400);
-    background: linear-gradient(180deg, transparent 0%, rgb(0 128 255 / 0.15) 100%);
-    box-shadow: inset 0 -6px 20px rgb(0 128 255 / 0.4);
-    transform: translateY(-1px);
-  }
-  100% {
-    border-bottom-color: var(--mljr-primary-500);
-    background: linear-gradient(180deg, transparent 0%, rgb(0 128 255 / 0.05) 100%);
-    box-shadow: none;
-    transform: translateY(0);
-  }
+.dark .mljr-tabs-list,
+[data-theme="dark"] .mljr-tabs-list {
+  background-color: var(--mljr-bg-secondary);
+  border-color: var(--mljr-border);
 }
 
 .dark .mljr-tab[aria-selected="true"],
 .dark .mljr-tab.mljr-tab-active,
 [data-theme="dark"] .mljr-tab[aria-selected="true"],
 [data-theme="dark"] .mljr-tab.mljr-tab-active {
-  box-shadow: inset 0 -3px 12px rgb(0 128 255 / 0.35);
-  background: linear-gradient(180deg, transparent 0%, rgb(0 128 255 / 0.1) 100%);
-  animation: mljr-tab-activate-dark 300ms ease-out;
-}
-
-@keyframes mljr-tab-activate-dark {
-  0% {
-    border-bottom-color: transparent;
-    box-shadow: none;
-    background: transparent;
-    transform: translateY(0);
-  }
-  30% {
-    border-bottom-color: var(--mljr-primary-400);
-    background: linear-gradient(180deg, transparent 0%, rgb(0 128 255 / 0.2) 100%);
-    box-shadow: inset 0 -6px 24px rgb(0 128 255 / 0.5), 0 0 12px rgb(0 128 255 / 0.4);
-    transform: translateY(-1px);
-  }
-  100% {
-    border-bottom-color: var(--mljr-primary-500);
-    background: linear-gradient(180deg, transparent 0%, rgb(0 128 255 / 0.1) 100%);
-    box-shadow: inset 0 -3px 12px rgb(0 128 255 / 0.35);
-    transform: translateY(0);
-  }
+  background-color: var(--mljr-bg-tertiary);
+  color: var(--mljr-primary-400);
+  box-shadow: var(--mljr-clay-shadow-sm);
 }
 
 .mljr-tab:disabled {
@@ -109,18 +79,24 @@
   cursor: not-allowed;
 }
 
-/* Secondary Color Tabs (Cyan) */
+/* Secondary Color Tabs (Purple) */
 .mljr-tabs-secondary .mljr-tab[aria-selected="true"],
 .mljr-tabs-secondary .mljr-tab.mljr-tab-active {
-  color: var(--mljr-secondary-500);
-  border-bottom-color: var(--mljr-secondary-500);
+  color: var(--mljr-secondary-600);
+  background: linear-gradient(135deg, var(--mljr-secondary-50) 0%, var(--mljr-secondary-100) 100%);
+  box-shadow:
+    6px 6px 12px rgba(168, 85, 247, 0.15),
+    -4px -4px 10px rgba(255, 255, 255, 0.9),
+    inset 0px 2px 4px rgba(255, 255, 255, 0.5);
 }
 
 .dark .mljr-tabs-secondary .mljr-tab[aria-selected="true"],
 .dark .mljr-tabs-secondary .mljr-tab.mljr-tab-active,
 [data-theme="dark"] .mljr-tabs-secondary .mljr-tab[aria-selected="true"],
 [data-theme="dark"] .mljr-tabs-secondary .mljr-tab.mljr-tab-active {
-  box-shadow: inset 0 -2px 8px rgb(255 140 0 / 0.25);
+  background: rgba(168, 85, 247, 0.15);
+  color: var(--mljr-secondary-400);
+  box-shadow: var(--mljr-clay-shadow-sm);
 }
 
 /* Tab Content */
@@ -147,73 +123,61 @@
 @keyframes mljr-tab-content-in {
   0% {
     opacity: 0;
-    transform: translateX(-8px);
+    transform: translateY(4px);
   }
   100% {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
-/* Fade in keyframe for other uses */
-@keyframes mljr-fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
+/* Note: mljr-fade-in keyframe is defined in modal.css */
 
-/* Pill Tabs Variant */
+/* Pill Tabs Variant - Even more rounded */
 .mljr-tabs-pills .mljr-tabs-list {
-  border-bottom: none;
-  background-color: var(--mljr-bg-secondary);
-  padding: var(--mljr-space-1);
-  gap: var(--mljr-space-1);
+  border-radius: var(--mljr-radius-full);
 }
 
 .mljr-tabs-pills .mljr-tab {
-  border-bottom: none;
-  margin-bottom: 0;
-  padding: var(--mljr-space-2) var(--mljr-space-3);
+  border-radius: var(--mljr-radius-full);
 }
 
 .mljr-tabs-pills .mljr-tab[aria-selected="true"],
 .mljr-tabs-pills .mljr-tab.mljr-tab-active {
-  background-color: var(--mljr-bg);
-  color: var(--mljr-text);
-  box-shadow: var(--mljr-shadow-sm);
+  border-radius: var(--mljr-radius-full);
 }
 
-/* Bordered Tabs Variant */
+/* Bordered Tabs Variant - Card-style tabs */
 .mljr-tabs-bordered .mljr-tabs-list {
-  border: 1px solid var(--mljr-border);
-  border-bottom: none;
-  overflow: hidden;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  border-bottom: 1px solid var(--mljr-border);
+  border-radius: 0;
+  padding: 0;
 }
 
 .mljr-tabs-bordered .mljr-tab {
+  border-radius: var(--mljr-radius-lg) var(--mljr-radius-lg) 0 0;
+  border: 1px solid transparent;
   border-bottom: none;
-  margin-bottom: 0;
-  border-right: 1px solid var(--mljr-border);
-}
-
-.mljr-tabs-bordered .mljr-tab:last-child {
-  border-right: none;
+  margin-bottom: -1px;
 }
 
 .mljr-tabs-bordered .mljr-tab[aria-selected="true"],
 .mljr-tabs-bordered .mljr-tab.mljr-tab-active {
   background-color: var(--mljr-bg);
-  border-bottom: 2px solid var(--mljr-bg);
-  margin-bottom: -1px;
+  border-color: var(--mljr-border);
+  box-shadow: var(--mljr-clay-shadow-sm);
 }
 
 .mljr-tabs-bordered .mljr-tabs-content {
+  background: var(--mljr-frosted-bg-subtle);
   border: 1px solid var(--mljr-border);
   border-top: none;
+  border-radius: 0 0 var(--mljr-radius-lg) var(--mljr-radius-lg);
   padding: var(--mljr-space-4);
+  box-shadow: var(--mljr-clay-shadow-sm);
 }
 
 /* Vertical Tabs */
@@ -224,22 +188,18 @@
 
 .mljr-tabs-vertical .mljr-tabs-list {
   flex-direction: column;
-  border-bottom: none;
-  border-right: 1px solid var(--mljr-border);
+  border-radius: var(--mljr-radius-xl);
   min-width: 160px;
 }
 
 .mljr-tabs-vertical .mljr-tab {
   justify-content: flex-start;
-  border-bottom: none;
-  border-right: 2px solid transparent;
-  margin-bottom: 0;
-  margin-right: -1px;
+  border-radius: var(--mljr-radius-lg);
 }
 
 .mljr-tabs-vertical .mljr-tab[aria-selected="true"],
 .mljr-tabs-vertical .mljr-tab.mljr-tab-active {
-  border-right-color: var(--mljr-primary-600);
+  box-shadow: var(--mljr-clay-shadow-sm);
 }
 
 .mljr-tabs-vertical .mljr-tabs-content {

@@ -1,7 +1,6 @@
 /* ============================================
    MLJR CSS Framework - Avatar Component
-   Detroit: Become Human inspired
-   Default style with hexagonal shape and HUD border
+   Claymorphism: Soft square default shape
    ============================================ */
 
 .mljr-avatar {
@@ -11,53 +10,28 @@
   justify-content: center;
   width: 3rem;
   height: 3rem;
-  /* Detroit default: hexagonal shape */
-  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-  background: transparent;
-  font-family: var(--mljr-font-display);
+  /* Soft square: rounded corners (30% radius) */
+  border-radius: 30%;
+  background-color: var(--mljr-bg-secondary);
+  font-family: var(--mljr-font-sans);
   font-weight: 500;
   font-size: var(--mljr-text-sm);
-  letter-spacing: 0.05em;
-  color: var(--mljr-primary-300);
+  color: var(--mljr-primary-600);
   overflow: hidden;
   flex-shrink: 0;
-}
-
-/* Border layer using pseudo-element to follow hexagonal clip-path */
-.mljr-avatar::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--mljr-primary-500);
-  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-  z-index: -2;
-  opacity: 0.6;
-}
-
-/* Inner background */
-.mljr-avatar::after {
-  content: '';
-  position: absolute;
-  inset: 2px;
-  background: var(--mljr-bg-tertiary);
-  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-  z-index: -1;
+  box-shadow: var(--mljr-clay-shadow-sm);
+  border: 2px solid rgba(255, 255, 255, 0.6);
 }
 
 .mljr-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-  position: relative;
-  z-index: 0;
 }
 
 .mljr-avatar-initials {
   text-transform: uppercase;
   user-select: none;
-  position: relative;
-  z-index: 0;
 }
 
 /* Sizes */
@@ -97,75 +71,87 @@
   font-size: var(--mljr-text-2xl);
 }
 
-/* Status indicator - LED style */
+/* Status indicator - soft pulsing dot */
 .mljr-avatar-status {
   position: absolute;
-  bottom: 10%;
-  right: 5%;
-  width: 0.625rem;
-  height: 0.625rem;
-  border-radius: 50%;
+  bottom: 0;
+  right: 0;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: var(--mljr-radius-full);
+  border: 2px solid var(--mljr-bg);
   z-index: 1;
-  /* LED glow effect */
-  box-shadow: 0 0 6px currentColor;
 }
 
 .mljr-avatar-status-online {
   background-color: var(--mljr-success);
-  color: var(--mljr-success);
-  animation: mljr-led-pulse 2s ease-in-out infinite;
+  animation: mljr-avatar-status-pulse 2s ease-in-out infinite;
 }
 
 .mljr-avatar-status-offline {
-  background-color: var(--mljr-gray-500);
-  color: var(--mljr-gray-500);
-  box-shadow: none;
+  background-color: var(--mljr-gray-400);
 }
 
 .mljr-avatar-status-busy {
   background-color: var(--mljr-error);
-  color: var(--mljr-error);
 }
 
 .mljr-avatar-status-away {
   background-color: var(--mljr-warning);
-  color: var(--mljr-warning);
 }
 
-@keyframes mljr-led-pulse {
-  0%, 100% { opacity: 1; box-shadow: 0 0 6px currentColor; }
-  50% { opacity: 0.7; box-shadow: 0 0 3px currentColor; }
+/* mljr-status-pulse animation - distinct from utilities.css version */
+@keyframes mljr-avatar-status-pulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+  }
+  50% {
+    opacity: 0.85;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0);
+  }
 }
 
 /* Size adjustments for status */
 .mljr-avatar-xs .mljr-avatar-status {
-  width: 0.375rem;
-  height: 0.375rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-width: 1.5px;
 }
 
 .mljr-avatar-sm .mljr-avatar-status {
-  width: 0.5rem;
-  height: 0.5rem;
+  width: 0.625rem;
+  height: 0.625rem;
 }
 
 .mljr-avatar-lg .mljr-avatar-status,
 .mljr-avatar-xl .mljr-avatar-status,
 .mljr-avatar-2xl .mljr-avatar-status {
-  width: 0.875rem;
-  height: 0.875rem;
+  width: 1rem;
+  height: 1rem;
+  border-width: 3px;
 }
 
-/* Ring styles - glow effect */
+/* Ring styles - soft glow effect */
 .mljr-avatar-ring {
-  box-shadow: 0 0 0 2px var(--mljr-bg), 0 0 8px var(--mljr-primary-500);
+  box-shadow:
+    var(--mljr-clay-shadow-sm),
+    0 0 0 3px var(--mljr-bg),
+    0 0 0 5px var(--mljr-primary-300);
 }
 
 .mljr-avatar-ring-secondary {
-  box-shadow: 0 0 0 2px var(--mljr-bg), 0 0 8px var(--mljr-secondary-500);
+  box-shadow:
+    var(--mljr-clay-shadow-sm),
+    0 0 0 3px var(--mljr-bg),
+    0 0 0 5px var(--mljr-secondary-300);
 }
 
 .mljr-avatar-ring-accent {
-  box-shadow: 0 0 0 2px var(--mljr-bg), 0 0 8px var(--mljr-accent-500);
+  box-shadow:
+    var(--mljr-clay-shadow-sm),
+    0 0 0 3px var(--mljr-bg),
+    0 0 0 5px var(--mljr-accent-300);
 }
 
 /* Avatar group */
@@ -176,6 +162,7 @@
 
 .mljr-avatar-group .mljr-avatar {
   margin-left: -0.75rem;
+  box-shadow: var(--mljr-clay-shadow-sm), -2px 0 4px rgba(0, 0, 0, 0.1);
 }
 
 .mljr-avatar-group .mljr-avatar:last-child {
@@ -196,83 +183,40 @@
 }
 
 /* Color variants */
-.mljr-avatar-primary::before {
-  background: var(--mljr-primary-500);
-}
-
 .mljr-avatar-primary {
-  color: var(--mljr-primary-300);
-}
-
-.mljr-avatar-secondary::before {
-  background: var(--mljr-secondary-500);
+  background: var(--mljr-primary-100);
+  color: var(--mljr-primary-600);
 }
 
 .mljr-avatar-secondary {
-  color: var(--mljr-secondary-300);
-}
-
-.mljr-avatar-secondary::after {
-  background: linear-gradient(135deg, var(--mljr-bg-tertiary) 0%, rgba(255, 140, 0, 0.1) 100%);
-}
-
-.mljr-avatar-accent::before {
-  background: var(--mljr-accent-500);
+  background: var(--mljr-secondary-100);
+  color: var(--mljr-secondary-600);
 }
 
 .mljr-avatar-accent {
-  color: var(--mljr-accent-300);
+  background: var(--mljr-accent-100);
+  color: var(--mljr-accent-600);
 }
 
-.mljr-avatar-accent::after {
-  background: linear-gradient(135deg, var(--mljr-bg-tertiary) 0%, rgba(153, 0, 255, 0.1) 100%);
-}
-
-/* Square variant with cut corners (non-hexagonal) */
+/* Square variant (soft square is now default) */
 .mljr-avatar-square {
-  clip-path: var(--mljr-clip-sm);
+  border-radius: 30%;
 }
 
-.mljr-avatar-square::before,
-.mljr-avatar-square::after,
-.mljr-avatar-square img {
-  clip-path: var(--mljr-clip-sm);
-}
-
-/* Circle variant (non-Detroit) */
+/* Circle variant */
 .mljr-avatar-circle {
-  clip-path: circle(50%);
   border-radius: 50%;
 }
 
-.mljr-avatar-circle::before,
-.mljr-avatar-circle::after,
-.mljr-avatar-circle img {
-  clip-path: circle(50%);
-}
-
-/* Dark mode - enhanced glow */
-.dark .mljr-avatar::before,
-[data-theme="dark"] .mljr-avatar::before {
-  opacity: 0.7;
-}
-
+/* Dark mode */
 .dark .mljr-avatar,
 [data-theme="dark"] .mljr-avatar {
-  box-shadow: var(--mljr-glow-primary-sm);
+  background-color: var(--mljr-bg-tertiary);
+  border-color: rgba(68, 64, 60, 0.5);
+  box-shadow: var(--mljr-clay-shadow-sm);
 }
 
-.dark .mljr-avatar-secondary,
-[data-theme="dark"] .mljr-avatar-secondary {
-  box-shadow: var(--mljr-glow-secondary-sm);
-}
-
-.dark .mljr-avatar-accent,
-[data-theme="dark"] .mljr-avatar-accent {
-  box-shadow: var(--mljr-glow-accent);
-}
-
-.dark .mljr-avatar-group .mljr-avatar,
-[data-theme="dark"] .mljr-avatar-group .mljr-avatar {
-  box-shadow: var(--mljr-glow-primary-sm);
+.dark .mljr-avatar-status,
+[data-theme="dark"] .mljr-avatar-status {
+  border-color: var(--mljr-bg);
 }

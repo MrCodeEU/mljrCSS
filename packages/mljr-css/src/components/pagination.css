@@ -1,0 +1,143 @@
+/* ============================================
+   MLJR CSS Framework - Pagination Component
+   Claymorphism: Soft rounded pagination
+   ============================================ */
+
+.mljr-pagination {
+  display: flex;
+  align-items: center;
+  gap: var(--mljr-space-1);
+  font-family: var(--mljr-font-sans);
+}
+
+.mljr-pagination-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  padding: 0 var(--mljr-space-2);
+  font-size: var(--mljr-text-sm);
+  font-weight: 500;
+  color: var(--mljr-text-secondary);
+  background: var(--mljr-bg);
+  border: none;
+  border-radius: var(--mljr-radius-md);
+  cursor: pointer;
+  transition: all var(--mljr-transition-fast);
+  text-decoration: none;
+  box-shadow: var(--mljr-clay-shadow-sm);
+}
+
+.mljr-pagination-item:hover:not(:disabled):not(.mljr-pagination-active) {
+  color: var(--mljr-primary-600);
+  background: var(--mljr-bg-secondary);
+  transform: translateY(-2px);
+  box-shadow: var(--mljr-clay-shadow);
+}
+
+.mljr-pagination-item:active:not(:disabled):not(.mljr-pagination-active) {
+  transform: translateY(0);
+  box-shadow: var(--mljr-clay-shadow-sm);
+}
+
+.mljr-pagination-item:focus-visible {
+  outline: 3px solid var(--mljr-primary-300);
+  outline-offset: 2px;
+}
+
+/* Active page */
+.mljr-pagination-active,
+.mljr-pagination-item[aria-current="page"] {
+  color: white;
+  background: var(--mljr-gradient-primary);
+  font-weight: 600;
+  box-shadow:
+    4px 4px 8px rgba(249, 115, 22, 0.25),
+    -4px -4px 8px rgba(255, 255, 255, 0.8);
+}
+
+.mljr-pagination-active:hover,
+.mljr-pagination-item[aria-current="page"]:hover {
+  transform: none;
+}
+
+.dark .mljr-pagination-active,
+[data-theme="dark"] .mljr-pagination-active,
+[data-theme="dark"] .mljr-pagination-item[aria-current="page"] {
+  box-shadow:
+    4px 4px 8px rgba(0, 0, 0, 0.3),
+    -4px -4px 8px rgba(68, 64, 60, 0.1),
+    0 0 12px rgba(249, 115, 22, 0.3);
+}
+
+/* Disabled state */
+.mljr-pagination-item:disabled,
+.mljr-pagination-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Navigation buttons (prev/next) */
+.mljr-pagination-prev,
+.mljr-pagination-next {
+  font-weight: 500;
+}
+
+.mljr-pagination-prev svg,
+.mljr-pagination-next svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Ellipsis */
+.mljr-pagination-ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  color: var(--mljr-text-muted);
+  cursor: default;
+}
+
+/* Size variants */
+.mljr-pagination-sm .mljr-pagination-item {
+  min-width: 2rem;
+  height: 2rem;
+  font-size: var(--mljr-text-xs);
+  border-radius: var(--mljr-radius-sm);
+}
+
+.mljr-pagination-lg .mljr-pagination-item {
+  min-width: 3rem;
+  height: 3rem;
+  font-size: var(--mljr-text-base);
+  border-radius: var(--mljr-radius-lg);
+}
+
+/* Secondary color variant */
+.mljr-pagination-secondary .mljr-pagination-active,
+.mljr-pagination-secondary .mljr-pagination-item[aria-current="page"] {
+  background: var(--mljr-gradient-secondary);
+  box-shadow:
+    4px 4px 8px rgba(20, 184, 166, 0.25),
+    -4px -4px 8px rgba(255, 255, 255, 0.8);
+}
+
+.mljr-pagination-secondary .mljr-pagination-item:hover:not(:disabled):not(.mljr-pagination-active) {
+  color: var(--mljr-secondary-600);
+}
+
+/* Info text */
+.mljr-pagination-info {
+  font-size: var(--mljr-text-sm);
+  color: var(--mljr-text-muted);
+  margin-left: var(--mljr-space-4);
+}
+
+/* Dark mode */
+.dark .mljr-pagination-item,
+[data-theme="dark"] .mljr-pagination-item {
+  background: var(--mljr-bg-secondary);
+}

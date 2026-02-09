@@ -1,0 +1,242 @@
+/* ============================================
+   MLJR CSS Framework - Drawer Component
+   Claymorphism: Slide-out panel with shadows
+   ============================================ */
+
+.mljr-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  animation: mljr-drawer-overlay-in 0.3s ease;
+}
+
+@keyframes mljr-drawer-overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.mljr-drawer {
+  position: fixed;
+  background: var(--mljr-bg);
+  box-shadow: var(--mljr-clay-shadow-xl);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  animation: mljr-drawer-in 0.3s ease;
+}
+
+/* Position-specific animations */
+@keyframes mljr-drawer-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes mljr-drawer-in-left {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes mljr-drawer-in-top {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes mljr-drawer-in-bottom {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+/* Positions */
+.mljr-drawer-right {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 400px;
+  border-radius: var(--mljr-radius-xl) 0 0 var(--mljr-radius-xl);
+  animation: mljr-drawer-in-right 0.3s ease;
+}
+
+.mljr-drawer-left {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 0 var(--mljr-radius-xl) var(--mljr-radius-xl) 0;
+  animation: mljr-drawer-in-left 0.3s ease;
+}
+
+.mljr-drawer-top {
+  top: 0;
+  left: 0;
+  right: 0;
+  max-height: 50vh;
+  border-radius: 0 0 var(--mljr-radius-xl) var(--mljr-radius-xl);
+  animation: mljr-drawer-in-top 0.3s ease;
+}
+
+.mljr-drawer-bottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-height: 50vh;
+  border-radius: var(--mljr-radius-xl) var(--mljr-radius-xl) 0 0;
+  animation: mljr-drawer-in-bottom 0.3s ease;
+}
+
+/* Sizes */
+.mljr-drawer-sm {
+  max-width: 300px;
+}
+
+.mljr-drawer-lg {
+  max-width: 600px;
+}
+
+.mljr-drawer-xl {
+  max-width: 800px;
+}
+
+.mljr-drawer-full {
+  max-width: 100%;
+}
+
+/* Header */
+.mljr-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--mljr-space-4) var(--mljr-space-6);
+  border-bottom: 1px solid var(--mljr-border);
+}
+
+.mljr-drawer-title {
+  font-size: var(--mljr-text-xl);
+  font-weight: 600;
+  color: var(--mljr-text);
+  margin: 0;
+}
+
+.mljr-drawer-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: var(--mljr-radius-md);
+  color: var(--mljr-text-muted);
+  cursor: pointer;
+  transition: all var(--mljr-transition-fast);
+}
+
+.mljr-drawer-close:hover {
+  background: var(--mljr-bg-secondary);
+  color: var(--mljr-text);
+}
+
+/* Body */
+.mljr-drawer-body {
+  flex: 1;
+  padding: var(--mljr-space-6);
+  overflow-y: auto;
+}
+
+/* Footer */
+.mljr-drawer-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--mljr-space-3);
+  padding: var(--mljr-space-4) var(--mljr-space-6);
+  border-top: 1px solid var(--mljr-border);
+}
+
+/* Without Header/Footer Borders */
+.mljr-drawer-seamless .mljr-drawer-header {
+  border-bottom: none;
+}
+
+.mljr-drawer-seamless .mljr-drawer-footer {
+  border-top: none;
+}
+
+/* Push Content Mode */
+.mljr-drawer-push {
+  position: relative;
+  height: 100vh;
+}
+
+.mljr-drawer-push-content {
+  transition: margin var(--mljr-transition-slow);
+}
+
+.mljr-drawer-push-open .mljr-drawer-push-content {
+  margin-right: 400px;
+}
+
+/* Navigation Drawer */
+.mljr-drawer-nav {
+  padding: var(--mljr-space-4);
+}
+
+.mljr-drawer-nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--mljr-space-3);
+  padding: var(--mljr-space-3) var(--mljr-space-4);
+  color: var(--mljr-text);
+  text-decoration: none;
+  border-radius: var(--mljr-radius-md);
+  transition: all var(--mljr-transition-fast);
+}
+
+.mljr-drawer-nav-item:hover {
+  background: var(--mljr-bg-secondary);
+  box-shadow: var(--mljr-clay-shadow-xs);
+}
+
+.mljr-drawer-nav-item-active {
+  background: var(--mljr-primary-100);
+  color: var(--mljr-primary-700);
+  box-shadow: var(--mljr-clay-shadow-xs);
+}
+
+.mljr-drawer-nav-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+}
+
+.mljr-drawer-nav-text {
+  font-weight: 500;
+}
+
+.mljr-drawer-nav-divider {
+  height: 1px;
+  background: var(--mljr-border);
+  margin: var(--mljr-space-2) 0;
+}
+
+/* Dark Mode */
+.dark .mljr-drawer,
+[data-theme="dark"] .mljr-drawer {
+  background: var(--mljr-bg-secondary);
+}
+
+.dark .mljr-drawer-header,
+.dark .mljr-drawer-footer,
+[data-theme="dark"] .mljr-drawer-header,
+[data-theme="dark"] .mljr-drawer-footer {
+  border-color: var(--mljr-border);
+}
+
+.dark .mljr-drawer-nav-item-active,
+[data-theme="dark"] .mljr-drawer-nav-item-active {
+  background: rgba(249, 115, 22, 0.2);
+  color: var(--mljr-primary-300);
+}

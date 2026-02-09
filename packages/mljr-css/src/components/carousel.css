@@ -1,18 +1,18 @@
 /* ============================================
    MLJR CSS Framework - Carousel Component
-   Detroit: Become Human inspired
+   Claymorphism: Soft rounded carousel
    ============================================ */
 
 .mljr-carousel {
   position: relative;
   width: 100%;
   overflow: hidden;
-  clip-path: var(--mljr-clip-card);
+  border-radius: var(--mljr-radius-xl);
   outline: none;
 }
 
 .mljr-carousel:focus-visible {
-  outline: 2px solid var(--mljr-ring);
+  outline: 3px solid var(--mljr-primary-300);
   outline-offset: 2px;
 }
 
@@ -57,28 +57,29 @@
   align-items: center;
   justify-content: center;
   background-color: var(--mljr-bg);
-  border: 2px solid var(--mljr-primary-500);
-  color: var(--mljr-primary-500);
+  border: none;
+  color: var(--mljr-text);
   cursor: pointer;
   z-index: 50;
-  clip-path: var(--mljr-clip-sm);
+  border-radius: var(--mljr-radius-sm);
   transition: all var(--mljr-transition-fast);
-  box-shadow: var(--mljr-shadow-md);
+  box-shadow: var(--mljr-clay-shadow);
 }
 
 .mljr-carousel-btn:hover:not(:disabled) {
-  background-color: var(--mljr-primary-500);
+  background: var(--mljr-gradient-primary);
   color: white;
-  box-shadow: var(--mljr-glow-primary-sm);
-}
-
-.mljr-carousel-btn:focus-visible {
-  outline: 2px solid var(--mljr-ring);
-  outline-offset: 2px;
+  transform: translateY(-50%) scale(1.05);
 }
 
 .mljr-carousel-btn:active:not(:disabled) {
-  background-color: var(--mljr-primary-600);
+  transform: translateY(-50%) scale(1);
+  box-shadow: var(--mljr-clay-shadow-sm);
+}
+
+.mljr-carousel-btn:focus-visible {
+  outline: 3px solid var(--mljr-primary-300);
+  outline-offset: 2px;
 }
 
 .mljr-carousel-btn:disabled {
@@ -92,10 +93,10 @@
 /* Dark mode buttons */
 .dark .mljr-carousel-btn,
 [data-theme="dark"] .mljr-carousel-btn {
-  background-color: var(--mljr-bg-tertiary);
+  background-color: var(--mljr-bg-secondary);
 }
 
-/* Indicators */
+/* Indicators - Soft rounded dots */
 .mljr-carousel-indicators {
   position: absolute;
   bottom: var(--mljr-space-4);
@@ -104,44 +105,56 @@
   display: flex;
   justify-content: center;
   gap: var(--mljr-space-2);
-  padding: var(--mljr-space-2);
+  padding: var(--mljr-space-2) var(--mljr-space-3);
   z-index: 50;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border-radius: var(--mljr-radius-full);
+  box-shadow: var(--mljr-clay-shadow-sm);
 }
 
 .mljr-carousel-indicator {
-  width: 2rem;
-  height: 0.25rem;
-  background-color: var(--mljr-border-strong);
+  width: 0.625rem;
+  height: 0.625rem;
+  background-color: var(--mljr-gray-300);
   border: none;
+  border-radius: var(--mljr-radius-full);
   cursor: pointer;
-  clip-path: polygon(0 0, calc(100% - 3px) 0, 100% 100%, 3px 100%);
   transition: all var(--mljr-transition-fast);
   opacity: 1;
   visibility: visible;
 }
 
-.mljr-carousel-indicator:hover { background-color: var(--mljr-primary-400); }
+.mljr-carousel-indicator:hover {
+  background-color: var(--mljr-primary-300);
+}
+
 .mljr-carousel-indicator:focus-visible {
-  outline: 2px solid var(--mljr-ring);
+  outline: 2px solid var(--mljr-primary-300);
   outline-offset: 2px;
 }
 
 .mljr-carousel-indicator.active,
 .mljr-carousel-indicator[aria-selected="true"] {
-  background-color: var(--mljr-primary-500);
-  box-shadow: var(--mljr-glow-primary-sm);
+  background: var(--mljr-gradient-primary);
+  transform: scale(1.2);
+  box-shadow: 0 0 8px rgba(249, 115, 22, 0.3);
 }
 
-/* Diamond indicators */
-.mljr-carousel-indicators-diamond .mljr-carousel-indicator {
-  width: 0.75rem;
-  height: 0.75rem;
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+/* Dark mode indicators */
+.dark .mljr-carousel-indicators,
+[data-theme="dark"] .mljr-carousel-indicators {
+  background-color: rgba(41, 37, 36, 0.8);
+}
+
+.dark .mljr-carousel-indicator,
+[data-theme="dark"] .mljr-carousel-indicator {
+  background-color: var(--mljr-gray-600);
 }
 
 .dark .mljr-carousel-indicator.active,
 [data-theme="dark"] .mljr-carousel-indicator.active {
-  box-shadow: var(--mljr-glow-primary);
+  box-shadow: 0 0 12px rgba(249, 115, 22, 0.4);
 }
 
 /* Fade variant */

@@ -1,15 +1,16 @@
 /* ============================================
    MLJR CSS Framework - Alert Component
+   Claymorphism: Soft rounded alerts with shadows
    ============================================ */
 
 .mljr-alert {
   display: flex;
   gap: var(--mljr-space-3);
   padding: var(--mljr-space-4);
-  border-radius: 0;
-  clip-path: var(--mljr-clip-btn);
+  border-radius: var(--mljr-radius-lg);
   font-size: var(--mljr-text-sm);
   line-height: var(--mljr-leading-normal);
+  box-shadow: var(--mljr-clay-shadow-sm);
 }
 
 .mljr-alert-icon {
@@ -34,18 +35,23 @@
 
 .mljr-alert-close {
   flex-shrink: 0;
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
   padding: 0;
-  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--mljr-bg-secondary);
   border: none;
+  border-radius: var(--mljr-radius-full);
   opacity: 0.7;
   cursor: pointer;
-  transition: opacity var(--mljr-transition-fast);
+  transition: all var(--mljr-transition-fast);
 }
 
 .mljr-alert-close:hover {
   opacity: 1;
+  background: var(--mljr-bg-tertiary);
 }
 
 /* Default Alert */
@@ -57,121 +63,169 @@
 
 /* Info Alert */
 .mljr-alert-info {
-  background-color: rgb(59 130 246 / 0.1);
-  border: 1px solid rgb(59 130 246 / 0.2);
+  background-color: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
   color: var(--mljr-info-dark);
+  box-shadow:
+    6px 6px 12px rgba(59, 130, 246, 0.12),
+    -4px -4px 10px rgba(255, 255, 255, 0.8);
 }
 
 .dark .mljr-alert-info,
 [data-theme="dark"] .mljr-alert-info {
-  background-color: rgb(59 130 246 / 0.15);
-  border-color: rgb(59 130 246 / 0.3);
+  background-color: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.3);
   color: var(--mljr-info-light);
+  box-shadow:
+    6px 6px 12px rgba(0, 0, 0, 0.3),
+    -4px -4px 10px rgba(68, 64, 60, 0.1),
+    0 0 12px rgba(59, 130, 246, 0.15);
 }
 
-/* Success Alert (Teal-green - colorblind friendly) */
+/* Success Alert */
 .mljr-alert-success {
-  background-color: rgb(0 166 124 / 0.1);
-  border: 1px solid rgb(0 166 124 / 0.25);
+  background-color: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
   color: var(--mljr-success-dark);
+  box-shadow:
+    6px 6px 12px rgba(16, 185, 129, 0.12),
+    -4px -4px 10px rgba(255, 255, 255, 0.8);
 }
 
 .dark .mljr-alert-success,
 [data-theme="dark"] .mljr-alert-success {
-  background-color: rgb(0 166 124 / 0.15);
-  border-color: rgb(0 166 124 / 0.35);
+  background-color: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.35);
   color: var(--mljr-success-light);
+  box-shadow:
+    6px 6px 12px rgba(0, 0, 0, 0.3),
+    -4px -4px 10px rgba(68, 64, 60, 0.1),
+    0 0 12px rgba(16, 185, 129, 0.15);
 }
 
 /* Warning Alert */
 .mljr-alert-warning {
-  background-color: rgb(234 179 8 / 0.1);
-  border: 1px solid rgb(234 179 8 / 0.2);
+  background-color: rgba(234, 179, 8, 0.1);
+  border: 1px solid rgba(234, 179, 8, 0.2);
   color: var(--mljr-warning-dark);
+  box-shadow:
+    6px 6px 12px rgba(234, 179, 8, 0.12),
+    -4px -4px 10px rgba(255, 255, 255, 0.8);
 }
 
 .dark .mljr-alert-warning,
 [data-theme="dark"] .mljr-alert-warning {
-  background-color: rgb(234 179 8 / 0.15);
-  border-color: rgb(234 179 8 / 0.3);
+  background-color: rgba(234, 179, 8, 0.15);
+  border-color: rgba(234, 179, 8, 0.3);
   color: var(--mljr-warning-light);
+  box-shadow:
+    6px 6px 12px rgba(0, 0, 0, 0.3),
+    -4px -4px 10px rgba(68, 64, 60, 0.1),
+    0 0 12px rgba(234, 179, 8, 0.15);
 }
 
-/* Error Alert (Deep Crimson - very distinct from orange) */
+/* Error Alert */
 .mljr-alert-error {
-  background-color: rgb(185 28 28 / 0.1);
-  border: 1px solid rgb(185 28 28 / 0.25);
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.25);
   color: var(--mljr-error-dark);
+  box-shadow:
+    6px 6px 12px rgba(239, 68, 68, 0.12),
+    -4px -4px 10px rgba(255, 255, 255, 0.8);
 }
 
 .dark .mljr-alert-error,
 [data-theme="dark"] .mljr-alert-error {
-  background-color: rgb(185 28 28 / 0.15);
-  border-color: rgb(185 28 28 / 0.35);
+  background-color: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.35);
   color: var(--mljr-error-light);
+  box-shadow:
+    6px 6px 12px rgba(0, 0, 0, 0.3),
+    -4px -4px 10px rgba(68, 64, 60, 0.1),
+    0 0 12px rgba(239, 68, 68, 0.15);
 }
 
-/* Primary Alert (Rich Blue) */
+/* Primary Alert (Orange) */
 .mljr-alert-primary {
-  background-color: rgb(0 128 255 / 0.1);
-  border: 1px solid rgb(0 128 255 / 0.25);
+  background-color: var(--mljr-primary-50);
+  border: 1px solid var(--mljr-primary-200);
   color: var(--mljr-primary-700);
+  box-shadow:
+    6px 6px 12px rgba(249, 115, 22, 0.15),
+    -4px -4px 10px rgba(255, 255, 255, 0.8);
 }
 
 .dark .mljr-alert-primary,
 [data-theme="dark"] .mljr-alert-primary {
-  background-color: rgb(0 128 255 / 0.15);
-  border-color: rgb(0 128 255 / 0.35);
+  background-color: rgba(249, 115, 22, 0.15);
+  border-color: rgba(249, 115, 22, 0.35);
   color: var(--mljr-primary-300);
+  box-shadow:
+    6px 6px 12px rgba(0, 0, 0, 0.3),
+    -4px -4px 10px rgba(68, 64, 60, 0.1),
+    0 0 12px rgba(249, 115, 22, 0.15);
 }
 
-/* Secondary Alert (Rich Orange) */
+/* Secondary Alert (Teal) */
 .mljr-alert-secondary {
-  background-color: rgb(255 140 0 / 0.1);
-  border: 1px solid rgb(255 140 0 / 0.25);
+  background-color: var(--mljr-secondary-50);
+  border: 1px solid var(--mljr-secondary-200);
   color: var(--mljr-secondary-700);
+  box-shadow:
+    6px 6px 12px rgba(20, 184, 166, 0.15),
+    -4px -4px 10px rgba(255, 255, 255, 0.8);
 }
 
 .dark .mljr-alert-secondary,
 [data-theme="dark"] .mljr-alert-secondary {
-  background-color: rgb(255 140 0 / 0.15);
-  border-color: rgb(255 140 0 / 0.35);
+  background-color: rgba(20, 184, 166, 0.15);
+  border-color: rgba(20, 184, 166, 0.35);
   color: var(--mljr-secondary-300);
+  box-shadow:
+    6px 6px 12px rgba(0, 0, 0, 0.3),
+    -4px -4px 10px rgba(68, 64, 60, 0.1),
+    0 0 12px rgba(20, 184, 166, 0.15);
 }
 
 /* Solid Variants */
 .mljr-alert-info-solid {
-  background-color: var(--mljr-info);
+  background: linear-gradient(135deg, var(--mljr-info-light) 0%, var(--mljr-info) 100%);
   border: none;
   color: white;
 }
 
 .mljr-alert-success-solid {
-  background-color: var(--mljr-success);
+  background: linear-gradient(135deg, var(--mljr-success-light) 0%, var(--mljr-success) 100%);
   border: none;
   color: white;
 }
 
 .mljr-alert-warning-solid {
-  background-color: var(--mljr-warning);
+  background: linear-gradient(135deg, var(--mljr-warning-light) 0%, var(--mljr-warning) 100%);
   border: none;
   color: var(--mljr-gray-900);
 }
 
 .mljr-alert-error-solid {
-  background-color: var(--mljr-error);
+  background: linear-gradient(135deg, var(--mljr-error-light) 0%, var(--mljr-error) 100%);
   border: none;
   color: white;
 }
 
 .mljr-alert-primary-solid {
-  background-color: var(--mljr-primary-600);
+  background: var(--mljr-gradient-primary);
   border: none;
   color: white;
 }
 
 .mljr-alert-secondary-solid {
-  background-color: var(--mljr-secondary-600);
+  background: var(--mljr-gradient-secondary);
   border: none;
   color: white;
+}
+
+/* Dark mode */
+.dark .mljr-alert,
+[data-theme="dark"] .mljr-alert {
+  box-shadow: var(--mljr-clay-shadow-sm);
 }

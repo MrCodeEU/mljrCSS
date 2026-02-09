@@ -5,7 +5,7 @@
     initials?: string;
     size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
     variant?: 'primary' | 'secondary' | 'accent';
-    shape?: 'hexagon' | 'square' | 'circle';
+    shape?: 'square' | 'circle';
     status?: 'online' | 'offline' | 'busy' | 'away';
     ring?: boolean | 'primary' | 'secondary' | 'accent';
     class?: string;
@@ -17,7 +17,7 @@
     initials,
     size = 'md',
     variant = 'primary',
-    shape = 'hexagon',
+    shape = 'square',
     status,
     ring = false,
     class: className = '',
@@ -30,7 +30,6 @@
       'mljr-avatar',
       `mljr-avatar-${size}`,
       variant !== 'primary' && `mljr-avatar-${variant}`,
-      shape === 'square' && 'mljr-avatar-square',
       shape === 'circle' && 'mljr-avatar-circle',
       ring === true && 'mljr-avatar-ring',
       ring === 'secondary' && 'mljr-avatar-ring-secondary',

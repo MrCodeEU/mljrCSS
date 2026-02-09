@@ -1,0 +1,216 @@
+/* ============================================
+   MLJR CSS Framework - Empty State Component
+   Claymorphism: Soft centered empty state display
+   ============================================ */
+
+.mljr-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--mljr-space-12) var(--mljr-space-6);
+}
+
+/* Sizes */
+.mljr-empty-state-sm {
+  padding: var(--mljr-space-8) var(--mljr-space-4);
+}
+
+.mljr-empty-state-lg {
+  padding: var(--mljr-space-16) var(--mljr-space-8);
+}
+
+/* Icon Container */
+.mljr-empty-state-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  margin-bottom: var(--mljr-space-4);
+  background: var(--mljr-bg-secondary);
+  border-radius: var(--mljr-radius-full);
+  box-shadow: var(--mljr-clay-shadow-sm);
+  color: var(--mljr-text-muted);
+}
+
+.mljr-empty-state-sm .mljr-empty-state-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: var(--mljr-space-3);
+}
+
+.mljr-empty-state-lg .mljr-empty-state-icon {
+  width: 6.5rem;
+  height: 6.5rem;
+  margin-bottom: var(--mljr-space-6);
+}
+
+.mljr-empty-state-icon svg {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.mljr-empty-state-sm .mljr-empty-state-icon svg {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.mljr-empty-state-lg .mljr-empty-state-icon svg {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Illustration */
+.mljr-empty-state-illustration {
+  width: 200px;
+  height: auto;
+  margin-bottom: var(--mljr-space-6);
+}
+
+.mljr-empty-state-sm .mljr-empty-state-illustration {
+  width: 120px;
+}
+
+.mljr-empty-state-lg .mljr-empty-state-illustration {
+  width: 280px;
+}
+
+/* Title */
+.mljr-empty-state-title {
+  font-size: var(--mljr-text-xl);
+  font-weight: 600;
+  color: var(--mljr-text);
+  margin: 0 0 var(--mljr-space-2);
+}
+
+.mljr-empty-state-sm .mljr-empty-state-title {
+  font-size: var(--mljr-text-lg);
+}
+
+.mljr-empty-state-lg .mljr-empty-state-title {
+  font-size: var(--mljr-text-2xl);
+}
+
+/* Description */
+.mljr-empty-state-description {
+  font-size: var(--mljr-text-base);
+  color: var(--mljr-text-secondary);
+  max-width: 400px;
+  margin: 0 0 var(--mljr-space-6);
+  line-height: var(--mljr-leading-relaxed);
+}
+
+.mljr-empty-state-sm .mljr-empty-state-description {
+  font-size: var(--mljr-text-sm);
+  margin-bottom: var(--mljr-space-4);
+}
+
+.mljr-empty-state-lg .mljr-empty-state-description {
+  font-size: var(--mljr-text-lg);
+  max-width: 500px;
+}
+
+/* Actions */
+.mljr-empty-state-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--mljr-space-3);
+}
+
+/* Compact Mode */
+.mljr-empty-state-compact {
+  flex-direction: row;
+  text-align: left;
+  padding: var(--mljr-space-6);
+  gap: var(--mljr-space-4);
+}
+
+.mljr-empty-state-compact .mljr-empty-state-icon {
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.mljr-empty-state-compact .mljr-empty-state-content {
+  flex: 1;
+}
+
+.mljr-empty-state-compact .mljr-empty-state-title {
+  margin-bottom: var(--mljr-space-1);
+}
+
+.mljr-empty-state-compact .mljr-empty-state-description {
+  margin-bottom: var(--mljr-space-3);
+  max-width: none;
+}
+
+.mljr-empty-state-compact .mljr-empty-state-actions {
+  justify-content: flex-start;
+}
+
+/* Variants */
+.mljr-empty-state-primary .mljr-empty-state-icon {
+  background: var(--mljr-primary-100);
+  color: var(--mljr-primary-600);
+  box-shadow: 
+    3px 3px 6px rgba(249, 115, 22, 0.15),
+    -2px -2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.mljr-empty-state-secondary .mljr-empty-state-icon {
+  background: var(--mljr-secondary-100);
+  color: var(--mljr-secondary-600);
+}
+
+.mljr-empty-state-success .mljr-empty-state-icon {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--mljr-success);
+}
+
+.mljr-empty-state-warning .mljr-empty-state-icon {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--mljr-warning);
+}
+
+.mljr-empty-state-error .mljr-empty-state-icon {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--mljr-error);
+}
+
+/* In Card */
+.mljr-empty-state-card {
+  background: var(--mljr-bg);
+  border-radius: var(--mljr-radius-xl);
+  box-shadow: var(--mljr-clay-shadow-sm);
+}
+
+/* Border Style */
+.mljr-empty-state-bordered {
+  border: 2px dashed var(--mljr-border-strong);
+  border-radius: var(--mljr-radius-xl);
+}
+
+/* Dark Mode */
+.dark .mljr-empty-state-icon,
+[data-theme="dark"] .mljr-empty-state-icon {
+  background: var(--mljr-bg-tertiary);
+  box-shadow: var(--mljr-clay-shadow-sm);
+}
+
+.dark .mljr-empty-state-primary .mljr-empty-state-icon,
+[data-theme="dark"] .mljr-empty-state-primary .mljr-empty-state-icon {
+  background: rgba(249, 115, 22, 0.2);
+  color: var(--mljr-primary-300);
+}
+
+.dark .mljr-empty-state-card,
+[data-theme="dark"] .mljr-empty-state-card {
+  background: var(--mljr-bg-secondary);
+}
+
+.dark .mljr-empty-state-bordered,
+[data-theme="dark"] .mljr-empty-state-bordered {
+  border-color: var(--mljr-border);
+}

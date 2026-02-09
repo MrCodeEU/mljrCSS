@@ -1,0 +1,257 @@
+/* ============================================
+   MLJR CSS Framework - Stepper Component
+   Claymorphism: Step navigation with soft shadows
+   ============================================ */
+
+.mljr-stepper {
+  display: flex;
+  width: 100%;
+}
+
+.mljr-stepper-vertical {
+  flex-direction: column;
+}
+
+.mljr-stepper-horizontal {
+  flex-direction: row;
+}
+
+/* Step Item */
+.mljr-step {
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+.mljr-stepper-horizontal .mljr-step {
+  align-items: flex-start;
+}
+
+.mljr-stepper-vertical .mljr-step {
+  align-items: stretch;
+  min-height: 80px;
+}
+
+.mljr-step:not(:last-child)::after {
+  content: '';
+  flex: 1;
+  background: var(--mljr-bg-tertiary);
+  transition: background var(--mljr-transition-fast);
+}
+
+.mljr-stepper-horizontal .mljr-step:not(:last-child)::after {
+  height: 2px;
+  margin-top: 1rem;
+  margin-left: var(--mljr-space-2);
+  margin-right: var(--mljr-space-2);
+  border-radius: var(--mljr-radius-full);
+  box-shadow: var(--mljr-clay-inset-xs);
+}
+
+.mljr-stepper-vertical .mljr-step:not(:last-child)::after {
+  width: 2px;
+  margin-left: 1rem;
+  margin-top: var(--mljr-space-2);
+  margin-bottom: var(--mljr-space-2);
+  border-radius: var(--mljr-radius-full);
+  box-shadow: var(--mljr-clay-inset-xs);
+}
+
+.mljr-step-completed:not(:last-child)::after {
+  background: var(--mljr-primary-500);
+  box-shadow: 0 0 4px rgba(249, 115, 22, 0.3);
+}
+
+/* Step Content */
+.mljr-step-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--mljr-space-2);
+  z-index: 1;
+}
+
+.mljr-stepper-vertical .mljr-step-content {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+/* Step Indicator */
+.mljr-step-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  font-size: var(--mljr-text-sm);
+  font-weight: 600;
+  color: var(--mljr-text-muted);
+  background: var(--mljr-bg);
+  border-radius: var(--mljr-radius-full);
+  box-shadow: var(--mljr-clay-shadow-sm);
+  transition: all var(--mljr-transition-fast);
+  flex-shrink: 0;
+}
+
+.mljr-step-active .mljr-step-indicator {
+  background: var(--mljr-gradient-primary);
+  color: white;
+  box-shadow: 
+    var(--mljr-clay-shadow-sm),
+    0 0 8px rgba(249, 115, 22, 0.3);
+  transform: scale(1.1);
+}
+
+.mljr-step-completed .mljr-step-indicator {
+  background: var(--mljr-primary-500);
+  color: white;
+}
+
+.mljr-step-error .mljr-step-indicator {
+  background: var(--mljr-error);
+  color: white;
+}
+
+.mljr-step-disabled .mljr-step-indicator {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Step Icon */
+.mljr-step-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Step Text */
+.mljr-step-text {
+  text-align: center;
+}
+
+.mljr-stepper-vertical .mljr-step-text {
+  text-align: left;
+  padding-top: var(--mljr-space-1);
+}
+
+.mljr-step-title {
+  font-size: var(--mljr-text-sm);
+  font-weight: 500;
+  color: var(--mljr-text-muted);
+  transition: color var(--mljr-transition-fast);
+}
+
+.mljr-step-active .mljr-step-title {
+  color: var(--mljr-text);
+  font-weight: 600;
+}
+
+.mljr-step-completed .mljr-step-title {
+  color: var(--mljr-text);
+}
+
+.mljr-step-description {
+  font-size: var(--mljr-text-xs);
+  color: var(--mljr-text-muted);
+  margin-top: var(--mljr-space-1);
+  max-width: 150px;
+}
+
+.mljr-stepper-vertical .mljr-step-description {
+  max-width: 200px;
+}
+
+/* Clickable Step */
+.mljr-step-clickable {
+  cursor: pointer;
+}
+
+.mljr-step-clickable:hover .mljr-step-indicator {
+  transform: scale(1.1);
+  box-shadow: var(--mljr-clay-shadow);
+}
+
+.mljr-step-clickable.mljr-step-active:hover .mljr-step-indicator {
+  transform: scale(1.15);
+}
+
+/* Step Content Panel */
+.mljr-stepper-content {
+  margin-top: var(--mljr-space-6);
+  padding: var(--mljr-space-6);
+  background: var(--mljr-bg);
+  border-radius: var(--mljr-radius-xl);
+  box-shadow: var(--mljr-clay-inset);
+}
+
+/* Step Actions */
+.mljr-stepper-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--mljr-space-3);
+  margin-top: var(--mljr-space-6);
+}
+
+.mljr-stepper-actions-right {
+  display: flex;
+  gap: var(--mljr-space-3);
+  margin-left: auto;
+}
+
+/* Sizes */
+.mljr-stepper-sm .mljr-step-indicator {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: var(--mljr-text-xs);
+}
+
+.mljr-stepper-sm .mljr-stepper-horizontal .mljr-step:not(:last-child)::after {
+  margin-top: 0.75rem;
+}
+
+.mljr-stepper-lg .mljr-step-indicator {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: var(--mljr-text-base);
+}
+
+.mljr-stepper-lg .mljr-stepper-horizontal .mljr-step:not(:last-child)::after {
+  margin-top: 1.25rem;
+}
+
+/* Alternative Style - Pills */
+.mljr-stepper-pills .mljr-step-content {
+  flex-direction: row;
+  gap: var(--mljr-space-2);
+  padding: var(--mljr-space-2) var(--mljr-space-4);
+  background: var(--mljr-bg);
+  border-radius: var(--mljr-radius-full);
+  box-shadow: var(--mljr-clay-shadow-sm);
+  transition: all var(--mljr-transition-fast);
+}
+
+.mljr-stepper-pills .mljr-step-active .mljr-step-content {
+  background: var(--mljr-primary-100);
+  box-shadow: var(--mljr-clay-shadow);
+}
+
+.mljr-stepper-pills .mljr-step:not(:last-child)::after {
+  display: none;
+}
+
+/* Dark Mode */
+.dark .mljr-step-indicator,
+[data-theme="dark"] .mljr-step-indicator {
+  background: var(--mljr-bg-secondary);
+  box-shadow: var(--mljr-clay-shadow-sm);
+}
+
+.dark .mljr-step:not(:last-child)::after,
+[data-theme="dark"] .mljr-step:not(:last-child)::after {
+  background: var(--mljr-bg-tertiary);
+}
+
+.dark .mljr-stepper-content,
+[data-theme="dark"] .mljr-stepper-content {
+  background: var(--mljr-bg-secondary);
+  box-shadow: var(--mljr-clay-inset);
+}

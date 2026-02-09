@@ -1,0 +1,200 @@
+/* ============================================
+   MLJR CSS Framework - Radio Button Component
+   Claymorphism: Soft rounded radio buttons
+   ============================================ */
+
+.mljr-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mljr-space-3);
+}
+
+.mljr-radio-group-horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.mljr-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mljr-space-2);
+  cursor: pointer;
+  font-size: var(--mljr-text-sm);
+  color: var(--mljr-text);
+  user-select: none;
+}
+
+.mljr-radio-input {
+  position: relative;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0;
+  appearance: none;
+  background: var(--mljr-bg);
+  border: none;
+  border-radius: var(--mljr-radius-full);
+  box-shadow: var(--mljr-clay-inset-sm);
+  cursor: pointer;
+  transition: all var(--mljr-transition-fast);
+}
+
+.mljr-radio-input::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--mljr-primary-500);
+  border-radius: var(--mljr-radius-full);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform var(--mljr-transition-fast);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.mljr-radio-input:checked {
+  box-shadow: var(--mljr-clay-inset-xs);
+}
+
+.mljr-radio-input:checked::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.mljr-radio-input:hover:not(:checked):not(:disabled) {
+  background: var(--mljr-bg-secondary);
+}
+
+.mljr-radio-input:focus {
+  outline: none;
+  box-shadow: 
+    var(--mljr-clay-inset-xs),
+    0 0 0 3px var(--mljr-primary-200);
+}
+
+.mljr-radio-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mljr-radio-input:disabled + .mljr-radio-label {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mljr-radio-label {
+  cursor: pointer;
+}
+
+/* Secondary Color */
+.mljr-radio-secondary .mljr-radio-input::after {
+  background: var(--mljr-secondary-500);
+}
+
+.mljr-radio-secondary .mljr-radio-input:focus {
+  box-shadow: 
+    var(--mljr-clay-inset-xs),
+    0 0 0 3px var(--mljr-secondary-200);
+}
+
+/* Accent Color */
+.mljr-radio-accent .mljr-radio-input::after {
+  background: var(--mljr-accent-500);
+}
+
+.mljr-radio-accent .mljr-radio-input:focus {
+  box-shadow: 
+    var(--mljr-clay-inset-xs),
+    0 0 3px var(--mljr-accent-200);
+}
+
+/* Sizes */
+.mljr-radio-sm .mljr-radio-input {
+  width: 1rem;
+  height: 1rem;
+}
+
+.mljr-radio-sm .mljr-radio-input::after {
+  width: 0.375rem;
+  height: 0.375rem;
+}
+
+.mljr-radio-sm {
+  font-size: var(--mljr-text-xs);
+}
+
+.mljr-radio-lg .mljr-radio-input {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.mljr-radio-lg .mljr-radio-input::after {
+  width: 0.625rem;
+  height: 0.625rem;
+}
+
+.mljr-radio-lg {
+  font-size: var(--mljr-text-base);
+}
+
+/* Card Style Radio */
+.mljr-radio-card {
+  display: flex;
+  align-items: center;
+  gap: var(--mljr-space-3);
+  padding: var(--mljr-space-4);
+  background: var(--mljr-bg);
+  border-radius: var(--mljr-radius-lg);
+  box-shadow: var(--mljr-clay-shadow-sm);
+  transition: all var(--mljr-transition-fast);
+  cursor: pointer;
+}
+
+.mljr-radio-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--mljr-clay-shadow);
+}
+
+.mljr-radio-card:has(.mljr-radio-input:checked) {
+  box-shadow: 
+    var(--mljr-clay-shadow-sm),
+    inset 0 0 0 2px var(--mljr-primary-300);
+}
+
+.mljr-radio-card:has(.mljr-radio-input:disabled) {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.mljr-radio-card-content {
+  flex: 1;
+}
+
+.mljr-radio-card-title {
+  font-weight: 600;
+  color: var(--mljr-text);
+  margin-bottom: var(--mljr-space-1);
+}
+
+.mljr-radio-card-description {
+  font-size: var(--mljr-text-sm);
+  color: var(--mljr-text-secondary);
+}
+
+/* Dark Mode */
+.dark .mljr-radio-input,
+[data-theme="dark"] .mljr-radio-input {
+  background: var(--mljr-bg-secondary);
+}
+
+.dark .mljr-radio-input:focus,
+[data-theme="dark"] .mljr-radio-input:focus {
+  box-shadow: 
+    var(--mljr-clay-inset-xs),
+    0 0 0 3px rgba(249, 115, 22, 0.2);
+}
+
+.dark .mljr-radio-card,
+[data-theme="dark"] .mljr-radio-card {
+  background: var(--mljr-bg-secondary);
+}

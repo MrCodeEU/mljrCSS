@@ -1,114 +1,68 @@
 /* ============================================
    MLJR CSS Framework - Progress Component
-   Detroit: Become Human inspired
-   Default style with cut corners, HUD border,
-   and corner accents
+   Claymorphism: Soft rounded progress bars
    ============================================ */
 
 .mljr-progress {
   position: relative;
   width: 100%;
   height: 0.75rem;
-  /* Detroit default: cut corners */
-  clip-path: var(--mljr-clip-sm);
-  background: transparent;
-  overflow: visible;
-}
-
-/* Border layer using pseudo-element to follow clip-path */
-.mljr-progress::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--mljr-primary-500);
-  clip-path: var(--mljr-clip-sm);
-  z-index: 0;
-  opacity: 0.5;
-}
-
-/* Inner background */
-.mljr-progress::after {
-  content: '';
-  position: absolute;
-  inset: 1px;
-  background: var(--mljr-bg-tertiary);
-  clip-path: var(--mljr-clip-sm);
-  z-index: 1;
+  border-radius: var(--mljr-radius-full);
+  background-color: var(--mljr-bg-tertiary);
+  overflow: hidden;
+  box-shadow: var(--mljr-clay-inset-sm);
 }
 
 .mljr-progress-bar {
-  position: relative;
   height: 100%;
-  z-index: 2;
-  /* Detroit gradient fill */
+  border-radius: var(--mljr-radius-full);
   background: var(--mljr-gradient-primary);
-  clip-path: var(--mljr-clip-xs);
   transition: width var(--mljr-transition-slow);
-  box-shadow: var(--mljr-glow-primary-sm);
-  margin: 1px;
+  box-shadow:
+    2px 2px 4px rgba(249, 115, 22, 0.2),
+    -2px -2px 4px rgba(255, 255, 255, 0.5);
 }
 
-/* HUD corner accents wrapper */
+/* Wrapper for labeled progress */
 .mljr-progress-wrapper {
   position: relative;
   width: 100%;
 }
 
-.mljr-progress-accent-tl,
-.mljr-progress-accent-br {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  border: 1px solid var(--mljr-primary-400);
-  pointer-events: none;
-  z-index: 3;
-}
-
-.mljr-progress-accent-tl {
-  top: -2px;
-  left: -2px;
-  border-right: none;
-  border-bottom: none;
-}
-
-.mljr-progress-accent-br {
-  bottom: -2px;
-  right: -2px;
-  border-left: none;
-  border-top: none;
-}
-
 /* Color Variants */
-.mljr-progress-secondary::before {
-  background: var(--mljr-secondary-500);
-}
-
 .mljr-progress-secondary .mljr-progress-bar {
   background: var(--mljr-gradient-secondary);
-  box-shadow: var(--mljr-glow-secondary-sm);
-}
-
-.mljr-progress-accent::before {
-  background: var(--mljr-accent-500);
+  box-shadow:
+    2px 2px 4px rgba(20, 184, 166, 0.2),
+    -2px -2px 4px rgba(255, 255, 255, 0.5);
 }
 
 .mljr-progress-accent .mljr-progress-bar {
   background: var(--mljr-gradient-accent);
-  box-shadow: var(--mljr-glow-accent);
+  box-shadow:
+    2px 2px 4px rgba(168, 85, 247, 0.2),
+    -2px -2px 4px rgba(255, 255, 255, 0.5);
 }
 
 .mljr-progress-success .mljr-progress-bar {
   background: linear-gradient(135deg, var(--mljr-success-light) 0%, var(--mljr-success) 100%);
-  box-shadow: var(--mljr-glow-success);
+  box-shadow:
+    2px 2px 4px rgba(16, 185, 129, 0.2),
+    -2px -2px 4px rgba(255, 255, 255, 0.5);
 }
 
 .mljr-progress-warning .mljr-progress-bar {
   background: linear-gradient(135deg, var(--mljr-warning-light) 0%, var(--mljr-warning) 100%);
+  box-shadow:
+    2px 2px 4px rgba(234, 179, 8, 0.2),
+    -2px -2px 4px rgba(255, 255, 255, 0.5);
 }
 
 .mljr-progress-error .mljr-progress-bar {
   background: linear-gradient(135deg, var(--mljr-error-light) 0%, var(--mljr-error) 100%);
-  box-shadow: var(--mljr-glow-error);
+  box-shadow:
+    2px 2px 4px rgba(239, 68, 68, 0.2),
+    -2px -2px 4px rgba(255, 255, 255, 0.5);
 }
 
 /* Sizes */
@@ -179,32 +133,33 @@
 }
 
 .mljr-progress-label {
-  font-family: var(--mljr-font-display);
+  font-family: var(--mljr-font-sans);
   font-size: var(--mljr-text-sm);
   font-weight: 500;
-  color: var(--mljr-primary-400);
+  color: var(--mljr-text-secondary);
   min-width: 3rem;
   text-align: right;
-  letter-spacing: 0.05em;
 }
 
-/* Dark mode - enhanced glow */
-.dark .mljr-progress::before,
-[data-theme="dark"] .mljr-progress::before {
-  opacity: 0.6;
+/* Dark mode */
+.dark .mljr-progress,
+[data-theme="dark"] .mljr-progress {
+  background-color: var(--mljr-bg-tertiary);
+  box-shadow: var(--mljr-clay-inset-sm);
 }
 
 .dark .mljr-progress .mljr-progress-bar,
 [data-theme="dark"] .mljr-progress .mljr-progress-bar {
-  box-shadow: var(--mljr-glow-primary);
+  box-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.3),
+    -2px -2px 4px rgba(68, 64, 60, 0.1),
+    0 0 8px rgba(249, 115, 22, 0.2);
 }
 
 .dark .mljr-progress-secondary .mljr-progress-bar,
 [data-theme="dark"] .mljr-progress-secondary .mljr-progress-bar {
-  box-shadow: var(--mljr-glow-secondary);
-}
-
-.dark .mljr-progress-accent .mljr-progress-bar,
-[data-theme="dark"] .mljr-progress-accent .mljr-progress-bar {
-  box-shadow: var(--mljr-glow-accent);
+  box-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.3),
+    -2px -2px 4px rgba(68, 64, 60, 0.1),
+    0 0 8px rgba(20, 184, 166, 0.2);
 }

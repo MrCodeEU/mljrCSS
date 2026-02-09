@@ -1,190 +1,285 @@
 /* ============================================
    MLJR CSS Framework - Badge Component
+   Claymorphism: Soft pill shapes with shadows
    ============================================ */
 
 .mljr-badge {
   display: inline-flex;
   align-items: center;
   gap: var(--mljr-space-1);
-  padding: 0.125rem var(--mljr-space-2);
+  padding: var(--mljr-space-1) var(--mljr-space-3);
   font-size: var(--mljr-text-xs);
   font-weight: 500;
   line-height: var(--mljr-leading-normal);
-  /* Angular Detroit-style corners (TR + BL) */
-  clip-path: var(--mljr-clip-sm);
+  border-radius: var(--mljr-radius-full);
   white-space: nowrap;
+  box-shadow: var(--mljr-clay-shadow-sm);
+  transition: all var(--mljr-transition-fast);
 }
 
 /* Default Badge */
 .mljr-badge-default {
-  background-color: var(--mljr-bg-tertiary);
+  background-color: var(--mljr-bg-secondary);
   color: var(--mljr-text);
 }
 
-/* Primary Badge (Rich Blue) */
+/* Primary Badge (Orange) */
 .mljr-badge-primary {
-  background-color: rgb(0 128 255 / 0.15);
+  background-color: var(--mljr-primary-100);
   color: var(--mljr-primary-700);
+  box-shadow:
+    3px 3px 6px rgba(249, 115, 22, 0.15),
+    -2px -2px 5px rgba(255, 255, 255, 0.8);
 }
 
 .dark .mljr-badge-primary,
 [data-theme="dark"] .mljr-badge-primary {
-  background-color: rgb(0 128 255 / 0.2);
+  background-color: rgba(249, 115, 22, 0.2);
   color: var(--mljr-primary-300);
+  box-shadow:
+    3px 3px 6px rgba(0, 0, 0, 0.25),
+    -2px -2px 5px rgba(68, 64, 60, 0.1),
+    0 0 8px rgba(249, 115, 22, 0.12);
 }
 
-/* Secondary Badge (Rich Orange) */
+/* Secondary Badge (Teal) */
 .mljr-badge-secondary {
-  background-color: rgb(255 140 0 / 0.15);
+  background-color: var(--mljr-secondary-100);
   color: var(--mljr-secondary-700);
+  box-shadow:
+    3px 3px 6px rgba(20, 184, 166, 0.15),
+    -2px -2px 5px rgba(255, 255, 255, 0.8);
 }
 
 .dark .mljr-badge-secondary,
 [data-theme="dark"] .mljr-badge-secondary {
-  background-color: rgb(255 140 0 / 0.2);
+  background-color: rgba(20, 184, 166, 0.2);
   color: var(--mljr-secondary-300);
+  box-shadow:
+    3px 3px 6px rgba(0, 0, 0, 0.25),
+    -2px -2px 5px rgba(68, 64, 60, 0.1),
+    0 0 8px rgba(20, 184, 166, 0.12);
 }
 
-/* Success Badge (Teal-green) */
+/* Success Badge */
 .mljr-badge-success {
-  background-color: rgb(0 166 124 / 0.15);
+  background-color: rgba(16, 185, 129, 0.15);
   color: var(--mljr-success-dark);
+  box-shadow:
+    3px 3px 6px rgba(16, 185, 129, 0.12),
+    -2px -2px 5px rgba(255, 255, 255, 0.8);
 }
 
 .dark .mljr-badge-success,
 [data-theme="dark"] .mljr-badge-success {
-  background-color: rgb(0 166 124 / 0.2);
+  background-color: rgba(16, 185, 129, 0.2);
   color: var(--mljr-success-light);
+  box-shadow:
+    3px 3px 6px rgba(0, 0, 0, 0.25),
+    -2px -2px 5px rgba(68, 64, 60, 0.1),
+    0 0 8px rgba(16, 185, 129, 0.12);
 }
 
 /* Warning Badge */
 .mljr-badge-warning {
-  background-color: rgb(234 179 8 / 0.15);
+  background-color: rgba(234, 179, 8, 0.15);
   color: var(--mljr-warning-dark);
+  box-shadow:
+    3px 3px 6px rgba(234, 179, 8, 0.12),
+    -2px -2px 5px rgba(255, 255, 255, 0.8);
 }
 
 .dark .mljr-badge-warning,
 [data-theme="dark"] .mljr-badge-warning {
-  background-color: rgb(234 179 8 / 0.2);
+  background-color: rgba(234, 179, 8, 0.2);
   color: var(--mljr-warning-light);
+  box-shadow:
+    3px 3px 6px rgba(0, 0, 0, 0.25),
+    -2px -2px 5px rgba(68, 64, 60, 0.1),
+    0 0 8px rgba(234, 179, 8, 0.12);
 }
 
-/* Error Badge (Deep Crimson) */
+/* Error Badge */
 .mljr-badge-error {
-  background-color: rgb(185 28 28 / 0.15);
+  background-color: rgba(239, 68, 68, 0.15);
   color: var(--mljr-error-dark);
+  box-shadow:
+    3px 3px 6px rgba(239, 68, 68, 0.12),
+    -2px -2px 5px rgba(255, 255, 255, 0.8);
 }
 
 .dark .mljr-badge-error,
 [data-theme="dark"] .mljr-badge-error {
-  background-color: rgb(185 28 28 / 0.2);
+  background-color: rgba(239, 68, 68, 0.2);
   color: var(--mljr-error-light);
+  box-shadow:
+    3px 3px 6px rgba(0, 0, 0, 0.25),
+    -2px -2px 5px rgba(68, 64, 60, 0.1),
+    0 0 8px rgba(239, 68, 68, 0.12);
 }
 
 /* Info Badge */
 .mljr-badge-info {
-  background-color: rgb(59 130 246 / 0.15);
+  background-color: rgba(59, 130, 246, 0.15);
   color: var(--mljr-info-dark);
+  box-shadow:
+    3px 3px 6px rgba(59, 130, 246, 0.12),
+    -2px -2px 5px rgba(255, 255, 255, 0.8);
 }
 
 .dark .mljr-badge-info,
 [data-theme="dark"] .mljr-badge-info {
-  background-color: rgb(59 130 246 / 0.2);
+  background-color: rgba(59, 130, 246, 0.2);
   color: var(--mljr-info-light);
+  box-shadow:
+    3px 3px 6px rgba(0, 0, 0, 0.25),
+    -2px -2px 5px rgba(68, 64, 60, 0.1),
+    0 0 8px rgba(59, 130, 246, 0.12);
 }
 
 /* Solid Variants */
 .mljr-badge-primary-solid {
-  background: linear-gradient(135deg, var(--mljr-primary-500) 0%, var(--mljr-primary-700) 100%);
+  background: var(--mljr-gradient-primary);
   color: white;
+  box-shadow:
+    3px 3px 6px rgba(249, 115, 22, 0.25),
+    -3px -3px 6px rgba(255, 255, 255, 0.8);
 }
 
 .mljr-badge-secondary-solid {
-  background: linear-gradient(135deg, var(--mljr-secondary-500) 0%, var(--mljr-secondary-700) 100%);
+  background: var(--mljr-gradient-secondary);
   color: white;
+  box-shadow:
+    3px 3px 6px rgba(20, 184, 166, 0.25),
+    -3px -3px 6px rgba(255, 255, 255, 0.8);
 }
 
 .mljr-badge-success-solid {
-  background-color: var(--mljr-success);
+  background: linear-gradient(135deg, var(--mljr-success-light) 0%, var(--mljr-success) 100%);
   color: white;
+  box-shadow:
+    3px 3px 6px rgba(16, 185, 129, 0.25),
+    -3px -3px 6px rgba(255, 255, 255, 0.8);
 }
 
 .mljr-badge-warning-solid {
-  background-color: var(--mljr-warning);
+  background: linear-gradient(135deg, var(--mljr-warning-light) 0%, var(--mljr-warning) 100%);
   color: var(--mljr-gray-900);
+  box-shadow:
+    3px 3px 6px rgba(234, 179, 8, 0.25),
+    -3px -3px 6px rgba(255, 255, 255, 0.8);
 }
 
 .mljr-badge-error-solid {
-  background-color: var(--mljr-error);
+  background: linear-gradient(135deg, var(--mljr-error-light) 0%, var(--mljr-error) 100%);
   color: white;
+  box-shadow:
+    3px 3px 6px rgba(239, 68, 68, 0.25),
+    -3px -3px 6px rgba(255, 255, 255, 0.8);
 }
 
 .mljr-badge-info-solid {
-  background-color: var(--mljr-info);
+  background: linear-gradient(135deg, var(--mljr-info-light) 0%, var(--mljr-info) 100%);
   color: white;
+  box-shadow:
+    3px 3px 6px rgba(59, 130, 246, 0.25),
+    -3px -3px 6px rgba(255, 255, 255, 0.8);
 }
 
-/* Outline Variants - using pseudo-elements for borders that follow clip-path */
-.mljr-badge-outline,
-.mljr-badge-outline-primary,
-.mljr-badge-outline-secondary {
-  position: relative;
+/* Dark mode for solid badges */
+.dark .mljr-badge-primary-solid,
+[data-theme="dark"] .mljr-badge-primary-solid {
+  box-shadow:
+    3px 3px 6px rgba(0, 0, 0, 0.35),
+    -3px -3px 6px rgba(68, 64, 60, 0.1),
+    0 0 10px rgba(249, 115, 22, 0.2);
+}
+
+.dark .mljr-badge-secondary-solid,
+[data-theme="dark"] .mljr-badge-secondary-solid {
+  box-shadow:
+    3px 3px 6px rgba(0, 0, 0, 0.35),
+    -3px -3px 6px rgba(68, 64, 60, 0.1),
+    0 0 10px rgba(20, 184, 166, 0.2);
+}
+
+.dark .mljr-badge-success-solid,
+[data-theme="dark"] .mljr-badge-success-solid {
+  box-shadow:
+    3px 3px 6px rgba(0, 0, 0, 0.35),
+    -3px -3px 6px rgba(68, 64, 60, 0.1),
+    0 0 10px rgba(16, 185, 129, 0.2);
+}
+
+.dark .mljr-badge-warning-solid,
+[data-theme="dark"] .mljr-badge-warning-solid {
+  box-shadow:
+    3px 3px 6px rgba(0, 0, 0, 0.35),
+    -3px -3px 6px rgba(68, 64, 60, 0.1),
+    0 0 10px rgba(234, 179, 8, 0.2);
+}
+
+.dark .mljr-badge-error-solid,
+[data-theme="dark"] .mljr-badge-error-solid {
+  box-shadow:
+    3px 3px 6px rgba(0, 0, 0, 0.35),
+    -3px -3px 6px rgba(68, 64, 60, 0.1),
+    0 0 10px rgba(239, 68, 68, 0.2);
+}
+
+.dark .mljr-badge-info-solid,
+[data-theme="dark"] .mljr-badge-info-solid {
+  box-shadow:
+    3px 3px 6px rgba(0, 0, 0, 0.35),
+    -3px -3px 6px rgba(68, 64, 60, 0.1),
+    0 0 10px rgba(59, 130, 246, 0.2);
+}
+
+/* Outline Variants */
+.mljr-badge-outline {
   background-color: transparent;
+  color: var(--mljr-text);
+  border: 1.5px solid var(--mljr-border-strong);
+  box-shadow: var(--mljr-clay-shadow-sm);
 }
 
-.mljr-badge-outline::before,
-.mljr-badge-outline-primary::before,
-.mljr-badge-outline-secondary::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  clip-path: var(--mljr-clip-sm);
-  z-index: -1;
+.mljr-badge-outline-primary {
+  background-color: transparent;
+  color: var(--mljr-primary-600);
+  border: 1.5px solid var(--mljr-primary-300);
+  box-shadow: var(--mljr-clay-shadow-sm);
 }
 
-.mljr-badge-outline::after,
-.mljr-badge-outline-primary::after,
-.mljr-badge-outline-secondary::after {
-  content: '';
-  position: absolute;
-  inset: 1px;
-  background: var(--mljr-bg);
-  clip-path: var(--mljr-clip-sm);
-  z-index: -1;
+.mljr-badge-outline-secondary {
+  background-color: transparent;
+  color: var(--mljr-secondary-600);
+  border: 1.5px solid var(--mljr-secondary-300);
+  box-shadow: var(--mljr-clay-shadow-sm);
 }
-
-.mljr-badge-outline { color: var(--mljr-text); }
-.mljr-badge-outline::before { background: currentColor; }
-
-.mljr-badge-outline-primary { color: var(--mljr-primary-500); }
-.mljr-badge-outline-primary::before { background: var(--mljr-primary-500); }
-
-.mljr-badge-outline-secondary { color: var(--mljr-secondary-500); }
-.mljr-badge-outline-secondary::before { background: var(--mljr-secondary-500); }
 
 /* Badge Sizes */
 .mljr-badge-sm {
-  padding: 0 var(--mljr-space-1);
+  padding: 0 var(--mljr-space-2);
   font-size: 0.625rem;
 }
 
 .mljr-badge-lg {
-  padding: var(--mljr-space-1) var(--mljr-space-3);
+  padding: var(--mljr-space-1) var(--mljr-space-4);
   font-size: var(--mljr-text-sm);
 }
 
 /* Badge with Dot */
 .mljr-badge-dot {
-  padding-left: var(--mljr-space-1);
+  padding-left: var(--mljr-space-2);
 }
 
 .mljr-badge-dot::before {
   content: "";
   width: 0.5rem;
   height: 0.5rem;
-  /* Diamond shape for Detroit style */
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  border-radius: var(--mljr-radius-full);
   background-color: currentColor;
+  box-shadow: 0 0 4px currentColor;
 }
 
 /* Removable Badge */
@@ -202,8 +297,7 @@
   margin-left: var(--mljr-space-1);
   background: none;
   border: none;
-  /* Angular remove button */
-  clip-path: var(--mljr-clip-sm);
+  border-radius: var(--mljr-radius-full);
   opacity: 0.7;
   cursor: pointer;
   transition: opacity var(--mljr-transition-fast), background-color var(--mljr-transition-fast);
@@ -211,5 +305,11 @@
 
 .mljr-badge-remove:hover {
   opacity: 1;
-  background-color: rgb(0 0 0 / 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode */
+.dark .mljr-badge,
+[data-theme="dark"] .mljr-badge {
+  box-shadow: var(--mljr-clay-shadow-sm);
 }

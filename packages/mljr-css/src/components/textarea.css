@@ -1,0 +1,164 @@
+/* ============================================
+   MLJR CSS Framework - Textarea Component
+   Claymorphism: Soft pressed-in textarea
+   ============================================ */
+
+.mljr-textarea-wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.mljr-textarea {
+  display: block;
+  width: 100%;
+  min-height: 100px;
+  padding: var(--mljr-space-3) var(--mljr-space-4);
+  font-size: var(--mljr-text-sm);
+  line-height: var(--mljr-leading-normal);
+  color: var(--mljr-text);
+  background-color: var(--mljr-bg);
+  border: none;
+  border-radius: var(--mljr-radius-md);
+  box-shadow: var(--mljr-clay-inset);
+  transition: box-shadow var(--mljr-transition-fast), background-color var(--mljr-transition-fast);
+  resize: vertical;
+  font-family: inherit;
+}
+
+.mljr-textarea::placeholder {
+  color: var(--mljr-text-muted);
+}
+
+.mljr-textarea:hover {
+  background-color: var(--mljr-bg-secondary);
+}
+
+.mljr-textarea:focus {
+  outline: none;
+  background-color: var(--mljr-bg);
+  box-shadow:
+    var(--mljr-clay-inset-sm),
+    0 0 0 3px var(--mljr-primary-200);
+}
+
+.mljr-textarea:disabled {
+  background-color: var(--mljr-bg-tertiary);
+  opacity: 0.6;
+  cursor: not-allowed;
+  resize: none;
+}
+
+.mljr-textarea:read-only {
+  background-color: var(--mljr-bg-secondary);
+}
+
+/* Sizes */
+.mljr-textarea-sm {
+  padding: var(--mljr-space-2) var(--mljr-space-3);
+  font-size: var(--mljr-text-xs);
+  min-height: 80px;
+  border-radius: var(--mljr-radius-sm);
+}
+
+.mljr-textarea-lg {
+  padding: var(--mljr-space-4) var(--mljr-space-5);
+  font-size: var(--mljr-text-base);
+  min-height: 150px;
+  border-radius: var(--mljr-radius-lg);
+}
+
+/* States */
+.mljr-textarea-error {
+  box-shadow:
+    var(--mljr-clay-inset),
+    inset 0 0 0 2px var(--mljr-error-light);
+}
+
+.mljr-textarea-error:focus {
+  box-shadow:
+    var(--mljr-clay-inset-sm),
+    0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+.mljr-textarea-success {
+  box-shadow:
+    var(--mljr-clay-inset),
+    inset 0 0 0 2px var(--mljr-success-light);
+}
+
+.mljr-textarea-success:focus {
+  box-shadow:
+    var(--mljr-clay-inset-sm),
+    0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+/* With Label */
+.mljr-textarea-label {
+  display: block;
+  margin-bottom: var(--mljr-space-2);
+  font-size: var(--mljr-text-sm);
+  font-weight: 500;
+  color: var(--mljr-text);
+}
+
+.mljr-textarea-label-required::after {
+  content: " *";
+  color: var(--mljr-error);
+}
+
+/* Helper/Error Text */
+.mljr-textarea-helper {
+  margin-top: var(--mljr-space-1);
+  font-size: var(--mljr-text-xs);
+  color: var(--mljr-text-muted);
+}
+
+.mljr-textarea-error-text {
+  margin-top: var(--mljr-space-1);
+  font-size: var(--mljr-text-xs);
+  color: var(--mljr-error);
+}
+
+/* Character Count */
+.mljr-textarea-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--mljr-space-1);
+}
+
+.mljr-textarea-count {
+  font-size: var(--mljr-text-xs);
+  color: var(--mljr-text-muted);
+}
+
+.mljr-textarea-count-warning {
+  color: var(--mljr-warning);
+}
+
+.mljr-textarea-count-error {
+  color: var(--mljr-error);
+}
+
+/* Auto-resize */
+.mljr-textarea-auto-resize {
+  resize: none;
+  overflow: hidden;
+  min-height: 100px;
+  max-height: 400px;
+}
+
+/* Dark Mode */
+.dark .mljr-textarea,
+[data-theme="dark"] .mljr-textarea {
+  background-color: var(--mljr-bg-secondary);
+  box-shadow: var(--mljr-clay-inset);
+}
+
+.dark .mljr-textarea:focus,
+[data-theme="dark"] .mljr-textarea:focus {
+  box-shadow:
+    var(--mljr-clay-inset-sm),
+    0 0 0 3px rgba(249, 115, 22, 0.2);
+}

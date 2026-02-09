@@ -1,6 +1,6 @@
 # MLJR CSS Framework
 
-A TailwindCSS-based CSS framework with SvelteKit component library, featuring an orange/purple color scheme that works in both light and dark modes.
+A TailwindCSS-based CSS framework with SvelteKit component library, featuring a Claymorphism design system with warm orange as the primary color and soft teal as secondary, working in both light and dark modes.
 
 ## Packages
 
@@ -53,7 +53,7 @@ export default {
 
 ```svelte
 <script>
-  import { Button, Card, Alert } from 'mljr-svelte';
+  import { Button, Card, Alert, Toast, Table, Spinner } from 'mljr-svelte';
 </script>
 
 <Card title="Welcome">
@@ -73,10 +73,25 @@ export default {
 - `primary-600`: #EA580C (buttons, links)
 - `primary-700`: #C2410C (hover states)
 
-### Secondary (Purple)
-- `secondary-500`: #A855F7
-- `secondary-600`: #9333EA (buttons, links)
-- `secondary-700`: #7E22CE (hover states)
+### Secondary (Soft Teal)
+- `secondary-500`: #14B8A6
+- `secondary-600`: #0D9488 (buttons, links)
+- `secondary-700`: #0F766E (hover states)
+
+## Components
+
+The library includes a comprehensive set of UI components:
+
+| Category | Components |
+|----------|------------|
+| **Core** | Button, Card, Alert, Badge, Input, Select, Checkbox, Switch |
+| **Navigation** | Tabs, Accordion, Breadcrumb, Dropdown, Pagination |
+| **Feedback** | Modal, Toast, Tooltip, Popover, Progress, Spinner, Skeleton |
+| **Data Display** | Table, Avatar, Stats, Timeline, Rating, Carousel |
+| **Layout** | Divider, Background |
+| **Interaction** | Slider, RangeSlider |
+
+All components are available as both CSS classes (via `mljr-css`) and as Svelte 5 components (via `mljr-svelte`).
 
 ## Dark Mode
 

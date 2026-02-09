@@ -1,9 +1,9 @@
 /* ============================================
    MLJR CSS Framework - Input Component
-   Detroit: Become Human inspired
+   Claymorphism: Soft, pressed-in fields
    ============================================ */
 
-/* Shared angular border container base */
+/* Shared input container base */
 .mljr-input-container,
 .mljr-textarea-container,
 .mljr-select-container,
@@ -14,71 +14,20 @@
   width: 100%;
 }
 
-.mljr-input-container::before,
-.mljr-textarea-container::before,
-.mljr-select-container::before,
-.mljr-search::before,
-.mljr-number-input::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--mljr-border);
-  clip-path: var(--mljr-clip-btn);
-  z-index: 0;
-  transition: background-color var(--mljr-transition-fast);
-  pointer-events: none;
-}
-
-.mljr-input-container::after,
-.mljr-textarea-container::after,
-.mljr-select-container::after,
-.mljr-search::after,
-.mljr-number-input::after {
-  content: '';
-  position: absolute;
-  inset: 1px;
-  background: var(--mljr-bg);
-  clip-path: var(--mljr-clip-btn);
-  z-index: 0;
-  transition: background-color var(--mljr-transition-fast);
-  pointer-events: none;
-}
-
-.mljr-input-container:hover::before,
-.mljr-textarea-container:hover::before,
-.mljr-select-container:hover::before {
-  background: var(--mljr-border-strong);
-}
-
-.mljr-input-container:focus-within::before,
-.mljr-textarea-container:focus-within::before,
-.mljr-select-container:focus-within::before,
-.mljr-search:focus-within::before,
-.mljr-number-input:focus-within::before {
-  background: var(--mljr-primary-500);
-}
-
-.mljr-input-container:focus-within::after,
-.mljr-textarea-container:focus-within::after,
-.mljr-select-container:focus-within::after {
-  box-shadow: 0 0 0 2px rgb(0 128 255 / 0.2), 0 0 8px rgb(0 128 255 / 0.15);
-}
-
 /* Shared input/textarea base styles */
 .mljr-input,
 .mljr-textarea {
   display: block;
   width: 100%;
-  padding: var(--mljr-space-2) var(--mljr-space-3);
+  padding: var(--mljr-space-3) var(--mljr-space-4);
   font-size: var(--mljr-text-sm);
   line-height: var(--mljr-leading-normal);
   color: var(--mljr-text);
-  background-color: transparent;
+  background-color: var(--mljr-bg);
   border: none;
-  clip-path: var(--mljr-clip-btn);
-  position: relative;
-  z-index: 1;
-  transition: box-shadow var(--mljr-transition-fast);
+  border-radius: var(--mljr-radius-md);
+  box-shadow: var(--mljr-clay-inset);
+  transition: box-shadow var(--mljr-transition-fast), background-color var(--mljr-transition-fast);
 }
 
 .mljr-input::placeholder,
@@ -86,14 +35,23 @@
   color: var(--mljr-text-muted);
 }
 
+.mljr-input:hover,
+.mljr-textarea:hover {
+  background-color: var(--mljr-bg-secondary);
+}
+
 .mljr-input:focus,
 .mljr-textarea:focus {
   outline: none;
+  background-color: var(--mljr-bg);
+  box-shadow:
+    var(--mljr-clay-inset-sm),
+    0 0 0 3px var(--mljr-primary-200);
 }
 
 .mljr-input:disabled,
 .mljr-textarea:disabled {
-  background-color: var(--mljr-bg-secondary);
+  background-color: var(--mljr-bg-tertiary);
   opacity: 0.6;
   cursor: not-allowed;
 }
@@ -107,68 +65,47 @@
   resize: vertical;
 }
 
-/* Standalone input/textarea (without container) - fallback with box-shadow */
-.mljr-input:not(.mljr-input-container .mljr-input),
-.mljr-textarea:not(.mljr-textarea-container .mljr-textarea) {
-  background-color: var(--mljr-bg);
-  box-shadow: inset 0 0 0 1px var(--mljr-border);
-}
-
-.mljr-input:not(.mljr-input-container .mljr-input):hover,
-.mljr-textarea:not(.mljr-textarea-container .mljr-textarea):hover {
-  box-shadow: inset 0 0 0 1px var(--mljr-border-strong);
-}
-
-.mljr-input:not(.mljr-input-container .mljr-input):focus,
-.mljr-textarea:not(.mljr-textarea-container .mljr-textarea):focus {
-  box-shadow: inset 0 0 0 1px var(--mljr-primary-500), 0 0 0 2px rgb(0 128 255 / 0.2), 0 0 8px rgb(0 128 255 / 0.15);
-}
-
 /* Input Sizes */
 .mljr-input-sm {
-  padding: var(--mljr-space-1) var(--mljr-space-2);
+  padding: var(--mljr-space-2) var(--mljr-space-3);
   font-size: var(--mljr-text-xs);
+  border-radius: var(--mljr-radius-sm);
 }
 
 .mljr-input-lg {
-  padding: var(--mljr-space-3) var(--mljr-space-4);
+  padding: var(--mljr-space-4) var(--mljr-space-5);
   font-size: var(--mljr-text-base);
+  border-radius: var(--mljr-radius-lg);
 }
 
-/* Input/Select States - with container */
-.mljr-input-container-error::before,
-.mljr-select-container-error::before {
-  background: var(--mljr-error) !important;
+/* Input States - error */
+.mljr-input-error,
+.mljr-input-container-error .mljr-input {
+  box-shadow:
+    var(--mljr-clay-inset),
+    inset 0 0 0 2px var(--mljr-error-light);
 }
 
-.mljr-input-container-error:focus-within::after,
-.mljr-select-container-error:focus-within::after {
-  box-shadow: 0 0 0 2px rgb(185 28 28 / 0.2), 0 0 8px rgb(185 28 28 / 0.15);
+.mljr-input-error:focus,
+.mljr-input-container-error .mljr-input:focus {
+  box-shadow:
+    var(--mljr-clay-inset-sm),
+    0 0 0 3px rgba(239, 68, 68, 0.2);
 }
 
-.mljr-input-container-success::before {
-  background: var(--mljr-success) !important;
+/* Input States - success */
+.mljr-input-success,
+.mljr-input-container-success .mljr-input {
+  box-shadow:
+    var(--mljr-clay-inset),
+    inset 0 0 0 2px var(--mljr-success-light);
 }
 
-.mljr-input-container-success:focus-within::after {
-  box-shadow: 0 0 0 2px rgb(0 166 124 / 0.2), 0 0 8px rgb(0 166 124 / 0.15);
-}
-
-/* Input States - standalone fallback */
-.mljr-input-error:not(.mljr-input-container .mljr-input) {
-  box-shadow: inset 0 0 0 1px var(--mljr-error);
-}
-
-.mljr-input-error:not(.mljr-input-container .mljr-input):focus {
-  box-shadow: inset 0 0 0 1px var(--mljr-error), 0 0 0 2px rgb(185 28 28 / 0.2);
-}
-
-.mljr-input-success:not(.mljr-input-container .mljr-input) {
-  box-shadow: inset 0 0 0 1px var(--mljr-success);
-}
-
-.mljr-input-success:not(.mljr-input-container .mljr-input):focus {
-  box-shadow: inset 0 0 0 1px var(--mljr-success), 0 0 0 2px rgb(0 166 124 / 0.2);
+.mljr-input-success:focus,
+.mljr-input-container-success .mljr-input:focus {
+  box-shadow:
+    var(--mljr-clay-inset-sm),
+    0 0 0 3px rgba(16, 185, 129, 0.2);
 }
 
 /* Input with Icon */
@@ -180,16 +117,18 @@
 
 .mljr-input-icon-left {
   position: absolute;
-  left: var(--mljr-space-3);
+  left: var(--mljr-space-4);
   pointer-events: none;
   color: var(--mljr-text-muted);
+  z-index: 1;
 }
 
 .mljr-input-icon-right {
   position: absolute;
-  right: var(--mljr-space-3);
+  right: var(--mljr-space-4);
   pointer-events: none;
   color: var(--mljr-text-muted);
+  z-index: 1;
 }
 
 .mljr-input-wrapper .mljr-input-icon-left + .mljr-input {
@@ -209,7 +148,7 @@
 /* Label */
 .mljr-label {
   display: block;
-  margin-bottom: var(--mljr-space-1);
+  margin-bottom: var(--mljr-space-2);
   font-size: var(--mljr-text-sm);
   font-weight: 500;
   color: var(--mljr-text);
@@ -234,124 +173,75 @@
 }
 
 /* ============================================
-   Detroit Style Input Variants
-   ============================================ */
-
-/* Detroit angular input with left accent */
-.mljr-input-detroit {
-  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
-  border-left: 2px solid var(--mljr-primary-500);
-  border-radius: 0;
-  background: linear-gradient(90deg, rgba(0, 128, 255, 0.03) 0%, transparent 20%);
-}
-
-.mljr-input-detroit:focus {
-  border-left-color: var(--mljr-primary-400);
-  box-shadow: inset 2px 0 8px rgba(0, 128, 255, 0.1), 0 0 8px rgba(0, 128, 255, 0.2);
-}
-
-/* HUD-style input */
-.mljr-input-hud {
-  background: rgba(0, 128, 255, 0.05);
-  border: var(--mljr-border-hud);
-  border-radius: 0;
-  clip-path: var(--mljr-clip-corner-sm);
-}
-
-.mljr-input-hud:focus {
-  background: rgba(0, 128, 255, 0.08);
-  border-color: var(--mljr-primary-400);
-  box-shadow: var(--mljr-glow-primary-sm);
-}
-
-.dark .mljr-input-hud,
-[data-theme="dark"] .mljr-input-hud {
-  background: rgba(0, 128, 255, 0.08);
-}
-
-.dark .mljr-input-hud:focus,
-[data-theme="dark"] .mljr-input-hud:focus {
-  background: rgba(0, 128, 255, 0.12);
-  box-shadow: var(--mljr-glow-primary);
-}
-
-/* ============================================
-   Range Slider - Detroit Angular Style
+   Range Slider - Soft rounded style
    ============================================ */
 
 .mljr-range {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 6px;
-  background: var(--mljr-border);
+  height: 8px;
+  background: var(--mljr-bg-tertiary);
+  border-radius: var(--mljr-radius-full);
   outline: none;
   cursor: pointer;
-  clip-path: polygon(0 0, calc(100% - 3px) 0, 100% 3px, 100% 100%, 3px 100%, 0 calc(100% - 3px));
+  box-shadow: var(--mljr-clay-inset-sm);
 }
 
 .mljr-range::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 1.25rem;
-  height: 1.25rem;
-  background: var(--mljr-primary-500);
+  width: 1.5rem;
+  height: 1.5rem;
+  background: var(--mljr-gradient-primary);
+  border-radius: var(--mljr-radius-full);
   cursor: pointer;
-  clip-path: var(--mljr-clip-sm);
   border: none;
+  box-shadow: var(--mljr-clay-shadow-sm);
   transition: all var(--mljr-transition-fast);
 }
 
 .mljr-range::-moz-range-thumb {
-  width: 1.25rem;
-  height: 1.25rem;
-  background: var(--mljr-primary-500);
+  width: 1.5rem;
+  height: 1.5rem;
+  background: var(--mljr-gradient-primary);
+  border-radius: var(--mljr-radius-full);
   cursor: pointer;
-  clip-path: var(--mljr-clip-sm);
   border: none;
+  box-shadow: var(--mljr-clay-shadow-sm);
   transition: all var(--mljr-transition-fast);
 }
 
 .mljr-range::-webkit-slider-thumb:hover {
-  background: var(--mljr-primary-400);
-  box-shadow: 0 0 8px rgb(0 128 255 / 0.4);
+  transform: scale(1.1);
+  box-shadow: var(--mljr-clay-shadow);
 }
 
 .mljr-range::-moz-range-thumb:hover {
-  background: var(--mljr-primary-400);
-  box-shadow: 0 0 8px rgb(0 128 255 / 0.4);
+  transform: scale(1.1);
+  box-shadow: var(--mljr-clay-shadow);
 }
 
 .mljr-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 3px rgb(0 128 255 / 0.25), 0 0 8px rgb(0 128 255 / 0.3);
+  box-shadow: var(--mljr-clay-shadow), 0 0 0 4px var(--mljr-primary-200);
 }
 
 .mljr-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 3px rgb(0 128 255 / 0.25), 0 0 8px rgb(0 128 255 / 0.3);
+  box-shadow: var(--mljr-clay-shadow), 0 0 0 4px var(--mljr-primary-200);
 }
 
 /* Range with progress fill */
 .mljr-range-filled {
-  background: linear-gradient(to right, var(--mljr-primary-500) 0%, var(--mljr-primary-500) var(--mljr-range-value, 50%), var(--mljr-border) var(--mljr-range-value, 50%));
+  background: linear-gradient(to right, var(--mljr-primary-400) 0%, var(--mljr-primary-400) var(--mljr-range-value, 50%), var(--mljr-bg-tertiary) var(--mljr-range-value, 50%));
 }
 
 /* Secondary range */
 .mljr-range-secondary::-webkit-slider-thumb {
-  background: var(--mljr-secondary-500);
+  background: var(--mljr-gradient-secondary);
 }
 
 .mljr-range-secondary::-moz-range-thumb {
-  background: var(--mljr-secondary-500);
-}
-
-.mljr-range-secondary::-webkit-slider-thumb:hover {
-  background: var(--mljr-secondary-400);
-  box-shadow: 0 0 8px rgb(255 140 0 / 0.4);
-}
-
-.mljr-range-secondary::-moz-range-thumb:hover {
-  background: var(--mljr-secondary-400);
-  box-shadow: 0 0 8px rgb(255 140 0 / 0.4);
+  background: var(--mljr-gradient-secondary);
 }
 
 /* ============================================
@@ -361,12 +251,15 @@
 .mljr-number-input {
   display: flex;
   align-items: stretch;
+  border-radius: var(--mljr-radius-md);
+  overflow: hidden;
+  box-shadow: var(--mljr-clay-shadow-sm);
 }
 
 .mljr-number-input .mljr-input {
   text-align: center;
   box-shadow: none;
-  background: transparent;
+  border-radius: 0;
   -moz-appearance: textfield;
 }
 
@@ -386,40 +279,47 @@
   cursor: pointer;
   color: var(--mljr-text);
   transition: all var(--mljr-transition-fast);
-  position: relative;
-  z-index: 1;
 }
 
 .mljr-number-btn:hover {
-  background: var(--mljr-primary-500);
-  color: white;
+  background: var(--mljr-primary-100);
+  color: var(--mljr-primary-600);
 }
 
 .mljr-number-btn:active {
-  background: var(--mljr-primary-600);
+  background: var(--mljr-primary-200);
 }
 
 .mljr-number-btn-decrement {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  border-radius: var(--mljr-radius-md) 0 0 var(--mljr-radius-md);
 }
 
 .mljr-number-btn-increment {
-  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+  border-radius: 0 var(--mljr-radius-md) var(--mljr-radius-md) 0;
 }
 
 /* ============================================
    Search Input
    ============================================ */
 
+.mljr-search {
+  box-shadow: var(--mljr-clay-inset);
+  border-radius: var(--mljr-radius-full);
+  background: var(--mljr-bg);
+}
+
+.mljr-search:focus-within {
+  box-shadow:
+    var(--mljr-clay-inset-sm),
+    0 0 0 3px var(--mljr-primary-200);
+}
+
 .mljr-search-input {
   width: 100%;
-  padding-left: var(--mljr-space-10);
-  padding-right: var(--mljr-space-10);
+  padding: var(--mljr-space-3) var(--mljr-space-12);
   background: transparent;
   border: none;
-  clip-path: var(--mljr-clip-btn);
-  position: relative;
-  z-index: 1;
+  border-radius: var(--mljr-radius-full);
 }
 
 .mljr-search-input:focus {
@@ -428,7 +328,7 @@
 
 .mljr-search-icon {
   position: absolute;
-  left: var(--mljr-space-3);
+  left: var(--mljr-space-4);
   top: 50%;
   transform: translateY(-50%);
   color: var(--mljr-text-muted);
@@ -438,20 +338,20 @@
 
 .mljr-search-clear {
   position: absolute;
-  right: var(--mljr-space-2);
+  right: var(--mljr-space-3);
   top: 50%;
   transform: translateY(-50%);
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.75rem;
+  height: 1.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: transparent;
+  background: var(--mljr-bg-secondary);
   border: none;
+  border-radius: var(--mljr-radius-full);
   color: var(--mljr-text-muted);
   cursor: pointer;
   z-index: 2;
-  clip-path: var(--mljr-clip-sm);
   transition: all var(--mljr-transition-fast);
 }
 
@@ -467,19 +367,20 @@
 .mljr-color-picker {
   display: flex;
   align-items: center;
-  gap: var(--mljr-space-2);
+  gap: var(--mljr-space-3);
 }
 
 .mljr-color-input {
   -webkit-appearance: none;
   appearance: none;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 3rem;
   padding: 0;
   background: transparent;
   border: none;
   cursor: pointer;
-  clip-path: var(--mljr-clip-sm);
+  border-radius: var(--mljr-radius-md);
+  box-shadow: var(--mljr-clay-shadow-sm);
 }
 
 .mljr-color-input::-webkit-color-swatch-wrapper {
@@ -488,36 +389,20 @@
 
 .mljr-color-input::-webkit-color-swatch {
   border: none;
-  clip-path: var(--mljr-clip-sm);
+  border-radius: var(--mljr-radius-md);
 }
 
 .mljr-color-input::-moz-color-swatch {
   border: none;
-  clip-path: var(--mljr-clip-sm);
+  border-radius: var(--mljr-radius-md);
 }
 
 .mljr-color-preview {
-  width: 2.5rem;
-  height: 2.5rem;
-  clip-path: var(--mljr-clip-sm);
-  position: relative;
-}
-
-.mljr-color-preview::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--mljr-border-strong);
-  clip-path: var(--mljr-clip-sm);
-  z-index: -1;
-}
-
-.mljr-color-preview::after {
-  content: '';
-  position: absolute;
-  inset: 2px;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--mljr-radius-md);
   background: var(--mljr-color-value, var(--mljr-primary-500));
-  clip-path: var(--mljr-clip-sm);
+  box-shadow: var(--mljr-clay-shadow-sm);
 }
 
 /* ============================================
@@ -542,45 +427,24 @@
   display: inline-flex;
   align-items: center;
   gap: var(--mljr-space-2);
-  padding: var(--mljr-space-2) var(--mljr-space-4);
+  padding: var(--mljr-space-3) var(--mljr-space-5);
   font-size: var(--mljr-text-sm);
   font-weight: 500;
   color: var(--mljr-text);
   background: var(--mljr-bg);
-  clip-path: var(--mljr-clip-btn);
+  border-radius: var(--mljr-radius-lg);
+  box-shadow: var(--mljr-clay-btn);
   transition: all var(--mljr-transition-fast);
-  position: relative;
-}
-
-.mljr-file-input-label::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--mljr-border-strong);
-  clip-path: var(--mljr-clip-btn);
-  z-index: -1;
-}
-
-.mljr-file-input-label::after {
-  content: '';
-  position: absolute;
-  inset: 1px;
-  background: var(--mljr-bg);
-  clip-path: var(--mljr-clip-btn);
-  z-index: -1;
-  transition: background-color var(--mljr-transition-fast);
-}
-
-.mljr-file-input:hover .mljr-file-input-label::before {
-  background: var(--mljr-primary-500);
-}
-
-.mljr-file-input:hover .mljr-file-input-label::after {
-  background: var(--mljr-bg-secondary);
 }
 
 .mljr-file-input:hover .mljr-file-input-label {
-  color: var(--mljr-primary-500);
+  transform: translateY(-2px);
+  box-shadow: var(--mljr-clay-shadow);
+}
+
+.mljr-file-input:active .mljr-file-input-label {
+  transform: translateY(0);
+  box-shadow: var(--mljr-clay-btn-pressed);
 }
 
 /* Drop zone */
@@ -589,47 +453,20 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--mljr-space-2);
-  padding: var(--mljr-space-8);
+  gap: var(--mljr-space-3);
+  padding: var(--mljr-space-10);
   text-align: center;
   cursor: pointer;
-  position: relative;
-  clip-path: var(--mljr-clip-card);
+  border-radius: var(--mljr-radius-xl);
+  border: 2px dashed var(--mljr-border-strong);
+  background: var(--mljr-bg-secondary);
   transition: all var(--mljr-transition-fast);
 }
 
-.mljr-drop-zone::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--mljr-border);
-  clip-path: var(--mljr-clip-card);
-  z-index: -1;
-}
-
-.mljr-drop-zone::after {
-  content: '';
-  position: absolute;
-  inset: 2px;
-  background: var(--mljr-bg);
-  clip-path: var(--mljr-clip-card);
-  z-index: -1;
-  /* Dashed border effect using gradient */
-  background-image:
-    repeating-linear-gradient(0deg, var(--mljr-border), var(--mljr-border) 8px, transparent 8px, transparent 16px),
-    repeating-linear-gradient(90deg, var(--mljr-border), var(--mljr-border) 8px, transparent 8px, transparent 16px);
-  background-size: 1px 100%, 100% 1px;
-  background-position: 0 0, 0 0;
-  background-repeat: repeat-y, repeat-x;
-}
-
-.mljr-drop-zone:hover::before,
-.mljr-drop-zone.dragging::before {
-  background: var(--mljr-primary-500);
-}
-
+.mljr-drop-zone:hover,
 .mljr-drop-zone.dragging {
-  background: rgb(0 128 255 / 0.05);
+  border-color: var(--mljr-primary-400);
+  background: var(--mljr-primary-50);
 }
 
 .mljr-drop-zone-icon {
@@ -646,4 +483,22 @@
 .mljr-drop-zone-hint {
   font-size: var(--mljr-text-xs);
   color: var(--mljr-text-muted);
+}
+
+/* Dark mode */
+.dark .mljr-input,
+.dark .mljr-textarea,
+[data-theme="dark"] .mljr-input,
+[data-theme="dark"] .mljr-textarea {
+  background-color: var(--mljr-bg-secondary);
+  box-shadow: var(--mljr-clay-inset);
+}
+
+.dark .mljr-input:focus,
+.dark .mljr-textarea:focus,
+[data-theme="dark"] .mljr-input:focus,
+[data-theme="dark"] .mljr-textarea:focus {
+  box-shadow:
+    var(--mljr-clay-inset-sm),
+    0 0 0 3px rgba(249, 115, 22, 0.2);
 }

@@ -1,42 +1,28 @@
 /* ============================================
    MLJR CSS Framework - Card Component
-   Detroit: Become Human inspired
+   Claymorphism: Soft, frosted glass cards
    ============================================ */
 
 .mljr-card {
-  background-color: var(--mljr-bg);
-  clip-path: var(--mljr-clip-card);
+  background-color: var(--mljr-frosted-bg);
+  backdrop-filter: blur(10px);
+  border-radius: var(--mljr-radius-xl);
   overflow: hidden;
   position: relative;
+  box-shadow: var(--mljr-clay-shadow);
+  border: 1px solid var(--mljr-frosted-border);
+  transition: all var(--mljr-transition);
 }
 
-/* Border using pseudo-elements */
-.mljr-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--mljr-border);
-  clip-path: var(--mljr-clip-card);
-  z-index: -1;
-}
-
-.mljr-card::after {
-  content: '';
-  position: absolute;
-  inset: 1px;
-  background: var(--mljr-bg);
-  clip-path: var(--mljr-clip-card);
-  z-index: -1;
-}
-
-/* Shadow variants */
-.mljr-card-shadow { box-shadow: var(--mljr-shadow); }
-.mljr-card-shadow-md { box-shadow: var(--mljr-shadow-md); }
-.mljr-card-shadow-lg { box-shadow: var(--mljr-shadow-lg); }
+/* Shadow variants - md is the default and same as .mljr-card-shadow */
+.mljr-card-shadow,
+.mljr-card-shadow-md { box-shadow: var(--mljr-clay-shadow); }
+.mljr-card-shadow-sm { box-shadow: var(--mljr-clay-shadow-sm); }
+.mljr-card-shadow-lg { box-shadow: var(--mljr-clay-shadow-lg); }
 
 /* Card Header */
 .mljr-card-header {
-  padding: var(--mljr-space-4) var(--mljr-space-6);
+  padding: var(--mljr-space-5) var(--mljr-space-6);
   border-bottom: 1px solid var(--mljr-border);
 }
 
@@ -44,7 +30,6 @@
   font-family: var(--mljr-font-display);
   font-size: var(--mljr-text-lg);
   font-weight: 600;
-  letter-spacing: 0.02em;
   color: var(--mljr-text);
 }
 
@@ -63,7 +48,7 @@
 .mljr-card-footer {
   padding: var(--mljr-space-4) var(--mljr-space-6);
   border-top: 1px solid var(--mljr-border);
-  background-color: var(--mljr-bg-secondary);
+  background-color: var(--mljr-frosted-bg-subtle);
 }
 
 /* Card Image */
@@ -71,6 +56,7 @@
   width: 100%;
   height: auto;
   display: block;
+  border-radius: var(--mljr-radius-lg) var(--mljr-radius-lg) 0 0;
 }
 
 /* Compact Card */
@@ -88,93 +74,103 @@
 /* Interactive Card */
 .mljr-card-interactive {
   cursor: pointer;
-  transition: all var(--mljr-transition);
 }
 
 .mljr-card-interactive:hover {
-  box-shadow: var(--mljr-shadow-md);
+  box-shadow: var(--mljr-clay-shadow-lg);
+  transform: translateY(-4px);
+}
+
+.mljr-card-interactive:active {
   transform: translateY(-2px);
-}
-
-.mljr-card-interactive:hover::before {
-  background: var(--mljr-primary-400);
-}
-
-.dark .mljr-card-interactive:hover,
-[data-theme="dark"] .mljr-card-interactive:hover {
-  box-shadow: var(--mljr-shadow-md), var(--mljr-glow-primary-sm);
+  box-shadow: var(--mljr-clay-shadow);
 }
 
 .mljr-card-interactive:focus-visible {
-  outline: 2px solid var(--mljr-ring);
+  outline: 3px solid var(--mljr-primary-300);
   outline-offset: 2px;
 }
 
-/* Color accent variants */
-.mljr-card-primary::before { background: var(--mljr-primary-500); }
-.mljr-card-secondary::before { background: var(--mljr-secondary-500); }
-
-/* Glow variants */
-.mljr-card-glow { transition: box-shadow var(--mljr-transition); }
-.mljr-card-glow:hover { box-shadow: var(--mljr-glow-primary); }
-.mljr-card-glow-secondary:hover { box-shadow: var(--mljr-glow-secondary); }
-
-/* Detroit HUD-style card */
-.mljr-card-detroit {
-  background: linear-gradient(135deg, var(--mljr-bg) 0%, var(--mljr-bg-secondary) 100%);
-  clip-path: var(--mljr-clip-angular-tr);
+/* Color accent variants - Stronger Claymorphism colored cards */
+.mljr-card-primary {
+  border-left: 4px solid var(--mljr-primary-500);
+  background: linear-gradient(135deg, var(--mljr-primary-50) 0%, var(--mljr-frosted-bg) 30%);
+  box-shadow:
+    12px 12px 24px rgba(249, 115, 22, 0.2),
+    -8px -8px 20px rgba(255, 255, 255, 0.95),
+    inset 0px 4px 8px rgba(255, 255, 255, 0.6);
 }
 
-.mljr-card-detroit::before {
-  clip-path: var(--mljr-clip-angular-tr);
-  background: rgb(0 128 255 / 0.5);
+.mljr-card-primary .mljr-card-title {
+  color: var(--mljr-primary-700);
 }
 
-.mljr-card-detroit::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 20px;
-  height: 20px;
-  background: linear-gradient(135deg, transparent 50%, var(--mljr-primary-500) 50%);
-  clip-path: none;
+.mljr-card-secondary {
+  border-left: 4px solid var(--mljr-secondary-500);
+  background: linear-gradient(135deg, var(--mljr-secondary-50) 0%, var(--mljr-frosted-bg) 30%);
+  box-shadow:
+    12px 12px 24px rgba(168, 85, 247, 0.2),
+    -8px -8px 20px rgba(255, 255, 255, 0.95),
+    inset 0px 4px 8px rgba(255, 255, 255, 0.6);
 }
 
-.dark .mljr-card-detroit,
-[data-theme="dark"] .mljr-card-detroit {
-  box-shadow: var(--mljr-glow-primary-sm);
+.mljr-card-secondary .mljr-card-title {
+  color: var(--mljr-secondary-700);
 }
 
-.dark .mljr-card-detroit:hover,
-[data-theme="dark"] .mljr-card-detroit:hover {
-  box-shadow: var(--mljr-glow-primary);
+/* Accent color card (teal) */
+.mljr-card-accent {
+  border-left: 4px solid var(--mljr-accent-500);
+  background: linear-gradient(135deg, var(--mljr-accent-50) 0%, var(--mljr-frosted-bg) 30%);
+  box-shadow:
+    12px 12px 24px rgba(20, 184, 166, 0.2),
+    -8px -8px 20px rgba(255, 255, 255, 0.95),
+    inset 0px 4px 8px rgba(255, 255, 255, 0.6);
 }
 
-/* HUD panel card */
-.mljr-card-hud {
-  background: rgba(0, 128, 255, 0.05);
-  border: var(--mljr-border-hud);
-  clip-path: var(--mljr-clip-angular-tr);
+.mljr-card-accent .mljr-card-title {
+  color: var(--mljr-accent-700);
 }
 
-.mljr-card-hud::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--mljr-primary-500), transparent);
-  clip-path: none;
+/* Success card */
+.mljr-card-success {
+  border-left: 4px solid var(--mljr-success);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, var(--mljr-frosted-bg) 30%);
+  box-shadow:
+    12px 12px 24px rgba(16, 185, 129, 0.15),
+    -8px -8px 20px rgba(255, 255, 255, 0.95),
+    inset 0px 4px 8px rgba(255, 255, 255, 0.6);
 }
 
-.mljr-card-hud::after { display: none; }
+/* Warning card */
+.mljr-card-warning {
+  border-left: 4px solid var(--mljr-warning);
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, var(--mljr-frosted-bg) 30%);
+  box-shadow:
+    12px 12px 24px rgba(245, 158, 11, 0.15),
+    -8px -8px 20px rgba(255, 255, 255, 0.95),
+    inset 0px 4px 8px rgba(255, 255, 255, 0.6);
+}
 
-.dark .mljr-card-hud,
-[data-theme="dark"] .mljr-card-hud {
-  background: rgba(0, 128, 255, 0.08);
-  box-shadow: inset 0 1px 15px rgba(0, 128, 255, 0.1);
+/* Error/Danger card */
+.mljr-card-error,
+.mljr-card-danger {
+  border-left: 4px solid var(--mljr-error);
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, var(--mljr-frosted-bg) 30%);
+  box-shadow:
+    12px 12px 24px rgba(239, 68, 68, 0.15),
+    -8px -8px 20px rgba(255, 255, 255, 0.95),
+    inset 0px 4px 8px rgba(255, 255, 255, 0.6);
+}
+
+/* Info card */
+.mljr-card-info {
+  border-left: 4px solid var(--mljr-info);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, var(--mljr-frosted-bg) 30%);
+  box-shadow:
+    12px 12px 24px rgba(59, 130, 246, 0.15),
+    -8px -8px 20px rgba(255, 255, 255, 0.95),
+    inset 0px 4px 8px rgba(255, 255, 255, 0.6);
 }
 
 /* Card Grid */
@@ -192,6 +188,7 @@
 .mljr-card-horizontal .mljr-card-image {
   width: 200px;
   object-fit: cover;
+  border-radius: var(--mljr-radius-xl) 0 0 var(--mljr-radius-xl);
 }
 
 .mljr-card-horizontal .mljr-card-content {
@@ -207,5 +204,116 @@
 
   .mljr-card-horizontal .mljr-card-image {
     width: 100%;
+    border-radius: var(--mljr-radius-xl) var(--mljr-radius-xl) 0 0;
   }
+}
+
+/* Elevated card - more prominent shadow */
+.mljr-card-elevated {
+  box-shadow: var(--mljr-clay-shadow-lg);
+}
+
+.mljr-card-elevated:hover {
+  box-shadow: var(--mljr-clay-shadow-xl);
+}
+
+/* Flat card - subtle shadow */
+.mljr-card-flat {
+  box-shadow: var(--mljr-clay-shadow-sm);
+  background-color: var(--mljr-frosted-bg-subtle);
+}
+
+/* Allow overflow - useful when card contains dropdowns, popovers, etc */
+.mljr-card-overflow {
+  overflow: visible;
+}
+
+/* Dark mode adjustments */
+.dark .mljr-card-interactive:hover,
+[data-theme="dark"] .mljr-card-interactive:hover {
+  box-shadow: var(--mljr-clay-shadow-lg), 0 0 30px rgba(249, 115, 22, 0.15);
+}
+
+/* Dark mode for colored card variants */
+.dark .mljr-card-primary,
+[data-theme="dark"] .mljr-card-primary {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.15) 0%, var(--mljr-bg-secondary) 30%);
+  box-shadow:
+    12px 12px 28px rgba(0, 0, 0, 0.4),
+    -8px -8px 20px rgba(68, 64, 60, 0.15),
+    0 0 20px rgba(249, 115, 22, 0.15),
+    inset 0px 2px 4px rgba(249, 115, 22, 0.1);
+}
+
+.dark .mljr-card-primary .mljr-card-title,
+[data-theme="dark"] .mljr-card-primary .mljr-card-title {
+  color: var(--mljr-primary-400);
+}
+
+.dark .mljr-card-secondary,
+[data-theme="dark"] .mljr-card-secondary {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, var(--mljr-bg-secondary) 30%);
+  box-shadow:
+    12px 12px 28px rgba(0, 0, 0, 0.4),
+    -8px -8px 20px rgba(68, 64, 60, 0.15),
+    0 0 20px rgba(168, 85, 247, 0.15),
+    inset 0px 2px 4px rgba(168, 85, 247, 0.1);
+}
+
+.dark .mljr-card-secondary .mljr-card-title,
+[data-theme="dark"] .mljr-card-secondary .mljr-card-title {
+  color: var(--mljr-secondary-400);
+}
+
+.dark .mljr-card-accent,
+[data-theme="dark"] .mljr-card-accent {
+  background: linear-gradient(135deg, rgba(20, 184, 166, 0.15) 0%, var(--mljr-bg-secondary) 30%);
+  box-shadow:
+    12px 12px 28px rgba(0, 0, 0, 0.4),
+    -8px -8px 20px rgba(68, 64, 60, 0.15),
+    0 0 20px rgba(20, 184, 166, 0.15),
+    inset 0px 2px 4px rgba(20, 184, 166, 0.1);
+}
+
+.dark .mljr-card-accent .mljr-card-title,
+[data-theme="dark"] .mljr-card-accent .mljr-card-title {
+  color: var(--mljr-accent-400);
+}
+
+.dark .mljr-card-success,
+[data-theme="dark"] .mljr-card-success {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, var(--mljr-bg-secondary) 30%);
+  box-shadow:
+    12px 12px 28px rgba(0, 0, 0, 0.4),
+    -8px -8px 20px rgba(68, 64, 60, 0.15),
+    0 0 15px rgba(16, 185, 129, 0.12);
+}
+
+.dark .mljr-card-warning,
+[data-theme="dark"] .mljr-card-warning {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, var(--mljr-bg-secondary) 30%);
+  box-shadow:
+    12px 12px 28px rgba(0, 0, 0, 0.4),
+    -8px -8px 20px rgba(68, 64, 60, 0.15),
+    0 0 15px rgba(245, 158, 11, 0.12);
+}
+
+.dark .mljr-card-error,
+.dark .mljr-card-danger,
+[data-theme="dark"] .mljr-card-error,
+[data-theme="dark"] .mljr-card-danger {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.12) 0%, var(--mljr-bg-secondary) 30%);
+  box-shadow:
+    12px 12px 28px rgba(0, 0, 0, 0.4),
+    -8px -8px 20px rgba(68, 64, 60, 0.15),
+    0 0 15px rgba(239, 68, 68, 0.12);
+}
+
+.dark .mljr-card-info,
+[data-theme="dark"] .mljr-card-info {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, var(--mljr-bg-secondary) 30%);
+  box-shadow:
+    12px 12px 28px rgba(0, 0, 0, 0.4),
+    -8px -8px 20px rgba(68, 64, 60, 0.15),
+    0 0 15px rgba(59, 130, 246, 0.12);
 }

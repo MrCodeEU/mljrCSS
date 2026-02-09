@@ -138,7 +138,7 @@
 
 .dark .mljr-pagination-item.active,
 [data-theme="dark"] .mljr-pagination-item.active {
-  box-shadow: var(--mljr-glow-primary-sm);
+  box-shadow: var(--mljr-clay-primary);
 }
 
 .mljr-pagination-item:disabled {
@@ -284,7 +284,7 @@
 
 .dark .mljr-step.active .mljr-step-indicator,
 [data-theme="dark"] .mljr-step.active .mljr-step-indicator {
-  box-shadow: var(--mljr-glow-primary-sm);
+  box-shadow: var(--mljr-clay-primary);
 }
 
 .mljr-step.completed .mljr-step-indicator {

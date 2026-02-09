@@ -359,9 +359,224 @@ Or import the CSS:
 <Accordion {items} primary />
 ```
 
+### Icon
+
+A universal icon component using Iconify for access to 200,000+ icons:
+
+```svelte
+<script>
+  import { Icon } from 'mljr-svelte';
+</script>
+
+<Icon icon="mdi:home" />
+<Icon icon="ph:sun" size={32} color="#F97316" />
+<Icon icon="fa-brands:github" size="2em" />
+
+<!-- Flip and rotate -->
+<Icon icon="mdi:arrow-right" hFlip />
+<Icon icon="mdi:arrow-up" rotate={2} />
+```
+
+### ThemeToggle
+
+A beautiful theme toggle with multiple variants:
+
+```svelte
+<script>
+  import { ThemeToggle } from 'mljr-svelte';
+</script>
+
+<!-- Default dropdown style -->
+<ThemeToggle />
+
+<!-- Simple toggle button -->
+<ThemeToggle variant="simple" />
+
+<!-- Segmented control -->
+<ThemeToggle variant="segmented" showLabels />
+
+<!-- Different sizes -->
+<ThemeToggle size="sm" />
+<ThemeToggle size="lg" />
+```
+
+### Navbar
+
+A responsive navigation bar with mobile menu support:
+
+```svelte
+<script>
+  import { Navbar } from 'mljr-svelte';
+
+  const navItems = [
+    { label: 'Home', href: '/', icon: 'ph:house' },
+    { label: 'Products', href: '/products', icon: 'ph:package' },
+    { label: 'About', href: '/about', icon: 'ph:info' },
+  ];
+</script>
+
+<Navbar items={navItems}>
+  {#snippet logo()}
+    <span class="text-xl font-bold">MyApp</span>
+  {/snippet}
+  
+  {#snippet actions()}
+    <ThemeToggle variant="simple" />
+    <Button variant="primary">Sign In</Button>
+  {/snippet}
+</Navbar>
+```
+
+### PhoneInput
+
+International phone input with country flags and validation:
+
+```svelte
+<script>
+  import { PhoneInput } from 'mljr-svelte';
+
+  let phone = $state('');
+  let isValid = $state(false);
+</script>
+
+<PhoneInput
+  bind:value={phone}
+  label="Phone Number"
+  country="US"
+  onchange={(value, valid, country) => {
+    isValid = valid;
+    console.log('Phone:', value, 'Country:', country);
+  }}
+/>
+```
+
+### DatePicker
+
+Date picker with time support:
+
+```svelte
+<script>
+  import { DatePicker } from 'mljr-svelte';
+
+  let date = $state(null);
+</script>
+
+<DatePicker bind:value={date} label="Select Date" />
+
+<!-- With time -->
+<DatePicker bind:value={date} showTime format="long" />
+
+<!-- Date range -->
+<DatePicker bind:value={date} min={new Date()} max={new Date(2025, 11, 31)} />
+```
+
+### ColorPicker
+
+Color picker with HSL/RGB/Hex support:
+
+```svelte
+<script>
+  import { ColorPicker } from 'mljr-svelte';
+
+  let color = $state('#F97316');
+</script>
+
+<ColorPicker bind:value={color} label="Choose Color" />
+
+<!-- With alpha channel -->
+<ColorPicker bind:value={color} showAlpha />
+
+<!-- Custom presets -->
+<ColorPicker 
+  bind:value={color}
+  presets={['#FF0000', '#00FF00', '#0000FF']}
+/>
+```
+
+### EmailInput
+
+Email input with validation:
+
+```svelte
+<script>
+  import { EmailInput } from 'mljr-svelte';
+
+  let email = $state('');
+</script>
+
+<EmailInput bind:value={email} label="Email Address" required />
+
+<!-- Multiple emails -->
+<EmailInput 
+  bind:value={email}
+  multiple
+  placeholder="Enter emails separated by commas"
+/>
+```
+
+### CommandPalette
+
+Keyboard-driven command palette (Cmd+K):
+
+```svelte
+<script>
+  import { CommandPalette } from 'mljr-svelte';
+
+  let open = $state(false);
+
+  const commands = [
+    {
+      id: 'copy',
+      label: 'Copy',
+      icon: 'ph:copy',
+      shortcut: '⌘C',
+      action: () => navigator.clipboard.writeText('copied')
+    },
+    {
+      id: 'paste',
+      label: 'Paste',
+      icon: 'ph:clipboard',
+      shortcut: '⌘V',
+      section: 'Edit',
+      action: () => console.log('paste')
+    },
+  ];
+</script>
+
+<button onclick={() => open = true}>Open Command Palette</button>
+
+<CommandPalette bind:open {commands} />
+```
+
+### SearchInput
+
+Search input with loading state:
+
+```svelte
+<script>
+  import { SearchInput } from 'mljr-svelte';
+
+  let query = $state('');
+  let loading = $state(false);
+
+  function handleSearch(value) {
+    loading = true;
+    // Search logic...
+    loading = false;
+  }
+</script>
+
+<SearchInput 
+  bind:value={query}
+  loading={loading}
+  onsearch={handleSearch}
+  placeholder="Search products..."
+/>
+```
+
 ## Theme Store
 
-The theme store provides a reactive way to manage light/dark mode:
+The theme store provides a reactive way to manage light/dark mode with cookie support:
 
 ```svelte
 <script>
@@ -392,9 +607,39 @@ The theme store provides a reactive way to manage light/dark mode:
 | `theme` | `'light' \| 'dark' \| 'system'` | Current theme setting |
 | `resolvedTheme` | `'light' \| 'dark'` | Actual applied theme |
 | `isDark` | `boolean` | Whether dark mode is active |
-| `setTheme(theme)` | `(theme: Theme) => void` | Set theme |
+| `isSystem` | `boolean` | Whether system theme is used |
+| `initialized` | `boolean` | Whether theme has been initialized |
+| `setTheme(theme)` | `(theme: Theme) => void` | Set theme (persists to cookie + localStorage) |
 | `toggleTheme()` | `() => void` | Toggle between light/dark |
-| `initialize()` | `() => void` | Initialize theme from localStorage |
+| `resetToSystem()` | `() => void` | Reset to system preference |
+| `initialize(savedTheme?)` | `(savedTheme?: Theme) => void` | Initialize theme |
+
+### SSR/Cookie Support
+
+For server-side rendering, you can parse the theme from cookies:
+
+```svelte
+<script context="module">
+  import { parseThemeFromCookie } from 'mljr-svelte';
+
+  export function load({ request }) {
+    const cookie = request.headers.get('cookie');
+    const theme = parseThemeFromCookie(cookie);
+    return { theme };
+  }
+</script>
+
+<script>
+  import { themeStore } from 'mljr-svelte';
+  import { onMount } from 'svelte';
+
+  export let theme;
+
+  onMount(() => {
+    themeStore.initialize(theme);
+  });
+</script>
+```
 
 ## License
 

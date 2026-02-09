@@ -1,0 +1,246 @@
+/* ============================================
+   MLJR CSS Framework - Dropdown Component
+   Claymorphism: Soft rounded dropdowns
+   ============================================ */
+
+.mljr-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.mljr-dropdown-trigger {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  outline: none;
+}
+
+.mljr-dropdown-trigger:focus-visible {
+  border-radius: var(--mljr-radius-sm);
+  outline: 2px solid var(--mljr-primary-500);
+  outline-offset: 2px;
+}
+
+.mljr-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: var(--mljr-z-dropdown);
+  min-width: 12rem;
+  margin-top: var(--mljr-space-2);
+  padding: var(--mljr-space-2);
+  background: var(--mljr-frosted-bg-strong);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: var(--mljr-font-sans);
+  font-size: var(--mljr-text-sm);
+  border-radius: var(--mljr-radius-lg);
+  box-shadow: var(--mljr-clay-shadow-lg);
+  border: 1px solid var(--mljr-frosted-border);
+  animation: mljr-dropdown-in 0.15s ease-out;
+}
+
+@keyframes mljr-dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Dropdown position variants */
+.mljr-dropdown-bottom-left .mljr-dropdown-menu {
+  top: 100%;
+  left: 0;
+  right: auto;
+}
+
+.mljr-dropdown-bottom-right .mljr-dropdown-menu {
+  top: 100%;
+  left: auto;
+  right: 0;
+}
+
+.mljr-dropdown-top-left .mljr-dropdown-menu {
+  top: auto;
+  bottom: 100%;
+  left: 0;
+  right: auto;
+  margin-top: 0;
+  margin-bottom: var(--mljr-space-2);
+}
+
+.mljr-dropdown-top-right .mljr-dropdown-menu {
+  top: auto;
+  bottom: 100%;
+  left: auto;
+  right: 0;
+  margin-top: 0;
+  margin-bottom: var(--mljr-space-2);
+}
+
+/* Legacy alignment classes */
+.mljr-dropdown-right .mljr-dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
+.mljr-dropdown-up .mljr-dropdown-menu {
+  top: auto;
+  bottom: 100%;
+  margin-top: 0;
+  margin-bottom: var(--mljr-space-2);
+}
+
+/* Dropdown items */
+.mljr-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: var(--mljr-space-2);
+  width: 100%;
+  padding: var(--mljr-space-2) var(--mljr-space-3);
+  color: var(--mljr-text);
+  background: none;
+  border: none;
+  border-radius: var(--mljr-radius-md);
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--mljr-transition-fast);
+  text-decoration: none;
+}
+
+.mljr-dropdown-item:hover {
+  background: var(--mljr-bg-secondary);
+  color: var(--mljr-primary-600);
+}
+
+.mljr-dropdown-item:focus-visible {
+  outline: none;
+  background: var(--mljr-bg-secondary);
+  color: var(--mljr-primary-600);
+}
+
+.mljr-dropdown-item svg,
+.mljr-dropdown-item-icon {
+  width: 1rem;
+  height: 1rem;
+  opacity: 0.7;
+}
+
+/* Active/Selected item */
+.mljr-dropdown-item-active,
+.mljr-dropdown-item[aria-selected="true"] {
+  color: var(--mljr-primary-600);
+  background: var(--mljr-primary-50);
+}
+
+/* Disabled item */
+.mljr-dropdown-item:disabled,
+.mljr-dropdown-item-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Danger item */
+.mljr-dropdown-item-danger {
+  color: var(--mljr-error);
+}
+
+.mljr-dropdown-item-danger:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--mljr-error);
+}
+
+/* Divider */
+.mljr-dropdown-divider {
+  height: 1px;
+  margin: var(--mljr-space-2) 0;
+  background: var(--mljr-border);
+}
+
+/* Header/Label */
+.mljr-dropdown-header {
+  padding: var(--mljr-space-2) var(--mljr-space-3);
+  font-size: var(--mljr-text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--mljr-text-muted);
+}
+
+/* Nested submenus */
+.mljr-dropdown-submenu {
+  position: relative;
+}
+
+.mljr-dropdown-submenu .mljr-dropdown-menu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin-top: 0;
+  margin-left: var(--mljr-space-1);
+}
+
+.mljr-dropdown-submenu:hover > .mljr-dropdown-menu {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Submenu indicator */
+.mljr-dropdown-submenu > .mljr-dropdown-item::after {
+  content: '';
+  margin-left: auto;
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 4px solid currentColor;
+}
+
+/* Size variants */
+.mljr-dropdown-sm .mljr-dropdown-menu {
+  min-width: 8rem;
+  font-size: var(--mljr-text-xs);
+  padding: var(--mljr-space-1);
+}
+
+.mljr-dropdown-sm .mljr-dropdown-item {
+  padding: var(--mljr-space-1) var(--mljr-space-2);
+}
+
+.mljr-dropdown-lg .mljr-dropdown-menu {
+  min-width: 16rem;
+}
+
+.mljr-dropdown-lg .mljr-dropdown-item {
+  padding: var(--mljr-space-3) var(--mljr-space-4);
+}
+
+/* Dark mode */
+.dark .mljr-dropdown-menu,
+[data-theme="dark"] .mljr-dropdown-menu {
+  background: var(--mljr-bg-secondary);
+  border-color: var(--mljr-border);
+  box-shadow: var(--mljr-clay-shadow-lg);
+}
+
+.dark .mljr-dropdown-item:hover,
+[data-theme="dark"] .mljr-dropdown-item:hover {
+  background: var(--mljr-bg-tertiary);
+}
+
+.dark .mljr-dropdown-item-active,
+[data-theme="dark"] .mljr-dropdown-item-active {
+  background: rgba(249, 115, 22, 0.15);
+  color: var(--mljr-primary-400);
+}

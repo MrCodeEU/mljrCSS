@@ -6,7 +6,9 @@
 @import 'mljr-css/src/layout/header.css';
 @import 'mljr-css/src/layout/footer.css';
 @import 'mljr-css/src/layout/sidebar.css';
+@import 'mljr-css/src/components/footer.css';
 @import 'mljr-css/src/layout/navigation.css';
+@import 'mljr-css/src/layout/sidebar.css';
 @import 'mljr-css/src/components/button.css';
 @import 'mljr-css/src/components/input.css';
 @import 'mljr-css/src/components/select.css';
@@ -23,6 +25,21 @@
 @import 'mljr-css/src/components/skeleton.css';
 @import 'mljr-css/src/components/avatar.css';
 @import 'mljr-css/src/components/divider.css';
+@import 'mljr-css/src/components/spinner.css';
+@import 'mljr-css/src/components/toast.css';
+@import 'mljr-css/src/components/popover.css';
+@import 'mljr-css/src/components/dropdown.css';
+@import 'mljr-css/src/components/pagination.css';
+@import 'mljr-css/src/components/breadcrumb.css';
+@import 'mljr-css/src/components/table.css';
+@import 'mljr-css/src/components/password.css';
+@import 'mljr-css/src/components/chip.css';
+@import 'mljr-css/src/components/radio.css';
+@import 'mljr-css/src/components/textarea.css';
+@import 'mljr-css/src/components/file-upload.css';
+@import 'mljr-css/src/components/stepper.css';
+@import 'mljr-css/src/components/drawer.css';
+@import 'mljr-css/src/components/empty-state.css';
 @import 'mljr-css/src/utilities/utilities.css';
 
 /* Tailwind layers - must come after @import */

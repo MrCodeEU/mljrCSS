@@ -1,75 +1,119 @@
 /* ============================================
    MLJR CSS Framework - Select Component
-   Detroit: Become Human inspired - Angular design
+   Claymorphism: Soft rounded select inputs
    Note: Container base styles are in input.css
    ============================================ */
+
+/* When using a container, the container provides the shadow */
+.mljr-select-container {
+  position: relative;
+  display: block;
+  width: 100%;
+  border-radius: var(--mljr-radius-md);
+  box-shadow: var(--mljr-clay-inset);
+  background: var(--mljr-bg);
+  transition: all var(--mljr-transition-fast);
+}
+
+.mljr-select-container:hover {
+  background: var(--mljr-bg-secondary);
+}
+
+.mljr-select-container:focus-within {
+  box-shadow:
+    var(--mljr-clay-inset-sm),
+    0 0 0 3px var(--mljr-primary-200);
+}
 
 .mljr-select-container .mljr-select {
   background-color: transparent;
   box-shadow: none;
+  border-radius: var(--mljr-radius-md);
 }
 
 .mljr-select-container .mljr-select:hover {
-  box-shadow: none;
+  background-color: transparent;
 }
 
 .mljr-select-container .mljr-select:focus {
   box-shadow: none;
+  background-color: transparent;
 }
 
 .mljr-select {
   display: block;
   width: 100%;
-  padding: var(--mljr-space-2) var(--mljr-space-10) var(--mljr-space-2) var(--mljr-space-3);
+  padding: var(--mljr-space-3) var(--mljr-space-10) var(--mljr-space-3) var(--mljr-space-4);
   font-size: var(--mljr-text-sm);
   line-height: var(--mljr-leading-normal);
   color: var(--mljr-text);
   background-color: var(--mljr-bg);
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='square' stroke-linejoin='miter' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-  background-position: right var(--mljr-space-2) center;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2378716c' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right var(--mljr-space-3) center;
   background-repeat: no-repeat;
   background-size: 1.5em 1.5em;
   border: none;
+  border-radius: var(--mljr-radius-md);
   appearance: none;
   cursor: pointer;
-  clip-path: var(--mljr-clip-btn);
-  box-shadow: inset 0 0 0 1px var(--mljr-border);
-  transition: box-shadow var(--mljr-transition-fast);
+  box-shadow: var(--mljr-clay-inset);
+  transition: box-shadow var(--mljr-transition-fast), background-color var(--mljr-transition-fast);
 }
 
 .mljr-select:hover {
-  box-shadow: inset 0 0 0 1px var(--mljr-border-strong);
+  background-color: var(--mljr-bg-secondary);
 }
 
 .mljr-select:focus {
   outline: none;
-  box-shadow: inset 0 0 0 1px var(--mljr-primary-500), 0 0 0 2px rgb(0 128 255 / 0.2), 0 0 8px rgb(0 128 255 / 0.15);
+  background-color: var(--mljr-bg);
+  box-shadow:
+    var(--mljr-clay-inset-sm),
+    0 0 0 3px var(--mljr-primary-200);
 }
 
 .mljr-select:disabled {
-  background-color: var(--mljr-bg-secondary);
+  background-color: var(--mljr-bg-tertiary);
   opacity: 0.6;
   cursor: not-allowed;
 }
 
 /* Select Sizes */
 .mljr-select-sm {
-  padding: var(--mljr-space-1) var(--mljr-space-8) var(--mljr-space-1) var(--mljr-space-2);
+  padding: var(--mljr-space-2) var(--mljr-space-8) var(--mljr-space-2) var(--mljr-space-3);
   font-size: var(--mljr-text-xs);
+  border-radius: var(--mljr-radius-sm);
 }
 
 .mljr-select-lg {
-  padding: var(--mljr-space-3) var(--mljr-space-12) var(--mljr-space-3) var(--mljr-space-4);
+  padding: var(--mljr-space-4) var(--mljr-space-12) var(--mljr-space-4) var(--mljr-space-5);
   font-size: var(--mljr-text-base);
+  border-radius: var(--mljr-radius-lg);
 }
 
 /* Select States */
 .mljr-select-error {
-  box-shadow: inset 0 0 0 1px var(--mljr-error);
+  box-shadow:
+    var(--mljr-clay-inset),
+    inset 0 0 0 2px var(--mljr-error-light);
 }
 
 .mljr-select-error:focus {
-  box-shadow: inset 0 0 0 1px var(--mljr-error), 0 0 0 2px rgb(185 28 28 / 0.2), 0 0 8px rgb(185 28 28 / 0.15);
+  box-shadow:
+    var(--mljr-clay-inset-sm),
+    0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+.mljr-select-success {
+  box-shadow:
+    var(--mljr-clay-inset),
+    inset 0 0 0 2px var(--mljr-success-light);
+}
+
+.mljr-select-success:focus {
+  box-shadow:
+    var(--mljr-clay-inset-sm),
+    0 0 0 3px rgba(16, 185, 129, 0.2);
 }
 
 /* Multi Select (native) */
@@ -80,11 +124,42 @@
 }
 
 .mljr-select[multiple] option {
-  padding: var(--mljr-space-1) var(--mljr-space-2);
+  padding: var(--mljr-space-2) var(--mljr-space-3);
+  border-radius: var(--mljr-radius-sm);
+}
+
+/* Option styling (limited browser support) */
+.mljr-select option {
+  padding: var(--mljr-space-2) var(--mljr-space-3);
+  background-color: var(--mljr-bg);
+  color: var(--mljr-text);
+  font-family: var(--mljr-font-sans);
+}
+
+.mljr-select option:hover,
+.mljr-select option:focus,
+.mljr-select option:checked {
+  background: var(--mljr-gradient-primary);
+  color: white;
+}
+
+.mljr-select optgroup {
+  font-weight: 600;
+  font-family: var(--mljr-font-sans);
+  color: var(--mljr-text-muted);
+  background-color: var(--mljr-bg-secondary);
 }
 
 /* Dark mode adjustment for select arrow */
 .dark .mljr-select,
 [data-theme="dark"] .mljr-select {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='square' stroke-linejoin='miter' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-color: var(--mljr-bg-secondary);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23a8a29e' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+}
+
+.dark .mljr-select:focus,
+[data-theme="dark"] .mljr-select:focus {
+  box-shadow:
+    var(--mljr-clay-inset-sm),
+    0 0 0 3px rgba(249, 115, 22, 0.2);
 }

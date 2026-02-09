@@ -1,6 +1,6 @@
 /* ============================================
    MLJR CSS Framework - Modal Component
-   Detroit: Become Human inspired
+   Claymorphism: Frosted glass modals
    ============================================ */
 
 /* Modal Backdrop */
@@ -8,7 +8,8 @@
   position: fixed;
   inset: 0;
   z-index: var(--mljr-z-modal-backdrop);
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 20, 30, 0.8) 100%);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,31 +26,14 @@
   width: 100%;
   max-width: 32rem;
   max-height: calc(100vh - var(--mljr-space-8));
-  background-color: var(--mljr-bg);
-  clip-path: var(--mljr-clip-modal);
-  box-shadow: var(--mljr-shadow-xl);
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  border-radius: var(--mljr-radius-2xl);
+  box-shadow: var(--mljr-clay-shadow-xl);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-}
-
-/* Border using pseudo-elements */
-.mljr-modal::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--mljr-border);
-  clip-path: var(--mljr-clip-modal);
-  z-index: -1;
-}
-
-.mljr-modal::after {
-  content: '';
-  position: absolute;
-  inset: 1px;
-  background: var(--mljr-bg);
-  clip-path: var(--mljr-clip-modal);
-  z-index: -1;
 }
 
 .mljr-modal[data-state="open"] { animation: mljr-scale-in var(--mljr-transition); }
@@ -76,10 +60,8 @@
 
 .mljr-modal-title {
   font-family: var(--mljr-font-display);
-  font-size: var(--mljr-text-lg);
+  font-size: var(--mljr-text-xl);
   font-weight: 600;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
   color: var(--mljr-text);
 }
 
@@ -94,25 +76,31 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   padding: 0;
-  background: none;
+  background: var(--mljr-bg-secondary);
   border: none;
+  border-radius: var(--mljr-radius-full);
   color: var(--mljr-text-muted);
   cursor: pointer;
   transition: all var(--mljr-transition-fast);
-  position: relative;
-  z-index: 10;
+  box-shadow: var(--mljr-clay-shadow-sm);
 }
 
 .mljr-modal-close:hover {
   background-color: var(--mljr-bg-tertiary);
   color: var(--mljr-text);
+  transform: scale(1.05);
+}
+
+.mljr-modal-close:active {
+  box-shadow: var(--mljr-clay-inset-sm);
+  transform: scale(1);
 }
 
 .mljr-modal-close:focus-visible {
-  outline: 2px solid var(--mljr-ring);
+  outline: 3px solid var(--mljr-primary-300);
   outline-offset: 2px;
 }
 
@@ -131,7 +119,7 @@
   gap: var(--mljr-space-3);
   padding: var(--mljr-space-4) var(--mljr-space-6);
   border-top: 1px solid var(--mljr-border);
-  background-color: var(--mljr-bg-secondary);
+  background-color: rgba(255, 251, 247, 0.5);
 }
 
 .mljr-modal-footer-between { justify-content: space-between; }
@@ -139,8 +127,8 @@
 /* Animations */
 @keyframes mljr-fade-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes mljr-fade-out { from { opacity: 1; } to { opacity: 0; } }
-@keyframes mljr-scale-in { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-@keyframes mljr-scale-out { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.95); } }
+@keyframes mljr-scale-in { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+@keyframes mljr-scale-out { from { opacity: 1; transform: scale(1) translateY(0); } to { opacity: 0; transform: scale(0.95) translateY(10px); } }
 
 /* Drawer variant */
 .mljr-modal-drawer {
@@ -150,8 +138,8 @@
   bottom: 0;
   max-width: 24rem;
   max-height: 100vh;
+  border-radius: var(--mljr-radius-2xl) 0 0 var(--mljr-radius-2xl);
   border-left: 1px solid var(--mljr-border);
-  clip-path: none;
 }
 
 .mljr-modal-drawer[data-state="open"] { animation: mljr-slide-in-right var(--mljr-transition); }
@@ -160,6 +148,7 @@
 .mljr-modal-drawer-left {
   right: auto;
   left: 0;
+  border-radius: 0 var(--mljr-radius-2xl) var(--mljr-radius-2xl) 0;
   border-left: none;
   border-right: 1px solid var(--mljr-border);
 }
@@ -172,63 +161,19 @@
 @keyframes mljr-slide-in-left { from { transform: translateX(-100%); } to { transform: translateX(0); } }
 @keyframes mljr-slide-out-left { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
-/* Detroit HUD-style modal */
-.mljr-modal-detroit {
-  clip-path: var(--mljr-clip-angular-tr);
-  border: var(--mljr-border-hud);
-  box-shadow: var(--mljr-glow-primary), var(--mljr-shadow-xl);
+/* Dark mode */
+.dark .mljr-modal,
+[data-theme="dark"] .mljr-modal {
+  background-color: rgba(41, 37, 36, 0.9);
+  border-color: rgba(68, 64, 60, 0.5);
 }
 
-.mljr-modal-detroit::before,
-.mljr-modal-detroit::after {
-  clip-path: var(--mljr-clip-angular-tr);
+.dark .mljr-modal-footer,
+[data-theme="dark"] .mljr-modal-footer {
+  background-color: rgba(28, 25, 23, 0.5);
 }
 
-.mljr-modal-detroit .mljr-modal-header {
-  background: linear-gradient(90deg, rgba(0, 128, 255, 0.1) 0%, transparent 50%);
-  border-bottom-color: rgba(0, 128, 255, 0.2);
-}
-
-.mljr-modal-detroit .mljr-modal-footer {
-  background: rgba(0, 128, 255, 0.05);
-  border-top-color: rgba(0, 128, 255, 0.2);
-}
-
-.dark .mljr-modal-detroit,
-[data-theme="dark"] .mljr-modal-detroit {
-  background: linear-gradient(135deg, var(--mljr-bg) 0%, var(--mljr-bg-secondary) 100%);
-  box-shadow: var(--mljr-glow-primary-intense), var(--mljr-shadow-xl);
-}
-
-/* HUD panel modal */
-.mljr-modal-hud {
-  background: rgba(13, 17, 23, 0.96);
-  border: var(--mljr-border-hud-strong);
-  backdrop-filter: blur(6px);
-  clip-path: none;
-}
-
-.mljr-modal-hud::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--mljr-primary-500), transparent);
-  clip-path: none;
-}
-
-.mljr-modal-hud::after { display: none; }
-
-.mljr-modal-hud .mljr-modal-header {
-  background: transparent;
-  border-bottom-color: rgba(0, 128, 255, 0.3);
-}
-
-.mljr-modal-hud .mljr-modal-title { color: var(--mljr-primary-400); }
-
-.mljr-modal-hud .mljr-modal-footer {
-  background: transparent;
-  border-top-color: rgba(0, 128, 255, 0.3);
+.dark .mljr-modal-close,
+[data-theme="dark"] .mljr-modal-close {
+  background: var(--mljr-bg-tertiary);
 }

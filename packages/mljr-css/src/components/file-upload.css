@@ -1,0 +1,262 @@
+/* ============================================
+   MLJR CSS Framework - File Upload Component
+   Claymorphism: Soft drop zone with shadows
+   ============================================ */
+
+.mljr-file-upload {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.mljr-file-upload-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--mljr-space-3);
+  padding: var(--mljr-space-10);
+  text-align: center;
+  cursor: pointer;
+  border-radius: var(--mljr-radius-xl);
+  border: 2px dashed var(--mljr-border-strong);
+  background: var(--mljr-bg-secondary);
+  transition: all var(--mljr-transition-fast);
+}
+
+.mljr-file-upload-zone:hover {
+  border-color: var(--mljr-primary-400);
+  background: var(--mljr-primary-50);
+  transform: translateY(-2px);
+  box-shadow: var(--mljr-clay-shadow-sm);
+}
+
+.mljr-file-upload-zone-dragging,
+.mljr-file-upload-zone[data-dragging="true"] {
+  border-color: var(--mljr-primary-500);
+  background: var(--mljr-primary-100);
+  box-shadow: var(--mljr-clay-shadow);
+  transform: scale(1.02);
+}
+
+.mljr-file-upload-zone-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mljr-file-upload-zone-disabled:hover {
+  border-color: var(--mljr-border-strong);
+  background: var(--mljr-bg-secondary);
+  transform: none;
+  box-shadow: none;
+}
+
+.mljr-file-upload-input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.mljr-file-upload-zone-disabled .mljr-file-upload-input {
+  cursor: not-allowed;
+}
+
+.mljr-file-upload-icon {
+  width: 3rem;
+  height: 3rem;
+  color: var(--mljr-text-muted);
+  transition: all var(--mljr-transition-fast);
+}
+
+.mljr-file-upload-zone:hover .mljr-file-upload-icon {
+  color: var(--mljr-primary-500);
+  transform: scale(1.1);
+}
+
+.mljr-file-upload-text {
+  font-size: var(--mljr-text-base);
+  font-weight: 500;
+  color: var(--mljr-text);
+}
+
+.mljr-file-upload-hint {
+  font-size: var(--mljr-text-sm);
+  color: var(--mljr-text-muted);
+}
+
+.mljr-file-upload-button {
+  margin-top: var(--mljr-space-2);
+}
+
+/* File List */
+.mljr-file-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mljr-space-2);
+  margin-top: var(--mljr-space-4);
+}
+
+.mljr-file-item {
+  display: flex;
+  align-items: center;
+  gap: var(--mljr-space-3);
+  padding: var(--mljr-space-3) var(--mljr-space-4);
+  background: var(--mljr-bg);
+  border-radius: var(--mljr-radius-md);
+  box-shadow: var(--mljr-clay-shadow-sm);
+  transition: all var(--mljr-transition-fast);
+}
+
+.mljr-file-item:hover {
+  box-shadow: var(--mljr-clay-shadow);
+}
+
+.mljr-file-item-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--mljr-primary-100);
+  border-radius: var(--mljr-radius-md);
+  color: var(--mljr-primary-600);
+  flex-shrink: 0;
+}
+
+.mljr-file-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.mljr-file-item-name {
+  font-size: var(--mljr-text-sm);
+  font-weight: 500;
+  color: var(--mljr-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mljr-file-item-size {
+  font-size: var(--mljr-text-xs);
+  color: var(--mljr-text-muted);
+}
+
+.mljr-file-item-progress {
+  width: 100%;
+  height: 4px;
+  background: var(--mljr-bg-tertiary);
+  border-radius: var(--mljr-radius-full);
+  margin-top: var(--mljr-space-1);
+  overflow: hidden;
+}
+
+.mljr-file-item-progress-bar {
+  height: 100%;
+  background: var(--mljr-gradient-primary);
+  border-radius: var(--mljr-radius-full);
+  transition: width var(--mljr-transition-slow);
+}
+
+.mljr-file-item-remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: var(--mljr-radius-sm);
+  color: var(--mljr-text-muted);
+  cursor: pointer;
+  transition: all var(--mljr-transition-fast);
+  flex-shrink: 0;
+}
+
+.mljr-file-item-remove:hover {
+  background: var(--mljr-error-light);
+  color: var(--mljr-error);
+}
+
+.mljr-file-item-error {
+  box-shadow: 
+    var(--mljr-clay-shadow-sm),
+    inset 0 0 0 1px var(--mljr-error-light);
+}
+
+.mljr-file-item-error .mljr-file-item-icon {
+  background: var(--mljr-error-light);
+  color: var(--mljr-error);
+}
+
+.mljr-file-item-error-text {
+  font-size: var(--mljr-text-xs);
+  color: var(--mljr-error);
+  margin-top: var(--mljr-space-1);
+}
+
+/* Image Preview */
+.mljr-file-upload-preview {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: var(--mljr-space-3);
+  margin-top: var(--mljr-space-4);
+}
+
+.mljr-file-upload-preview-item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--mljr-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--mljr-clay-shadow-sm);
+}
+
+.mljr-file-upload-preview-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mljr-file-upload-preview-remove {
+  position: absolute;
+  top: var(--mljr-space-1);
+  right: var(--mljr-space-1);
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: var(--mljr-radius-full);
+  color: white;
+  cursor: pointer;
+  transition: all var(--mljr-transition-fast);
+}
+
+.mljr-file-upload-preview-remove:hover {
+  background: var(--mljr-error);
+}
+
+/* Dark Mode */
+.dark .mljr-file-upload-zone,
+[data-theme="dark"] .mljr-file-upload-zone {
+  background: var(--mljr-bg-secondary);
+  border-color: var(--mljr-border);
+}
+
+.dark .mljr-file-upload-zone:hover,
+[data-theme="dark"] .mljr-file-upload-zone:hover {
+  background: rgba(249, 115, 22, 0.1);
+  border-color: var(--mljr-primary-400);
+}
+
+.dark .mljr-file-item,
+[data-theme="dark"] .mljr-file-item {
+  background: var(--mljr-bg-secondary);
+}

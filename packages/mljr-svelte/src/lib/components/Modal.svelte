@@ -63,6 +63,23 @@
     }
   }
 
+  // Portal action - teleports the element to document.body
+  function portal(node: HTMLElement) {
+    if (!browser) return;
+
+    // Move the node to body
+    document.body.appendChild(node);
+
+    return {
+      destroy() {
+        // Remove from body when component is destroyed
+        if (node.parentNode === document.body) {
+          document.body.removeChild(node);
+        }
+      }
+    };
+  }
+
   $effect(() => {
     if (!browser) return;
 
@@ -86,6 +103,7 @@
     data-state="open"
     onclick={handleBackdropClick}
     role="presentation"
+    use:portal
   >
     <div
       class={modalClasses}

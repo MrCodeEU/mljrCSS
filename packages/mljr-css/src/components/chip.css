@@ -1,0 +1,207 @@
+/* ============================================
+   MLJR CSS Framework - Chip/Tag Component
+   Claymorphism: Soft rounded labels
+   ============================================ */
+
+.mljr-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mljr-space-1);
+  padding: var(--mljr-space-1) var(--mljr-space-3);
+  font-size: var(--mljr-text-xs);
+  font-weight: 500;
+  line-height: 1.25rem;
+  color: var(--mljr-text);
+  background: var(--mljr-bg);
+  border-radius: var(--mljr-radius-full);
+  box-shadow: var(--mljr-clay-shadow-xs);
+  transition: all var(--mljr-transition-fast);
+  cursor: default;
+  white-space: nowrap;
+}
+
+.mljr-chip:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--mljr-clay-shadow-sm);
+}
+
+/* Variants */
+.mljr-chip-primary {
+  background: var(--mljr-primary-100);
+  color: var(--mljr-primary-700);
+  box-shadow: 
+    2px 2px 4px rgba(249, 115, 22, 0.15),
+    -2px -2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.mljr-chip-secondary {
+  background: var(--mljr-secondary-100);
+  color: var(--mljr-secondary-700);
+  box-shadow: 
+    2px 2px 4px rgba(168, 85, 247, 0.15),
+    -2px -2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.mljr-chip-accent {
+  background: var(--mljr-accent-100);
+  color: var(--mljr-accent-700);
+  box-shadow: 
+    2px 2px 4px rgba(20, 184, 166, 0.15),
+    -2px -2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.mljr-chip-success {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--mljr-success-dark);
+  box-shadow: 
+    2px 2px 4px rgba(16, 185, 129, 0.1),
+    -2px -2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.mljr-chip-warning {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--mljr-warning-dark);
+  box-shadow: 
+    2px 2px 4px rgba(245, 158, 11, 0.1),
+    -2px -2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.mljr-chip-error {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--mljr-error-dark);
+  box-shadow: 
+    2px 2px 4px rgba(239, 68, 68, 0.1),
+    -2px -2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.mljr-chip-outline {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--mljr-border-strong);
+}
+
+.mljr-chip-outline:hover {
+  box-shadow: inset 0 0 0 1.5px var(--mljr-primary-400), var(--mljr-clay-shadow-xs);
+}
+
+/* Sizes */
+.mljr-chip-sm {
+  padding: 0.125rem var(--mljr-space-2);
+  font-size: var(--mljr-text-xs);
+}
+
+.mljr-chip-lg {
+  padding: var(--mljr-space-2) var(--mljr-space-4);
+  font-size: var(--mljr-text-sm);
+}
+
+/* Clickable */
+.mljr-chip-clickable {
+  cursor: pointer;
+}
+
+.mljr-chip-clickable:active {
+  transform: translateY(0);
+  box-shadow: var(--mljr-clay-inset-xs);
+}
+
+/* Removable */
+.mljr-chip-removable {
+  padding-right: var(--mljr-space-2);
+}
+
+.mljr-chip-remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  padding: 0;
+  margin-left: var(--mljr-space-1);
+  background: transparent;
+  border: none;
+  border-radius: var(--mljr-radius-full);
+  color: currentColor;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: all var(--mljr-transition-fast);
+}
+
+.mljr-chip-remove:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* With Icon */
+.mljr-chip-icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.mljr-chip-sm .mljr-chip-icon {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.mljr-chip-lg .mljr-chip-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Avatar in Chip */
+.mljr-chip-avatar {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: calc(var(--mljr-space-1) * -1);
+  margin-right: var(--mljr-space-1);
+  border-radius: var(--mljr-radius-full);
+  object-fit: cover;
+}
+
+/* Group */
+.mljr-chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--mljr-space-2);
+}
+
+/* Disabled */
+.mljr-chip-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Dark Mode */
+.dark .mljr-chip,
+[data-theme="dark"] .mljr-chip {
+  background: var(--mljr-bg-secondary);
+  box-shadow: var(--mljr-clay-shadow-xs);
+}
+
+.dark .mljr-chip-primary,
+[data-theme="dark"] .mljr-chip-primary {
+  background: rgba(249, 115, 22, 0.2);
+  color: var(--mljr-primary-300);
+  box-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.3),
+    -2px -2px 4px rgba(68, 64, 60, 0.2);
+}
+
+.dark .mljr-chip-secondary,
+[data-theme="dark"] .mljr-chip-secondary {
+  background: rgba(168, 85, 247, 0.2);
+  color: var(--mljr-secondary-300);
+}
+
+.dark .mljr-chip-accent,
+[data-theme="dark"] .mljr-chip-accent {
+  background: rgba(20, 184, 166, 0.2);
+  color: var(--mljr-accent-300);
+}
+
+.dark .mljr-chip-outline,
+[data-theme="dark"] .mljr-chip-outline {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--mljr-border);
+}

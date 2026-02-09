@@ -2,14 +2,13 @@
   interface Props {
     value?: number;
     max?: number;
-    variant?: 'primary' | 'secondary' | 'accent' | 'success' | 'warning' | 'error';
+    variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'error';
     size?: 'sm' | 'md' | 'lg' | 'xl';
     indeterminate?: boolean;
     striped?: boolean;
     animated?: boolean;
     label?: string;
     showLabel?: boolean;
-    showAccents?: boolean;
     class?: string;
   }
 
@@ -23,7 +22,6 @@
     animated = false,
     label,
     showLabel = false,
-    showAccents = true,
     class: className = '',
   }: Props = $props();
 
@@ -43,54 +41,34 @@
       .join(' ')
   );
 
-  const containerClasses = $derived(
-    showLabel ? 'mljr-progress-labeled' : ''
-  );
-
   const ariaLabel = $derived(label || `Progress: ${Math.round(percentage)}%`);
 </script>
 
+{#snippet progressBar()}
+  <div
+    class={progressClasses}
+    role="progressbar"
+    aria-valuenow={indeterminate ? undefined : value}
+    aria-valuemin={0}
+    aria-valuemax={max}
+    aria-label={ariaLabel}
+  >
+    <div
+      class="mljr-progress-bar"
+      style:width={indeterminate ? undefined : `${percentage}%`}
+    ></div>
+  </div>
+{/snippet}
+
 {#if showLabel}
-  <div class={containerClasses}>
+  <div class="mljr-progress-labeled">
     <div class="mljr-progress-wrapper">
-      {#if showAccents}
-        <span class="mljr-progress-accent-tl"></span>
-        <span class="mljr-progress-accent-br"></span>
-      {/if}
-      <div
-        class={progressClasses}
-        role="progressbar"
-        aria-valuenow={indeterminate ? undefined : value}
-        aria-valuemin={0}
-        aria-valuemax={max}
-        aria-label={ariaLabel}
-      >
-        <div
-          class="mljr-progress-bar"
-          style:width={indeterminate ? undefined : `${percentage}%`}
-        ></div>
-      </div>
+      {@render progressBar()}
     </div>
     <span class="mljr-progress-label">{Math.round(percentage)}%</span>
   </div>
 {:else}
   <div class="mljr-progress-wrapper">
-    {#if showAccents}
-      <span class="mljr-progress-accent-tl"></span>
-      <span class="mljr-progress-accent-br"></span>
-    {/if}
-    <div
-      class={progressClasses}
-      role="progressbar"
-      aria-valuenow={indeterminate ? undefined : value}
-      aria-valuemin={0}
-      aria-valuemax={max}
-      aria-label={ariaLabel}
-    >
-      <div
-        class="mljr-progress-bar"
-        style:width={indeterminate ? undefined : `${percentage}%`}
-      ></div>
-    </div>
+    {@render progressBar()}
   </div>
 {/if}

@@ -1,0 +1,175 @@
+/* ============================================
+   MLJR CSS Framework - Popover Component
+   Claymorphism: Soft frosted glass popovers
+   ============================================ */
+
+.mljr-popover {
+  position: relative;
+  display: inline-block;
+}
+
+.mljr-popover-trigger {
+  cursor: pointer;
+}
+
+.mljr-popover-content {
+  position: absolute;
+  z-index: var(--mljr-z-popover);
+  min-width: 14rem;
+  max-width: 20rem;
+  padding: var(--mljr-space-4);
+  background: var(--mljr-frosted-bg-strong);
+  backdrop-filter: blur(12px);
+  font-family: var(--mljr-font-sans);
+  font-size: var(--mljr-text-sm);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: all var(--mljr-transition-fast);
+  border-radius: var(--mljr-radius-xl);
+  box-shadow: var(--mljr-clay-shadow-lg);
+  border: 1px solid var(--mljr-frosted-border-strong);
+}
+
+/* Open state - show on explicit open class */
+.mljr-popover.mljr-popover-open .mljr-popover-content {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover/focus triggers - only for non-click popovers */
+.mljr-popover:not(.mljr-popover-click):hover .mljr-popover-content,
+.mljr-popover:not(.mljr-popover-click):focus-within .mljr-popover-content {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Position variants */
+.mljr-popover-top .mljr-popover-content {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  margin-bottom: var(--mljr-space-2);
+}
+
+.mljr-popover-top.mljr-popover-open .mljr-popover-content,
+.mljr-popover-top:not(.mljr-popover-click):hover .mljr-popover-content,
+.mljr-popover-top:not(.mljr-popover-click):focus-within .mljr-popover-content {
+  transform: translateX(-50%) translateY(0);
+}
+
+.mljr-popover-bottom .mljr-popover-content {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  margin-top: var(--mljr-space-2);
+}
+
+.mljr-popover-bottom.mljr-popover-open .mljr-popover-content,
+.mljr-popover-bottom:not(.mljr-popover-click):hover .mljr-popover-content,
+.mljr-popover-bottom:not(.mljr-popover-click):focus-within .mljr-popover-content {
+  transform: translateX(-50%) translateY(0);
+}
+
+.mljr-popover-left .mljr-popover-content {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-8px);
+  margin-right: var(--mljr-space-2);
+}
+
+.mljr-popover-left.mljr-popover-open .mljr-popover-content,
+.mljr-popover-left:not(.mljr-popover-click):hover .mljr-popover-content,
+.mljr-popover-left:not(.mljr-popover-click):focus-within .mljr-popover-content {
+  transform: translateY(-50%) translateX(0);
+}
+
+.mljr-popover-right .mljr-popover-content {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(8px);
+  margin-left: var(--mljr-space-2);
+}
+
+.mljr-popover-right.mljr-popover-open .mljr-popover-content,
+.mljr-popover-right:not(.mljr-popover-click):hover .mljr-popover-content,
+.mljr-popover-right:not(.mljr-popover-click):focus-within .mljr-popover-content {
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Popover header */
+.mljr-popover-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--mljr-space-2);
+  margin-bottom: var(--mljr-space-3);
+  padding-bottom: var(--mljr-space-3);
+  border-bottom: 1px solid var(--mljr-border);
+}
+
+.mljr-popover-title {
+  font-weight: 600;
+  font-size: var(--mljr-text-sm);
+  color: var(--mljr-text);
+}
+
+.mljr-popover-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  background: var(--mljr-bg-secondary);
+  border: none;
+  border-radius: var(--mljr-radius-full);
+  color: var(--mljr-text-muted);
+  cursor: pointer;
+  transition: all var(--mljr-transition-fast);
+  box-shadow: var(--mljr-clay-shadow-sm);
+}
+
+.mljr-popover-close:hover {
+  color: var(--mljr-text);
+  background: var(--mljr-bg-tertiary);
+}
+
+/* Popover body */
+.mljr-popover-body {
+  color: var(--mljr-text-secondary);
+  line-height: var(--mljr-leading-normal);
+}
+
+/* Popover footer */
+.mljr-popover-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--mljr-space-2);
+  margin-top: var(--mljr-space-3);
+  padding-top: var(--mljr-space-3);
+  border-top: 1px solid var(--mljr-border);
+}
+
+/* Size variants */
+.mljr-popover-sm .mljr-popover-content {
+  min-width: 10rem;
+  max-width: 14rem;
+  padding: var(--mljr-space-3);
+  font-size: var(--mljr-text-xs);
+}
+
+.mljr-popover-lg .mljr-popover-content {
+  min-width: 20rem;
+  max-width: 28rem;
+  padding: var(--mljr-space-5);
+}
+
+/* Dark mode - shadow adjustments */
+.dark .mljr-popover-content,
+[data-theme="dark"] .mljr-popover-content {
+  box-shadow: var(--mljr-clay-shadow-lg);
+}

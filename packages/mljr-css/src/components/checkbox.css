@@ -1,6 +1,6 @@
 /* ============================================
    MLJR CSS Framework - Checkbox & Radio Components
-   Detroit: Become Human inspired - Angular design
+   Claymorphism: Soft rounded controls with shadows
    ============================================ */
 
 /* Checkbox */
@@ -17,39 +17,51 @@
   width: 1.25rem;
   height: 1.25rem;
   background-color: var(--mljr-bg);
-  border: 2px solid var(--mljr-border-strong);
+  border: none;
+  border-radius: var(--mljr-radius-sm);
   cursor: pointer;
   transition: all var(--mljr-transition-fast);
   flex-shrink: 0;
-  clip-path: var(--mljr-clip-sm);
+  box-shadow: var(--mljr-clay-inset-sm);
 }
 
 .mljr-checkbox-input:hover {
-  border-color: var(--mljr-primary-500);
+  background-color: var(--mljr-bg-secondary);
 }
 
 .mljr-checkbox-input:focus {
   outline: none;
-  border-color: var(--mljr-primary-500);
-  box-shadow: 0 0 0 2px rgb(0 128 255 / 0.2);
+  box-shadow:
+    var(--mljr-clay-inset-sm),
+    0 0 0 3px var(--mljr-primary-200);
 }
 
 .mljr-checkbox-input:checked {
-  background-color: var(--mljr-primary-600);
-  border-color: var(--mljr-primary-600);
-  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: var(--mljr-primary-500);
+  background-image:
+    linear-gradient(135deg, var(--mljr-primary-400) 0%, var(--mljr-primary-600) 100%),
+    url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+  background-size: 100% 100%, 70% 70%;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  box-shadow:
+    4px 4px 8px rgba(249, 115, 22, 0.35),
+    -3px -3px 6px rgba(255, 255, 255, 0.9),
+    inset 0px 2px 4px rgba(255, 255, 255, 0.3);
 }
 
 .mljr-checkbox-input:indeterminate {
-  background-color: var(--mljr-primary-600);
-  border-color: var(--mljr-primary-600);
-  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M4 8a1 1 0 011-1h6a1 1 0 110 2H5a1 1 0 01-1-1z'/%3e%3c/svg%3e");
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: var(--mljr-primary-500);
+  background-image:
+    linear-gradient(135deg, var(--mljr-primary-400) 0%, var(--mljr-primary-600) 100%),
+    url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M4 8a1 1 0 011-1h6a1 1 0 110 2H5a1 1 0 01-1-1z'/%3e%3c/svg%3e");
+  background-size: 100% 100%, 70% 70%;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  box-shadow:
+    4px 4px 8px rgba(249, 115, 22, 0.35),
+    -3px -3px 6px rgba(255, 255, 255, 0.9),
+    inset 0px 2px 4px rgba(255, 255, 255, 0.3);
 }
 
 .mljr-checkbox-input:disabled {
@@ -62,22 +74,42 @@
   color: var(--mljr-text);
 }
 
+/* Primary Color Checkbox (explicit) */
+.mljr-checkbox-primary .mljr-checkbox-input:checked,
+.mljr-checkbox-primary .mljr-checkbox-input:indeterminate {
+  background-color: var(--mljr-primary-500);
+  background-image:
+    linear-gradient(135deg, var(--mljr-primary-400) 0%, var(--mljr-primary-600) 100%),
+    url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+  box-shadow:
+    4px 4px 8px rgba(249, 115, 22, 0.35),
+    -3px -3px 6px rgba(255, 255, 255, 0.9),
+    inset 0px 2px 4px rgba(255, 255, 255, 0.3);
+}
+
 /* Secondary Color Checkbox */
-.mljr-checkbox-secondary .mljr-checkbox-input:hover {
-  border-color: var(--mljr-secondary-500);
-}
-
 .mljr-checkbox-secondary .mljr-checkbox-input:focus {
-  border-color: var(--mljr-secondary-500);
-  box-shadow: 0 0 0 2px rgb(255 140 0 / 0.2);
+  box-shadow:
+    var(--mljr-clay-inset-sm),
+    0 0 0 3px var(--mljr-secondary-200);
 }
 
-.mljr-checkbox-secondary .mljr-checkbox-input:checked {
-  background-color: var(--mljr-secondary-600);
-  border-color: var(--mljr-secondary-600);
+.mljr-checkbox-secondary .mljr-checkbox-input:checked,
+.mljr-checkbox-secondary .mljr-checkbox-input:indeterminate {
+  background-color: var(--mljr-secondary-500);
+  background-image:
+    linear-gradient(135deg, var(--mljr-secondary-400) 0%, var(--mljr-secondary-600) 100%),
+    url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+  background-size: 100% 100%, 70% 70%;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  box-shadow:
+    4px 4px 8px rgba(168, 85, 247, 0.35),
+    -3px -3px 6px rgba(255, 255, 255, 0.9),
+    inset 0px 2px 4px rgba(255, 255, 255, 0.3);
 }
 
-/* Radio - Angular with TR+BL cut (same as other elements) */
+/* Radio */
 .mljr-radio {
   display: inline-flex;
   align-items: center;
@@ -91,31 +123,37 @@
   width: 1.25rem;
   height: 1.25rem;
   background-color: var(--mljr-bg);
-  border: 2px solid var(--mljr-border-strong);
+  border: none;
+  border-radius: var(--mljr-radius-full);
   cursor: pointer;
   transition: all var(--mljr-transition-fast);
   flex-shrink: 0;
-  clip-path: var(--mljr-clip-sm);
+  box-shadow: var(--mljr-clay-inset-sm);
 }
 
 .mljr-radio-input:hover {
-  border-color: var(--mljr-primary-500);
+  background-color: var(--mljr-bg-secondary);
 }
 
 .mljr-radio-input:focus {
   outline: none;
-  border-color: var(--mljr-primary-500);
-  box-shadow: 0 0 0 2px rgb(0 128 255 / 0.2);
+  box-shadow:
+    var(--mljr-clay-inset-sm),
+    0 0 0 3px var(--mljr-primary-200);
 }
 
 .mljr-radio-input:checked {
-  background-color: var(--mljr-primary-600);
-  border-color: var(--mljr-primary-600);
-  /* Diamond shape indicator */
-  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpolygon points='8,3 13,8 8,13 3,8'/%3e%3c/svg%3e");
-  background-size: 60% 60%;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: var(--mljr-primary-500);
+  background-image:
+    linear-gradient(135deg, var(--mljr-primary-400) 0%, var(--mljr-primary-600) 100%),
+    url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='4'/%3e%3c/svg%3e");
+  background-size: 100% 100%, 60% 60%;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  box-shadow:
+    4px 4px 8px rgba(249, 115, 22, 0.35),
+    -3px -3px 6px rgba(255, 255, 255, 0.9),
+    inset 0px 2px 4px rgba(255, 255, 255, 0.3);
 }
 
 .mljr-radio-input:disabled {
@@ -128,19 +166,37 @@
   color: var(--mljr-text);
 }
 
-/* Secondary Color Radio */
-.mljr-radio-secondary .mljr-radio-input:hover {
-  border-color: var(--mljr-secondary-500);
+/* Primary Color Radio (explicit) */
+.mljr-radio-primary .mljr-radio-input:checked {
+  background-color: var(--mljr-primary-500);
+  background-image:
+    linear-gradient(135deg, var(--mljr-primary-400) 0%, var(--mljr-primary-600) 100%),
+    url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='4'/%3e%3c/svg%3e");
+  box-shadow:
+    4px 4px 8px rgba(249, 115, 22, 0.35),
+    -3px -3px 6px rgba(255, 255, 255, 0.9),
+    inset 0px 2px 4px rgba(255, 255, 255, 0.3);
 }
 
+/* Secondary Color Radio */
 .mljr-radio-secondary .mljr-radio-input:focus {
-  border-color: var(--mljr-secondary-500);
-  box-shadow: 0 0 0 2px rgb(255 140 0 / 0.2);
+  box-shadow:
+    var(--mljr-clay-inset-sm),
+    0 0 0 3px var(--mljr-secondary-200);
 }
 
 .mljr-radio-secondary .mljr-radio-input:checked {
-  background-color: var(--mljr-secondary-600);
-  border-color: var(--mljr-secondary-600);
+  background-color: var(--mljr-secondary-500);
+  background-image:
+    linear-gradient(135deg, var(--mljr-secondary-400) 0%, var(--mljr-secondary-600) 100%),
+    url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='4'/%3e%3c/svg%3e");
+  background-size: 100% 100%, 60% 60%;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  box-shadow:
+    4px 4px 8px rgba(168, 85, 247, 0.35),
+    -3px -3px 6px rgba(255, 255, 255, 0.9),
+    inset 0px 2px 4px rgba(255, 255, 255, 0.3);
 }
 
 /* Radio Group */
@@ -155,7 +211,7 @@
   gap: var(--mljr-space-4);
 }
 
-/* Switch / Toggle - Angular Detroit style with TR+BL cuts */
+/* Switch / Toggle */
 .mljr-switch {
   display: inline-flex;
   align-items: center;
@@ -168,13 +224,13 @@
   appearance: none;
   width: 2.75rem;
   height: 1.5rem;
-  background-color: var(--mljr-gray-400);
+  background-color: var(--mljr-gray-300);
+  border-radius: var(--mljr-radius-full);
   position: relative;
   cursor: pointer;
   transition: background-color var(--mljr-transition-fast);
   flex-shrink: 0;
-  /* TR + BL cut only, NOT all 4 corners */
-  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+  box-shadow: var(--mljr-clay-inset-sm);
 }
 
 .mljr-switch-input::before {
@@ -187,12 +243,15 @@
   left: 3px;
   transform: translateY(-50%);
   transition: left var(--mljr-transition-fast);
-  clip-path: var(--mljr-clip-sm);
-  box-shadow: var(--mljr-shadow-sm);
+  border-radius: var(--mljr-radius-full);
+  box-shadow: var(--mljr-clay-shadow-sm);
 }
 
 .mljr-switch-input:checked {
-  background-color: var(--mljr-primary-600);
+  background: var(--mljr-gradient-primary);
+  box-shadow:
+    inset 2px 2px 4px rgba(0, 0, 0, 0.1),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.2);
 }
 
 .mljr-switch-input:checked::before {
@@ -201,7 +260,9 @@
 
 .mljr-switch-input:focus {
   outline: none;
-  box-shadow: 0 0 0 2px rgb(0 128 255 / 0.2);
+  box-shadow:
+    var(--mljr-clay-inset-sm),
+    0 0 0 3px var(--mljr-primary-200);
 }
 
 .mljr-switch-input:disabled {
@@ -216,14 +277,26 @@
 
 /* Secondary Color Switch */
 .mljr-switch-secondary .mljr-switch-input:checked {
-  background-color: var(--mljr-secondary-600);
+  background: var(--mljr-gradient-secondary);
 }
 
 .mljr-switch-secondary .mljr-switch-input:focus {
-  box-shadow: 0 0 0 2px rgb(255 140 0 / 0.2);
+  box-shadow:
+    var(--mljr-clay-inset-sm),
+    0 0 0 3px var(--mljr-secondary-200);
 }
 
-/* Dark mode adjustments - only for unchecked state */
+/* Dark mode adjustments */
+.dark .mljr-checkbox-input,
+.dark .mljr-radio-input,
+.dark .mljr-switch-input,
+[data-theme="dark"] .mljr-checkbox-input,
+[data-theme="dark"] .mljr-radio-input,
+[data-theme="dark"] .mljr-switch-input {
+  background-color: var(--mljr-bg-secondary);
+  box-shadow: var(--mljr-clay-inset-sm);
+}
+
 .dark .mljr-switch-input:not(:checked),
 [data-theme="dark"] .mljr-switch-input:not(:checked) {
   background-color: var(--mljr-gray-600);
