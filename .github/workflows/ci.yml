@@ -89,6 +89,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Build packages
+        run: pnpm build
+
       - name: Run unit tests
         run: pnpm --filter mljr-svelte test
         continue-on-error: true
@@ -115,6 +118,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+
+      - name: Build packages
+        run: pnpm build
 
       - name: Install Playwright browsers
         run: pnpm --filter mljr-svelte exec playwright install --with-deps
