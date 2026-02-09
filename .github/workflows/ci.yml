@@ -7,35 +7,9 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  quality:
+    name: Build, Verify & Test
     runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build packages
-        run: pnpm build
-
-      - name: Type check (mljr-svelte)
-        run: pnpm --filter mljr-svelte check
-
-  verify-packaging:
-    runs-on: ubuntu-latest
-    needs: build
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -55,54 +29,34 @@ jobs:
       - name: Build all packages
         run: pnpm build
 
-      - name: Pack mljr-css
+      - name: Type check (mljr-svelte)
+        run: pnpm --filter mljr-svelte check
+
+      - name: Lint
+        run: pnpm lint
+        continue-on-error: true
+
+      - name: Verify Packaging (mljr-css)
         run: |
           cd packages/mljr-css
           pnpm pack
           tar -tf mljr-css-*.tgz | grep "dist/mljr.css"
           tar -tf mljr-css-*.tgz | grep "dist/plugin.js"
 
-      - name: Pack mljr-svelte
+      - name: Verify Packaging (mljr-svelte)
         run: |
           cd packages/mljr-svelte
           pnpm pack
           tar -tf mljr-svelte-*.tgz | grep "dist/index.js"
-          # Ensure paraglide messages are included (the fix we made)
           tar -tf mljr-svelte-*.tgz | grep "dist/paraglide/messages"
-
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build packages
-        run: pnpm build
 
       - name: Run unit tests
         run: pnpm --filter mljr-svelte test
         continue-on-error: true
 
-      - name: Run tests with coverage
-        run: pnpm --filter mljr-svelte test:coverage
-        continue-on-error: true
-
   e2e:
+    name: E2E Tests
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -135,26 +89,3 @@ jobs:
           name: playwright-report
           path: packages/mljr-svelte/playwright-report/
           retention-days: 30
-
-  lint:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Lint
-        run: pnpm lint
-        continue-on-error: true
