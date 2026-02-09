@@ -5,26 +5,43 @@ export type Theme = 'light' | 'dark' | 'system';
 const THEME_COOKIE_NAME = 'mljr-theme';
 const THEME_COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 1 year
 
+function getSystemTheme(): 'light' | 'dark' {
+  if (!browser) return 'light';
+  return globalThis.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+function getBrowserPreference(): Theme {
+  if (!browser) return 'system';
+  // Check if user has a system preference
+  const hasDarkPreference = globalThis.matchMedia('(prefers-color-scheme: dark)').matches;
+  const hasLightPreference = globalThis.matchMedia('(prefers-color-scheme: light)').matches;
+  
+  if (hasDarkPreference) return 'dark';
+  if (hasLightPreference) return 'light';
+  return 'system';
+}
+
+function setCookie(value: string) {
+  if (!browser) return;
+  document.cookie = `${THEME_COOKIE_NAME}=${value};path=/;max-age=${THEME_COOKIE_MAX_AGE};SameSite=Lax`;
+}
+
+function getCookie(): string | null {
+  if (!browser) return null;
+  const regex = new RegExp(`${THEME_COOKIE_NAME}=([^;]+)`);
+  const match = regex.exec(document.cookie);
+  return match ? match[1] : null;
+}
+
+function deleteCookie() {
+  if (!browser) return;
+  document.cookie = `${THEME_COOKIE_NAME}=;path=/;max-age=0`;
+}
+
 function createThemeStore() {
   let theme = $state<Theme>('system');
   let resolvedTheme = $state<'light' | 'dark'>('light');
   let initialized = $state(false);
-
-  function getSystemTheme(): 'light' | 'dark' {
-    if (!browser) return 'light';
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  }
-
-  function getBrowserPreference(): Theme {
-    if (!browser) return 'system';
-    // Check if user has a system preference
-    const hasDarkPreference = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const hasLightPreference = window.matchMedia('(prefers-color-scheme: light)').matches;
-    
-    if (hasDarkPreference) return 'dark';
-    if (hasLightPreference) return 'light';
-    return 'system';
-  }
 
   function updateResolvedTheme() {
     resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
@@ -36,28 +53,12 @@ function createThemeStore() {
     const root = document.documentElement;
     root.classList.remove('light', 'dark');
     root.classList.add(resolvedTheme);
-    root.setAttribute('data-theme', resolvedTheme);
+    root.dataset.theme = resolvedTheme;
     
     // Dispatch custom event for other components
-    window.dispatchEvent(new CustomEvent('themechange', { 
+    globalThis.dispatchEvent(new CustomEvent('themechange', { 
       detail: { theme, resolvedTheme } 
     }));
-  }
-
-  function setCookie(value: string) {
-    if (!browser) return;
-    document.cookie = `${THEME_COOKIE_NAME}=${value};path=/;max-age=${THEME_COOKIE_MAX_AGE};SameSite=Lax`;
-  }
-
-  function getCookie(): string | null {
-    if (!browser) return null;
-    const match = document.cookie.match(new RegExp(`${THEME_COOKIE_NAME}=([^;]+)`));
-    return match ? match[1] : null;
-  }
-
-  function deleteCookie() {
-    if (!browser) return;
-    document.cookie = `${THEME_COOKIE_NAME}=;path=/;max-age=0`;
   }
 
   function setTheme(newTheme: Theme) {
@@ -125,7 +126,7 @@ function createThemeStore() {
     initialized = true;
 
     // Listen for system theme changes
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const mediaQuery = globalThis.matchMedia('(prefers-color-scheme: dark)');
     mediaQuery.addEventListener('change', () => {
       if (theme === 'system') {
         updateResolvedTheme();
@@ -134,7 +135,7 @@ function createThemeStore() {
     });
 
     // Listen for storage changes (multi-tab support)
-    window.addEventListener('storage', (e) => {
+    globalThis.addEventListener('storage', (e) => {
       if (e.key === THEME_COOKIE_NAME && e.newValue) {
         const newTheme = e.newValue as Theme;
         if (newTheme !== theme && ['light', 'dark', 'system'].includes(newTheme)) {
@@ -164,7 +165,8 @@ export const themeStore = createThemeStore();
 // Utility to parse theme from cookie string (for SSR)
 export function parseThemeFromCookie(cookieHeader: string | null): Theme | null {
   if (!cookieHeader) return null;
-  const match = cookieHeader.match(new RegExp(`${THEME_COOKIE_NAME}=([^;]+)`));
+  const regex = new RegExp(`${THEME_COOKIE_NAME}=([^;]+)`);
+  const match = regex.exec(cookieHeader);
   const theme = match ? match[1] : null;
   if (theme && ['light', 'dark', 'system'].includes(theme)) {
     return theme as Theme;

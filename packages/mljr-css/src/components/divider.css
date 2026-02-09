@@ -37,7 +37,6 @@
 
 /* With content */
 .mljr-divider-content {
-  padding: 0 var(--mljr-space-4);
   font-size: var(--mljr-text-xs);
   font-weight: 500;
   text-transform: uppercase;

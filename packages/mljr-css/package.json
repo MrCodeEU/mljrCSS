@@ -26,7 +26,7 @@
     "src"
   ],
   "scripts": {
-    "build": "pnpm build:css && pnpm build:plugin",
+    "build": "pnpm build:plugin && pnpm build:css",
     "build:css": "postcss src/index.css -o dist/mljr.css && postcss src/index.css -o dist/mljr.min.css --env production",
     "build:plugin": "tsup src/plugin.ts --format cjs,esm --dts --clean",
     "dev": "postcss src/index.css -o dist/mljr.css --watch",
