@@ -483,7 +483,7 @@ test.describe('MLJR Component Library E2E Tests', () => {
   test.describe('Tooltip Component', () => {
     test('should show tooltip on hover', async ({ page }) => {
       // Scroll to new components section first
-      await page.locator('#display-components').scrollIntoViewIfNeeded();
+      await page.locator('#display-components').first().scrollIntoViewIfNeeded();
       const tooltipTrigger = page.locator('.mljr-tooltip').first();
       await tooltipTrigger.scrollIntoViewIfNeeded();
       await tooltipTrigger.hover();
@@ -493,7 +493,7 @@ test.describe('MLJR Component Library E2E Tests', () => {
     });
 
     test('should hide tooltip on mouse leave', async ({ page }) => {
-      await page.locator('#display-components').scrollIntoViewIfNeeded();
+      await page.locator('#display-components').first().scrollIntoViewIfNeeded();
       const tooltipTrigger = page.locator('.mljr-tooltip').first();
       await tooltipTrigger.scrollIntoViewIfNeeded();
       await tooltipTrigger.hover();
@@ -512,7 +512,7 @@ test.describe('MLJR Component Library E2E Tests', () => {
     });
 
     test('should render tooltip component', async ({ page }) => {
-      await page.locator('#display-components').scrollIntoViewIfNeeded();
+      await page.locator('#display-components').first().scrollIntoViewIfNeeded();
       // Check for tooltip wrapper
       const tooltips = await page.locator('.mljr-tooltip').count();
       expect(tooltips).toBeGreaterThan(0);
@@ -521,28 +521,28 @@ test.describe('MLJR Component Library E2E Tests', () => {
 
   test.describe('Progress Component', () => {
     test('should render progress bars', async ({ page }) => {
-      await page.locator('#display-components').scrollIntoViewIfNeeded();
+      await page.locator('#display-components').first().scrollIntoViewIfNeeded();
       // Progress bars may be thin, check element count
       const progressCount = await page.locator('.mljr-progress').count();
       expect(progressCount).toBeGreaterThan(0);
     });
 
     test('should have correct aria attributes', async ({ page }) => {
-      await page.locator('#display-components').scrollIntoViewIfNeeded();
+      await page.locator('#display-components').first().scrollIntoViewIfNeeded();
       const progress = page.locator('.mljr-progress[role="progressbar"]').first();
       await expect(progress).toHaveAttribute('aria-valuemin', '0');
       await expect(progress).toHaveAttribute('aria-valuemax', '100');
     });
 
     test('should render progress with HUD accents', async ({ page }) => {
-      await page.locator('#display-components').scrollIntoViewIfNeeded();
+      await page.locator('#display-components').first().scrollIntoViewIfNeeded();
       // Detroit style is now default - check for progress wrapper and accents
       const progressWrapperCount = await page.locator('.mljr-progress-wrapper').count();
       expect(progressWrapperCount).toBeGreaterThan(0);
     });
 
     test('should render indeterminate state', async ({ page }) => {
-      await page.locator('#display-components').scrollIntoViewIfNeeded();
+      await page.locator('#display-components').first().scrollIntoViewIfNeeded();
       const indeterminateProgressCount = await page.locator('.mljr-progress-indeterminate').count();
       expect(indeterminateProgressCount).toBeGreaterThan(0);
     });
@@ -550,13 +550,13 @@ test.describe('MLJR Component Library E2E Tests', () => {
 
   test.describe('Skeleton Component', () => {
     test('should render skeleton loaders', async ({ page }) => {
-      await page.locator('#display-components').scrollIntoViewIfNeeded();
+      await page.locator('#display-components').first().scrollIntoViewIfNeeded();
       const skeletonCount = await page.locator('.mljr-skeleton').count();
       expect(skeletonCount).toBeGreaterThan(0);
     });
 
     test('should render different variants', async ({ page }) => {
-      await page.locator('#display-components').scrollIntoViewIfNeeded();
+      await page.locator('#display-components').first().scrollIntoViewIfNeeded();
       const textSkeletonCount = await page.locator('.mljr-skeleton-text').count();
       const avatarSkeletonCount = await page.locator('.mljr-skeleton-avatar').count();
 
@@ -565,7 +565,7 @@ test.describe('MLJR Component Library E2E Tests', () => {
     });
 
     test('should render skeleton with shimmer effect', async ({ page }) => {
-      await page.locator('#display-components').scrollIntoViewIfNeeded();
+      await page.locator('#display-components').first().scrollIntoViewIfNeeded();
       // Detroit style is now default - check for shimmer effect
       const shimmerCount = await page.locator('.mljr-skeleton-shimmer').count();
       expect(shimmerCount).toBeGreaterThan(0);
@@ -574,28 +574,28 @@ test.describe('MLJR Component Library E2E Tests', () => {
 
   test.describe('Avatar Component', () => {
     test('should render avatars with initials', async ({ page }) => {
-      await page.locator('#display-components').scrollIntoViewIfNeeded();
+      await page.locator('#display-components').first().scrollIntoViewIfNeeded();
       const avatar = page.locator('.mljr-avatar').first();
       await avatar.scrollIntoViewIfNeeded();
       await expect(avatar).toBeVisible();
     });
 
     test('should render status indicators', async ({ page }) => {
-      await page.locator('#display-components').scrollIntoViewIfNeeded();
+      await page.locator('#display-components').first().scrollIntoViewIfNeeded();
       // Status indicators are small, check for element count instead
       const count = await page.locator('.mljr-avatar-status-online').count();
       expect(count).toBeGreaterThan(0);
     });
 
     test('should render hexagonal avatar by default', async ({ page }) => {
-      await page.locator('#display-components').scrollIntoViewIfNeeded();
+      await page.locator('#display-components').first().scrollIntoViewIfNeeded();
       // Detroit style is now default - avatars are hexagonal by default
       const avatarCount = await page.locator('.mljr-avatar').count();
       expect(avatarCount).toBeGreaterThan(0);
     });
 
     test('should render different sizes', async ({ page }) => {
-      await page.locator('#display-components').scrollIntoViewIfNeeded();
+      await page.locator('#display-components').first().scrollIntoViewIfNeeded();
       const xsAvatar = page.locator('.mljr-avatar-xs').first();
       const xlAvatar = page.locator('.mljr-avatar-xl').first();
 
@@ -608,28 +608,28 @@ test.describe('MLJR Component Library E2E Tests', () => {
 
   test.describe('Divider Component', () => {
     test('should render dividers', async ({ page }) => {
-      await page.locator('#display-components').scrollIntoViewIfNeeded();
+      await page.locator('#display-components').first().scrollIntoViewIfNeeded();
       // Dividers are thin lines, check for element existence
       const dividerCount = await page.locator('.mljr-divider').count();
       expect(dividerCount).toBeGreaterThan(0);
     });
 
     test('should render divider with content', async ({ page }) => {
-      await page.locator('#display-components').scrollIntoViewIfNeeded();
+      await page.locator('#display-components').first().scrollIntoViewIfNeeded();
       const dividerContent = page.locator('.mljr-divider-content').first();
       await dividerContent.scrollIntoViewIfNeeded();
       await expect(dividerContent).toBeVisible();
     });
 
     test('should render divider with HUD accents', async ({ page }) => {
-      await page.locator('#display-components').scrollIntoViewIfNeeded();
+      await page.locator('#display-components').first().scrollIntoViewIfNeeded();
       // Detroit style is now default - check for accent elements
       const accentCount = await page.locator('.mljr-divider-accent-l').count();
       expect(accentCount).toBeGreaterThan(0);
     });
 
     test('should render vertical orientation', async ({ page }) => {
-      await page.locator('#display-components').scrollIntoViewIfNeeded();
+      await page.locator('#display-components').first().scrollIntoViewIfNeeded();
       const verticalDividerCount = await page.locator('.mljr-divider-vertical').count();
       expect(verticalDividerCount).toBeGreaterThan(0);
     });
