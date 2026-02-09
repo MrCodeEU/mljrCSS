@@ -86,5 +86,9 @@
     "@iconify/utils": "^3.1.0",
     "libphonenumber-js": "^1.12.36",
     "zxcvbn-typescript": "^5.0.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }
