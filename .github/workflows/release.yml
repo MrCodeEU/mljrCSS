@@ -51,10 +51,8 @@ jobs:
         if: steps.changesets.outputs.hasChangesets == 'false'
         run: |
           pnpm build
-          
-          # Navigate into each package to ensure correct context for OIDC
-          cd packages/mljr-css
-          npm publish --access public --provenance
-          
-          cd ../../packages/mljr-svelte
-          npm publish --access public --provenance
+          # Try pnpm publish with recursive flag and provenance.
+          # pnpm should correctly handle OIDC if provenance is enabled.
+          pnpm -r publish --no-git-checks --access public --provenance
+        env:
+          NPM_CONFIG_PROVENANCE: true
