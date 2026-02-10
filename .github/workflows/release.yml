@@ -52,9 +52,14 @@ jobs:
         run: |
           pnpm build
           
-          # This is the exact configuration for npm OIDC trusted publishing
-          npm config set //registry.npmjs.org/:_arity 1
-          npm config set //registry.npmjs.org/:aud https://registry.npmjs.org
-          
+          # Use environment variables instead of npm config set to avoid 'invalid option' errors
+          # and ensure OIDC handshaking works.
           npm publish -w packages/mljr-css --access public --provenance
           npm publish -w packages/mljr-svelte --access public --provenance
+        env:
+          NPM_CONFIG_PROVENANCE: true
+          # These env vars are equivalent to the .npmrc entries required for OIDC
+          # npm (especially >= 9) uses these to identify OIDC requirements.
+          # Note the uppercase and underscore transformation.
+          npm_config_//registry.npmjs.org/:_arity: "1"
+          npm_config_//registry.npmjs.org/:aud: "https://registry.npmjs.org"
