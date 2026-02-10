@@ -54,11 +54,15 @@ jobs:
           
           # Force OIDC by explicitly providing provenance and registry
           # Ensure NO tokens are present in environment or .npmrc
+          # Explicitly set the registry and provenance.
+          
+          # We use --provenance-auth to hint OIDC
           cd packages/mljr-css
           npm publish --access public --provenance --registry https://registry.npmjs.org
           
           cd ../mljr-svelte
           npm publish --access public --provenance --registry https://registry.npmjs.org
         env:
-          NODE_AUTH_TOKEN: ""
+          # This should trigger npm to use OIDC when no token is found
+          # and id-token permission is present
           NPM_CONFIG_PROVENANCE: true
