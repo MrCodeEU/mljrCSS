@@ -36,6 +36,12 @@ jobs:
         run: pnpm lint
         continue-on-error: true
 
+      - name: Install Playwright browsers (for vitest browser mode)
+        run: pnpm --filter mljr-svelte exec playwright install --with-deps
+
+      - name: Run unit tests
+        run: pnpm --filter mljr-svelte test -- --reporter=verbose
+
       - name: Verify Packaging (mljr-css)
         run: |
           cd packages/mljr-css
@@ -49,10 +55,6 @@ jobs:
           pnpm pack
           tar -tf mljr-svelte-*.tgz | grep "dist/index.js"
           tar -tf mljr-svelte-*.tgz | grep "dist/paraglide/messages"
-
-      - name: Run unit tests
-        run: pnpm --filter mljr-svelte test
-        continue-on-error: true
 
   e2e:
     name: E2E Tests

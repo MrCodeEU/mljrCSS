@@ -21,10 +21,10 @@
 
             <!-- Desktop Menu -->
             <div class="mljr-navbar-demo-menu">
-              <a href="javascript:void(0)" class="mljr-navbar-demo-link active">Home</a>
-              <a href="javascript:void(0)" class="mljr-navbar-demo-link">About</a>
-              <a href="javascript:void(0)" class="mljr-navbar-demo-link">Services</a>
-              <a href="javascript:void(0)" class="mljr-navbar-demo-link">Contact</a>
+              <a href="#" class="mljr-navbar-demo-link active">Home</a>
+              <a href="#" class="mljr-navbar-demo-link">About</a>
+              <a href="#" class="mljr-navbar-demo-link">Services</a>
+              <a href="#" class="mljr-navbar-demo-link">Contact</a>
             </div>
 
             <!-- Actions -->
@@ -44,10 +44,10 @@
           <!-- Mobile Menu -->
           {#if mobileOpen1}
             <div class="mljr-navbar-demo-mobile" transition:slide={{ duration: 200 }}>
-              <a href="javascript:void(0)" class="mljr-navbar-demo-link mobile active">Home</a>
-              <a href="javascript:void(0)" class="mljr-navbar-demo-link mobile">About</a>
-              <a href="javascript:void(0)" class="mljr-navbar-demo-link mobile">Services</a>
-              <a href="javascript:void(0)" class="mljr-navbar-demo-link mobile">Contact</a>
+              <a href="#" class="mljr-navbar-demo-link mobile active">Home</a>
+              <a href="#" class="mljr-navbar-demo-link mobile">About</a>
+              <a href="#" class="mljr-navbar-demo-link mobile">Services</a>
+              <a href="#" class="mljr-navbar-demo-link mobile">Contact</a>
             </div>
           {/if}
         </nav>
@@ -63,9 +63,9 @@
               <span class="logo-text">Brand</span>
             </div>
             <div class="mljr-navbar-demo-menu">
-              <a href="javascript:void(0)" class="mljr-navbar-demo-link">Features</a>
-              <a href="javascript:void(0)" class="mljr-navbar-demo-link">Pricing</a>
-              <a href="javascript:void(0)" class="mljr-navbar-demo-link">Docs</a>
+              <a href="#" class="mljr-navbar-demo-link">Features</a>
+              <a href="#" class="mljr-navbar-demo-link">Pricing</a>
+              <a href="#" class="mljr-navbar-demo-link">Docs</a>
             </div>
             <div class="mljr-navbar-demo-actions">
               <Button variant="secondary" size="sm">Sign In</Button>
@@ -137,8 +137,8 @@
   {/snippet}
   
   {#snippet menu()}
-    <a href="javascript:void(0)">Home</a>
-    <a href="javascript:void(0)">About</a>
+    <a href="#">Home</a>
+    <a href="#">About</a>
   {/snippet}
   
   {#snippet actions()}

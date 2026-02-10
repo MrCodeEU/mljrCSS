@@ -38,7 +38,7 @@
   {/if}
 </div>
 
-<script lang="ts" context="module">
+<script module>
   import { slide } from 'svelte/transition';
 </script>
 

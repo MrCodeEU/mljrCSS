@@ -242,8 +242,16 @@
       <span 
         class="mljr-datepicker-clear"
         onclick={(e) => { e.stopPropagation(); clearSelection(); }}
+        onkeydown={(e) => { 
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            e.stopPropagation();
+            clearSelection();
+          }
+        }}
         role="button"
         tabindex="0"
+        aria-label="Clear selection"
       >
         <Icon icon="ph:x" size={16} />
       </span>

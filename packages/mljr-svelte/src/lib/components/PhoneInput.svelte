@@ -212,6 +212,7 @@
     <button
       type="button"
       class="mljr-phone-country"
+      class:is-expanded={isOpen}
       onclick={toggleDropdown}
       {disabled}
       aria-haspopup="listbox"
@@ -382,7 +383,7 @@
     transition: transform var(--mljr-transition-fast);
   }
 
-  .mljr-phone-country[aria-expanded="true"] .mljr-phone-caret {
+  .mljr-phone-country.is-expanded .mljr-phone-caret {
     transform: rotate(180deg);
   }
 

@@ -77,15 +77,23 @@
     {@const completed = isStepCompleted(index)}
     {@const active = isStepActive(index)}
     
-    <div
+    <svelte:element
+      this={allowClick ? 'button' : 'div'}
       class="mljr-step"
       class:mljr-step-completed={completed}
       class:mljr-step-active={active}
       class:mljr-step-disabled={step.disabled}
       class:mljr-step-clickable={allowClick && !step.disabled && index <= currentStep}
       onclick={() => handleStepClick(index, step)}
+      onkeydown={(e: KeyboardEvent) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleStepClick(index, step);
+        }
+      }}
       role={allowClick ? 'button' : undefined}
-      tabindex={allowClick ? 0 : undefined}
+      type={allowClick ? 'button' : undefined}
+      tabindex={allowClick && !step.disabled && index <= currentStep ? 0 : -1}
       aria-current={active ? 'step' : undefined}
       aria-disabled={step.disabled}
     >
@@ -108,7 +116,7 @@
           {/if}
         </div>
       </div>
-    </div>
+    </svelte:element>
   {/each}
 </div>
 
