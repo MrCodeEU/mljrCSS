@@ -36,8 +36,23 @@ jobs:
         run: pnpm lint
         continue-on-error: true
 
+      - name: Get Playwright version
+        run: echo "PLAYWRIGHT_VERSION=$(pnpm list --filter mljr-svelte --depth 0 @playwright/test --json | jq -r '.[0].devDependencies[\"@playwright/test\"].version')" >> $GITHUB_ENV
+
+      - name: Playwright Browser Cache
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+
       - name: Install Playwright browsers (for vitest browser mode)
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: pnpm --filter mljr-svelte exec playwright install --with-deps
+
+      - name: Install Playwright dependencies (even if cache hit)
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: pnpm --filter mljr-svelte exec playwright install-deps
 
       - name: Run unit tests
         run: pnpm --filter mljr-svelte test -- --reporter=verbose
@@ -78,8 +93,23 @@ jobs:
       - name: Build packages
         run: pnpm build
 
+      - name: Get Playwright version
+        run: echo "PLAYWRIGHT_VERSION=$(pnpm list --filter mljr-svelte --depth 0 @playwright/test --json | jq -r '.[0].devDependencies[\"@playwright/test\"].version')" >> $GITHUB_ENV
+
+      - name: Playwright Browser Cache
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+
       - name: Install Playwright browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: pnpm --filter mljr-svelte exec playwright install --with-deps
+
+      - name: Install Playwright dependencies
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: pnpm --filter mljr-svelte exec playwright install-deps
 
       - name: Run E2E tests
         run: pnpm --filter mljr-svelte exec playwright test
