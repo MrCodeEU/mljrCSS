@@ -47,12 +47,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Publish to npm
+      - name: Publish mljr-css
         if: steps.changesets.outputs.hasChangesets == 'false'
-        run: |
-          pnpm build
-          # Try pnpm publish with recursive flag and provenance.
-          # pnpm should correctly handle OIDC if provenance is enabled.
-          pnpm -r publish --no-git-checks --access public --provenance
-        env:
-          NPM_CONFIG_PROVENANCE: true
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          package: ./packages/mljr-css/package.json
+          access: public
+          provenance: true
+
+      - name: Publish mljr-svelte
+        if: steps.changesets.outputs.hasChangesets == 'false'
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          package: ./packages/mljr-svelte/package.json
+          access: public
+          provenance: true
