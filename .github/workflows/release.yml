@@ -47,18 +47,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Publish mljr-css
+      - name: Publish to npm
         if: steps.changesets.outputs.hasChangesets == 'false'
-        uses: JS-DevTools/npm-publish@v3
-        with:
-          package: ./packages/mljr-css/package.json
-          access: public
-          provenance: true
-
-      - name: Publish mljr-svelte
-        if: steps.changesets.outputs.hasChangesets == 'false'
-        uses: JS-DevTools/npm-publish@v3
-        with:
-          package: ./packages/mljr-svelte/package.json
-          access: public
-          provenance: true
+        run: |
+          pnpm build
+          
+          # Pure OIDC publish with npm >= 10
+          # We must NOT have a token in .npmrc or environment for OIDC to trigger correctly.
+          # Explicitly set the registry and provenance.
+          cd packages/mljr-css
+          npm publish --access public --provenance --registry https://registry.npmjs.org
+          
+          cd ../mljr-svelte
+          npm publish --access public --provenance --registry https://registry.npmjs.org
