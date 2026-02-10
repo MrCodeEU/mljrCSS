@@ -38,25 +38,16 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Create Release Pull Request
+      - name: Create Release Pull Request or Publish
         id: changesets
         uses: changesets/action@v1
         with:
+          # When changesets are present, it creates/updates the release PR.
+          # When changesets are empty (after merging release PR), it runs the publish command.
+          publish: pnpm release
           version: pnpm version-packages
           setupGitUser: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Publish to npm
-        if: steps.changesets.outputs.hasChangesets == 'false'
-        run: |
-          pnpm build
-          
-          # Use npm publish with the explicit --provenance flag.
-          # We must NOT have registry-url set in setup-node or a token in .npmrc.
-          # Explicitly set the registry to public npm.
-          cd packages/mljr-css
-          npm publish --access public --provenance --registry=https://registry.npmjs.org
-          
-          cd ../mljr-svelte
-          npm publish --access public --provenance --registry=https://registry.npmjs.org
+          # Do NOT provide NPM_TOKEN or NODE_AUTH_TOKEN.
+          # The id-token: write permission allows pnpm/npm to use OIDC Trusted Publishing.

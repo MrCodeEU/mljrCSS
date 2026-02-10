@@ -13,7 +13,7 @@
     "clean": "turbo run clean && rm -rf node_modules",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "turbo run build && changeset publish --provenance"
+    "release": "turbo run build && pnpm -r publish --provenance --access public --no-git-checks"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
