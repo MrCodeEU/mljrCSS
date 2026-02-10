@@ -52,15 +52,15 @@ jobs:
         run: |
           pnpm build
           
-          # Crucial: remove any .npmrc that might force token authentication
-          rm -f .npmrc ~/.npmrc
-          
-          # Publish each package using its directory path.
-          # This avoids workspace-related auth propagation issues.
-          # Provenance flag triggers the OIDC handshake.
-          npm publish ./packages/mljr-css --provenance --access public
-          npm publish ./packages/mljr-svelte --provenance --access public
+          # Use npm publish with workspace targeting.
+          # Provenance and Registry are provided via environment variables
+          # to ensure they are picked up correctly for the OIDC handshake.
+          npm publish -w packages/mljr-css --access public
+          npm publish -w packages/mljr-svelte --access public
         env:
-          # Ensure no tokens are in the environment
-          NPM_TOKEN: ""
+          # Trigger OIDC Trusted Publishing
+          NPM_CONFIG_PROVENANCE: true
+          NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
+          # Ensure no tokens interfere
           NODE_AUTH_TOKEN: ""
+          NPM_TOKEN: ""
