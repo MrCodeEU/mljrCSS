@@ -38,16 +38,27 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Create Release Pull Request or Publish
+      - name: Create Release Pull Request
         id: changesets
         uses: changesets/action@v1
         with:
-          # When changesets are empty (after merging release PR), it runs this:
-          publish: pnpm release
           version: pnpm version-packages
           setupGitUser: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Crucial for OIDC: Ensure no tokens are present to trigger Trusted Publisher flow
+
+      - name: Publish to npm
+        if: steps.changesets.outputs.hasChangesets == 'false'
+        run: |
+          pnpm build
+          
+          # Explicitly configure OIDC audience for npm
+          echo "//registry.npmjs.org/:aud=https://registry.npmjs.org" > .npmrc
+          
+          # Publish packages using npm for best OIDC compatibility
+          npm publish -w packages/mljr-css --provenance --access public
+          npm publish -w packages/mljr-svelte --provenance --access public
+        env:
+          # Ensure no tokens interfere
           NODE_AUTH_TOKEN: ""
           NPM_TOKEN: ""
