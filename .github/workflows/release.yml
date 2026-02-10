@@ -52,18 +52,17 @@ jobs:
         run: |
           pnpm build
           
-          # Manually create .npmrc with OIDC configuration
-          # These lines are critical for npm 10 to establish OIDC handshake in CI
-          echo "//registry.npmjs.org/:_arity=1" > .npmrc
-          echo "//registry.npmjs.org/:aud=https://registry.npmjs.org" >> .npmrc
+          # Configure OIDC for each package to ensure it's picked up during publish
+          # This is a robust way to bypass token checks and force OIDC handshake
+          for dir in packages/mljr-css packages/mljr-svelte; do
+            echo "//registry.npmjs.org/:aud=https://registry.npmjs.org" > "$dir/.npmrc"
+            echo "//registry.npmjs.org/:_arity=1" >> "$dir/.npmrc"
+          done
           
-          # Go into each directory and publish directly to avoid workspace overhead
-          cd packages/mljr-css
-          npm publish --provenance --access public
-          
-          cd ../mljr-svelte
-          npm publish --provenance --access public
+          # Publish each package individually
+          npm publish ./packages/mljr-css --provenance --access public
+          npm publish ./packages/mljr-svelte --provenance --access public
         env:
-          # Ensure NO tokens interfere
+          # Ensure NO tokens interfere with OIDC
           NODE_AUTH_TOKEN: ""
           NPM_TOKEN: ""
