@@ -52,12 +52,9 @@ jobs:
         run: |
           pnpm build
           
-          # Manually create .npmrc for OIDC
-          echo "//registry.npmjs.org/:_arity=1" > .npmrc
-          echo "//registry.npmjs.org/:aud=https://registry.npmjs.org" >> .npmrc
+          # Navigate into each package to ensure correct context for OIDC
+          cd packages/mljr-css
+          npm publish --access public --provenance
           
-          # Force npm to use the generated .npmrc and OIDC
-          npm publish -w packages/mljr-css --access public --provenance
-          npm publish -w packages/mljr-svelte --access public --provenance
-        env:
-          NPM_CONFIG_PROVENANCE: true
+          cd ../../packages/mljr-svelte
+          npm publish --access public --provenance
