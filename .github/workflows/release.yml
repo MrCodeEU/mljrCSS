@@ -52,16 +52,14 @@ jobs:
         run: |
           pnpm build
           
-          # Explicit OIDC publish via npm workspaces.
-          # We provide OIDC configuration via environment variables.
-          # This is the most canonical way to trigger Trusted Publishing without a token.
-          npm publish -w packages/mljr-css -w packages/mljr-svelte --provenance --access public
+          # Delete any ambient .npmrc to ensure a clean state for OIDC
+          rm -f .npmrc ~/.npmrc
+          
+          # Publish each package using its path to trigger OIDC via --provenance
+          # registry is set explicitly to trigger Trusted Publisher fallback
+          npm publish ./packages/mljr-css --provenance --access public --registry https://registry.npmjs.org/
+          npm publish ./packages/mljr-svelte --provenance --access public --registry https://registry.npmjs.org/
         env:
-          # Trigger OIDC
-          NPM_CONFIG_PROVENANCE: true
-          # Registry-specific configuration for OIDC handshake
-          "NPM_CONFIG_//registry.npmjs.org/:aud": "https://registry.npmjs.org"
-          "NPM_CONFIG_//registry.npmjs.org/:_arity": "1"
-          # Ensure no tokens interfere
+          # Critical: No tokens allowed for OIDC Trusted Publishers
           NODE_AUTH_TOKEN: ""
           NPM_TOKEN: ""
