@@ -52,17 +52,9 @@ jobs:
         run: |
           pnpm build
           
-          # Force OIDC by explicitly providing provenance and registry
-          # Ensure NO tokens are present in environment or .npmrc
-          # Explicitly set the registry and provenance.
+          # This is the exact configuration for npm OIDC trusted publishing
+          npm config set //registry.npmjs.org/:_arity 1
+          npm config set //registry.npmjs.org/:aud https://registry.npmjs.org
           
-          # We use --provenance-auth to hint OIDC
-          cd packages/mljr-css
-          npm publish --access public --provenance --registry https://registry.npmjs.org
-          
-          cd ../mljr-svelte
-          npm publish --access public --provenance --registry https://registry.npmjs.org
-        env:
-          # This should trigger npm to use OIDC when no token is found
-          # and id-token permission is present
-          NPM_CONFIG_PROVENANCE: true
+          npm publish -w packages/mljr-css --access public --provenance
+          npm publish -w packages/mljr-svelte --access public --provenance
