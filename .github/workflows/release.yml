@@ -52,11 +52,13 @@ jobs:
         run: |
           pnpm build
           
-          # Pure OIDC publish with npm >= 10
-          # We must NOT have a token in .npmrc or environment for OIDC to trigger correctly.
-          # Explicitly set the registry and provenance.
+          # Force OIDC by explicitly providing provenance and registry
+          # Ensure NO tokens are present in environment or .npmrc
           cd packages/mljr-css
           npm publish --access public --provenance --registry https://registry.npmjs.org
           
           cd ../mljr-svelte
           npm publish --access public --provenance --registry https://registry.npmjs.org
+        env:
+          NODE_AUTH_TOKEN: ""
+          NPM_CONFIG_PROVENANCE: true
