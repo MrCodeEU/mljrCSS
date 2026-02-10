@@ -52,13 +52,18 @@ jobs:
         run: |
           pnpm build
           
-          # Explicitly configure OIDC audience for npm
-          echo "//registry.npmjs.org/:aud=https://registry.npmjs.org" > .npmrc
+          # Manually create .npmrc with OIDC configuration
+          # These lines are critical for npm 10 to establish OIDC handshake in CI
+          echo "//registry.npmjs.org/:_arity=1" > .npmrc
+          echo "//registry.npmjs.org/:aud=https://registry.npmjs.org" >> .npmrc
           
-          # Publish packages using npm for best OIDC compatibility
-          npm publish -w packages/mljr-css --provenance --access public
-          npm publish -w packages/mljr-svelte --provenance --access public
+          # Go into each directory and publish directly to avoid workspace overhead
+          cd packages/mljr-css
+          npm publish --provenance --access public
+          
+          cd ../mljr-svelte
+          npm publish --provenance --access public
         env:
-          # Ensure no tokens interfere
+          # Ensure NO tokens interfere
           NODE_AUTH_TOKEN: ""
           NPM_TOKEN: ""
