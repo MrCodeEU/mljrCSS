@@ -41,11 +41,7 @@
   ],
   "author": "",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MrCodeEU/mljrCSS.git",
-    "directory": "packages/mljr-css"
-  },
+  "repository": "https://github.com/MrCodeEU/mljrCSS",
   "devDependencies": {
     "autoprefixer": "^10.4.19",
     "cssnano": "^7.0.1",

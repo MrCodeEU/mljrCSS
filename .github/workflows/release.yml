@@ -38,29 +38,16 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Create Release Pull Request
+      - name: Create Release Pull Request or Publish
         id: changesets
         uses: changesets/action@v1
         with:
+          # When changesets are empty (after merging release PR), it runs this:
+          publish: pnpm release
           version: pnpm version-packages
           setupGitUser: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Publish to npm
-        if: steps.changesets.outputs.hasChangesets == 'false'
-        run: |
-          pnpm build
-          
-          # Use npm publish with workspace targeting.
-          # Provenance and Registry are provided via environment variables
-          # to ensure they are picked up correctly for the OIDC handshake.
-          npm publish -w packages/mljr-css --access public
-          npm publish -w packages/mljr-svelte --access public
-        env:
-          # Trigger OIDC Trusted Publishing
-          NPM_CONFIG_PROVENANCE: true
-          NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
-          # Ensure no tokens interfere
+          # Crucial for OIDC: Ensure no tokens are present to trigger Trusted Publisher flow
           NODE_AUTH_TOKEN: ""
           NPM_TOKEN: ""

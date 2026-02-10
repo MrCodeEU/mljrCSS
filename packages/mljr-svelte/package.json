@@ -46,11 +46,7 @@
   ],
   "author": "",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MrCodeEU/mljrCSS.git",
-    "directory": "packages/mljr-svelte"
-  },
+  "repository": "https://github.com/MrCodeEU/mljrCSS",
   "peerDependencies": {
     "svelte": "^5.0.0",
     "@sveltejs/kit": "^2.0.0"
