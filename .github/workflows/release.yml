@@ -54,7 +54,9 @@ jobs:
         if: steps.changesets.outputs.hasChangesets == 'false'
         run: |
           pnpm build
-          pnpm -r publish --access public --no-git-checks --provenance
+          # Use npm publish --workspaces or individual publish to ensure OIDC picks it up
+          # We use --provenance and no token to trigger OIDC
+          npm publish -w packages/mljr-css --access public --provenance
+          npm publish -w packages/mljr-svelte --access public --provenance
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # Leave empty or omit if OIDC is ready
           NPM_CONFIG_PROVENANCE: true
