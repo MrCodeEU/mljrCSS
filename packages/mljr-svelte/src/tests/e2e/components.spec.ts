@@ -637,14 +637,14 @@ test.describe('MLJR Component Library E2E Tests', () => {
 
   test.describe('Gradient Utilities', () => {
     test('should render gradient backgrounds', async ({ page }) => {
-      await page.locator('#gradients').scrollIntoViewIfNeeded();
+      await page.locator('#gradients').first().scrollIntoViewIfNeeded();
       const primaryGradient = page.locator('.mljr-bg-gradient-primary').first();
       await primaryGradient.scrollIntoViewIfNeeded();
       await expect(primaryGradient).toBeVisible();
     });
 
     test('should render animated gradient', async ({ page }) => {
-      await page.locator('#gradients').scrollIntoViewIfNeeded();
+      await page.locator('#gradients').first().scrollIntoViewIfNeeded();
       const animatedGradient = page.locator('.mljr-bg-gradient-animated').first();
       await animatedGradient.scrollIntoViewIfNeeded();
       await expect(animatedGradient).toBeVisible();
@@ -653,6 +653,9 @@ test.describe('MLJR Component Library E2E Tests', () => {
 
   test.describe('Sidebar Component', () => {
     test('should toggle sidebar', async ({ page }) => {
+      // Scroll to sidebar section first
+      await page.locator('#sidebar-section').first().scrollIntoViewIfNeeded();
+      
       // Find sidebar close button in header
       const sidebarToggle = page.locator('.mljr-sidebar-close').first();
       
@@ -674,6 +677,9 @@ test.describe('MLJR Component Library E2E Tests', () => {
     });
 
     test('should navigate using sidebar links', async ({ page }) => {
+      // Scroll to sidebar section first
+      await page.locator('#sidebar-section').first().scrollIntoViewIfNeeded();
+      
       const sidebar = page.locator('.mljr-sidebar').first();
       await sidebar.scrollIntoViewIfNeeded();
       
@@ -690,6 +696,9 @@ test.describe('MLJR Component Library E2E Tests', () => {
     });
 
     test('should have custom scrollbar', async ({ page }) => {
+      // Scroll to sidebar section first
+      await page.locator('#sidebar-section').first().scrollIntoViewIfNeeded();
+      
       const sidebar = page.locator('.mljr-sidebar').first();
       const nav = sidebar.locator('.mljr-sidebar-nav').first();
       

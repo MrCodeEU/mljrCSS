@@ -35,51 +35,12 @@
         </Button>
         
         <div class="demo-wrapper">
-          <!-- Open button when sidebar is closed -->
-          {#if !demoSidebarOpen}
-            <button 
-              class="demo-open-btn" 
-              onclick={() => demoSidebarOpen = true}
-              aria-label="Open sidebar"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="3" y1="12" x2="21" y2="12"/>
-                <line x1="3" y1="6" x2="21" y2="6"/>
-                <line x1="3" y1="18" x2="21" y2="18"/>
-              </svg>
-            </button>
-          {/if}
-          
-          <!-- Demo Sidebar - in a container, not fixed -->
-          <div class="demo-sidebar-wrapper" style="width: {demoSidebarOpen ? '240px' : '0'};">
-            {#if demoSidebarOpen}
-              <div class="demo-sidebar">
-                <div class="demo-sidebar-header">
-                  <span class="mljr-text-lg mljr-font-bold">Demo</span>
-                  <button class="demo-close-btn" onclick={() => demoSidebarOpen = false} aria-label="Close">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <polyline points="15 18 9 12 15 6"/>
-                    </svg>
-                  </button>
-                </div>
-                <nav class="demo-sidebar-nav">
-                  {#each demoCategories as category}
-                    <div class="demo-category">
-                      <h3 class="demo-category-title">{category.name}</h3>
-                      <ul class="demo-list">
-                        {#each category.items as item}
-                          <li>
-                            <a href={item.href} class="demo-link" class:active={item.active}>
-                              {item.label}
-                            </a>
-                          </li>
-                        {/each}
-                      </ul>
-                    </div>
-                  {/each}
-                </nav>
-              </div>
-            {/if}
+          <!-- Real Sidebar Component Demo -->
+          <div class="demo-sidebar-wrapper" style="width: {demoSidebarOpen ? '280px' : '0'};">
+            <Sidebar 
+              categories={demoCategories} 
+              bind:open={demoSidebarOpen}
+            />
           </div>
           
           <!-- Demo Content -->
