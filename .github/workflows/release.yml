@@ -30,7 +30,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22' # Latest LTS with improved OIDC support
+          node-version: '22'
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -51,11 +51,13 @@ jobs:
         if: steps.changesets.outputs.hasChangesets == 'false'
         run: |
           pnpm build
+          
+          # Manually create .npmrc for OIDC
+          echo "//registry.npmjs.org/:_arity=1" > .npmrc
+          echo "//registry.npmjs.org/:aud=https://registry.npmjs.org" >> .npmrc
+          
+          # Force npm to use the generated .npmrc and OIDC
           npm publish -w packages/mljr-css --access public --provenance
           npm publish -w packages/mljr-svelte --access public --provenance
         env:
-          # DO NOT set NPM_TOKEN or NODE_AUTH_TOKEN
-          # setup-node with registry-url sets up .npmrc but we need it to NOT have a token for OIDC
-          # Actually, if registry-url is set, it expects a token. 
-          # Let's try WITHOUT registry-url in setup-node for pure OIDC.
           NPM_CONFIG_PROVENANCE: true
