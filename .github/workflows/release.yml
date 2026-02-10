@@ -38,16 +38,30 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Create Release Pull Request or Publish
+      - name: Create Release Pull Request
         id: changesets
         uses: changesets/action@v1
         with:
-          # This command runs when no changesets are left (i.e. on release commit)
-          publish: pnpm release
           version: pnpm version-packages
           setupGitUser: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Ensure OIDC Trusted Publisher flow is triggered by unsetting tokens
+
+      - name: Publish to npm
+        if: steps.changesets.outputs.hasChangesets == 'false'
+        run: |
+          pnpm build
+          
+          # Explicit OIDC publish via npm workspaces.
+          # We provide OIDC configuration via environment variables.
+          # This is the most canonical way to trigger Trusted Publishing without a token.
+          npm publish -w packages/mljr-css -w packages/mljr-svelte --provenance --access public
+        env:
+          # Trigger OIDC
+          NPM_CONFIG_PROVENANCE: true
+          # Registry-specific configuration for OIDC handshake
+          "NPM_CONFIG_//registry.npmjs.org/:aud": "https://registry.npmjs.org"
+          "NPM_CONFIG_//registry.npmjs.org/:_arity": "1"
+          # Ensure no tokens interfere
           NODE_AUTH_TOKEN: ""
           NPM_TOKEN: ""
