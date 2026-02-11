@@ -32,9 +32,15 @@ jobs:
 
       - name: Publish
         run: |
-          # Ensure no .npmrc files exist that might contain conflicting auth
-          find . -name ".npmrc" -delete
+          # Use a direct .npmrc to force OIDC
+          cat <<EOF > .npmrc
+          //registry.npmjs.org/:_authType=oidc
+          //registry.npmjs.org/:_arity=1
+          EOF
           
-          # Publish recursively. pnpm will resolve workspace:* dependencies
-          # and should automatically use the ambient OIDC token.
+          # Copy to packages to ensure sub-package publishing respects it
+          cp .npmrc packages/mljr-css/.npmrc
+          cp .npmrc packages/mljr-svelte/.npmrc
+          
+          # Publish recursively
           pnpm -r publish --provenance --access public --no-git-checks
