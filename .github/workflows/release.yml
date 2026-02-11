@@ -30,19 +30,11 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Configure OIDC for npm
-        run: |
-          cat <<EOF > .npmrc
-          //registry.npmjs.org/:aud=https://github.com/MrCodeEU
-          //registry.npmjs.org/:_arity=1
-          EOF
-          # Also place it in packages to be safe
-          cp .npmrc packages/mljr-css/.npmrc
-          cp .npmrc packages/mljr-svelte/.npmrc
-
       - name: Publish
         run: |
-          # Unset any ambient tokens that might confuse the OIDC handshake
-          unset NPM_TOKEN
-          unset NODE_AUTH_TOKEN
+          # Ensure no .npmrc files exist that might contain conflicting auth
+          find . -name ".npmrc" -delete
+          
+          # Publish recursively. pnpm will resolve workspace:* dependencies
+          # and should automatically use the ambient OIDC token.
           pnpm -r publish --provenance --access public --no-git-checks
