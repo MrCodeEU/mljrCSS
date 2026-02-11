@@ -5,67 +5,44 @@ on:
     branches:
       - main
 
-concurrency: ${{ github.workflow }}-${{ github.ref }}
-
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
   id-token: write
 
 jobs:
   release:
-    name: Release
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-      id-token: write
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v4
         with:
-          node-version: '22'
+          version: 10
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
-      - name: Create Release Pull Request
-        id: changesets
-        uses: changesets/action@v1
-        with:
-          version: pnpm version-packages
-          setupGitUser: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build
+        run: pnpm build
 
-      - name: Publish to npm
-        if: steps.changesets.outputs.hasChangesets == 'false'
+      - name: Configure OIDC for npm
         run: |
-          pnpm build
-          
-          # Delete any existing .npmrc to avoid interference
-          rm -f .npmrc ~/.npmrc
-          
-          # Use npm config set which handles the // syntax better than cat
-          # These 2 lines are the minimal requirement for modern npm/pnpm OIDC
-          npm config set //registry.npmjs.org/:aud https://registry.npmjs.org
-          npm config set //registry.npmjs.org/:_arity 1
-          
-          # Use pnpm recursive publish with provenance.
-          # pnpm 9+ correctly handles workspace: protocols and OIDC if configured this way.
+          cat <<EOF > .npmrc
+          //registry.npmjs.org/:aud=https://github.com/MrCodeEU
+          //registry.npmjs.org/:_arity=1
+          EOF
+          # Also place it in packages to be safe
+          cp .npmrc packages/mljr-css/.npmrc
+          cp .npmrc packages/mljr-svelte/.npmrc
+
+      - name: Publish
+        run: |
+          # Unset any ambient tokens that might confuse the OIDC handshake
+          unset NPM_TOKEN
+          unset NODE_AUTH_TOKEN
           pnpm -r publish --provenance --access public --no-git-checks
-        env:
-          # Absolutely NO tokens
-          NODE_AUTH_TOKEN: ""
-          NPM_TOKEN: ""
-          # Force provenance even if not in package.json
-          NPM_CONFIG_PROVENANCE: true
