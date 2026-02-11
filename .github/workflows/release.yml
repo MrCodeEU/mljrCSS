@@ -30,22 +30,21 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: OIDC Pre-flight Check
+        run: |
+          echo "Verifying OIDC environment..."
+          if [ -n "$ACTIONS_ID_TOKEN_REQUEST_URL" ]; then
+            echo "✅ OIDC Token URL is present."
+          else
+            echo "❌ OIDC Token URL is missing. Check permissions: id-token: write"
+            exit 1
+          fi
+
       - name: Publish
         run: |
-          # Use explicit .npmrc for OIDC
-          # The audience 'https://self-issued.me' is the default for GitHub OIDC to npm
-          cat <<EOF > .npmrc
-          //registry.npmjs.org/:aud=https://self-issued.me
-          //registry.npmjs.org/:_arity=1
-          EOF
+          # Configure pnpm for OIDC
+          pnpm config set //registry.npmjs.org/:_authType oidc
           
-          # Copy to packages
-          cp .npmrc packages/mljr-css/.npmrc
-          cp .npmrc packages/mljr-svelte/.npmrc
-          
-          # Unset any variables that might interfere
-          unset NPM_TOKEN
-          unset NODE_AUTH_TOKEN
-          
-          # Publish recursively
+          # Publish recursively. 
+          # Ensure provenance is true to match Trusted Publisher requirements.
           pnpm -r publish --provenance --access public --no-git-checks
