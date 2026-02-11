@@ -28,11 +28,24 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: OIDC Diagnostic
+        run: |
+          echo "Checking OIDC environment..."
+          if [ -n "$ACTIONS_ID_TOKEN_REQUEST_URL" ]; then
+            echo "✅ ACTIONS_ID_TOKEN_REQUEST_URL is set."
+          else
+            echo "❌ ACTIONS_ID_TOKEN_REQUEST_URL is NOT set."
+          fi
+          if [ -n "$ACTIONS_ID_TOKEN_REQUEST_TOKEN" ]; then
+            echo "✅ ACTIONS_ID_TOKEN_REQUEST_TOKEN is set."
+          else
+            echo "❌ ACTIONS_ID_TOKEN_REQUEST_TOKEN is NOT set."
+          fi
+
       - name: Publish
         run: |
-          # The presence of ACTIONS_ID_TOKEN_REQUEST_URL triggers pnpm/npm OIDC
-          # We ensure no local auth interferes
+          # Ensure no local auth
           rm -f .npmrc packages/mljr-css/.npmrc packages/mljr-svelte/.npmrc
           
-          # Use recursive publish which is built for monorepos
-          pnpm -r publish --provenance --access public --no-git-checks
+          # Debug publish
+          pnpm -r publish --provenance --access public --no-git-checks --loglevel debug
