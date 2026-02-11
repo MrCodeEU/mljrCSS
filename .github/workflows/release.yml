@@ -42,6 +42,7 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
+          # When no changesets left, run the custom publish step below
           version: pnpm version-packages
           setupGitUser: true
         env:
@@ -52,22 +53,19 @@ jobs:
         run: |
           pnpm build
           
-          # Crucial: remove all .npmrc files that setup-node or pnpm might have created
+          # Force clean state
           rm -f .npmrc ~/.npmrc
           
-          # Debug: check if OIDC variables are present (should not print values for security)
-          if [ -z "$ACTIONS_ID_TOKEN_REQUEST_URL" ]; then
-            echo "Error: ACTIONS_ID_TOKEN_REQUEST_URL is not set. OIDC will fail."
-            exit 1
-          fi
+          # Configure OIDC for registry.npmjs.org
+          # These env vars are used by npm/pnpm to realize they should use OIDC
+          export NPM_CONFIG_PROVENANCE=true
+          export NPM_CONFIG_//registry.npmjs.org/:aud=https://registry.npmjs.org
+          export NPM_CONFIG_//registry.npmjs.org/:_arity=1
           
-          # Use npm publish directly with the most robust OIDC flags.
-          # We specify the registry explicitly to bypass any default config.
-          # We must NOT be logged in.
-          npm publish -w packages/mljr-css --provenance --access public --registry https://registry.npmjs.org/
-          npm publish -w packages/mljr-svelte --provenance --access public --registry https://registry.npmjs.org/
+          # Publish recursively using pnpm to correctly handle workspace dependencies
+          # provenance flag triggers the OIDC flow
+          pnpm -r publish --provenance --access public --no-git-checks
         env:
-          # Ensure ABSOLUTELY NO authentication tokens are set
-          # Setting them to null/empty in YAML env can sometimes help
-          NODE_AUTH_TOKEN: null
-          NPM_TOKEN: null
+          # Crucial: NO tokens
+          NODE_AUTH_TOKEN: ""
+          NPM_TOKEN: ""
