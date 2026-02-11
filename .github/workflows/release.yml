@@ -55,16 +55,20 @@ jobs:
           # Force clean state
           rm -f .npmrc ~/.npmrc
           
-          # Use npm config set to handle OIDC configuration.
-          # This avoids bash 'not a valid identifier' errors with special characters in env var names.
-          npm config set //registry.npmjs.org/:aud https://registry.npmjs.org
-          npm config set //registry.npmjs.org/:_arity 1
+          # Use NPM_CONFIG_ env vars with the correct naming convention for OIDC
+          # Registry-specific settings must be mapped to UPPERCASE and UNDERSCORES.
+          # The '//registry.npmjs.org/:aud' part is tricky in bash.
           
-          # Publish recursively using pnpm to correctly handle workspace dependencies
-          # provenance flag triggers the OIDC flow
-          pnpm -r publish --provenance --access public --no-git-checks
+          # We'll use a temporary .npmrc file which is the most reliable way.
+          cat >> .npmrc <<EOF
+          //registry.npmjs.org/:aud=https://registry.npmjs.org
+          //registry.npmjs.org/:_arity=1
+          provenance=true
+          EOF
+          
+          # Publish recursively using pnpm
+          pnpm -r publish --access public --no-git-checks
         env:
           # Crucial: NO tokens allowed for OIDC
           NODE_AUTH_TOKEN: ""
           NPM_TOKEN: ""
-          NPM_CONFIG_PROVENANCE: true
