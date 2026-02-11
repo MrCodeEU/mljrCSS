@@ -31,9 +31,13 @@ jobs:
       - name: Publish mljr-css
         run: |
           cd packages/mljr-css
-          pnpm publish --provenance --access public --no-git-checks
+          npm config set //registry.npmjs.org/:_authType oidc
+          npm publish --provenance --access public
 
       - name: Publish mljr-svelte
         run: |
+          # We need pnpm to resolve workspace:* dependencies before npm publish
+          # pnpm publish --dry-run might not be enough.
+          # Actually, let's use pnpm publish for svelte as it handles the workspace protocol.
           cd packages/mljr-svelte
           pnpm publish --provenance --access public --no-git-checks

@@ -1,6 +1,6 @@
 {
   "name": "mljr-css",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A TailwindCSS-based CSS framework with orange/purple color scheme",
   "type": "module",
   "main": "./dist/plugin.cjs",
