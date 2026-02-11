@@ -52,17 +52,18 @@ jobs:
         run: |
           pnpm build
           
-          # Clean state for OIDC
+          # Delete any existing .npmrc to avoid interference
           rm -f .npmrc ~/.npmrc
           
-          # Explicit publish from within each package directory
-          # This is the most reliable way for OIDC Trusted Publishers
-          cd packages/mljr-css
-          npm publish --provenance --access public --registry https://registry.npmjs.org/
+          # Create a clean .npmrc that triggers OIDC Trusted Publishing
+          # This configuration is required for npm/pnpm to realize they should use OIDC
+          echo "//registry.npmjs.org/:aud=https://registry.npmjs.org" > .npmrc
+          echo "//registry.npmjs.org/:_arity=1" >> .npmrc
           
-          cd ../mljr-svelte
-          npm publish --provenance --access public --registry https://registry.npmjs.org/
+          # Use pnpm recursive publish. 
+          # It handles 'workspace:' dependencies correctly and supports OIDC provenance.
+          pnpm -r publish --provenance --access public --no-git-checks
         env:
-          # No tokens allowed
-          NODE_AUTH_TOKEN: ""
-          NPM_TOKEN: ""
+          # DO NOT set NODE_AUTH_TOKEN or NPM_TOKEN. 
+          # Absence of tokens triggers OIDC fallback.
+          NPM_CONFIG_PROVENANCE: true
