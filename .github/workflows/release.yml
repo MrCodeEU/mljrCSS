@@ -28,12 +28,12 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Publish
+      - name: Publish mljr-css
         run: |
-          # Ensure no local .npmrc exists that might conflict
-          rm -f .npmrc packages/mljr-css/.npmrc packages/mljr-svelte/.npmrc
-          
-          # Publish using pnpm's built-in OIDC support.
-          # We must publish mljr-css first because mljr-svelte depends on it.
-          # pnpm -r publish handles this correctly.
-          pnpm -r publish --provenance --access public --no-git-checks
+          cd packages/mljr-css
+          pnpm publish --provenance --access public --no-git-checks
+
+      - name: Publish mljr-svelte
+        run: |
+          cd packages/mljr-svelte
+          pnpm publish --provenance --access public --no-git-checks

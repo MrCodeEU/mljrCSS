@@ -1,6 +1,6 @@
 {
   "name": "mljr-svelte",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Svelte 5 component library for MLJR CSS framework",
   "type": "module",
   "svelte": "./dist/index.js",
