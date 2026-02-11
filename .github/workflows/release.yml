@@ -52,23 +52,20 @@ jobs:
         run: |
           pnpm build
           
-          # Force clean state
+          # Delete any existing .npmrc to avoid interference
           rm -f .npmrc ~/.npmrc
           
-          # Use NPM_CONFIG_ env vars with the correct naming convention for OIDC
-          # Registry-specific settings must be mapped to UPPERCASE and UNDERSCORES.
-          # The '//registry.npmjs.org/:aud' part is tricky in bash.
+          # Use npm config set which handles the // syntax better than cat
+          # These 2 lines are the minimal requirement for modern npm/pnpm OIDC
+          npm config set //registry.npmjs.org/:aud https://registry.npmjs.org
+          npm config set //registry.npmjs.org/:_arity 1
           
-          # We'll use a temporary .npmrc file which is the most reliable way.
-          cat >> .npmrc <<EOF
-          //registry.npmjs.org/:aud=https://registry.npmjs.org
-          //registry.npmjs.org/:_arity=1
-          provenance=true
-          EOF
-          
-          # Publish recursively using pnpm
-          pnpm -r publish --access public --no-git-checks
+          # Use pnpm recursive publish with provenance.
+          # pnpm 9+ correctly handles workspace: protocols and OIDC if configured this way.
+          pnpm -r publish --provenance --access public --no-git-checks
         env:
-          # Crucial: NO tokens allowed for OIDC
+          # Absolutely NO tokens
           NODE_AUTH_TOKEN: ""
           NPM_TOKEN: ""
+          # Force provenance even if not in package.json
+          NPM_CONFIG_PROVENANCE: true
