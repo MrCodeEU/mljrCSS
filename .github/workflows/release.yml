@@ -52,18 +52,22 @@ jobs:
         run: |
           pnpm build
           
-          # Delete any existing .npmrc to avoid interference
+          # Crucial: remove all .npmrc files that setup-node or pnpm might have created
           rm -f .npmrc ~/.npmrc
           
-          # Create a clean .npmrc that triggers OIDC Trusted Publishing
-          # This configuration is required for npm/pnpm to realize they should use OIDC
-          echo "//registry.npmjs.org/:aud=https://registry.npmjs.org" > .npmrc
-          echo "//registry.npmjs.org/:_arity=1" >> .npmrc
+          # Debug: check if OIDC variables are present (should not print values for security)
+          if [ -z "$ACTIONS_ID_TOKEN_REQUEST_URL" ]; then
+            echo "Error: ACTIONS_ID_TOKEN_REQUEST_URL is not set. OIDC will fail."
+            exit 1
+          fi
           
-          # Use pnpm recursive publish. 
-          # It handles 'workspace:' dependencies correctly and supports OIDC provenance.
-          pnpm -r publish --provenance --access public --no-git-checks
+          # Use npm publish directly with the most robust OIDC flags.
+          # We specify the registry explicitly to bypass any default config.
+          # We must NOT be logged in.
+          npm publish -w packages/mljr-css --provenance --access public --registry https://registry.npmjs.org/
+          npm publish -w packages/mljr-svelte --provenance --access public --registry https://registry.npmjs.org/
         env:
-          # DO NOT set NODE_AUTH_TOKEN or NPM_TOKEN. 
-          # Absence of tokens triggers OIDC fallback.
-          NPM_CONFIG_PROVENANCE: true
+          # Ensure ABSOLUTELY NO authentication tokens are set
+          # Setting them to null/empty in YAML env can sometimes help
+          NODE_AUTH_TOKEN: null
+          NPM_TOKEN: null
