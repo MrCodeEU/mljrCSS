@@ -32,15 +32,20 @@ jobs:
 
       - name: Publish
         run: |
-          # Use a direct .npmrc to force OIDC
+          # Use explicit .npmrc for OIDC
+          # The audience 'https://self-issued.me' is the default for GitHub OIDC to npm
           cat <<EOF > .npmrc
-          //registry.npmjs.org/:_authType=oidc
+          //registry.npmjs.org/:aud=https://self-issued.me
           //registry.npmjs.org/:_arity=1
           EOF
           
-          # Copy to packages to ensure sub-package publishing respects it
+          # Copy to packages
           cp .npmrc packages/mljr-css/.npmrc
           cp .npmrc packages/mljr-svelte/.npmrc
+          
+          # Unset any variables that might interfere
+          unset NPM_TOKEN
+          unset NODE_AUTH_TOKEN
           
           # Publish recursively
           pnpm -r publish --provenance --access public --no-git-checks
