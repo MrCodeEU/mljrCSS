@@ -28,21 +28,12 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: OIDC Pre-flight Check
-        run: |
-          echo "Verifying OIDC environment..."
-          if [ -n "$ACTIONS_ID_TOKEN_REQUEST_URL" ]; then
-            echo "✅ OIDC Token URL is present."
-          else
-            echo "❌ OIDC Token URL is missing. Check permissions: id-token: write"
-            exit 1
-          fi
-
       - name: Publish
         run: |
-          # Configure pnpm for OIDC
-          pnpm config set //registry.npmjs.org/:_authType oidc
+          # Ensure no local .npmrc exists that might conflict
+          rm -f .npmrc packages/mljr-css/.npmrc packages/mljr-svelte/.npmrc
           
-          # Publish recursively. 
-          # Ensure provenance is true to match Trusted Publisher requirements.
+          # Publish using pnpm's built-in OIDC support.
+          # We must publish mljr-css first because mljr-svelte depends on it.
+          # pnpm -r publish handles this correctly.
           pnpm -r publish --provenance --access public --no-git-checks
