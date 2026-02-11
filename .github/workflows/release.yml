@@ -42,7 +42,6 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          # When no changesets left, run the custom publish step below
           version: pnpm version-packages
           setupGitUser: true
         env:
@@ -56,16 +55,16 @@ jobs:
           # Force clean state
           rm -f .npmrc ~/.npmrc
           
-          # Configure OIDC for registry.npmjs.org
-          # These env vars are used by npm/pnpm to realize they should use OIDC
-          export NPM_CONFIG_PROVENANCE=true
-          export NPM_CONFIG_//registry.npmjs.org/:aud=https://registry.npmjs.org
-          export NPM_CONFIG_//registry.npmjs.org/:_arity=1
+          # Use npm config set to handle OIDC configuration.
+          # This avoids bash 'not a valid identifier' errors with special characters in env var names.
+          npm config set //registry.npmjs.org/:aud https://registry.npmjs.org
+          npm config set //registry.npmjs.org/:_arity 1
           
           # Publish recursively using pnpm to correctly handle workspace dependencies
           # provenance flag triggers the OIDC flow
           pnpm -r publish --provenance --access public --no-git-checks
         env:
-          # Crucial: NO tokens
+          # Crucial: NO tokens allowed for OIDC
           NODE_AUTH_TOKEN: ""
           NPM_TOKEN: ""
+          NPM_CONFIG_PROVENANCE: true
