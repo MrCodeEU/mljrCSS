@@ -21,6 +21,7 @@ jobs:
         with:
           node-version: 22
           cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -28,24 +29,14 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: OIDC Diagnostic
-        run: |
-          echo "Checking OIDC environment..."
-          if [ -n "$ACTIONS_ID_TOKEN_REQUEST_URL" ]; then
-            echo "✅ ACTIONS_ID_TOKEN_REQUEST_URL is set."
-          else
-            echo "❌ ACTIONS_ID_TOKEN_REQUEST_URL is NOT set."
-          fi
-          if [ -n "$ACTIONS_ID_TOKEN_REQUEST_TOKEN" ]; then
-            echo "✅ ACTIONS_ID_TOKEN_REQUEST_TOKEN is set."
-          else
-            echo "❌ ACTIONS_ID_TOKEN_REQUEST_TOKEN is NOT set."
-          fi
+      - name: Publish mljr-css
+        working-directory: packages/mljr-css
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish
-        run: |
-          # Ensure no local auth
-          rm -f .npmrc packages/mljr-css/.npmrc packages/mljr-svelte/.npmrc
-          
-          # Debug publish
-          pnpm -r publish --provenance --access public --no-git-checks --loglevel debug
+      - name: Publish mljr-svelte
+        working-directory: packages/mljr-svelte
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
