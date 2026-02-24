@@ -1,0 +1,9 @@
+{
+  "description": "A TailwindCSS-based CSS framework and Svelte 5 component library featuring a Claymorphism design system with warm orange primary and soft teal secondary colors, supporting both light and dark modes.",
+  "featured": true,
+  "tags": ["tailwindcss", "svelte", "css", "component-library", "design-system", "claymorphism"],
+  "images": [
+    "https://picsum.photos/seed/mljrcss1/800/450",
+    "https://picsum.photos/seed/mljrcss2/800/450"
+  ]
+}
