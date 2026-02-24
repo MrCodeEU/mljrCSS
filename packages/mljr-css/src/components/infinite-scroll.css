@@ -1,0 +1,36 @@
+/* ============================================
+   InfiniteScroll - Scroll-triggered load more
+   ============================================ */
+
+.mljr-infinite-scroll {
+  position: relative;
+}
+
+/* Invisible 1-px element used as IntersectionObserver sentinel */
+.mljr-infinite-scroll-sentinel {
+  height: 1px;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Default loading indicator */
+.mljr-infinite-scroll-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--mljr-space-3);
+  padding: var(--mljr-space-6) var(--mljr-space-4);
+  color: var(--mljr-text-muted);
+  font-size: var(--mljr-text-sm);
+}
+
+/* End-of-list message */
+.mljr-infinite-scroll-end {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--mljr-space-6) var(--mljr-space-4);
+  color: var(--mljr-text-muted);
+  font-size: var(--mljr-text-sm);
+  border-top: 1px solid var(--mljr-border);
+}

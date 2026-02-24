@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render } from 'vitest-browser-svelte';
-import SearchInput from '../lib/components/SearchInput.svelte';
+import SearchInput from '../lib/components/forms/SearchInput.svelte';
 
 describe('SearchInput', () => {
   describe('Rendering', () => {

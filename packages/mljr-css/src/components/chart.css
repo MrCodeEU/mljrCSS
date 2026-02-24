@@ -1,0 +1,194 @@
+/* =====================================================
+   Chart - SVG-based data visualization components
+   ===================================================== */
+
+.mljr-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: var(--mljr-text-sm);
+}
+
+.mljr-chart-title {
+  font-size: var(--mljr-text-base);
+  font-weight: 600;
+  color: var(--mljr-text);
+}
+
+.mljr-chart-subtitle {
+  font-size: var(--mljr-text-xs);
+  color: var(--mljr-text-muted);
+}
+
+/* SVG Container */
+.mljr-chart-svg {
+  width: 100%;
+  overflow: visible;
+}
+
+/* Grid lines */
+.mljr-chart-grid-line {
+  stroke: var(--mljr-border);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+}
+
+/* Axis labels */
+.mljr-chart-axis-label {
+  fill: var(--mljr-text-muted);
+  font-size: 11px;
+  font-family: var(--mljr-font-mono);
+}
+
+/* Bar chart */
+.mljr-chart-bar {
+  fill: var(--mljr-primary-500);
+  border-radius: 4px;
+  transition: fill var(--mljr-transition-fast);
+  cursor: pointer;
+}
+
+.mljr-chart-bar:hover {
+  fill: var(--mljr-primary-600);
+}
+
+.mljr-chart-bar-secondary {
+  fill: var(--mljr-secondary-500);
+}
+
+.mljr-chart-bar-secondary:hover {
+  fill: var(--mljr-secondary-600);
+}
+
+.mljr-chart-bar-accent {
+  fill: var(--mljr-accent-500);
+}
+
+/* Line chart */
+.mljr-chart-line {
+  fill: none;
+  stroke: var(--mljr-primary-500);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mljr-chart-line-secondary {
+  stroke: var(--mljr-secondary-500);
+}
+
+.mljr-chart-area {
+  fill: var(--mljr-primary-500);
+  opacity: 0.15;
+}
+
+.mljr-chart-area-secondary {
+  fill: var(--mljr-secondary-500);
+}
+
+.mljr-chart-point {
+  fill: white;
+  stroke: var(--mljr-primary-500);
+  stroke-width: 2;
+  cursor: pointer;
+  transition: r var(--mljr-transition-fast);
+}
+
+.mljr-chart-point:hover {
+  r: 6;
+}
+
+/* Donut/Pie chart */
+.mljr-chart-donut-segment {
+  transition: opacity var(--mljr-transition-fast);
+  cursor: pointer;
+}
+
+.mljr-chart-donut-segment:hover {
+  opacity: 0.85;
+}
+
+.mljr-chart-donut-center {
+  fill: none;
+}
+
+.mljr-chart-donut-label {
+  fill: var(--mljr-text);
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.mljr-chart-donut-sublabel {
+  fill: var(--mljr-text-muted);
+  font-size: 0.75rem;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+/* Legend */
+.mljr-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin-top: 0.25rem;
+}
+
+.mljr-chart-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: var(--mljr-text-xs);
+  color: var(--mljr-text-muted);
+  cursor: pointer;
+}
+
+.mljr-chart-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--mljr-radius-full);
+  flex-shrink: 0;
+}
+
+/* Tooltip */
+.mljr-chart-tooltip {
+  position: absolute;
+  background: var(--mljr-bg);
+  border: 1px solid var(--mljr-border);
+  border-radius: var(--mljr-radius-md);
+  padding: 0.5rem 0.75rem;
+  font-size: var(--mljr-text-xs);
+  box-shadow: var(--mljr-clay-shadow-sm);
+  pointer-events: none;
+  z-index: 50;
+  white-space: nowrap;
+  color: var(--mljr-text);
+}
+
+.mljr-chart-tooltip-label {
+  font-weight: 600;
+  margin-bottom: 0.125rem;
+}
+
+.mljr-chart-tooltip-value {
+  color: var(--mljr-primary-600);
+  font-weight: 600;
+}
+
+/* Container for positioning tooltip */
+.mljr-chart-container {
+  position: relative;
+}
+
+/* Dark mode */
+.dark .mljr-chart-tooltip,
+[data-theme="dark"] .mljr-chart-tooltip {
+  background: var(--mljr-bg-secondary);
+  border-color: var(--mljr-border);
+}
+
+.dark .mljr-chart-tooltip-value,
+[data-theme="dark"] .mljr-chart-tooltip-value {
+  color: var(--mljr-primary-300);
+}

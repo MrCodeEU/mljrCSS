@@ -1,98 +1,78 @@
 <script lang="ts">
-  import { Card, Button, Input, CodeExample } from '$lib';
-  import { slide } from 'svelte/transition';
+  import { Card, Button, Navbar, CodeExample, type UserMenuItem } from '$lib';
 
-  // Simulate mobile state
-  let mobileOpen1 = $state(false);
-  let mobileOpen2 = $state(false);
+  // Navbar with search
+  let searchValue = $state('');
+
+  // Navbar with user menu
+  const userMenuItems: UserMenuItem[] = [
+    { label: 'Profile', icon: 'mdi:account', href: '/profile' },
+    { label: 'Settings', icon: 'mdi:cog', href: '/settings' },
+    { label: '', divider: true },
+    { label: 'Logout', icon: 'mdi:logout', onClick: () => alert('Logged out!') },
+  ];
+
+  const navItems = [
+    { label: 'Home', href: '#home', active: true },
+    { label: 'About', href: '#about' },
+    { label: 'Services', href: '#services' },
+    { label: 'Contact', href: '#contact' },
+  ];
 </script>
 
 <section id="navbar" class="mljr-mb-8">
   <div class="mljr-grid mljr-grid-cols-1 mljr-gap-8">
     <!-- Default Navbar -->
     <Card title="Default Navbar" description="Standard navigation with logo, links, and actions">
-      <div class="navbar-demo-container">
-        <nav class="mljr-navbar-demo">
-          <div class="mljr-navbar-demo-inner">
-            <!-- Logo -->
-            <div class="mljr-navbar-demo-logo">
-              <span class="logo-text">MLJR</span>
-            </div>
-
-            <!-- Desktop Menu -->
-            <div class="mljr-navbar-demo-menu">
-              <a href="#!" class="mljr-navbar-demo-link active">Home</a>
-              <a href="#!" class="mljr-navbar-demo-link">About</a>
-              <a href="#!" class="mljr-navbar-demo-link">Services</a>
-              <a href="#!" class="mljr-navbar-demo-link">Contact</a>
-            </div>
-
-            <!-- Actions -->
-            <div class="mljr-navbar-demo-actions">
-              <Button variant="ghost" size="sm" icon aria-label="Search">🔍</Button>
-              <Button variant="primary" size="sm">Get Started</Button>
-            </div>
-
-            <!-- Mobile Toggle -->
-            <button class="mljr-navbar-demo-toggle" onclick={() => mobileOpen1 = !mobileOpen1} aria-label="Toggle menu" aria-expanded={mobileOpen1}>
-              <span class="toggle-line"></span>
-              <span class="toggle-line"></span>
-              <span class="toggle-line"></span>
-            </button>
-          </div>
-
-          <!-- Mobile Menu -->
-          {#if mobileOpen1}
-            <div class="mljr-navbar-demo-mobile" transition:slide={{ duration: 200 }}>
-              <a href="#!" class="mljr-navbar-demo-link mobile active">Home</a>
-              <a href="#!" class="mljr-navbar-demo-link mobile">About</a>
-              <a href="#!" class="mljr-navbar-demo-link mobile">Services</a>
-              <a href="#!" class="mljr-navbar-demo-link mobile">Contact</a>
-            </div>
-          {/if}
-        </nav>
+      <div style="min-height: 80px;">
+        <Navbar items={navItems} showMenuToggle={false}>
+          {#snippet logo()}
+            <span class="demo-logo-text">MLJR</span>
+          {/snippet}
+          {#snippet actions()}
+            <Button variant="ghost" size="sm" icon aria-label="Search">🔍</Button>
+            <Button variant="primary" size="sm">Get Started</Button>
+          {/snippet}
+        </Navbar>
       </div>
+      <CodeExample code={`<Navbar items={navItems}>
+  {#snippet logo()}
+    <span>MLJR</span>
+  {/snippet}
+  {#snippet actions()}
+    <Button variant="primary" size="sm">Get Started</Button>
+  {/snippet}
+</Navbar>`} />
     </Card>
 
     <!-- Transparent Navbar -->
     <Card title="Transparent Variant" description="Subtle navbar for hero sections">
-      <div class="navbar-demo-container transparent-bg">
-        <nav class="mljr-navbar-demo transparent">
-          <div class="mljr-navbar-demo-inner">
-            <div class="mljr-navbar-demo-logo">
-              <span class="logo-text">Brand</span>
-            </div>
-            <div class="mljr-navbar-demo-menu">
-              <a href="#!" class="mljr-navbar-demo-link">Features</a>
-              <a href="#!" class="mljr-navbar-demo-link">Pricing</a>
-              <a href="#!" class="mljr-navbar-demo-link">Docs</a>
-            </div>
-            <div class="mljr-navbar-demo-actions">
-              <Button variant="secondary" size="sm">Sign In</Button>
-            </div>
-          </div>
-        </nav>
+      <div style="min-height: 80px; border-radius: var(--mljr-radius-lg); background: linear-gradient(135deg, var(--mljr-primary-100) 0%, var(--mljr-secondary-100) 100%); overflow: hidden;">
+        <Navbar
+          items={[
+            { label: 'Features', href: '#features' },
+            { label: 'Pricing', href: '#pricing' },
+            { label: 'Docs', href: '#docs' },
+          ]}
+          variant="transparent"
+          showMenuToggle={false}
+        >
+          {#snippet logo()}
+            <span class="demo-logo-text">Brand</span>
+          {/snippet}
+          {#snippet actions()}
+            <Button variant="secondary" size="sm">Sign In</Button>
+          {/snippet}
+        </Navbar>
       </div>
-    </Card>
-
-    <!-- Navbar with Search -->
-    <Card title="With Search" description="Navbar with integrated search input">
-      <div class="navbar-demo-container">
-        <nav class="mljr-navbar-demo">
-          <div class="mljr-navbar-demo-inner">
-            <div class="mljr-navbar-demo-logo">
-              <span class="logo-text">Search</span>
-            </div>
-            <div class="mljr-navbar-demo-search">
-              <Input type="search" placeholder="Search..." size="sm" />
-            </div>
-            <div class="mljr-navbar-demo-actions">
-              <Button variant="ghost" size="sm" icon>🔔</Button>
-              <Button variant="ghost" size="sm" icon>👤</Button>
-            </div>
-          </div>
-        </nav>
-      </div>
+      <CodeExample code={`<Navbar items={navItems} variant="transparent">
+  {#snippet logo()}
+    <span>Brand</span>
+  {/snippet}
+  {#snippet actions()}
+    <Button variant="secondary" size="sm">Sign In</Button>
+  {/snippet}
+</Navbar>`} />
     </Card>
 
     <!-- Feature Highlights -->
@@ -130,192 +110,177 @@
         </div>
       </Card>
 
-      <Card title="Usage" description="Simple implementation">
-        <CodeExample code={`<Navbar>
-  {#snippet logo()}
-    <span>Brand</span>
-  {/snippet}
-  
-  {#snippet menu()}
-    <a href="#!">Home</a>
-    <a href="#!">About</a>
-  {/snippet}
-  
-  {#snippet actions()}
-    <Button>Get Started</Button>
-  {/snippet}
+      <Card title="Props" description="Available configuration options">
+        <CodeExample code={`<Navbar
+  items={navItems}        // NavItem[]
+  variant="default"       // 'default' | 'transparent' | 'sticky'
+  fixed={false}           // pin to top of viewport
+  showSearch={false}      // show search input
+  userMenu={items}        // UserMenuItem[]
+>
+  {#snippet logo()} ... {/snippet}
+  {#snippet actions()} ... {/snippet}
+  {#snippet userContent()} ... {/snippet}
 </Navbar>`} />
       </Card>
     </div>
+
+    <!-- Navbar with Search -->
+    <Card title="Navbar with Search" description="Integrated search functionality">
+      <div style="min-height: 80px;">
+        <Navbar
+          items={navItems}
+          showMenuToggle={false}
+          showSearch
+          searchPlaceholder="Search documentation..."
+          bind:searchValue
+          onSearch={(val) => console.log('Search:', val)}
+        >
+          {#snippet logo()}
+            <span style="font-weight: 700; font-size: 1.25rem; background: linear-gradient(135deg, var(--mljr-primary-500), var(--mljr-secondary-500)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+              SearchBar
+            </span>
+          {/snippet}
+        </Navbar>
+      </div>
+
+      <CodeExample code={`&lt;script lang="ts"&gt;
+  import { Navbar } from 'mljr-svelte';
+
+  let searchValue = $state('');
+
+  const navItems = [
+    { label: 'Home', href: '#home', active: true },
+    { label: 'About', href: '#about' },
+    { label: 'Contact', href: '#contact' },
+  ];
+&lt;/script&gt;
+
+&lt;Navbar
+  items={navItems}
+  showSearch
+  searchPlaceholder="Search..."
+  bind:searchValue
+  onSearch={(val) => console.log('Search:', val)}
+&gt;
+  {#snippet logo()}
+    &lt;span&gt;Brand&lt;/span&gt;
+  {/snippet}
+&lt;/Navbar&gt;`} />
+    </Card>
+
+    <!-- Navbar with User Menu -->
+    <Card title="Navbar with User Menu" description="User account dropdown menu">
+      <div style="min-height: 80px;">
+        <Navbar
+          items={navItems}
+          userMenu={userMenuItems}
+          showMenuToggle={false}
+        >
+          {#snippet logo()}
+            <span style="font-weight: 700; font-size: 1.25rem;">
+              UserMenu
+            </span>
+          {/snippet}
+          {#snippet userContent()}
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--mljr-primary-500), var(--mljr-secondary-500)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 0.875rem;">
+                JD
+              </div>
+            </div>
+          {/snippet}
+        </Navbar>
+      </div>
+
+      <CodeExample code={`&lt;script lang="ts"&gt;
+  import { Navbar, type UserMenuItem } from 'mljr-svelte';
+
+  const userMenuItems: UserMenuItem[] = [
+    { label: 'Profile', icon: 'mdi:account', href: '/profile' },
+    { label: 'Settings', icon: 'mdi:cog', href: '/settings' },
+    { label: '', divider: true },
+    { label: 'Logout', icon: 'mdi:logout', onClick: () => logout() },
+  ];
+&lt;/script&gt;
+
+&lt;Navbar
+  items={navItems}
+  userMenu={userMenuItems}
+&gt;
+  {#snippet logo()}
+    &lt;span&gt;Brand&lt;/span&gt;
+  {/snippet}
+  {#snippet userContent()}
+    &lt;div style="display: flex; align-items: center; gap: 0.5rem;"&gt;
+      &lt;img src="/avatar.jpg" alt="User" style="width: 32px; height: 32px; border-radius: 50%;" /&gt;
+    &lt;/div&gt;
+  {/snippet}
+&lt;/Navbar&gt;`} />
+    </Card>
+
+    <!-- Complete Navbar Example -->
+    <Card title="Complete Example" description="Navbar with all features combined">
+      <div style="min-height: 80px;">
+        <Navbar
+          items={navItems}
+          showMenuToggle={false}
+          showSearch
+          bind:searchValue
+          userMenu={userMenuItems}
+        >
+          {#snippet logo()}
+            <span style="font-weight: 700; font-size: 1.25rem; background: linear-gradient(135deg, var(--mljr-primary-500), var(--mljr-secondary-500)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+              Complete
+            </span>
+          {/snippet}
+          {#snippet actions()}
+            <Button variant="outline-primary" size="sm">Sign In</Button>
+            <Button variant="primary" size="sm">Sign Up</Button>
+          {/snippet}
+          {#snippet userContent()}
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span style="font-size: 0.875rem; color: var(--mljr-text);">John Doe</span>
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--mljr-primary-500), var(--mljr-secondary-500)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 0.875rem;">
+                JD
+              </div>
+            </div>
+          {/snippet}
+        </Navbar>
+      </div>
+
+      <CodeExample code={`&lt;Navbar
+  items={navItems}
+  showSearch
+  bind:searchValue
+  userMenu={userMenuItems}
+  variant="sticky"
+&gt;
+  {#snippet logo()}
+    &lt;span&gt;Brand&lt;/span&gt;
+  {/snippet}
+  {#snippet actions()}
+    &lt;Button variant="outline-primary"&gt;Sign In&lt;/Button&gt;
+    &lt;Button variant="primary"&gt;Sign Up&lt;/Button&gt;
+  {/snippet}
+  {#snippet userContent()}
+    &lt;div&gt;
+      &lt;span&gt;John Doe&lt;/span&gt;
+      &lt;img src="/avatar.jpg" alt="User" /&gt;
+    &lt;/div&gt;
+  {/snippet}
+&lt;/Navbar&gt;`} />
+    </Card>
   </div>
 </section>
 
 <style>
-  .navbar-demo-container {
-    padding: var(--mljr-space-4);
-    background: var(--mljr-bg);
-    border-radius: var(--mljr-radius-lg);
-  }
-
-  .navbar-demo-container.transparent-bg {
-    background: linear-gradient(135deg, var(--mljr-primary-100) 0%, var(--mljr-secondary-100) 100%);
-  }
-
-  /* Demo Navbar - Styled to match claymorphism system */
-  .mljr-navbar-demo {
-    position: relative;
-    background: linear-gradient(145deg, 
-      var(--mljr-bg) 0%, 
-      var(--mljr-bg-secondary) 50%, 
-      var(--mljr-bg-tertiary) 100%
-    );
-    border-radius: var(--mljr-radius-xl);
-    box-shadow: 
-      0 8px 32px rgba(0,0,0,0.12),
-      0 4px 16px rgba(0,0,0,0.08),
-      0 2px 8px rgba(0,0,0,0.04),
-      inset 0 -2px 4px rgba(255,255,255,0.3);
-    padding: var(--mljr-space-3) var(--mljr-space-4);
-  }
-
-  .mljr-navbar-demo.transparent {
-    background: rgba(255,255,255,0.7);
-    backdrop-filter: blur(8px);
-    box-shadow: 
-      0 4px 16px rgba(0,0,0,0.08),
-      inset 0 -1px 2px rgba(255,255,255,0.5);
-  }
-
-  :global([data-theme="dark"]) .mljr-navbar-demo.transparent {
-    background: rgba(0,0,0,0.4);
-  }
-
-  .mljr-navbar-demo-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--mljr-space-4);
-  }
-
-  /* Logo */
-  .mljr-navbar-demo-logo {
-    background: linear-gradient(145deg, var(--mljr-bg-secondary) 0%, var(--mljr-bg) 100%);
-    padding: var(--mljr-space-2) var(--mljr-space-4);
-    border-radius: var(--mljr-radius-lg);
-    box-shadow: 
-      var(--mljr-clay-shadow-xs),
-      inset 0 1px 2px rgba(255,255,255,0.5);
-  }
-
-  .logo-text {
+  .demo-logo-text {
     font-weight: 700;
     font-size: var(--mljr-text-lg);
     background: linear-gradient(135deg, var(--mljr-primary-500), var(--mljr-secondary-500));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-  }
-
-  /* Menu */
-  .mljr-navbar-demo-menu {
-    display: flex;
-    align-items: center;
-    gap: var(--mljr-space-1);
-    background: linear-gradient(145deg, var(--mljr-bg-secondary) 0%, var(--mljr-bg-tertiary) 100%);
-    padding: var(--mljr-space-1);
-    border-radius: var(--mljr-radius-lg);
-    box-shadow: 
-      inset 2px 2px 6px rgba(0,0,0,0.06),
-      inset -2px -2px 6px rgba(255,255,255,0.7),
-      1px 1px 2px rgba(255,255,255,0.3);
-  }
-
-  /* Links */
-  .mljr-navbar-demo-link {
-    padding: var(--mljr-space-2) var(--mljr-space-4);
-    border-radius: var(--mljr-radius-md);
-    font-size: var(--mljr-text-sm);
-    font-weight: 500;
-    color: var(--mljr-text-secondary);
-    text-decoration: none;
-    transition: all var(--mljr-transition-fast);
-  }
-
-  .mljr-navbar-demo-link:hover {
-    background: linear-gradient(145deg, var(--mljr-bg) 0%, var(--mljr-bg-secondary) 100%);
-    transform: translateY(-2px);
-    box-shadow: 
-      2px 2px 6px rgba(0,0,0,0.08),
-      -1px -1px 3px rgba(255,255,255,0.5);
-    color: var(--mljr-text);
-  }
-
-  .mljr-navbar-demo-link.active {
-    background: linear-gradient(145deg, var(--mljr-bg) 0%, var(--mljr-bg-secondary) 100%);
-    color: var(--mljr-primary-500);
-    box-shadow: var(--mljr-clay-shadow-xs);
-  }
-
-  /* Actions */
-  .mljr-navbar-demo-actions {
-    display: flex;
-    align-items: center;
-    gap: var(--mljr-space-2);
-  }
-
-  /* Search */
-  .mljr-navbar-demo-search {
-    flex: 1;
-    max-width: 300px;
-  }
-
-  /* Mobile Toggle */
-  .mljr-navbar-demo-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 4px;
-    padding: var(--mljr-space-2);
-    background: linear-gradient(145deg, var(--mljr-bg-secondary) 0%, var(--mljr-bg-tertiary) 100%);
-    border: none;
-    border-radius: var(--mljr-radius-md);
-    cursor: pointer;
-    box-shadow: var(--mljr-clay-shadow-xs);
-  }
-
-  .toggle-line {
-    width: 20px;
-    height: 2px;
-    background: var(--mljr-text);
-    border-radius: var(--mljr-radius-full);
-  }
-
-  /* Mobile Menu */
-  .mljr-navbar-demo-mobile {
-    margin-top: var(--mljr-space-3);
-    padding-top: var(--mljr-space-3);
-    border-top: 1px solid var(--mljr-border);
-    display: flex;
-    flex-direction: column;
-    gap: var(--mljr-space-2);
-  }
-
-  .mljr-navbar-demo-link.mobile {
-    padding: var(--mljr-space-3) var(--mljr-space-4);
-  }
-
-  /* Responsive */
-  @media (max-width: 640px) {
-    .mljr-navbar-demo-menu {
-      display: none;
-    }
-
-    .mljr-navbar-demo-toggle {
-      display: flex;
-    }
-
-    .mljr-navbar-demo-actions {
-      display: none;
-    }
   }
 
   /* Feature List */

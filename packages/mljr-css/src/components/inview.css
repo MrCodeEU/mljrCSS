@@ -1,0 +1,118 @@
+/* ============================================
+   InView - Scroll-triggered visibility & animations
+   ============================================ */
+
+.mljr-inview {
+  /* Base container, no default styles */
+}
+
+/* --- Fade --- */
+.mljr-inview-fade {
+  opacity: 0;
+  transition:
+    opacity var(--mljr-inview-duration, 600ms) var(--mljr-inview-delay, 0ms) ease-out;
+}
+
+.mljr-inview-fade.mljr-inview-visible {
+  opacity: 1;
+}
+
+/* --- Slide Up (enters from below) --- */
+.mljr-inview-slide-up {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity var(--mljr-inview-duration, 600ms) var(--mljr-inview-delay, 0ms) ease-out,
+    transform var(--mljr-inview-duration, 600ms) var(--mljr-inview-delay, 0ms) ease-out;
+}
+
+.mljr-inview-slide-up.mljr-inview-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Slide Down (enters from above) --- */
+.mljr-inview-slide-down {
+  opacity: 0;
+  transform: translateY(-32px);
+  transition:
+    opacity var(--mljr-inview-duration, 600ms) var(--mljr-inview-delay, 0ms) ease-out,
+    transform var(--mljr-inview-duration, 600ms) var(--mljr-inview-delay, 0ms) ease-out;
+}
+
+.mljr-inview-slide-down.mljr-inview-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Slide Left (enters from the right) --- */
+.mljr-inview-slide-left {
+  opacity: 0;
+  transform: translateX(32px);
+  transition:
+    opacity var(--mljr-inview-duration, 600ms) var(--mljr-inview-delay, 0ms) ease-out,
+    transform var(--mljr-inview-duration, 600ms) var(--mljr-inview-delay, 0ms) ease-out;
+}
+
+.mljr-inview-slide-left.mljr-inview-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* --- Slide Right (enters from the left) --- */
+.mljr-inview-slide-right {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition:
+    opacity var(--mljr-inview-duration, 600ms) var(--mljr-inview-delay, 0ms) ease-out,
+    transform var(--mljr-inview-duration, 600ms) var(--mljr-inview-delay, 0ms) ease-out;
+}
+
+.mljr-inview-slide-right.mljr-inview-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* --- Scale --- */
+.mljr-inview-scale {
+  opacity: 0;
+  transform: scale(0.88);
+  transition:
+    opacity var(--mljr-inview-duration, 600ms) var(--mljr-inview-delay, 0ms) ease-out,
+    transform var(--mljr-inview-duration, 600ms) var(--mljr-inview-delay, 0ms) ease-out;
+}
+
+.mljr-inview-scale.mljr-inview-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* --- Flip --- */
+.mljr-inview-flip {
+  opacity: 0;
+  transform: perspective(600px) rotateX(30deg);
+  transform-origin: top center;
+  transition:
+    opacity var(--mljr-inview-duration, 600ms) var(--mljr-inview-delay, 0ms) ease-out,
+    transform var(--mljr-inview-duration, 600ms) var(--mljr-inview-delay, 0ms) ease-out;
+}
+
+.mljr-inview-flip.mljr-inview-visible {
+  opacity: 1;
+  transform: perspective(600px) rotateX(0deg);
+}
+
+/* --- Respect reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .mljr-inview-fade,
+  .mljr-inview-slide-up,
+  .mljr-inview-slide-down,
+  .mljr-inview-slide-left,
+  .mljr-inview-slide-right,
+  .mljr-inview-scale,
+  .mljr-inview-flip {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

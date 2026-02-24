@@ -1,0 +1,270 @@
+/* ============================================
+   MLJR CSS Framework - TreeView Component
+   Claymorphism: Hierarchical data display
+   ============================================ */
+
+.mljr-tree {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+/* Tree node */
+.mljr-tree-node {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Tree node row */
+.mljr-tree-node-row {
+  display: flex;
+  align-items: center;
+  gap: var(--mljr-space-2);
+  padding: var(--mljr-space-2) var(--mljr-space-2);
+  border-radius: var(--mljr-radius-md);
+  cursor: pointer;
+  color: var(--mljr-text);
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: var(--mljr-text-sm);
+  text-align: left;
+  width: 100%;
+  transition: all var(--mljr-transition-fast);
+  user-select: none;
+}
+
+.mljr-tree-node-row:hover {
+  background: linear-gradient(
+    145deg,
+    var(--mljr-bg-secondary) 0%,
+    var(--mljr-bg-tertiary) 100%
+  );
+  box-shadow: var(--mljr-clay-shadow-xs);
+  transform: translateX(2px);
+}
+
+.mljr-tree-node-row-selected {
+  background: linear-gradient(
+    145deg,
+    var(--mljr-primary-50) 0%,
+    var(--mljr-primary-100) 100%
+  );
+  color: var(--mljr-primary-700);
+  box-shadow: var(--mljr-clay-shadow-sm);
+}
+
+.mljr-tree-node-row-selected:hover {
+  background: linear-gradient(
+    145deg,
+    var(--mljr-primary-100) 0%,
+    var(--mljr-primary-200) 100%
+  );
+}
+
+.dark .mljr-tree-node-row-selected {
+  background: linear-gradient(
+    145deg,
+    rgba(249, 115, 22, 0.15) 0%,
+    rgba(249, 115, 22, 0.08) 100%
+  );
+  color: var(--mljr-primary-400);
+}
+
+/* Expand/collapse toggle button */
+.mljr-tree-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border-radius: var(--mljr-radius-sm);
+  cursor: pointer;
+  color: var(--mljr-text-secondary);
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  transition: all var(--mljr-transition-fast);
+}
+
+.mljr-tree-toggle:hover {
+  background: var(--mljr-bg-secondary);
+  color: var(--mljr-text);
+}
+
+.mljr-tree-toggle svg {
+  transition: transform var(--mljr-transition-fast);
+}
+
+.mljr-tree-toggle-open svg {
+  transform: rotate(90deg);
+}
+
+/* Spacer for leaf nodes (no children) */
+.mljr-tree-spacer {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Checkbox */
+.mljr-tree-checkbox {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  border: 2px solid var(--mljr-border-strong);
+  background: var(--mljr-bg);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--mljr-transition-fast);
+}
+
+.mljr-tree-checkbox:checked {
+  background: var(--mljr-primary-500);
+  border-color: var(--mljr-primary-500);
+}
+
+.mljr-tree-checkbox:indeterminate {
+  background: var(--mljr-primary-200);
+  border-color: var(--mljr-primary-400);
+}
+
+/* Node icon */
+.mljr-tree-node-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  color: var(--mljr-text-secondary);
+}
+
+/* Node label */
+.mljr-tree-node-label {
+  flex: 1;
+  font-size: var(--mljr-text-sm);
+  font-weight: 400;
+  color: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Node count/badge */
+.mljr-tree-node-count {
+  font-size: var(--mljr-text-xs);
+  color: var(--mljr-text-muted);
+  background: var(--mljr-bg-secondary);
+  padding: 1px 6px;
+  border-radius: var(--mljr-radius-full);
+  box-shadow: var(--mljr-clay-shadow-xs);
+  flex-shrink: 0;
+}
+
+/* Children container */
+.mljr-tree-children {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: var(--mljr-space-5);
+  margin-left: 10px;
+  border-left: 2px solid var(--mljr-border);
+  border-radius: 0 0 0 2px;
+  margin-top: 2px;
+}
+
+/* Connecting lines */
+.mljr-tree-line .mljr-tree-children {
+  border-left: 2px solid var(--mljr-primary-200);
+}
+
+.dark .mljr-tree-line .mljr-tree-children {
+  border-left: 2px solid rgba(249, 115, 22, 0.2);
+}
+
+/* Disabled node */
+.mljr-tree-node-row-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.mljr-tree-node-row-disabled:hover {
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Loading node */
+.mljr-tree-node-loading {
+  display: flex;
+  align-items: center;
+  gap: var(--mljr-space-2);
+  padding: var(--mljr-space-2) var(--mljr-space-2);
+  color: var(--mljr-text-muted);
+  font-size: var(--mljr-text-sm);
+}
+
+/* Search match highlight */
+.mljr-tree-node-highlight {
+  background: var(--mljr-warning-100);
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+.dark .mljr-tree-node-highlight {
+  background: rgba(251, 191, 36, 0.2);
+}
+
+/* Compact variant */
+.mljr-tree-compact .mljr-tree-node-row {
+  padding: var(--mljr-space-1) var(--mljr-space-2);
+}
+
+.mljr-tree-compact .mljr-tree-children {
+  padding-left: var(--mljr-space-4);
+}
+
+/* ── Drag & Drop ── */
+.mljr-tree-node-dragging > .mljr-tree-node-row {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.mljr-tree-node-row[draggable="true"] {
+  cursor: grab;
+}
+
+.mljr-tree-node-row[draggable="true"]:active {
+  cursor: grabbing;
+}
+
+/* Drop target indicators */
+.mljr-tree-node-drop-before > .mljr-tree-node-row {
+  border-top: 2px solid var(--mljr-primary-500);
+  border-radius: var(--mljr-radius-sm) var(--mljr-radius-sm) 0 0;
+}
+
+.mljr-tree-node-drop-after > .mljr-tree-node-row {
+  border-bottom: 2px solid var(--mljr-primary-500);
+  border-radius: 0 0 var(--mljr-radius-sm) var(--mljr-radius-sm);
+}
+
+.mljr-tree-node-drop-inside > .mljr-tree-node-row {
+  background: color-mix(in srgb, var(--mljr-primary-500) 12%, var(--mljr-bg-secondary)) !important;
+  outline: 2px solid var(--mljr-primary-400);
+  outline-offset: -2px;
+  border-radius: var(--mljr-radius-sm);
+}

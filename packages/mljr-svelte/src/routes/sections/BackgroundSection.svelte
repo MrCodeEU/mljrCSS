@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { Card, Button, CodeExample } from '$lib';
-  import Background from '$lib/components/Background.svelte';
+  import { Card, Button, CodeExample, Background } from '$lib';
   import { themeStore } from '$lib/stores/theme.svelte';
 
   let activePattern = $state('crosses');
@@ -313,6 +312,7 @@
     border-radius: var(--mljr-radius-full);
     background: var(--mljr-bg-tertiary);
     outline: none;
+    appearance: none;
     -webkit-appearance: none;
     box-shadow: var(--mljr-clay-inset-sm);
   }

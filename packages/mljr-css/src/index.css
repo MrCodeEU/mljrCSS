@@ -1,8 +1,11 @@
 /* ============================================
    MLJR CSS Framework
    A TailwindCSS-based CSS framework with
-   orange/purple color scheme
+   claymorphism design system
    ============================================ */
+
+/* Google Fonts - Nunito (display/body) + JetBrains Mono (code) */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Nunito:wght@300;400;500;600;700&display=swap');
 
 /* All imports must come first before @tailwind directives */
 @import "./themes/variables.css";
@@ -46,6 +49,37 @@
 @import "./components/stepper.css";
 @import "./components/drawer.css";
 @import "./components/empty-state.css";
+@import "./components/navigation-rail.css";
+@import "./components/dock.css";
+@import "./components/tree-view.css";
+@import "./components/marquee.css";
+@import "./components/autocomplete.css";
+@import "./components/animated-headline.css";
+@import "./components/image-compare.css";
+@import "./components/table-of-content.css";
+@import "./components/chart.css";
+@import "./components/inview.css";
+@import "./components/lazy-image.css";
+@import "./components/infinite-scroll.css";
+@import "./components/diff-viewer.css";
+@import "./components/audio-visualizer.css";
+@import "./components/pin-input.css";
+@import "./components/video-player.css";
+@import "./components/drop-zone.css";
+@import "./components/rich-text-editor.css";
+@import "./components/map-embed.css";
+@import "./components/pdf-viewer.css";
+@import "./components/turnstile.css";
+@import "./components/cookie-banner.css";
+@import "./components/legal-page.css";
+@import "./components/number-input.css";
+@import "./components/context-menu.css";
+@import "./components/calendar.css";
+@import "./components/notification-center.css";
+@import "./components/gauge.css";
+@import "./components/alert-dialog.css";
+@import "./components/number-ticker.css";
+@import "./components/resizable.css";
 @import "./utilities/utilities.css";
 
 /* Tailwind Base */

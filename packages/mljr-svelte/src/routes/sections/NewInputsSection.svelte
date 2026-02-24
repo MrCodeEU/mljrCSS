@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Card, PhoneInput, DatePicker, ColorPicker, EmailInput, CommandPalette, SearchInput, CodeExample } from '$lib';
+  import { Card, PhoneInput, DatePicker, ColorPicker, EmailInput, CommandPalette, SearchInput, OtpInput, CodeExample } from '$lib';
 
   let phoneValue = $state('');
   let phoneValid = $state(false);
@@ -8,6 +8,7 @@
   let emailValue = $state('');
   let searchValue = $state('');
   let paletteOpen = $state(false);
+  let otpValue = $state('');
 </script>
 
 <section id="new-inputs" class="mljr-mb-8">
@@ -101,6 +102,27 @@
           </p>
         </Card>
       </div>
+
+      <Card title="OTP/PIN Input" description="One-time password or PIN code entry">
+        <div class="otp-demo">
+          <OtpInput
+            bind:value={otpValue}
+            length={6}
+            type="number"
+            onComplete={(otp) => console.log('OTP Complete:', otp)}
+          />
+          <p class="mljr-text-sm mljr-text-muted mljr-mt-4">
+            Entered code: {otpValue || 'none'}
+          </p>
+        </div>
+        <div class="mljr-mt-6">
+          <h4 class="mljr-text-sm mljr-font-semibold mljr-mb-3">4-Digit PIN</h4>
+          <OtpInput
+            length={4}
+            type="password"
+          />
+        </div>
+      </Card>
     </div>
 
     <CommandPalette

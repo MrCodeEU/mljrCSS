@@ -4,6 +4,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   plugins: [sveltekit()],
   server: {
+    port: 5174,
     // Watch for changes in the mljr-css package
     watch: {
       // Include the mljr-css package in the watch list

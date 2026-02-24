@@ -1,0 +1,153 @@
+/* ============================================================
+   PIN Input Component
+   ============================================================ */
+
+.mljr-pin-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--mljr-space-4);
+}
+
+.mljr-pin-digits {
+  display: flex;
+  gap: var(--mljr-space-3);
+  justify-content: center;
+}
+
+.mljr-pin-digit {
+  width: 3rem;
+  height: 3.5rem;
+  font-size: var(--mljr-text-xl);
+  font-weight: 700;
+  text-align: center;
+  color: var(--mljr-text);
+  background: var(--mljr-bg-secondary);
+  border: 2px solid var(--mljr-border);
+  border-radius: var(--mljr-radius-lg);
+  box-shadow: var(--mljr-clay-inset-sm);
+  transition: all var(--mljr-transition-fast);
+  font-family: var(--mljr-font-mono);
+  caret-color: var(--mljr-primary-500);
+  /* Remove number input spinners */
+  -moz-appearance: textfield;
+}
+
+.mljr-pin-digit::-webkit-outer-spin-button,
+.mljr-pin-digit::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.mljr-pin-digit:focus {
+  outline: none;
+  border-color: var(--mljr-primary-500);
+  box-shadow: var(--mljr-clay-shadow-sm);
+  transform: translateY(-2px);
+}
+
+.mljr-pin-digit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Filled state */
+.mljr-pin-digit[data-filled="true"] {
+  border-color: var(--mljr-primary-400);
+  background: var(--mljr-primary-50);
+}
+
+.dark .mljr-pin-digit[data-filled="true"] {
+  background: color-mix(in srgb, var(--mljr-primary-500) 15%, transparent);
+}
+
+/* Error state */
+.mljr-pin-input-error .mljr-pin-digit {
+  border-color: var(--mljr-error);
+  box-shadow: var(--mljr-clay-inset-sm);
+  animation: mljr-pin-shake 0.4s ease;
+}
+
+.mljr-pin-input-error .mljr-pin-digit:focus {
+  border-color: var(--mljr-error);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--mljr-error) 20%, transparent);
+}
+
+/* Success state */
+.mljr-pin-input-success .mljr-pin-digit {
+  border-color: var(--mljr-success);
+}
+
+.mljr-pin-input-success .mljr-pin-digit[data-filled="true"] {
+  background: color-mix(in srgb, var(--mljr-success) 10%, transparent);
+  border-color: var(--mljr-success);
+}
+
+/* Sizes */
+.mljr-pin-digit-sm {
+  width: 2.5rem;
+  height: 3rem;
+  font-size: var(--mljr-text-lg);
+}
+
+.mljr-pin-digit-lg {
+  width: 3.75rem;
+  height: 4.25rem;
+  font-size: var(--mljr-text-2xl);
+}
+
+/* Toggle show/hide button */
+.mljr-pin-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--mljr-space-1-5);
+  font-size: var(--mljr-text-sm);
+  color: var(--mljr-text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--mljr-space-1) var(--mljr-space-2);
+  border-radius: var(--mljr-radius-sm);
+  transition: color var(--mljr-transition-fast);
+}
+
+.mljr-pin-toggle:hover {
+  color: var(--mljr-primary-600);
+}
+
+/* Message under PIN */
+.mljr-pin-message {
+  font-size: var(--mljr-text-sm);
+  text-align: center;
+}
+
+.mljr-pin-message-error {
+  color: var(--mljr-error);
+}
+
+.mljr-pin-message-success {
+  color: var(--mljr-success);
+}
+
+.mljr-pin-message-hint {
+  color: var(--mljr-text-muted);
+}
+
+/* Shake animation for error */
+@keyframes mljr-pin-shake {
+  0%   { transform: translateX(0); }
+  20%  { transform: translateX(-6px); }
+  40%  { transform: translateX(6px); }
+  60%  { transform: translateX(-4px); }
+  80%  { transform: translateX(4px); }
+  100% { transform: translateX(0); }
+}
+
+@media (max-width: 640px) {
+  .mljr-pin-digit {
+    width: 2.5rem;
+    height: 3rem;
+    font-size: var(--mljr-text-lg);
+  }
+}

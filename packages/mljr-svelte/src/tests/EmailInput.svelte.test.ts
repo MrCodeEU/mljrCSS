@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render } from 'vitest-browser-svelte';
-import EmailInput from '../lib/components/EmailInput.svelte';
+import EmailInput from '../lib/components/forms/EmailInput.svelte';
 
 describe('EmailInput', () => {
   describe('Rendering', () => {
@@ -90,7 +90,7 @@ describe('EmailInput', () => {
       let value = '';
       const { container } = render(EmailInput, {
         value: '',
-        onvaluechange: (v) => { value = v; },
+        onvaluechange: (v: string) => { value = v; },
       });
       
       const input = container.querySelector('.mljr-email-field') as HTMLInputElement;

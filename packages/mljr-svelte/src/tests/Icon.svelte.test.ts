@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render } from 'vitest-browser-svelte';
-import Icon from '../lib/components/Icon.svelte';
+import Icon from '../lib/components/layout/Icon.svelte';
 
 describe('Icon', () => {
   describe('Rendering', () => {

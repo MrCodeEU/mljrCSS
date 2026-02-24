@@ -29,49 +29,55 @@
 .mljr-chip-primary {
   background: var(--mljr-primary-100);
   color: var(--mljr-primary-700);
-  box-shadow: 
-    2px 2px 4px rgba(249, 115, 22, 0.15),
-    -2px -2px 4px rgba(255, 255, 255, 0.8);
+  box-shadow:
+    2px 2px 4px rgba(249, 115, 22, 0.18),
+    inset -2px -2px 4px rgba(100, 60, 30, 0.08),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.45);
 }
 
 .mljr-chip-secondary {
   background: var(--mljr-secondary-100);
   color: var(--mljr-secondary-700);
-  box-shadow: 
+  box-shadow:
     2px 2px 4px rgba(168, 85, 247, 0.15),
-    -2px -2px 4px rgba(255, 255, 255, 0.8);
+    inset -2px -2px 4px rgba(80, 30, 140, 0.06),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.45);
 }
 
 .mljr-chip-accent {
   background: var(--mljr-accent-100);
   color: var(--mljr-accent-700);
-  box-shadow: 
+  box-shadow:
     2px 2px 4px rgba(20, 184, 166, 0.15),
-    -2px -2px 4px rgba(255, 255, 255, 0.8);
+    inset -2px -2px 4px rgba(5, 80, 70, 0.06),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.45);
 }
 
 .mljr-chip-success {
   background: rgba(16, 185, 129, 0.15);
   color: var(--mljr-success-dark);
-  box-shadow: 
-    2px 2px 4px rgba(16, 185, 129, 0.1),
-    -2px -2px 4px rgba(255, 255, 255, 0.8);
+  box-shadow:
+    2px 2px 4px rgba(16, 185, 129, 0.12),
+    inset -2px -2px 4px rgba(5, 80, 50, 0.06),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.45);
 }
 
 .mljr-chip-warning {
   background: rgba(245, 158, 11, 0.15);
   color: var(--mljr-warning-dark);
-  box-shadow: 
-    2px 2px 4px rgba(245, 158, 11, 0.1),
-    -2px -2px 4px rgba(255, 255, 255, 0.8);
+  box-shadow:
+    2px 2px 4px rgba(245, 158, 11, 0.12),
+    inset -2px -2px 4px rgba(120, 80, 5, 0.06),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.45);
 }
 
 .mljr-chip-error {
   background: rgba(239, 68, 68, 0.15);
   color: var(--mljr-error-dark);
-  box-shadow: 
-    2px 2px 4px rgba(239, 68, 68, 0.1),
-    -2px -2px 4px rgba(255, 255, 255, 0.8);
+  box-shadow:
+    2px 2px 4px rgba(239, 68, 68, 0.12),
+    inset -2px -2px 4px rgba(120, 30, 30, 0.06),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.45);
 }
 
 .mljr-chip-outline {
@@ -183,21 +189,30 @@
 [data-theme="dark"] .mljr-chip-primary {
   background: rgba(249, 115, 22, 0.2);
   color: var(--mljr-primary-300);
-  box-shadow: 
+  box-shadow:
     2px 2px 4px rgba(0, 0, 0, 0.3),
-    -2px -2px 4px rgba(68, 64, 60, 0.2);
+    inset -2px -2px 4px rgba(0, 0, 0, 0.15),
+    inset 2px 2px 4px rgba(255, 200, 150, 0.06);
 }
 
 .dark .mljr-chip-secondary,
 [data-theme="dark"] .mljr-chip-secondary {
   background: rgba(168, 85, 247, 0.2);
   color: var(--mljr-secondary-300);
+  box-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.3),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.15),
+    inset 2px 2px 4px rgba(255, 200, 150, 0.06);
 }
 
 .dark .mljr-chip-accent,
 [data-theme="dark"] .mljr-chip-accent {
   background: rgba(20, 184, 166, 0.2);
   color: var(--mljr-accent-300);
+  box-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.3),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.15),
+    inset 2px 2px 4px rgba(255, 200, 150, 0.06);
 }
 
 .dark .mljr-chip-outline,

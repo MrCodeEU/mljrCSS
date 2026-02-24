@@ -1,10 +1,11 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render } from 'vitest-browser-svelte';
-import Navbar from '../lib/components/Navbar.svelte';
+import Navbar from '../lib/components/navigation/Navbar.svelte';
 
 describe('Navbar', () => {
+  // No icons in test items — Iconify fetches from network, causing slow/stuck tests
   const defaultItems = [
-    { label: 'Home', href: '/', icon: 'ph:house' },
+    { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
     { label: 'Contact', href: '/contact' },
   ];

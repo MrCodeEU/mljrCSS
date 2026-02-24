@@ -25,6 +25,25 @@
     },
   ];
 
+  // Nested accordion items (using string content to avoid SSR issues with function-rendered components)
+  const nestedAccordionItems = [
+    {
+      id: 'parent1',
+      title: 'Getting Started',
+      content: 'Covers installation (pnpm add mljr-css mljr-svelte), configuration of the Tailwind plugin, and first usage of components.',
+    },
+    {
+      id: 'parent2',
+      title: 'Components',
+      content: 'Forms (buttons, inputs, selects, checkboxes), Navigation (navbar, tabs, breadcrumbs, pagination), and Feedback (alerts, toasts, progress bars, spinners).',
+    },
+    {
+      id: 'parent3',
+      title: 'Advanced',
+      content: 'Theming with CSS custom properties and dark mode — built-in support for light and dark themes via the .dark class.',
+    },
+  ];
+
 </script>
 
 <section id="data" class="mljr-mb-8">
@@ -78,9 +97,17 @@
         <Accordion items={accordionItems} multiple defaultOpen={['1']} />
       </div>
 
-      <div>
+      <div class="mljr-mb-6">
         <h4 class="mljr-h5 mljr-mb-3">Primary Accent</h4>
         <Accordion items={accordionItems} primary />
+      </div>
+
+      <div>
+        <h4 class="mljr-h5 mljr-mb-3">Nested Accordions</h4>
+        <Accordion items={nestedAccordionItems} />
+        <p class="mljr-text-sm mljr-text-muted mljr-mt-2">
+          Accordions can be nested by using Snippet content that renders child Accordions.
+        </p>
       </div>
     </Card>
   </div>
@@ -101,5 +128,22 @@
 
 &lt;Accordion items={accordionItems} /&gt;
 &lt;Accordion items={accordionItems} multiple defaultOpen={['1']} /&gt;
-&lt;Accordion items={accordionItems} primary /&gt;`} />
+&lt;Accordion items={accordionItems} primary /&gt;
+
+// Nested accordions using Snippet content
+const nestedItems = [
+  {
+    id: 'parent1',
+    title: 'Parent Item',
+    content: () => {
+      const childItems = [
+        { id: 'child1', title: 'Child 1', content: 'Child content 1' },
+        { id: 'child2', title: 'Child 2', content: 'Child content 2' },
+      ];
+      return Accordion({ items: childItems, variant: 'flush' });
+    }
+  }
+];
+
+&lt;Accordion items={nestedItems} /&gt;`} />
 </section>

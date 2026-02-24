@@ -90,6 +90,14 @@
     0 0 12px rgba(20, 184, 166, 0.2);
 }
 
+/* Rich content tooltip */
+.mljr-tooltip-rich .mljr-tooltip-content {
+  white-space: normal;
+  max-width: 280px;
+  padding: var(--mljr-space-3) var(--mljr-space-4);
+  pointer-events: auto;
+}
+
 /* Dark mode */
 .dark .mljr-tooltip-content,
 [data-theme="dark"] .mljr-tooltip-content {

@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render } from 'vitest-browser-svelte';
-import Card from '../lib/components/Card.svelte';
+import Card from '../lib/components/display/Card.svelte';
 
 describe('Card', () => {
   describe('Rendering', () => {

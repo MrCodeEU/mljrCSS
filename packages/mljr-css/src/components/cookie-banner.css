@@ -1,0 +1,285 @@
+/* ============================================
+   Cookie Banner — GDPR consent UI
+   ============================================ */
+
+/* --- Banner bar (bottom / top) --- */
+.mljr-cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  padding: var(--mljr-space-4) var(--mljr-space-6);
+  background: var(--mljr-surface);
+  border-top: 1px solid var(--mljr-border);
+  box-shadow: var(--mljr-clay-shadow);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--mljr-space-4);
+  animation: mljr-cookie-slide-up 0.3s ease-out;
+}
+
+.mljr-cookie-banner--top {
+  bottom: auto;
+  top: 0;
+  border-top: none;
+  border-bottom: 1px solid var(--mljr-border);
+  animation: mljr-cookie-slide-down 0.3s ease-out;
+}
+
+@keyframes mljr-cookie-slide-up {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes mljr-cookie-slide-down {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+.mljr-cookie-banner__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.mljr-cookie-banner__title {
+  font-size: var(--mljr-text-base);
+  font-weight: 700;
+  color: var(--mljr-text);
+  margin: 0 0 var(--mljr-space-1) 0;
+}
+
+.mljr-cookie-banner__desc {
+  font-size: var(--mljr-text-sm);
+  color: var(--mljr-text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.mljr-cookie-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--mljr-space-2);
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* --- Settings overlay --- */
+.mljr-cookie-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 950;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--mljr-space-4);
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  animation: mljr-fade-in 0.2s ease;
+}
+
+@keyframes mljr-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.mljr-cookie-settings {
+  background: var(--mljr-surface);
+  border-radius: var(--mljr-radius-lg);
+  box-shadow: var(--mljr-clay-shadow-lg);
+  padding: var(--mljr-space-6);
+  width: 100%;
+  max-width: 560px;
+  max-height: 80vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--mljr-space-5);
+}
+
+.mljr-cookie-settings__header {
+  display: flex;
+  align-items: center;
+  gap: var(--mljr-space-3);
+}
+
+.mljr-cookie-settings__back {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--mljr-text-muted);
+  padding: var(--mljr-space-1);
+  border-radius: var(--mljr-radius-sm);
+  display: flex;
+  align-items: center;
+  transition: color 0.15s, background 0.15s;
+}
+.mljr-cookie-settings__back:hover {
+  color: var(--mljr-text);
+  background: var(--mljr-surface-alt);
+}
+
+.mljr-cookie-settings__title {
+  font-size: var(--mljr-text-lg);
+  font-weight: 700;
+  color: var(--mljr-text);
+  margin: 0;
+}
+
+/* --- Category list --- */
+.mljr-cookie-categories {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mljr-space-3);
+}
+
+.mljr-cookie-category {
+  border: 1px solid var(--mljr-border);
+  border-radius: var(--mljr-radius-md);
+  padding: var(--mljr-space-4);
+  background: var(--mljr-surface-alt);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--mljr-space-4);
+}
+
+.mljr-cookie-category__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.mljr-cookie-category__name {
+  font-size: var(--mljr-text-sm);
+  font-weight: 600;
+  color: var(--mljr-text);
+  margin: 0 0 var(--mljr-space-1) 0;
+  display: flex;
+  align-items: center;
+  gap: var(--mljr-space-2);
+}
+
+.mljr-cookie-category__required-badge {
+  font-size: var(--mljr-text-xs);
+  font-weight: 500;
+  color: var(--mljr-primary-600);
+  background: var(--mljr-primary-100);
+  padding: 1px 6px;
+  border-radius: var(--mljr-radius-full);
+}
+
+.mljr-cookie-category__desc {
+  font-size: var(--mljr-text-xs);
+  color: var(--mljr-text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Toggle (reuse switch-like pattern) */
+.mljr-cookie-toggle {
+  flex-shrink: 0;
+  position: relative;
+  width: 40px;
+  height: 22px;
+}
+
+.mljr-cookie-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.mljr-cookie-toggle__track {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--mljr-radius-full);
+  background: var(--mljr-border);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.mljr-cookie-toggle input:checked ~ .mljr-cookie-toggle__track {
+  background: var(--mljr-primary-500);
+}
+
+.mljr-cookie-toggle input:disabled ~ .mljr-cookie-toggle__track {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.mljr-cookie-toggle__thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--mljr-radius-full);
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  pointer-events: none;
+  transition: transform 0.2s;
+}
+
+.mljr-cookie-toggle input:checked ~ .mljr-cookie-toggle__track .mljr-cookie-toggle__thumb {
+  transform: translateX(18px);
+}
+
+/* --- Settings footer --- */
+.mljr-cookie-settings__footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--mljr-space-2);
+  justify-content: flex-end;
+  padding-top: var(--mljr-space-3);
+  border-top: 1px solid var(--mljr-border);
+}
+
+/* --- Floating settings button (bottom-left) --- */
+.mljr-cookie-fab {
+  position: fixed;
+  bottom: var(--mljr-space-4);
+  left: var(--mljr-space-4);
+  z-index: 800;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--mljr-radius-full);
+  background: var(--mljr-surface);
+  border: 1px solid var(--mljr-border);
+  box-shadow: var(--mljr-clay-shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--mljr-text-muted);
+  transition: box-shadow 0.2s, color 0.2s, transform 0.15s;
+}
+
+.mljr-cookie-fab:hover {
+  box-shadow: var(--mljr-clay-shadow);
+  color: var(--mljr-text);
+  transform: translateY(-2px);
+}
+
+/* --- Dark mode --- */
+.dark .mljr-cookie-category__required-badge {
+  background: color-mix(in srgb, var(--mljr-primary-600) 20%, transparent);
+  color: var(--mljr-primary-400);
+}
+
+/* --- Responsive --- */
+@media (max-width: 640px) {
+  .mljr-cookie-banner {
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--mljr-space-4);
+  }
+
+  .mljr-cookie-banner__actions {
+    flex-direction: column;
+  }
+
+  .mljr-cookie-settings {
+    max-height: 90vh;
+  }
+}

@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render } from 'vitest-browser-svelte';
-import Button from '../lib/components/Button.svelte';
+import Button from '../lib/components/forms/Button.svelte';
 
 describe('Button', () => {
   describe('Rendering', () => {

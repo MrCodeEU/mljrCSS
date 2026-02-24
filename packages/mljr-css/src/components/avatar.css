@@ -220,3 +220,69 @@
 [data-theme="dark"] .mljr-avatar-status {
   border-color: var(--mljr-bg);
 }
+
+/* ============================================
+   Avatar Group - Stacked avatars with overlap
+   ============================================ */
+
+.mljr-avatar-group {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  padding-left: 0.5rem;
+}
+
+.mljr-avatar-group .mljr-avatar {
+  margin-left: -0.75rem;
+  transition: all var(--mljr-transition-fast);
+  cursor: pointer;
+  border: 3px solid var(--mljr-bg);
+}
+
+.mljr-avatar-group .mljr-avatar:hover {
+  transform: translateY(-4px) scale(1.05);
+  z-index: 10;
+  box-shadow: var(--mljr-clay-shadow);
+}
+
+/* Size-specific overlaps */
+.mljr-avatar-group-xs .mljr-avatar {
+  margin-left: -0.5rem;
+}
+
+.mljr-avatar-group-sm .mljr-avatar {
+  margin-left: -0.625rem;
+}
+
+.mljr-avatar-group-md .mljr-avatar {
+  margin-left: -0.75rem;
+}
+
+.mljr-avatar-group-lg .mljr-avatar {
+  margin-left: -1rem;
+}
+
+.mljr-avatar-group-xl .mljr-avatar {
+  margin-left: -1.25rem;
+}
+
+.mljr-avatar-group-2xl .mljr-avatar {
+  margin-left: -1.5rem;
+}
+
+/* Count indicator ("+N" avatar) */
+.mljr-avatar-count {
+  cursor: default;
+  background: linear-gradient(145deg, var(--mljr-bg-secondary) 0%, var(--mljr-bg-tertiary) 100%);
+  font-size: 0.75em;
+}
+
+.mljr-avatar-count .mljr-avatar-initials {
+  font-weight: 600;
+}
+
+/* Dark mode */
+.dark .mljr-avatar-group .mljr-avatar,
+[data-theme="dark"] .mljr-avatar-group .mljr-avatar {
+  border-color: var(--mljr-bg);
+}

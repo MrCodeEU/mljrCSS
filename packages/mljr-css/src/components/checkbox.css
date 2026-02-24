@@ -18,7 +18,7 @@
   height: 1.25rem;
   background-color: var(--mljr-bg);
   border: none;
-  border-radius: var(--mljr-radius-sm);
+  border-radius: 5px;
   cursor: pointer;
   transition: all var(--mljr-transition-fast);
   flex-shrink: 0;

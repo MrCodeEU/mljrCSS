@@ -1,0 +1,65 @@
+/* ============================================
+   Number Ticker Component
+   Animated number counter for stats/dashboards
+   ============================================ */
+
+.mljr-number-ticker {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.125em;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.mljr-number-ticker-prefix,
+.mljr-number-ticker-suffix {
+  font-weight: 500;
+  opacity: 0.75;
+}
+
+.mljr-number-ticker-value {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Sizes */
+.mljr-number-ticker-sm {
+  font-size: var(--mljr-text-lg);
+}
+
+.mljr-number-ticker-md {
+  font-size: var(--mljr-text-3xl);
+}
+
+.mljr-number-ticker-lg {
+  font-size: var(--mljr-text-5xl);
+}
+
+.mljr-number-ticker-xl {
+  font-size: var(--mljr-text-7xl);
+}
+
+/* Colors */
+.mljr-number-ticker-default {
+  color: var(--mljr-text);
+}
+
+.mljr-number-ticker-primary {
+  color: var(--mljr-primary-600);
+}
+
+.mljr-number-ticker-secondary {
+  color: var(--mljr-secondary-600);
+}
+
+.mljr-number-ticker-success {
+  color: var(--mljr-success-600);
+}
+
+.mljr-number-ticker-warning {
+  color: var(--mljr-warning-600);
+}
+
+.mljr-number-ticker-error {
+  color: var(--mljr-error-600);
+}

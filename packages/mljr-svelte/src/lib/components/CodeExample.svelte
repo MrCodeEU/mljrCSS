@@ -2,9 +2,10 @@
   interface Props {
     code: string;
     title?: string;
+    language?: string;
   }
 
-  let { code, title = '💻 Code Example' }: Props = $props();
+  let { code, title = '💻 Code Example', language: _language = 'svelte' }: Props = $props();
   
   let isOpen = $state(false);
 </script>

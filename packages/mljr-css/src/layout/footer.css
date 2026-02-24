@@ -6,7 +6,7 @@
 .mljr-footer {
   width: 100%;
   padding: var(--mljr-space-12) var(--mljr-space-8);
-  background: var(--mljr-bg);
+  background: transparent;
   margin-top: auto;
   border-top: none;
 }
@@ -261,7 +261,7 @@
 /* Dark Mode - Enhanced Claymorphism */
 .dark .mljr-footer,
 [data-theme="dark"] .mljr-footer {
-  background: var(--mljr-bg);
+  background: transparent;
 }
 
 .dark .mljr-footer-container,

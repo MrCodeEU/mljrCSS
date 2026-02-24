@@ -1,0 +1,63 @@
+/* ============================================
+   MLJR CSS Framework - Gauge Component
+   Claymorphism: Circular arc SVG gauge
+   ============================================ */
+
+.mljr-gauge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--mljr-space-2);
+  font-family: var(--mljr-font-sans);
+}
+
+.mljr-gauge-svg {
+  display: block;
+  overflow: visible;
+}
+
+.mljr-gauge-track {
+  fill: none;
+  stroke-linecap: round;
+  opacity: 0.18;
+}
+
+.dark .mljr-gauge-track,
+[data-theme="dark"] .mljr-gauge-track {
+  opacity: 0.22;
+}
+
+.mljr-gauge-fill {
+  fill: none;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mljr-gauge-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+}
+
+.mljr-gauge-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--mljr-text);
+  line-height: 1;
+}
+
+.mljr-gauge-unit {
+  font-size: var(--mljr-text-sm);
+  font-weight: 500;
+  color: var(--mljr-text-muted);
+  margin-top: 2px;
+}
+
+.mljr-gauge-label {
+  font-size: var(--mljr-text-sm);
+  font-weight: 500;
+  color: var(--mljr-text-muted);
+  text-align: center;
+}

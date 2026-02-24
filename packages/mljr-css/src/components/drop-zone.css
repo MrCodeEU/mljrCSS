@@ -1,0 +1,257 @@
+/* ============================================================
+   DropZone / Advanced File Upload Component
+   ============================================================ */
+
+/* ── Drop zone wrapper ── */
+.mljr-dropzone {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mljr-space-4);
+}
+
+/* ── Main drop area ── */
+.mljr-dropzone-area {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--mljr-space-3);
+  padding: var(--mljr-space-10) var(--mljr-space-6);
+  border: 2px dashed var(--mljr-border);
+  border-radius: var(--mljr-radius-xl);
+  background: var(--mljr-bg-secondary);
+  cursor: pointer;
+  text-align: center;
+  transition:
+    border-color var(--mljr-transition-fast),
+    background var(--mljr-transition-fast),
+    transform var(--mljr-transition-fast);
+  outline: none;
+}
+
+.mljr-dropzone-area:hover,
+.mljr-dropzone-area:focus-visible {
+  border-color: var(--mljr-primary-400);
+  background: color-mix(in srgb, var(--mljr-primary-500) 4%, var(--mljr-bg-secondary));
+}
+
+.mljr-dropzone-area.mljr-dropzone-dragging {
+  border-color: var(--mljr-primary-500);
+  border-style: solid;
+  background: color-mix(in srgb, var(--mljr-primary-500) 8%, var(--mljr-bg-secondary));
+  transform: scale(1.01);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--mljr-primary-500) 20%, transparent);
+}
+
+.mljr-dropzone-area.mljr-dropzone-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.mljr-dropzone-area.mljr-dropzone-error {
+  border-color: var(--mljr-error);
+}
+
+/* ── Icon ── */
+.mljr-dropzone-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--mljr-text-muted);
+  transition: color var(--mljr-transition-fast);
+}
+
+.mljr-dropzone-area:hover .mljr-dropzone-icon,
+.mljr-dropzone-area.mljr-dropzone-dragging .mljr-dropzone-icon {
+  color: var(--mljr-primary-500);
+}
+
+/* ── Text ── */
+.mljr-dropzone-title {
+  font-size: var(--mljr-text-base);
+  font-weight: 600;
+  color: var(--mljr-text);
+}
+
+.mljr-dropzone-subtitle {
+  font-size: var(--mljr-text-sm);
+  color: var(--mljr-text-muted);
+}
+
+.mljr-dropzone-hint {
+  font-size: var(--mljr-text-xs);
+  color: var(--mljr-text-muted);
+  margin-top: var(--mljr-space-1);
+}
+
+/* ── File list ── */
+.mljr-dropzone-files {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mljr-space-2);
+}
+
+/* ── File item ── */
+.mljr-dropzone-file {
+  display: flex;
+  align-items: center;
+  gap: var(--mljr-space-3);
+  padding: var(--mljr-space-3) var(--mljr-space-4);
+  background: var(--mljr-bg-secondary);
+  border: 1px solid var(--mljr-border);
+  border-radius: var(--mljr-radius-lg);
+  box-shadow: var(--mljr-clay-shadow-sm);
+  transition: box-shadow var(--mljr-transition-fast);
+}
+
+.mljr-dropzone-file:hover {
+  box-shadow: var(--mljr-clay-shadow);
+}
+
+/* ── Thumbnail / preview ── */
+.mljr-dropzone-thumb {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--mljr-radius-md);
+  object-fit: cover;
+  background: var(--mljr-bg);
+  border: 1px solid var(--mljr-border);
+}
+
+.mljr-dropzone-file-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--mljr-radius-md);
+  background: var(--mljr-bg);
+  border: 1px solid var(--mljr-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mljr-text-muted);
+  font-size: var(--mljr-text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* ── File info ── */
+.mljr-dropzone-file-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--mljr-space-1);
+}
+
+.mljr-dropzone-file-name {
+  font-size: var(--mljr-text-sm);
+  font-weight: 500;
+  color: var(--mljr-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mljr-dropzone-file-size {
+  font-size: var(--mljr-text-xs);
+  color: var(--mljr-text-muted);
+}
+
+/* ── Progress bar ── */
+.mljr-dropzone-progress {
+  height: 4px;
+  background: var(--mljr-border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.mljr-dropzone-progress-fill {
+  height: 100%;
+  background: var(--mljr-primary-500);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.mljr-dropzone-file-uploading .mljr-dropzone-progress-fill {
+  background: var(--mljr-primary-500);
+}
+
+.mljr-dropzone-file-complete .mljr-dropzone-progress-fill {
+  background: var(--mljr-success);
+}
+
+.mljr-dropzone-file-error .mljr-dropzone-progress-fill {
+  background: var(--mljr-error);
+}
+
+/* ── File status badge ── */
+.mljr-dropzone-status {
+  display: flex;
+  align-items: center;
+  gap: var(--mljr-space-1);
+  font-size: var(--mljr-text-xs);
+}
+
+.mljr-dropzone-status-uploading { color: var(--mljr-primary-500); }
+.mljr-dropzone-status-complete  { color: var(--mljr-success); }
+.mljr-dropzone-status-error     { color: var(--mljr-error); }
+.mljr-dropzone-status-idle      { color: var(--mljr-text-muted); }
+
+/* ── Remove button ── */
+.mljr-dropzone-remove {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid var(--mljr-border);
+  color: var(--mljr-text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--mljr-transition-fast);
+  padding: 0;
+}
+
+.mljr-dropzone-remove:hover {
+  background: var(--mljr-error-bg, color-mix(in srgb, var(--mljr-error) 12%, transparent));
+  border-color: var(--mljr-error);
+  color: var(--mljr-error);
+}
+
+/* ── Error message ── */
+.mljr-dropzone-error-msg {
+  font-size: var(--mljr-text-sm);
+  color: var(--mljr-error);
+  padding: var(--mljr-space-2) var(--mljr-space-3);
+  background: color-mix(in srgb, var(--mljr-error) 10%, transparent);
+  border-radius: var(--mljr-radius-md);
+  border: 1px solid color-mix(in srgb, var(--mljr-error) 30%, transparent);
+}
+
+/* ── Summary row ── */
+.mljr-dropzone-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--mljr-text-sm);
+  color: var(--mljr-text-muted);
+}
+
+.mljr-dropzone-clear-all {
+  background: none;
+  border: none;
+  font-size: var(--mljr-text-sm);
+  color: var(--mljr-text-muted);
+  cursor: pointer;
+  padding: var(--mljr-space-1) var(--mljr-space-2);
+  border-radius: var(--mljr-radius-sm);
+  transition: color var(--mljr-transition-fast);
+}
+
+.mljr-dropzone-clear-all:hover {
+  color: var(--mljr-error);
+}

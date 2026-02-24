@@ -53,6 +53,19 @@
       </div>
     </Card>
 
+    <Card title="Chips with Icons" description="Chips with Iconify icons">
+      <div class="mljr-chip-group mljr-mb-4">
+        <Chip variant="primary" icon="mdi:language-javascript">JavaScript</Chip>
+        <Chip variant="secondary" icon="mdi:language-typescript">TypeScript</Chip>
+        <Chip variant="accent" icon="mdi:language-css3">CSS</Chip>
+        <Chip variant="success" icon="mdi:check">Approved</Chip>
+      </div>
+      <div class="mljr-chip-group">
+        <Chip variant="error" icon="mdi:close-circle" iconPosition="right">Rejected</Chip>
+        <Chip variant="warning" icon="mdi:alert" iconPosition="right">Review</Chip>
+      </div>
+    </Card>
+
     <Card title="Removable Chips" description="Chips with remove button">
       <div class="mljr-chip-group">
         {#each chips as chip (chip.id)}
@@ -89,6 +102,10 @@
 <Chip size="sm">Small</Chip>
 <Chip>Medium</Chip>
 <Chip size="lg">Large</Chip>
+
+<!-- With icons -->
+<Chip variant="primary" icon="mdi:language-javascript">JavaScript</Chip>
+<Chip variant="error" icon="mdi:close-circle" iconPosition="right">Rejected</Chip>
 
 {#each chips as chip (chip.id)}
   <Chip

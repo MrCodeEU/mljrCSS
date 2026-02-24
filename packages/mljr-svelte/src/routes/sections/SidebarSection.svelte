@@ -35,13 +35,11 @@
         </Button>
         
         <div class="demo-wrapper">
-          <!-- Real Sidebar Component Demo -->
-          <div class="demo-sidebar-wrapper" style="width: {demoSidebarOpen ? '280px' : '0'};">
-            <Sidebar 
-              categories={demoCategories} 
-              bind:open={demoSidebarOpen}
-            />
-          </div>
+          <Sidebar
+            categories={demoCategories}
+            bind:open={demoSidebarOpen}
+            contained
+          />
           
           <!-- Demo Content -->
           <div class="demo-content">
@@ -125,12 +123,6 @@ const categories = [
     background: var(--mljr-bg);
     min-height: 300px;
     box-shadow: var(--mljr-clay-inset-sm);
-  }
-
-  .demo-sidebar-wrapper {
-    transition: width 0.3s ease;
-    overflow: hidden;
-    flex-shrink: 0;
   }
 
   .demo-content {

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Card, Button, CodeExample } from '$lib';
+  import { Card, Button, ThemeToggle, LanguageToggle, CodeExample } from '$lib';
 </script>
 
 <section id="layout" class="mljr-mb-8">
@@ -14,7 +14,27 @@
       </Card>
 
       <Card title="Secondary Card" variant="secondary" shadow="lg">
-        <p>A card with secondary accent and large shadow.</p>
+        <p>A card with secondary (purple) variant using watered-down solid colors.</p>
+      </Card>
+
+      <Card title="Accent Card" variant="accent" shadow>
+        <p>A card with accent (teal) variant and subtle gradient.</p>
+      </Card>
+
+      <Card title="Success Card" variant="success" shadow>
+        <p>A card with success (green) variant for positive actions.</p>
+      </Card>
+
+      <Card title="Warning Card" variant="warning" shadow>
+        <p>A card with warning (amber) variant for cautionary messages.</p>
+      </Card>
+
+      <Card title="Error Card" variant="error" shadow>
+        <p>A card with error (red) variant for critical information.</p>
+      </Card>
+
+      <Card title="Info Card" variant="info" shadow>
+        <p>A card with info (blue) variant for informational content.</p>
       </Card>
 
       <Card
@@ -144,6 +164,42 @@
     <Button variant="primary">Save</Button>
   {/snippet}
 </Card>`} />
+
+  <!-- Theme & Language Toggles -->
+  <Card title="ThemeToggle" description="Switch between light, dark, and system theme" class="mljr-mt-6">
+    <div class="mljr-flex mljr-flex-wrap mljr-gap-8 mljr-items-start">
+      <div>
+        <p class="mljr-text-sm mljr-text-muted mljr-mb-3">Default (dropdown)</p>
+        <ThemeToggle variant="default" />
+      </div>
+      <div>
+        <p class="mljr-text-sm mljr-text-muted mljr-mb-3">Simple toggle</p>
+        <ThemeToggle variant="simple" />
+      </div>
+      <div>
+        <p class="mljr-text-sm mljr-text-muted mljr-mb-3">Segmented control</p>
+        <ThemeToggle variant="segmented" />
+      </div>
+      <div>
+        <p class="mljr-text-sm mljr-text-muted mljr-mb-3">With labels</p>
+        <ThemeToggle variant="segmented" showLabels />
+      </div>
+      <div>
+        <p class="mljr-text-sm mljr-text-muted mljr-mb-3">Large</p>
+        <ThemeToggle variant="segmented" size="lg" showLabels />
+      </div>
+    </div>
+    <CodeExample code={`<ThemeToggle variant="default" />
+<ThemeToggle variant="simple" />
+<ThemeToggle variant="segmented" showLabels />`} language="svelte" />
+  </Card>
+
+  <Card title="LanguageToggle" description="Switch between supported locales" class="mljr-mt-6">
+    <div class="mljr-flex mljr-gap-4 mljr-items-center">
+      <LanguageToggle />
+    </div>
+    <CodeExample code={`<LanguageToggle />`} language="svelte" />
+  </Card>
 </section>
 
 <style>

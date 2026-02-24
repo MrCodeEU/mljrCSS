@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Button, Card, Tooltip, Progress, Skeleton, Avatar, Divider, Pagination, Spinner, Toast, toastStore, Popover, Table, Badge, CodeExample } from '$lib';
+  import { Button, Card, Tooltip, Progress, Skeleton, Avatar, AvatarGroup, type AvatarData, Divider, Pagination, Spinner, Toast, toastStore, Popover, Table, Badge, ChatBubble, CodeExample } from '$lib';
 
   let progressValue = $state(65);
   let currentPage = $state(2);
@@ -26,6 +26,28 @@
   ];
 
   let selectedRows = $state<TableRow[]>([]);
+
+  // Avatar group data
+  const teamMembers: AvatarData[] = [
+    { initials: 'CR', alt: 'Connor RK800' },
+    { initials: 'KA', alt: 'Kara AX400' },
+    { initials: 'MR', alt: 'Markus RK200' },
+    { initials: 'NW', alt: 'North WR400' },
+    { initials: 'JS', alt: 'Josh PJ500' },
+  ];
+
+  const largeTeam: AvatarData[] = [
+    { initials: 'A1' },
+    { initials: 'B2' },
+    { initials: 'C3' },
+    { initials: 'D4' },
+    { initials: 'E5' },
+    { initials: 'F6' },
+    { initials: 'G7' },
+    { initials: 'H8' },
+    { initials: 'I9' },
+    { initials: 'J10' },
+  ];
 </script>
 
 <section id="display-components" class="mljr-mb-8">
@@ -145,6 +167,77 @@
           <Avatar initials="SC" ring="secondary" variant="secondary" />
         </div>
       </div>
+    </Card>
+
+    <!-- Avatar Group -->
+    <Card title="Avatar Group" description="Stacked avatars with overlap for team displays">
+      <div class="mljr-mb-6">
+        <h4 class="mljr-h5 mljr-mb-3">Default Group (Circle)</h4>
+        <AvatarGroup avatars={teamMembers} />
+      </div>
+
+      <div class="mljr-mb-6">
+        <h4 class="mljr-h5 mljr-mb-3">Square Shape</h4>
+        <AvatarGroup avatars={teamMembers} shape="square" />
+      </div>
+
+      <div class="mljr-mb-6">
+        <h4 class="mljr-h5 mljr-mb-3">With Ring</h4>
+        <AvatarGroup avatars={teamMembers} ring />
+      </div>
+
+      <div class="mljr-mb-6">
+        <h4 class="mljr-h5 mljr-mb-3">Different Sizes</h4>
+        <div class="mljr-flex mljr-flex-col mljr-gap-4 mljr-items-start">
+          <AvatarGroup avatars={teamMembers} size="sm" />
+          <AvatarGroup avatars={teamMembers} size="md" />
+          <AvatarGroup avatars={teamMembers} size="lg" />
+        </div>
+      </div>
+
+      <div class="mljr-mb-6">
+        <h4 class="mljr-h5 mljr-mb-3">Max Display with "+N"</h4>
+        <AvatarGroup avatars={largeTeam} max={5} />
+        <p class="mljr-text-sm mljr-text-muted mljr-mt-2">
+          Shows first 5 avatars, +{largeTeam.length - 5} for remaining
+        </p>
+      </div>
+
+      <div>
+        <h4 class="mljr-h5 mljr-mb-3">Color Variants</h4>
+        <div class="mljr-flex mljr-flex-col mljr-gap-4 mljr-items-start">
+          <AvatarGroup avatars={teamMembers} variant="primary" />
+          <AvatarGroup avatars={teamMembers} variant="secondary" />
+          <AvatarGroup avatars={teamMembers} variant="accent" />
+        </div>
+      </div>
+
+      <CodeExample code={`<script>
+  import { AvatarGroup, type AvatarData } from 'mljr-svelte';
+
+  const teamMembers: AvatarData[] = [
+    { initials: 'CR', alt: 'Connor RK800' },
+    { initials: 'KA', alt: 'Kara AX400' },
+    { initials: 'MR', alt: 'Markus RK200' },
+    { initials: 'NW', alt: 'North WR400' },
+    { initials: 'JS', alt: 'Josh PJ500' },
+  ];
+<\/script>
+
+<!-- Default circle group -->
+<AvatarGroup avatars={teamMembers} />
+
+<!-- Square shape -->
+<AvatarGroup avatars={teamMembers} shape="square" />
+
+<!-- With ring and size -->
+<AvatarGroup avatars={teamMembers} ring size="lg" />
+
+<!-- Limit display with max -->
+<AvatarGroup avatars={teamMembers} max={3} />
+
+<!-- Different variant -->
+<AvatarGroup avatars={teamMembers} variant="secondary" />`} />
     </Card>
   </div>
 
@@ -332,6 +425,43 @@
         </div>
       </div>
 
+      <div class="mljr-mb-6">
+        <h4 class="mljr-h5 mljr-mb-3">With Actions</h4>
+        <Button
+          variant="primary"
+          onclick={() => toastStore.add({
+            type: 'info',
+            title: 'Update Available',
+            message: 'A new version is ready to install.',
+            actions: [
+              { label: 'Update', onClick: () => console.log('Update clicked') },
+              { label: 'Later', onClick: () => console.log('Later clicked') },
+            ]
+          })}
+        >
+          Show Toast with Actions
+        </Button>
+      </div>
+
+      <div class="mljr-mb-6">
+        <h4 class="mljr-h5 mljr-mb-3">With Promise</h4>
+        <Button
+          variant="primary"
+          onclick={async () => {
+            await toastStore.promise(
+              new Promise((resolve) => setTimeout(resolve, 2000)),
+              {
+                loading: 'Saving data...',
+                success: 'Data saved successfully!',
+                error: 'Failed to save data.',
+              }
+            );
+          }}
+        >
+          Save Data (Promise)
+        </Button>
+      </div>
+
       <div>
         <h4 class="mljr-h5 mljr-mb-3">Toast Preview (Static)</h4>
         <div class="mljr-flex mljr-flex-col mljr-gap-3">
@@ -359,6 +489,43 @@
           </div>
         </div>
       </div>
+
+      <CodeExample code={`// Basic toasts
+toastStore.info('Message', 'Title');
+toastStore.success('Success message!');
+toastStore.warning('Warning message');
+toastStore.error('Error occurred');
+
+// Toast with actions
+toastStore.add({
+  type: 'info',
+  title: 'Update Available',
+  message: 'A new version is ready.',
+  actions: [
+    { label: 'Update', onClick: () => updateApp() },
+    { label: 'Later', onClick: () => console.log('Later') },
+  ]
+});
+
+// Toast with promise
+await toastStore.promise(
+  fetchData(),
+  {
+    loading: 'Loading data...',
+    success: 'Data loaded!',
+    error: 'Failed to load data',
+  }
+);
+
+// With dynamic success message
+await toastStore.promise(
+  api.save(data),
+  {
+    loading: 'Saving...',
+    success: (result) => \`Saved \${result.count} items\`,
+    error: (err) => \`Error: \${err.message}\`,
+  }
+);`} />
     </Card>
 
     <!-- Popover -->
@@ -463,4 +630,87 @@
 // Badge
 <Badge>Default</Badge>
 <Badge variant="success">Success</Badge>`} />
+
+  <Card title="Chat Bubbles" description="Message bubbles for chat interfaces">
+    <div class="mljr-space-y-2">
+      <ChatBubble
+        message="Hey! How's the claymorphism design coming along?"
+        variant="bot"
+        username="Alice"
+        timestamp="10:30 AM"
+        avatar="https://api.dicebear.com/7.x/avataaars/svg?seed=Alice"
+      />
+
+      <ChatBubble
+        message="It's looking great! The soft shadows and rounded corners really give it that clay-like feel."
+        variant="user"
+        timestamp="10:32 AM"
+        status="read"
+      />
+
+      <ChatBubble
+        message="That's awesome! Can't wait to see the final result."
+        variant="bot"
+        username="Alice"
+        timestamp="10:33 AM"
+        avatar="https://api.dicebear.com/7.x/avataaars/svg?seed=Alice"
+        status="delivered"
+      />
+
+      <ChatBubble
+        variant="bot"
+        username="Alice"
+        avatar="https://api.dicebear.com/7.x/avataaars/svg?seed=Alice"
+        status="typing"
+      />
+
+      <ChatBubble
+        message="System message: Alice joined the chat"
+        variant="system"
+      />
+    </div>
+
+    <CodeExample code={`<script>
+  import { ChatBubble } from 'mljr-svelte';
+<\/script>
+
+<!-- Bot/Left message -->
+<ChatBubble
+  message="Hello! How can I help you?"
+  variant="bot"
+  username="Support Bot"
+  timestamp="10:30 AM"
+  avatar="/avatar.png"
+/>
+
+<!-- User/Right message -->
+<ChatBubble
+  message="I need help with my account."
+  variant="user"
+  timestamp="10:31 AM"
+  status="read"
+/>
+
+<!-- System message -->
+<ChatBubble
+  message="User joined the chat"
+  variant="system"
+/>
+
+<!-- Typing indicator -->
+<ChatBubble
+  variant="bot"
+  username="Support"
+  avatar="/avatar.png"
+  status="typing"
+/>
+
+<!-- Custom content -->
+<ChatBubble variant="user">
+  <div>
+    <p>Custom message with <strong>formatting</strong></p>
+    <img src="/image.jpg" alt="Example" />
+  </div>
+</ChatBubble>`} />
+  </Card>
 </section>

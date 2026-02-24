@@ -285,6 +285,36 @@
   text-decoration: underline;
 }
 
+/* Toast Actions (buttons) */
+.mljr-toast-actions {
+  display: flex;
+  gap: var(--mljr-space-2);
+  margin-top: var(--mljr-space-2);
+  flex-wrap: wrap;
+}
+
+.mljr-toast-action-btn {
+  padding: var(--mljr-space-1) var(--mljr-space-3);
+  font-size: var(--mljr-text-xs);
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(145deg, var(--mljr-primary-500) 0%, var(--mljr-primary-600) 100%);
+  border: none;
+  border-radius: var(--mljr-radius-md);
+  cursor: pointer;
+  transition: all var(--mljr-transition-fast);
+  box-shadow: var(--mljr-clay-shadow-xs);
+}
+
+.mljr-toast-action-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--mljr-clay-shadow-sm);
+}
+
+.mljr-toast-action-btn:active {
+  transform: translateY(0);
+}
+
 /* Dark mode */
 .dark .mljr-toast,
 [data-theme="dark"] .mljr-toast {

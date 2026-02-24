@@ -1,0 +1,118 @@
+/* ============================================
+   MLJR CSS Framework - Context Menu Component
+   Claymorphism: Right-click contextual menu
+   ============================================ */
+
+.mljr-context-menu-trigger {
+  display: contents;
+}
+
+.mljr-context-menu {
+  position: fixed;
+  z-index: var(--mljr-z-dropdown, 1000);
+  min-width: 13rem;
+  padding: var(--mljr-space-2);
+  background: var(--mljr-frosted-bg-strong, var(--mljr-bg));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--mljr-frosted-border, var(--mljr-border));
+  border-radius: var(--mljr-radius-lg);
+  box-shadow: var(--mljr-clay-shadow-lg);
+  font-family: var(--mljr-font-sans);
+  font-size: var(--mljr-text-sm);
+  animation: mljr-context-menu-in 0.12s ease-out;
+}
+
+@keyframes mljr-context-menu-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.mljr-context-menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--mljr-space-2);
+  width: 100%;
+  padding: var(--mljr-space-2) var(--mljr-space-3);
+  color: var(--mljr-text);
+  background: none;
+  border: none;
+  border-radius: var(--mljr-radius-md);
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--mljr-transition-fast);
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 1.4;
+}
+
+.mljr-context-menu-item:hover:not(:disabled) {
+  background: var(--mljr-bg-secondary);
+  color: var(--mljr-primary-600);
+}
+
+.mljr-context-menu-item:focus-visible {
+  outline: none;
+  background: var(--mljr-bg-secondary);
+  color: var(--mljr-primary-600);
+}
+
+.mljr-context-menu-item:disabled,
+.mljr-context-menu-item-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.mljr-context-menu-item-danger {
+  color: var(--mljr-error);
+}
+
+.mljr-context-menu-item-danger:hover:not(:disabled) {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--mljr-error);
+}
+
+.mljr-context-menu-item-icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.mljr-context-menu-item-label {
+  flex: 1;
+}
+
+.mljr-context-menu-item-shortcut {
+  margin-left: auto;
+  font-size: var(--mljr-text-xs);
+  color: var(--mljr-text-muted);
+  white-space: nowrap;
+}
+
+.mljr-context-menu-divider {
+  height: 1px;
+  margin: var(--mljr-space-1) var(--mljr-space-1);
+  background: var(--mljr-border);
+}
+
+/* Dark mode */
+.dark .mljr-context-menu,
+[data-theme="dark"] .mljr-context-menu {
+  background: var(--mljr-bg-secondary);
+  border-color: var(--mljr-border);
+  box-shadow: var(--mljr-clay-shadow-lg);
+}
+
+.dark .mljr-context-menu-item:hover:not(:disabled),
+[data-theme="dark"] .mljr-context-menu-item:hover:not(:disabled) {
+  background: var(--mljr-bg-tertiary);
+  color: var(--mljr-primary-400);
+}

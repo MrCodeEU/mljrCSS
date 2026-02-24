@@ -141,3 +141,62 @@
 [data-theme="dark"] .mljr-pagination-item {
   background: var(--mljr-bg-secondary);
 }
+
+/* Pagination Wrapper */
+.mljr-pagination-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mljr-space-3);
+  align-items: flex-start;
+}
+
+/* Pagination Controls (Jump To + Items Per Page) */
+.mljr-pagination-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--mljr-space-4);
+  align-items: center;
+}
+
+.mljr-pagination-label {
+  font-size: var(--mljr-text-sm);
+  color: var(--mljr-text-secondary);
+  margin-right: var(--mljr-space-2);
+}
+
+/* Items Per Page */
+.mljr-pagination-per-page {
+  display: flex;
+  align-items: center;
+  gap: var(--mljr-space-2);
+}
+
+/* Jump To Page */
+.mljr-pagination-jump {
+  display: flex;
+  align-items: center;
+  gap: var(--mljr-space-2);
+}
+
+.mljr-pagination-jump-input {
+  width: 4rem;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .mljr-pagination-wrapper {
+    width: 100%;
+  }
+
+  .mljr-pagination {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .mljr-pagination-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+}

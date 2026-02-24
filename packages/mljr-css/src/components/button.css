@@ -51,53 +51,49 @@
   background: var(--mljr-gradient-primary);
   color: white;
   box-shadow:
-    6px 6px 12px rgba(249, 115, 22, 0.3),
-    -6px -6px 12px rgba(255, 255, 255, 0.8),
-    inset 2px 2px 4px rgba(255, 255, 255, 0.3),
-    inset -1px -1px 2px rgba(0, 0, 0, 0.1);
+    6px 6px 14px rgba(249, 115, 22, 0.3),
+    inset -6px -6px 14px rgba(120, 50, 10, 0.15),
+    inset 6px 6px 14px rgba(255, 255, 255, 0.35);
 }
 
 .mljr-btn-primary:hover {
   background: linear-gradient(135deg, var(--mljr-primary-300) 0%, var(--mljr-primary-500) 100%);
   box-shadow:
-    8px 8px 16px rgba(249, 115, 22, 0.35),
-    -8px -8px 16px rgba(255, 255, 255, 0.9),
-    inset 2px 2px 4px rgba(255, 255, 255, 0.3),
-    inset -1px -1px 2px rgba(0, 0, 0, 0.1);
+    8px 8px 18px rgba(249, 115, 22, 0.35),
+    inset -8px -8px 18px rgba(120, 50, 10, 0.15),
+    inset 8px 8px 18px rgba(255, 255, 255, 0.4);
 }
 
 .mljr-btn-primary:active {
   background: linear-gradient(135deg, var(--mljr-primary-500) 0%, var(--mljr-primary-700) 100%);
   box-shadow:
-    inset 4px 4px 8px rgba(0, 0, 0, 0.2),
-    inset -4px -4px 8px rgba(255, 255, 255, 0.1);
+    inset 4px 4px 10px rgba(0, 0, 0, 0.25),
+    inset -4px -4px 10px rgba(255, 255, 255, 0.15);
 }
 
-/* Secondary Button (Teal) */
+/* Secondary Button (Purple) */
 .mljr-btn-secondary {
   background: var(--mljr-gradient-secondary);
   color: white;
   box-shadow:
-    6px 6px 12px rgba(20, 184, 166, 0.25),
-    -6px -6px 12px rgba(255, 255, 255, 0.8),
-    inset 2px 2px 4px rgba(255, 255, 255, 0.3),
-    inset -1px -1px 2px rgba(0, 0, 0, 0.1);
+    6px 6px 14px rgba(168, 85, 247, 0.25),
+    inset -6px -6px 14px rgba(80, 30, 140, 0.15),
+    inset 6px 6px 14px rgba(255, 255, 255, 0.35);
 }
 
 .mljr-btn-secondary:hover {
   background: linear-gradient(135deg, var(--mljr-secondary-300) 0%, var(--mljr-secondary-500) 100%);
   box-shadow:
-    8px 8px 16px rgba(20, 184, 166, 0.3),
-    -8px -8px 16px rgba(255, 255, 255, 0.9),
-    inset 2px 2px 4px rgba(255, 255, 255, 0.3),
-    inset -1px -1px 2px rgba(0, 0, 0, 0.1);
+    8px 8px 18px rgba(168, 85, 247, 0.3),
+    inset -8px -8px 18px rgba(80, 30, 140, 0.15),
+    inset 8px 8px 18px rgba(255, 255, 255, 0.4);
 }
 
 .mljr-btn-secondary:active {
   background: linear-gradient(135deg, var(--mljr-secondary-500) 0%, var(--mljr-secondary-700) 100%);
   box-shadow:
-    inset 4px 4px 8px rgba(0, 0, 0, 0.2),
-    inset -4px -4px 8px rgba(255, 255, 255, 0.1);
+    inset 4px 4px 10px rgba(0, 0, 0, 0.25),
+    inset -4px -4px 10px rgba(255, 255, 255, 0.15);
 }
 
 /* Outline Button Primary */
@@ -179,25 +175,23 @@
   background: linear-gradient(135deg, var(--mljr-error-light) 0%, var(--mljr-error) 100%);
   color: white;
   box-shadow:
-    6px 6px 12px rgba(239, 68, 68, 0.25),
-    -6px -6px 12px rgba(255, 255, 255, 0.8),
-    inset 2px 2px 4px rgba(255, 255, 255, 0.3),
-    inset -1px -1px 2px rgba(0, 0, 0, 0.1);
+    6px 6px 14px rgba(239, 68, 68, 0.25),
+    inset -6px -6px 14px rgba(150, 30, 30, 0.15),
+    inset 6px 6px 14px rgba(255, 255, 255, 0.35);
 }
 
 .mljr-btn-danger:hover {
   background: linear-gradient(135deg, var(--mljr-error) 0%, var(--mljr-error-light) 100%);
   box-shadow:
-    8px 8px 16px rgba(239, 68, 68, 0.3),
-    -8px -8px 16px rgba(255, 255, 255, 0.9),
-    inset 2px 2px 4px rgba(255, 255, 255, 0.3),
-    inset -1px -1px 2px rgba(0, 0, 0, 0.1);
+    8px 8px 18px rgba(239, 68, 68, 0.3),
+    inset -8px -8px 18px rgba(150, 30, 30, 0.15),
+    inset 8px 8px 18px rgba(255, 255, 255, 0.4);
 }
 
 .mljr-btn-danger:active {
   box-shadow:
-    inset 4px 4px 8px rgba(0, 0, 0, 0.2),
-    inset -4px -4px 8px rgba(255, 255, 255, 0.1);
+    inset 4px 4px 10px rgba(0, 0, 0, 0.25),
+    inset -4px -4px 10px rgba(255, 255, 255, 0.15);
 }
 
 /* Success Button */
@@ -205,25 +199,23 @@
   background: linear-gradient(135deg, var(--mljr-success-light) 0%, var(--mljr-success) 100%);
   color: white;
   box-shadow:
-    6px 6px 12px rgba(16, 185, 129, 0.25),
-    -6px -6px 12px rgba(255, 255, 255, 0.8),
-    inset 2px 2px 4px rgba(255, 255, 255, 0.3),
-    inset -1px -1px 2px rgba(0, 0, 0, 0.1);
+    6px 6px 14px rgba(16, 185, 129, 0.25),
+    inset -6px -6px 14px rgba(5, 100, 60, 0.15),
+    inset 6px 6px 14px rgba(255, 255, 255, 0.35);
 }
 
 .mljr-btn-success:hover {
   background: linear-gradient(135deg, var(--mljr-success) 0%, var(--mljr-success-light) 100%);
   box-shadow:
-    8px 8px 16px rgba(16, 185, 129, 0.3),
-    -8px -8px 16px rgba(255, 255, 255, 0.9),
-    inset 2px 2px 4px rgba(255, 255, 255, 0.3),
-    inset -1px -1px 2px rgba(0, 0, 0, 0.1);
+    8px 8px 18px rgba(16, 185, 129, 0.3),
+    inset -8px -8px 18px rgba(5, 100, 60, 0.15),
+    inset 8px 8px 18px rgba(255, 255, 255, 0.4);
 }
 
 .mljr-btn-success:active {
   box-shadow:
-    inset 4px 4px 8px rgba(0, 0, 0, 0.2),
-    inset -4px -4px 8px rgba(255, 255, 255, 0.1);
+    inset 4px 4px 10px rgba(0, 0, 0, 0.25),
+    inset -4px -4px 10px rgba(255, 255, 255, 0.15);
 }
 
 /* Button Sizes */
@@ -347,37 +339,67 @@
 .dark .mljr-btn-primary,
 [data-theme="dark"] .mljr-btn-primary {
   box-shadow:
-    6px 6px 12px rgba(0, 0, 0, 0.4),
-    -6px -6px 12px rgba(68, 64, 60, 0.15),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.15),
-    inset -1px -1px 2px rgba(0, 0, 0, 0.2);
+    6px 6px 14px rgba(0, 0, 0, 0.4),
+    inset -6px -6px 14px rgba(0, 0, 0, 0.2),
+    inset 6px 6px 14px rgba(255, 200, 150, 0.1);
 }
 
 .dark .mljr-btn-primary:hover,
 [data-theme="dark"] .mljr-btn-primary:hover {
   box-shadow:
-    8px 8px 16px rgba(0, 0, 0, 0.45),
-    -8px -8px 16px rgba(68, 64, 60, 0.18),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.15),
-    inset -1px -1px 2px rgba(0, 0, 0, 0.2),
+    8px 8px 18px rgba(0, 0, 0, 0.45),
+    inset -8px -8px 18px rgba(0, 0, 0, 0.2),
+    inset 8px 8px 18px rgba(255, 200, 150, 0.12),
     0 0 20px rgba(249, 115, 22, 0.3);
 }
 
 .dark .mljr-btn-secondary,
 [data-theme="dark"] .mljr-btn-secondary {
   box-shadow:
-    6px 6px 12px rgba(0, 0, 0, 0.4),
-    -6px -6px 12px rgba(68, 64, 60, 0.15),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.15),
-    inset -1px -1px 2px rgba(0, 0, 0, 0.2);
+    6px 6px 14px rgba(0, 0, 0, 0.4),
+    inset -6px -6px 14px rgba(0, 0, 0, 0.2),
+    inset 6px 6px 14px rgba(255, 200, 150, 0.1);
 }
 
 .dark .mljr-btn-secondary:hover,
 [data-theme="dark"] .mljr-btn-secondary:hover {
   box-shadow:
-    8px 8px 16px rgba(0, 0, 0, 0.45),
-    -8px -8px 16px rgba(68, 64, 60, 0.18),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.15),
-    inset -1px -1px 2px rgba(0, 0, 0, 0.2),
-    0 0 20px rgba(20, 184, 166, 0.3);
+    8px 8px 18px rgba(0, 0, 0, 0.45),
+    inset -8px -8px 18px rgba(0, 0, 0, 0.2),
+    inset 8px 8px 18px rgba(255, 200, 150, 0.12),
+    0 0 20px rgba(168, 85, 247, 0.3);
+}
+
+.dark .mljr-btn-danger,
+[data-theme="dark"] .mljr-btn-danger {
+  box-shadow:
+    6px 6px 14px rgba(0, 0, 0, 0.4),
+    inset -6px -6px 14px rgba(0, 0, 0, 0.2),
+    inset 6px 6px 14px rgba(255, 200, 150, 0.1);
+}
+
+.dark .mljr-btn-danger:hover,
+[data-theme="dark"] .mljr-btn-danger:hover {
+  box-shadow:
+    8px 8px 18px rgba(0, 0, 0, 0.45),
+    inset -8px -8px 18px rgba(0, 0, 0, 0.2),
+    inset 8px 8px 18px rgba(255, 200, 150, 0.12),
+    0 0 20px rgba(239, 68, 68, 0.3);
+}
+
+.dark .mljr-btn-success,
+[data-theme="dark"] .mljr-btn-success {
+  box-shadow:
+    6px 6px 14px rgba(0, 0, 0, 0.4),
+    inset -6px -6px 14px rgba(0, 0, 0, 0.2),
+    inset 6px 6px 14px rgba(255, 200, 150, 0.1);
+}
+
+.dark .mljr-btn-success:hover,
+[data-theme="dark"] .mljr-btn-success:hover {
+  box-shadow:
+    8px 8px 18px rgba(0, 0, 0, 0.45),
+    inset -8px -8px 18px rgba(0, 0, 0, 0.2),
+    inset 8px 8px 18px rgba(255, 200, 150, 0.12),
+    0 0 20px rgba(16, 185, 129, 0.3);
 }

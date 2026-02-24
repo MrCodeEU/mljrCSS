@@ -146,6 +146,7 @@
     border-radius: var(--mljr-radius-lg);
     overflow: hidden;
     box-shadow: var(--mljr-clay-inset-sm);
+    background: var(--mljr-bg);
   }
 
   .feature-list {

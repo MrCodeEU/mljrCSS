@@ -1,0 +1,134 @@
+/* ============================================
+   MLJR CSS Framework - Number Input Component
+   Claymorphism: Stepper numeric input
+   ============================================ */
+
+.mljr-number-input {
+  display: inline-flex;
+  align-items: center;
+  background: var(--mljr-bg);
+  border: 1.5px solid var(--mljr-border);
+  border-radius: var(--mljr-radius-md);
+  box-shadow: var(--mljr-clay-inset-sm);
+  overflow: hidden;
+  transition: border-color var(--mljr-transition-fast), box-shadow var(--mljr-transition-fast);
+}
+
+.mljr-number-input:focus-within {
+  border-color: var(--mljr-primary-400);
+  box-shadow:
+    var(--mljr-clay-inset-sm),
+    0 0 0 3px rgba(249, 115, 22, 0.12);
+}
+
+.mljr-number-input-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  background: var(--mljr-bg-secondary);
+  border: none;
+  color: var(--mljr-text);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: all var(--mljr-transition-fast);
+  user-select: none;
+}
+
+.mljr-number-input-btn:hover:not(:disabled) {
+  background: var(--mljr-primary-100);
+  color: var(--mljr-primary-700);
+}
+
+.mljr-number-input-btn:active:not(:disabled) {
+  background: var(--mljr-primary-200);
+  box-shadow: var(--mljr-clay-inset-sm);
+}
+
+.mljr-number-input-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.mljr-number-input-decrement {
+  border-right: 1px solid var(--mljr-border);
+}
+
+.mljr-number-input-increment {
+  border-left: 1px solid var(--mljr-border);
+}
+
+.mljr-number-input-field {
+  flex: 1;
+  min-width: 3rem;
+  padding: 0 var(--mljr-space-2);
+  border: none;
+  background: transparent;
+  color: var(--mljr-text);
+  font-family: var(--mljr-font-sans);
+  font-size: var(--mljr-text-sm);
+  font-weight: 500;
+  text-align: center;
+  outline: none;
+  -moz-appearance: textfield;
+}
+
+.mljr-number-input-field::-webkit-outer-spin-button,
+.mljr-number-input-field::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Size variants */
+.mljr-number-input-sm .mljr-number-input-btn {
+  width: 1.875rem;
+  height: 1.875rem;
+  font-size: 1rem;
+}
+
+.mljr-number-input-sm .mljr-number-input-field {
+  font-size: var(--mljr-text-xs);
+  min-width: 2.5rem;
+}
+
+.mljr-number-input-lg .mljr-number-input-btn {
+  width: 2.75rem;
+  height: 2.75rem;
+  font-size: 1.25rem;
+}
+
+.mljr-number-input-lg .mljr-number-input-field {
+  font-size: var(--mljr-text-base);
+  min-width: 3.5rem;
+}
+
+/* Disabled state */
+.mljr-number-input-disabled {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+/* Readonly state */
+.mljr-number-input-readonly .mljr-number-input-btn {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Dark mode */
+.dark .mljr-number-input,
+[data-theme="dark"] .mljr-number-input {
+  background: var(--mljr-bg);
+  border-color: var(--mljr-border);
+  box-shadow: var(--mljr-clay-inset-sm);
+}
+
+.dark .mljr-number-input-btn:hover:not(:disabled),
+[data-theme="dark"] .mljr-number-input-btn:hover:not(:disabled) {
+  background: rgba(249, 115, 22, 0.15);
+  color: var(--mljr-primary-300);
+}

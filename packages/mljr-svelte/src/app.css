@@ -8,6 +8,7 @@
 @import 'mljr-css/src/layout/sidebar.css';
 @import 'mljr-css/src/components/footer.css';
 @import 'mljr-css/src/layout/navigation.css';
+@import 'mljr-css/src/layout/navbar.css';
 @import 'mljr-css/src/layout/sidebar.css';
 @import 'mljr-css/src/components/button.css';
 @import 'mljr-css/src/components/input.css';
@@ -40,6 +41,37 @@
 @import 'mljr-css/src/components/stepper.css';
 @import 'mljr-css/src/components/drawer.css';
 @import 'mljr-css/src/components/empty-state.css';
+@import 'mljr-css/src/components/navigation-rail.css';
+@import 'mljr-css/src/components/dock.css';
+@import 'mljr-css/src/components/tree-view.css';
+@import 'mljr-css/src/components/marquee.css';
+@import 'mljr-css/src/components/autocomplete.css';
+@import 'mljr-css/src/components/animated-headline.css';
+@import 'mljr-css/src/components/image-compare.css';
+@import 'mljr-css/src/components/table-of-content.css';
+@import 'mljr-css/src/components/chart.css';
+@import 'mljr-css/src/components/inview.css';
+@import 'mljr-css/src/components/lazy-image.css';
+@import 'mljr-css/src/components/infinite-scroll.css';
+@import 'mljr-css/src/components/diff-viewer.css';
+@import 'mljr-css/src/components/audio-visualizer.css';
+@import 'mljr-css/src/components/pin-input.css';
+@import 'mljr-css/src/components/video-player.css';
+@import 'mljr-css/src/components/drop-zone.css';
+@import 'mljr-css/src/components/rich-text-editor.css';
+@import 'mljr-css/src/components/map-embed.css';
+@import 'mljr-css/src/components/pdf-viewer.css';
+@import 'mljr-css/src/components/turnstile.css';
+@import 'mljr-css/src/components/cookie-banner.css';
+@import 'mljr-css/src/components/legal-page.css';
+@import 'mljr-css/src/components/number-input.css';
+@import 'mljr-css/src/components/context-menu.css';
+@import 'mljr-css/src/components/calendar.css';
+@import 'mljr-css/src/components/notification-center.css';
+@import 'mljr-css/src/components/gauge.css';
+@import 'mljr-css/src/components/alert-dialog.css';
+@import 'mljr-css/src/components/number-ticker.css';
+@import 'mljr-css/src/components/resizable.css';
 @import 'mljr-css/src/utilities/utilities.css';
 
 /* Tailwind layers - must come after @import */

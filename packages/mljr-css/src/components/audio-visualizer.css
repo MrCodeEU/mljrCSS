@@ -1,0 +1,96 @@
+/* ============================================
+   AudioVisualizer - Web Audio API canvas viz
+   ============================================ */
+
+.mljr-audio-viz {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mljr-space-3);
+}
+
+.mljr-audio-viz-canvas-wrap {
+  position: relative;
+  border-radius: var(--mljr-radius-md);
+  overflow: hidden;
+  background: var(--mljr-surface-2);
+  border: 1px solid var(--mljr-border);
+}
+
+.mljr-audio-viz canvas {
+  display: block;
+  width: 100%;
+}
+
+/* Idle/stopped overlay */
+.mljr-audio-viz-idle {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--mljr-text-muted);
+  font-size: 0.875rem;
+  pointer-events: none;
+}
+
+.mljr-audio-viz-idle svg {
+  opacity: 0.35;
+}
+
+/* Controls row */
+.mljr-audio-viz-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* Permission error */
+.mljr-audio-viz-error {
+  padding: 0.625rem 0.875rem;
+  background: rgba(220, 38, 38, 0.08);
+  border: 1px solid rgba(220, 38, 38, 0.25);
+  border-radius: var(--mljr-radius-sm);
+  color: #dc2626;
+  font-size: 0.8125rem;
+}
+
+.dark .mljr-audio-viz-error {
+  color: #f87171;
+  background: rgba(220, 38, 38, 0.12);
+}
+
+/* Type selector pills */
+.mljr-audio-viz-types {
+  display: flex;
+  gap: 0.25rem;
+  background: var(--mljr-surface-2);
+  border: 1px solid var(--mljr-border);
+  border-radius: var(--mljr-radius-full);
+  padding: 3px;
+}
+
+.mljr-audio-viz-type-btn {
+  padding: 0.2rem 0.75rem;
+  border-radius: var(--mljr-radius-full);
+  font-size: 0.8rem;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--mljr-text-muted);
+  transition: background 150ms, color 150ms;
+  white-space: nowrap;
+}
+
+.mljr-audio-viz-type-btn:hover {
+  background: var(--mljr-surface-3, var(--mljr-surface));
+  color: var(--mljr-text);
+}
+
+.mljr-audio-viz-type-btn-active {
+  background: var(--mljr-primary-500);
+  color: #fff;
+  font-weight: 600;
+}

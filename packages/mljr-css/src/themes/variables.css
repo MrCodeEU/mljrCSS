@@ -58,28 +58,75 @@
   --mljr-gray-950: #0c0a09;
 
   /* Semantic Colors - High contrast, colorblind-friendly */
-  /* Success: Teal-leaning green (distinct from red for colorblind) */
+  /* Success: Teal-leaning green (distinct from red for colorblind) - Full shade scale */
+  --mljr-success-50: #f0fdf4;
+  --mljr-success-100: #dcfce7;
+  --mljr-success-200: #bbf7d0;
+  --mljr-success-300: #86efac;
+  --mljr-success-400: #4ade80;
+  --mljr-success-500: #22c55e;
+  --mljr-success-600: #16a34a;
+  --mljr-success-700: #15803d;
+  --mljr-success-800: #166534;
+  --mljr-success-900: #14532d;
+  --mljr-success-950: #052e16;
   --mljr-success: #10b981;
   --mljr-success-light: #34d399;
   --mljr-success-dark: #059669;
-  /* Warning: Rich amber/gold */
+
+  /* Warning: Rich amber/gold - Full shade scale */
+  --mljr-warning-50: #fffbeb;
+  --mljr-warning-100: #fef3c7;
+  --mljr-warning-200: #fde68a;
+  --mljr-warning-300: #fcd34d;
+  --mljr-warning-400: #fbbf24;
+  --mljr-warning-500: #f59e0b;
+  --mljr-warning-600: #d97706;
+  --mljr-warning-700: #b45309;
+  --mljr-warning-800: #92400e;
+  --mljr-warning-900: #78350f;
+  --mljr-warning-950: #451a03;
   --mljr-warning: #f59e0b;
   --mljr-warning-light: #fbbf24;
   --mljr-warning-dark: #d97706;
-  /* Error: Deep crimson (very distinct from orange) */
+
+  /* Error: Deep crimson (very distinct from orange) - Full shade scale */
+  --mljr-error-50: #fef2f2;
+  --mljr-error-100: #fee2e2;
+  --mljr-error-200: #fecaca;
+  --mljr-error-300: #fca5a5;
+  --mljr-error-400: #f87171;
+  --mljr-error-500: #ef4444;
+  --mljr-error-600: #dc2626;
+  --mljr-error-700: #b91c1c;
+  --mljr-error-800: #991b1b;
+  --mljr-error-900: #7f1d1d;
+  --mljr-error-950: #450a0a;
   --mljr-error: #ef4444;
   --mljr-error-light: #f87171;
   --mljr-error-dark: #dc2626;
-  /* Info: Soft blue */
+
+  /* Info: Soft blue - Full shade scale */
+  --mljr-info-50: #eff6ff;
+  --mljr-info-100: #dbeafe;
+  --mljr-info-200: #bfdbfe;
+  --mljr-info-300: #93c5fd;
+  --mljr-info-400: #60a5fa;
+  --mljr-info-500: #3b82f6;
+  --mljr-info-600: #2563eb;
+  --mljr-info-700: #1d4ed8;
+  --mljr-info-800: #1e40af;
+  --mljr-info-900: #1e3a8a;
+  --mljr-info-950: #172554;
   --mljr-info: #3b82f6;
   --mljr-info-light: #60a5fa;
   --mljr-info-dark: #2563eb;
 
-  /* Light Mode Theme Colors - Slightly darker for better contrast */
-  --mljr-bg: #f5f0eb;
-  --mljr-bg-secondary: #efe8e1;
-  --mljr-bg-tertiary: #e8dfd6;
-  --mljr-bg-gradient: linear-gradient(135deg, #f5f0eb 0%, #efe8e1 50%, #f0ebe5 100%);
+  /* Light Mode Theme Colors - Brightened for clay aesthetic */
+  --mljr-bg: #faf7f4;
+  --mljr-bg-secondary: #f3ede7;
+  --mljr-bg-tertiary: #ebe4dc;
+  --mljr-bg-gradient: linear-gradient(135deg, #faf7f4 0%, #f3ede7 50%, #f5f0eb 100%);
   --mljr-text: #44403c;
   --mljr-text-secondary: #78716c;
   --mljr-text-muted: #a8a29e;
@@ -89,84 +136,85 @@
 
   /* ============================================
      Claymorphism Shadow System
-     Smooth gradual shadows with subtle warm tint
-     Size-aware: xs for tiny, sm for small, default for medium, lg/xl for large
+     Triple-shadow pattern: outset + inset-dark + inset-light
+     Creates an "inflated rubber" 3D puffy effect
      ============================================ */
 
   /* Extra small - for badges, status dots, tiny elements */
   --mljr-clay-shadow-xs:
-    3px 3px 6px rgba(100, 60, 30, 0.12),
-    -2px -2px 4px rgba(255, 255, 255, 0.8);
+    3px 3px 6px rgba(100, 60, 30, 0.18),
+    inset -3px -3px 6px rgba(100, 60, 30, 0.1),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.5);
 
-  /* Small - for buttons, inputs, small cards */
+  /* Small - for chips, small cards */
   --mljr-clay-shadow-sm:
-    5px 5px 12px rgba(100, 60, 30, 0.15),
-    -3px -3px 8px rgba(255, 255, 255, 0.9),
-    inset 0px 1px 2px rgba(255, 255, 255, 0.5);
+    5px 5px 10px rgba(100, 60, 30, 0.2),
+    inset -5px -5px 10px rgba(100, 60, 30, 0.12),
+    inset 5px 5px 10px rgba(255, 255, 255, 0.55);
 
-  /* Default - for cards, panels */
+  /* Default - for buttons, inputs, cards */
   --mljr-clay-shadow:
-    8px 8px 20px rgba(100, 60, 30, 0.18),
-    -6px -6px 16px rgba(255, 255, 255, 0.95),
-    inset 0px 2px 4px rgba(255, 255, 255, 0.6);
+    8px 8px 16px rgba(100, 60, 30, 0.22),
+    inset -8px -8px 16px rgba(100, 60, 30, 0.14),
+    inset 8px 8px 16px rgba(255, 255, 255, 0.6);
 
   /* Large - for modals, elevated cards */
   --mljr-clay-shadow-lg:
-    14px 14px 35px rgba(100, 60, 30, 0.2),
-    -10px -10px 25px rgba(255, 255, 255, 0.95),
-    inset 0px 3px 6px rgba(255, 255, 255, 0.6);
+    12px 12px 24px rgba(100, 60, 30, 0.24),
+    inset -12px -12px 24px rgba(100, 60, 30, 0.14),
+    inset 12px 12px 24px rgba(255, 255, 255, 0.6);
 
   /* Extra large - for hero sections, major overlays */
   --mljr-clay-shadow-xl:
-    20px 20px 50px rgba(100, 60, 30, 0.22),
-    -14px -14px 35px rgba(255, 255, 255, 0.98),
-    inset 0px 4px 10px rgba(255, 255, 255, 0.7);
+    16px 16px 32px rgba(100, 60, 30, 0.26),
+    inset -16px -16px 32px rgba(100, 60, 30, 0.14),
+    inset 16px 16px 32px rgba(255, 255, 255, 0.65);
 
   /* Inset shadows (concave/pressed effect) */
   --mljr-clay-inset-xs:
-    inset 2px 2px 4px rgba(100, 60, 30, 0.12),
-    inset -1px -1px 3px rgba(255, 255, 255, 0.7);
+    inset 2px 2px 4px rgba(100, 60, 30, 0.18),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.5);
 
   --mljr-clay-inset-sm:
-    inset 3px 3px 7px rgba(100, 60, 30, 0.14),
-    inset -2px -2px 5px rgba(255, 255, 255, 0.8);
+    inset 3px 3px 7px rgba(100, 60, 30, 0.2),
+    inset -3px -3px 7px rgba(255, 255, 255, 0.55);
 
   --mljr-clay-inset:
-    inset 5px 5px 12px rgba(100, 60, 30, 0.16),
-    inset -4px -4px 10px rgba(255, 255, 255, 0.85);
+    inset 5px 5px 12px rgba(100, 60, 30, 0.22),
+    inset -5px -5px 12px rgba(255, 255, 255, 0.6);
 
   --mljr-clay-inset-lg:
-    inset 8px 8px 18px rgba(100, 60, 30, 0.18),
-    inset -6px -6px 14px rgba(255, 255, 255, 0.9);
+    inset 8px 8px 18px rgba(100, 60, 30, 0.22),
+    inset -8px -8px 18px rgba(255, 255, 255, 0.6);
 
-  /* Button shadow (convex with subtle inner highlight) */
+  /* Button shadow (convex with triple-shadow) */
   --mljr-clay-btn:
-    6px 6px 14px rgba(100, 60, 30, 0.16),
-    -4px -4px 10px rgba(255, 255, 255, 0.9),
-    inset 0px 2px 4px rgba(255, 255, 255, 0.6);
+    6px 6px 14px rgba(100, 60, 30, 0.2),
+    inset -6px -6px 14px rgba(100, 60, 30, 0.12),
+    inset 6px 6px 14px rgba(255, 255, 255, 0.55);
 
   /* Button pressed state */
   --mljr-clay-btn-pressed:
-    inset 3px 3px 8px rgba(120, 80, 50, 0.15),
-    inset -2px -2px 6px rgba(255, 255, 255, 0.5);
+    inset 3px 3px 8px rgba(100, 60, 30, 0.22),
+    inset -3px -3px 8px rgba(255, 255, 255, 0.5);
 
-  /* Primary colored clay shadow (for primary buttons/elements) - smooth gradient */
+  /* Primary colored clay shadow (for primary buttons/elements) */
   --mljr-clay-primary:
-    5px 5px 14px rgba(234, 88, 12, 0.2),
-    -3px -3px 10px rgba(255, 255, 255, 0.85),
-    inset 0px 2px 5px rgba(255, 255, 255, 0.4);
+    5px 5px 14px rgba(234, 88, 12, 0.25),
+    inset -5px -5px 14px rgba(100, 60, 30, 0.1),
+    inset 5px 5px 14px rgba(255, 255, 255, 0.45);
 
   /* Secondary colored clay shadow (purple) */
   --mljr-clay-secondary:
-    5px 5px 14px rgba(147, 51, 234, 0.18),
-    -3px -3px 10px rgba(255, 255, 255, 0.85),
-    inset 0px 2px 5px rgba(255, 255, 255, 0.4);
+    5px 5px 14px rgba(147, 51, 234, 0.22),
+    inset -5px -5px 14px rgba(100, 60, 30, 0.1),
+    inset 5px 5px 14px rgba(255, 255, 255, 0.45);
 
   /* Accent colored clay shadow (teal) */
   --mljr-clay-accent:
-    5px 5px 14px rgba(13, 148, 136, 0.18),
-    -3px -3px 10px rgba(255, 255, 255, 0.85),
-    inset 0px 2px 5px rgba(255, 255, 255, 0.4);
+    5px 5px 14px rgba(13, 148, 136, 0.22),
+    inset -5px -5px 14px rgba(100, 60, 30, 0.1),
+    inset 5px 5px 14px rgba(255, 255, 255, 0.45);
 
   /* Traditional shadows (kept for compatibility) */
   --mljr-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -176,14 +224,14 @@
   --mljr-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 
   /* ============================================
-     Border Radius System (Soft, rounded)
+     Border Radius System (Soft, rounded - clay-sized)
      ============================================ */
-  --mljr-radius-sm: 12px;
-  --mljr-radius: 16px;
-  --mljr-radius-md: 20px;
-  --mljr-radius-lg: 28px;
-  --mljr-radius-xl: 36px;
-  --mljr-radius-2xl: 48px;
+  --mljr-radius-sm: 14px;
+  --mljr-radius: 20px;
+  --mljr-radius-md: 24px;
+  --mljr-radius-lg: 32px;
+  --mljr-radius-xl: 40px;
+  --mljr-radius-2xl: 52px;
   --mljr-radius-full: 9999px;
 
   /* Gradient definitions - more visible color transitions */
@@ -206,8 +254,8 @@
   --mljr-space-16: 4rem;
 
   /* Typography - Friendly, rounded fonts */
-  --mljr-font-display: 'Inter', system-ui, sans-serif;
-  --mljr-font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --mljr-font-display: 'Nunito', system-ui, sans-serif;
+  --mljr-font-sans: 'Nunito', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --mljr-font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
 
   --mljr-text-xs: 0.75rem;
@@ -248,7 +296,7 @@
   --mljr-z-tooltip: 1070;
 }
 
-/* Dark Mode (Warm dark tones - slightly lighter for better contrast) */
+/* Dark Mode (Warm dark tones) */
 .dark,
 [data-theme="dark"] {
   --mljr-bg: #2a2522;
@@ -261,73 +309,74 @@
   --mljr-border: #4a4542;
   --mljr-border-strong: #5c5652;
 
-  /* Clay shadows adapted for dark mode - more visible floating effect */
+  /* Clay shadows for dark mode - triple pattern with warm glow */
   --mljr-clay-shadow-xs:
-    3px 3px 6px rgba(0, 0, 0, 0.5),
-    -2px -2px 4px rgba(80, 75, 70, 0.2);
+    3px 3px 6px rgba(0, 0, 0, 0.45),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.2),
+    inset 3px 3px 6px rgba(255, 200, 150, 0.08);
 
   --mljr-clay-shadow-sm:
-    5px 5px 12px rgba(0, 0, 0, 0.55),
-    -3px -3px 8px rgba(80, 75, 70, 0.18),
-    inset 0px 1px 2px rgba(255, 200, 150, 0.08);
+    5px 5px 10px rgba(0, 0, 0, 0.5),
+    inset -5px -5px 10px rgba(0, 0, 0, 0.22),
+    inset 5px 5px 10px rgba(255, 200, 150, 0.1);
 
   --mljr-clay-shadow:
-    8px 8px 22px rgba(0, 0, 0, 0.6),
-    -6px -6px 16px rgba(80, 75, 70, 0.2),
-    inset 0px 2px 4px rgba(255, 200, 150, 0.1);
+    8px 8px 16px rgba(0, 0, 0, 0.55),
+    inset -8px -8px 16px rgba(0, 0, 0, 0.25),
+    inset 8px 8px 16px rgba(255, 200, 150, 0.12);
 
   --mljr-clay-shadow-lg:
-    14px 14px 38px rgba(0, 0, 0, 0.65),
-    -10px -10px 26px rgba(80, 75, 70, 0.22),
-    inset 0px 3px 6px rgba(255, 200, 150, 0.12);
+    12px 12px 24px rgba(0, 0, 0, 0.6),
+    inset -12px -12px 24px rgba(0, 0, 0, 0.25),
+    inset 12px 12px 24px rgba(255, 200, 150, 0.14);
 
   --mljr-clay-shadow-xl:
-    20px 20px 55px rgba(0, 0, 0, 0.7),
-    -14px -14px 40px rgba(80, 75, 70, 0.25),
-    inset 0px 4px 10px rgba(255, 200, 150, 0.15);
+    16px 16px 32px rgba(0, 0, 0, 0.65),
+    inset -16px -16px 32px rgba(0, 0, 0, 0.25),
+    inset 16px 16px 32px rgba(255, 200, 150, 0.16);
 
   --mljr-clay-inset-xs:
     inset 2px 2px 4px rgba(0, 0, 0, 0.5),
-    inset -1px -1px 3px rgba(80, 75, 70, 0.15);
+    inset -2px -2px 4px rgba(80, 75, 70, 0.15);
 
   --mljr-clay-inset-sm:
     inset 3px 3px 7px rgba(0, 0, 0, 0.55),
-    inset -2px -2px 5px rgba(80, 75, 70, 0.18);
+    inset -3px -3px 7px rgba(80, 75, 70, 0.18);
 
   --mljr-clay-inset:
-    inset 5px 5px 14px rgba(0, 0, 0, 0.6),
-    inset -4px -4px 10px rgba(80, 75, 70, 0.2);
+    inset 5px 5px 12px rgba(0, 0, 0, 0.6),
+    inset -5px -5px 12px rgba(80, 75, 70, 0.2);
 
   --mljr-clay-inset-lg:
-    inset 6px 6px 14px rgba(0, 0, 0, 0.55),
-    inset -6px -6px 12px rgba(70, 65, 60, 0.18);
+    inset 8px 8px 18px rgba(0, 0, 0, 0.6),
+    inset -8px -8px 18px rgba(80, 75, 70, 0.2);
 
   --mljr-clay-btn:
-    4px 4px 10px rgba(0, 0, 0, 0.45),
-    -3px -3px 8px rgba(70, 65, 60, 0.15),
-    inset 0px 2px 4px rgba(255, 200, 150, 0.06);
+    6px 6px 14px rgba(0, 0, 0, 0.5),
+    inset -6px -6px 14px rgba(0, 0, 0, 0.2),
+    inset 6px 6px 14px rgba(255, 200, 150, 0.08);
 
   --mljr-clay-btn-pressed:
-    inset 3px 3px 8px rgba(0, 0, 0, 0.5),
-    inset -2px -2px 6px rgba(70, 65, 60, 0.1);
+    inset 3px 3px 8px rgba(0, 0, 0, 0.55),
+    inset -3px -3px 8px rgba(80, 75, 70, 0.12);
 
-  /* Primary colored clay shadow for dark mode - warm glow */
+  /* Primary colored clay shadow for dark mode */
   --mljr-clay-primary:
-    5px 5px 14px rgba(234, 88, 12, 0.25),
-    -3px -3px 10px rgba(70, 65, 60, 0.15),
-    inset 0px 2px 5px rgba(255, 200, 150, 0.08);
+    5px 5px 14px rgba(234, 88, 12, 0.3),
+    inset -5px -5px 14px rgba(0, 0, 0, 0.2),
+    inset 5px 5px 14px rgba(255, 200, 150, 0.08);
 
   /* Secondary colored clay shadow for dark mode (purple) */
   --mljr-clay-secondary:
-    5px 5px 14px rgba(147, 51, 234, 0.22),
-    -3px -3px 10px rgba(70, 65, 60, 0.15),
-    inset 0px 2px 5px rgba(255, 200, 150, 0.06);
+    5px 5px 14px rgba(147, 51, 234, 0.25),
+    inset -5px -5px 14px rgba(0, 0, 0, 0.2),
+    inset 5px 5px 14px rgba(255, 200, 150, 0.06);
 
   /* Accent colored clay shadow for dark mode (teal) */
   --mljr-clay-accent:
-    5px 5px 14px rgba(13, 148, 136, 0.22),
-    -3px -3px 10px rgba(70, 65, 60, 0.15),
-    inset 0px 2px 5px rgba(255, 200, 150, 0.06);
+    5px 5px 14px rgba(13, 148, 136, 0.25),
+    inset -5px -5px 14px rgba(0, 0, 0, 0.2),
+    inset 5px 5px 14px rgba(255, 200, 150, 0.06);
 
   /* Frosted Glass for dark mode */
   --mljr-frosted-bg: rgba(51, 46, 43, 0.75);

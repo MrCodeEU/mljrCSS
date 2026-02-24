@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render } from 'vitest-browser-svelte';
 import { page } from '@vitest/browser/context';
-import Password from '../lib/components/Password.svelte';
+import Password from '../lib/components/forms/Password.svelte';
 
 describe('Password', () => {
   describe('Rendering', () => {

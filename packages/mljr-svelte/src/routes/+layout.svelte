@@ -1,7 +1,8 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
   import '../app.css';
-  import { Footer, Background, UnifiedNav, LanguageToggle, setLocale, locales } from '$lib';
+  import { Footer, Background, UnifiedNav, LanguageToggle, ThemeToggle, setLocale, locales, themeStore } from '$lib';
+  import * as m from '$lib/paraglide/messages';
   import { onMount } from 'svelte';
 
   interface Props {
@@ -15,11 +16,9 @@
 
   // Initialize theme and language on mount
   onMount(() => {
-    const theme = document.cookie.match(/theme=(dark|light)/)?.[1];
-    if (theme) {
-      document.documentElement.setAttribute('data-theme', theme);
-    }
-    
+    const savedTheme = document.cookie.match(/theme=(dark|light|system)/)?.[1] as 'dark' | 'light' | 'system' | undefined;
+    themeStore.initialize(savedTheme);
+
     // Initialize language from cookie
     const lang = document.cookie.match(/PARAGLIDE_LOCALE=(en|de)/)?.[1];
     if (lang && locales.includes(lang as 'en' | 'de')) {
@@ -44,77 +43,88 @@
     return () => window.removeEventListener('resize', checkMobile);
   });
 
-  const categories = [
-    { id: 'background', name: 'Effects', items: [
-      { id: 'background', label: 'Background', href: '#background-section' },
-      { id: 'gradients', label: 'Gradients', href: '#gradients' },
+  let categories = $derived([
+    { id: 'forms', name: m.nav_forms(), items: [
+      { id: 'forms', label: m.nav_input_select(), href: '/components/forms#forms' },
+      { id: 'textarea', label: m.section_textarea(), href: '/components/forms#textarea' },
+      { id: 'radio', label: m.nav_radio_checkbox(), href: '/components/forms#radio' },
+      { id: 'file-upload', label: m.section_file_upload(), href: '/components/forms#file-upload' },
+      { id: 'advanced-inputs', label: m.section_advanced_inputs(), href: '/components/forms#advanced-inputs' },
+      { id: 'time-picker', label: m.nav_time_picker(), href: '/components/forms#time-picker' },
+      { id: 'pin-input', label: m.nav_pin_input(), href: '/components/forms#pin-input' },
+      { id: 'new-inputs', label: m.nav_phone_date_color(), href: '/components/forms#new-inputs' },
+      { id: 'chip-input', label: m.nav_chip_input(), href: '/components/forms#chip-input' },
+      { id: 'autocomplete', label: m.nav_autocomplete(), href: '/components/forms#autocomplete' },
     ]},
-    { id: 'navigation', name: 'Navigation', items: [
-      { id: 'navbar', label: 'Navbar', href: '#navbar-section' },
-      { id: 'unified-nav', label: 'UnifiedNav', href: '#unified-nav-section' },
-      { id: 'tabs', label: 'Tabs', href: '#data' },
-      { id: 'breadcrumb', label: 'Breadcrumb', href: '#data' },
-      { id: 'pagination', label: 'Pagination', href: '#display-components' },
-      { id: 'stepper', label: 'Stepper', href: '#stepper' },
+    { id: 'buttons', name: m.nav_buttons_chips(), items: [
+      { id: 'buttons', label: m.nav_buttons(), href: '/components/buttons#buttons' },
+      { id: 'chip', label: m.nav_chip(), href: '/components/buttons#chip' },
+      { id: 'copy-button', label: m.nav_copy_button(), href: '/components/buttons#copy-button' },
     ]},
-    { id: 'layout', name: 'Layout', items: [
-      { id: 'layout', label: 'Container & Grid', href: '#layout' },
-      { id: 'sidebar', label: 'Sidebar', href: '#sidebar-section' },
-      { id: 'footer', label: 'Footer', href: '#footer-section' },
+    { id: 'data', name: m.nav_data_display(), items: [
+      { id: 'data', label: m.nav_card_table_stats(), href: '/components/data#data' },
+      { id: 'tree-view', label: m.nav_tree_view(), href: '/components/data#tree-view' },
+      { id: 'stepper', label: m.section_stepper(), href: '/components/data#stepper' },
+      { id: 'data-graphs', label: m.nav_charts_graphs(), href: '/components/data#data-graphs' },
     ]},
-    { id: 'forms', name: 'Forms', items: [
-      { id: 'forms', label: 'Input & Select', href: '#forms' },
-      { id: 'textarea', label: 'Textarea', href: '#textarea' },
-      { id: 'password', label: 'Password', href: '#forms' },
-      { id: 'checkbox', label: 'Checkbox', href: '#forms' },
-      { id: 'radio', label: 'Radio', href: '#radio' },
-      { id: 'switch', label: 'Switch', href: '#forms' },
-      { id: 'file-upload', label: 'File Upload', href: '#file-upload' },
-      { id: 'advanced-inputs', label: 'Advanced Inputs', href: '#advanced-inputs' },
-      { id: 'new-inputs', label: 'Phone, Date, Color, Email', href: '#new-inputs' },
+    { id: 'feedback', name: m.nav_feedback_display(), items: [
+      { id: 'feedback', label: m.nav_alert_toast_spinner(), href: '/components/feedback#feedback' },
+      { id: 'display-components', label: m.nav_badges_tooltip(), href: '/components/feedback#display-components' },
+      { id: 'empty-state', label: m.nav_empty_state(), href: '/components/feedback#empty-state' },
+      { id: 'carousel', label: m.section_carousel(), href: '/components/feedback#carousel' },
+      { id: 'swap', label: m.nav_swap(), href: '/components/feedback#swap' },
+      { id: 'countdown', label: m.nav_countdown(), href: '/components/feedback#countdown' },
     ]},
-    { id: 'feedback', name: 'Feedback', items: [
-      { id: 'alert', label: 'Alert', href: '#feedback' },
-      { id: 'toast', label: 'Toast', href: '#feedback' },
-      { id: 'progress', label: 'Progress', href: '#display-components' },
-      { id: 'skeleton', label: 'Skeleton', href: '#display-components' },
-      { id: 'spinner', label: 'Spinner', href: '#feedback' },
-      { id: 'empty-state', label: 'Empty State', href: '#empty-state' },
+    { id: 'overlays', name: m.nav_overlays(), items: [
+      { id: 'modal', label: m.nav_modal(), href: '/components/overlays#modal' },
+      { id: 'drawer', label: m.nav_drawer(), href: '/components/overlays#drawer' },
+      { id: 'popover', label: m.nav_popover_dropdown(), href: '/components/overlays#additional-components' },
     ]},
-    { id: 'data', name: 'Data Display', items: [
-      { id: 'card', label: 'Card', href: '#data' },
-      { id: 'table', label: 'Table', href: '#data' },
-      { id: 'stats', label: 'Stats', href: '#data' },
-      { id: 'avatar', label: 'Avatar', href: '#display-components' },
-      { id: 'badge', label: 'Badge', href: '#feedback' },
-      { id: 'chip', label: 'Chip', href: '#chip' },
+    { id: 'navigation', name: m.nav_navigation(), items: [
+      { id: 'navbar', label: m.nav_navbar(), href: '/components/navigation#navbar-section' },
+      { id: 'tabs', label: m.nav_tabs_breadcrumb(), href: '/components/navigation#navigation' },
+      { id: 'navigation-rail', label: m.nav_navigation_rail(), href: '/components/navigation#navigation-rail' },
+      { id: 'dock', label: m.nav_dock(), href: '/components/navigation#dock' },
+      { id: 'unified-nav', label: m.nav_unified_nav(), href: '/components/navigation#unified-nav-section' },
     ]},
-    
-    { id: 'overlays', name: 'Overlays', items: [
-      { id: 'modal', label: 'Modal', href: '#modal' },
-      { id: 'popover', label: 'Popover', href: '#additional-components' },
-      { id: 'tooltip', label: 'Tooltip', href: '#display-components' },
-      { id: 'dropdown', label: 'Dropdown', href: '#additional-components' },
-      { id: 'drawer', label: 'Drawer', href: '#drawer' },
+    { id: 'layout', name: m.nav_layout(), items: [
+      { id: 'layout', label: m.nav_container_grid(), href: '/components/layout#layout' },
+      { id: 'sidebar', label: m.nav_sidebar(), href: '/components/layout#sidebar-section' },
+      { id: 'background', label: m.nav_background(), href: '/components/layout#background-section' },
+      { id: 'gradients', label: m.nav_gradients(), href: '/components/layout#gradients' },
+      { id: 'footer', label: m.nav_footer(), href: '/components/layout#footer-section' },
+      { id: 'hero', label: m.nav_hero_section(), href: '/components/layout#hero' },
     ]},
-    { id: 'media', name: 'Media', items: [
-      { id: 'carousel', label: 'Carousel', href: '#carousel' },
-      { id: 'rating', label: 'Rating', href: '#additional-components' },
+    { id: 'media', name: m.nav_media(), items: [
+      { id: 'marquee', label: m.nav_marquee(), href: '/components/media#marquee' },
+      { id: 'image-compare', label: m.nav_image_compare(), href: '/components/media#image-compare' },
+      { id: 'audio-visualizer', label: m.nav_audio_visualizer(), href: '/components/media#audio-visualizer' },
+      { id: 'video-player', label: m.nav_video_player(), href: '/components/media#video-player' },
+      { id: 'drop-zone', label: m.nav_drop_zone(), href: '/components/media#drop-zone' },
+      { id: 'scroll-reveal', label: m.nav_scroll_reveal(), href: '/components/media#scroll-reveal' },
+      { id: 'lazy-load', label: m.nav_lazy_load(), href: '/components/media#lazy-load' },
     ]},
-    { id: 'misc', name: 'Misc', items: [
-      { id: 'buttons', label: 'Button', href: '#buttons' },
-      { id: 'icons', label: 'Icon', href: '#icons' },
-      { id: 'divider', label: 'Divider', href: '#display-components' },
-      { id: 'accordion', label: 'Accordion', href: '#data' },
+    { id: 'text', name: m.nav_text(), items: [
+      { id: 'icons', label: m.nav_icons(), href: '/components/text#icons' },
+      { id: 'animated-headline', label: m.nav_animated_headline(), href: '/components/text#animated-headline' },
+      { id: 'table-of-content', label: m.nav_table_of_content(), href: '/components/text#table-of-content' },
+      { id: 'diff-viewer', label: m.nav_diff_viewer(), href: '/components/text#diff-viewer' },
     ]},
-  ];
+    { id: 'integration', name: m.nav_integration(), items: [
+      { id: 'rich-text-editor', label: m.nav_rich_text_editor(), href: '/components/integration#rich-text-editor' },
+      { id: 'map-embed', label: m.nav_map_embed(), href: '/components/integration#map-embed' },
+      { id: 'pdf-viewer', label: m.nav_pdf_viewer(), href: '/components/integration#pdf-viewer' },
+      { id: 'turnstile', label: m.nav_turnstile(), href: '/components/integration#turnstile' },
+      { id: 'cookie-banner', label: m.nav_cookie_banner(), href: '/components/integration#cookie-banner' },
+      { id: 'legal-pages', label: m.nav_legal_pages(), href: '/components/integration#legal-pages' },
+    ]},
+  ]);
 
-  const topLinks = [
-    { label: 'Forms', href: '#forms' },
-    { label: 'Buttons', href: '#buttons' },
-    { label: 'Data', href: '#data' },
-    { label: 'Feedback', href: '#feedback' },
-  ];
+  let topLinks = $derived([
+    { label: m.nav_home(), href: '/' },
+    { label: m.nav_components(), href: '/components' },
+    { label: m.nav_tester(), href: '/components/tester' },
+  ]);
 </script>
 
 <!-- Global Background - Fixed to page -->
@@ -136,6 +146,7 @@
   {/snippet}
   
   {#snippet headerActions()}
+    <ThemeToggle variant="simple" size="md" />
     <LanguageToggle />
   {/snippet}
 </UnifiedNav>
@@ -143,37 +154,36 @@
 <!-- Main Content -->
 <main class="docs-main" data-sidebar-open={sidebarOpen} data-is-mobile={isMobile}>
   {@render children?.()}
-  
-  <!-- Page Footer -->
+</main>
+
   <Footer
-    description="A TailwindCSS-based CSS framework with beautiful claymorphism design."
-    copyright="© 2024 MLJR CSS. All rights reserved."
+    description={m.footer_description()}
+    copyright={m.footer_copyright()}
     sections={[
       {
-        title: 'Documentation',
+        title: m.footer_documentation(),
         links: [
-          { label: 'Getting Started', href: '#' },
-          { label: 'Components', href: '#' },
-          { label: 'Examples', href: '#' },
+          { label: m.footer_getting_started(), href: '#' },
+          { label: m.footer_components(), href: '#' },
+          { label: m.footer_examples(), href: '#' },
         ]
       },
       {
-        title: 'Resources',
+        title: m.footer_resources(),
         links: [
-          { label: 'GitHub', href: 'https://github.com', external: true },
-          { label: 'npm', href: 'https://npmjs.com', external: true },
+          { label: m.footer_github(), href: 'https://github.com', external: true },
+          { label: m.footer_npm(), href: 'https://npmjs.com', external: true },
         ]
       },
       {
-        title: 'Community',
+        title: m.footer_community(),
         links: [
-          { label: 'Discord', href: '#', external: true },
-          { label: 'Twitter', href: '#', external: true },
+          { label: m.footer_discord(), href: '#', external: true },
+          { label: m.footer_twitter(), href: '#', external: true },
         ]
       },
     ]}
   />
-</main>
 
 <style>
   :global(body) {
@@ -237,6 +247,52 @@
     .docs-main {
       margin-top: calc(72px + var(--mljr-space-4));
       padding: var(--mljr-space-3);
+    }
+  }
+
+  /* Shared docs layout styles (used across all category route pages) */
+  :global(.docs-content) {
+    max-width: 100%;
+  }
+
+  :global(.docs-sections) {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mljr-space-12);
+    margin-top: var(--mljr-space-8);
+  }
+
+  :global(.docs-section) {
+    scroll-margin-top: 2rem;
+  }
+
+  :global(.docs-section-title) {
+    font-size: var(--mljr-text-3xl);
+    font-weight: 700;
+    color: var(--mljr-text);
+    margin-bottom: var(--mljr-space-6);
+    padding-bottom: var(--mljr-space-3);
+    border-bottom: 2px solid var(--mljr-border);
+  }
+
+  @media (max-width: 768px) {
+    :global(.docs-section-title) {
+      font-size: var(--mljr-text-2xl);
+    }
+  }
+
+  /* Card wrapper for section content on docs pages */
+  :global(.docs-section-body) {
+    background: var(--mljr-bg-secondary);
+    border-radius: var(--mljr-radius-xl);
+    padding: var(--mljr-space-6);
+    box-shadow: var(--mljr-clay-shadow);
+  }
+
+  @media (max-width: 768px) {
+    :global(.docs-section-body) {
+      padding: var(--mljr-space-4);
+      border-radius: var(--mljr-radius-lg);
     }
   }
 </style>

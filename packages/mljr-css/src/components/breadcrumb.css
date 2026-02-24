@@ -20,6 +20,9 @@
 }
 
 .mljr-breadcrumb-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mljr-space-1);
   color: var(--mljr-text-secondary);
   text-decoration: none;
   padding: var(--mljr-space-1) var(--mljr-space-3);

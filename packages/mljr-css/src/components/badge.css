@@ -28,8 +28,9 @@
   background-color: var(--mljr-primary-100);
   color: var(--mljr-primary-700);
   box-shadow:
-    3px 3px 6px rgba(249, 115, 22, 0.15),
-    -2px -2px 5px rgba(255, 255, 255, 0.8);
+    3px 3px 6px rgba(249, 115, 22, 0.18),
+    inset -3px -3px 6px rgba(100, 60, 30, 0.08),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.45);
 }
 
 .dark .mljr-badge-primary,
@@ -37,28 +38,31 @@
   background-color: rgba(249, 115, 22, 0.2);
   color: var(--mljr-primary-300);
   box-shadow:
-    3px 3px 6px rgba(0, 0, 0, 0.25),
-    -2px -2px 5px rgba(68, 64, 60, 0.1),
+    3px 3px 6px rgba(0, 0, 0, 0.3),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.15),
+    inset 3px 3px 6px rgba(255, 200, 150, 0.06),
     0 0 8px rgba(249, 115, 22, 0.12);
 }
 
-/* Secondary Badge (Teal) */
+/* Secondary Badge (Purple) */
 .mljr-badge-secondary {
   background-color: var(--mljr-secondary-100);
   color: var(--mljr-secondary-700);
   box-shadow:
-    3px 3px 6px rgba(20, 184, 166, 0.15),
-    -2px -2px 5px rgba(255, 255, 255, 0.8);
+    3px 3px 6px rgba(168, 85, 247, 0.15),
+    inset -3px -3px 6px rgba(80, 30, 140, 0.08),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.45);
 }
 
 .dark .mljr-badge-secondary,
 [data-theme="dark"] .mljr-badge-secondary {
-  background-color: rgba(20, 184, 166, 0.2);
+  background-color: rgba(168, 85, 247, 0.2);
   color: var(--mljr-secondary-300);
   box-shadow:
-    3px 3px 6px rgba(0, 0, 0, 0.25),
-    -2px -2px 5px rgba(68, 64, 60, 0.1),
-    0 0 8px rgba(20, 184, 166, 0.12);
+    3px 3px 6px rgba(0, 0, 0, 0.3),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.15),
+    inset 3px 3px 6px rgba(255, 200, 150, 0.06),
+    0 0 8px rgba(168, 85, 247, 0.12);
 }
 
 /* Success Badge */
@@ -66,8 +70,9 @@
   background-color: rgba(16, 185, 129, 0.15);
   color: var(--mljr-success-dark);
   box-shadow:
-    3px 3px 6px rgba(16, 185, 129, 0.12),
-    -2px -2px 5px rgba(255, 255, 255, 0.8);
+    3px 3px 6px rgba(16, 185, 129, 0.15),
+    inset -3px -3px 6px rgba(5, 80, 50, 0.06),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.45);
 }
 
 .dark .mljr-badge-success,
@@ -75,8 +80,9 @@
   background-color: rgba(16, 185, 129, 0.2);
   color: var(--mljr-success-light);
   box-shadow:
-    3px 3px 6px rgba(0, 0, 0, 0.25),
-    -2px -2px 5px rgba(68, 64, 60, 0.1),
+    3px 3px 6px rgba(0, 0, 0, 0.3),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.15),
+    inset 3px 3px 6px rgba(255, 200, 150, 0.06),
     0 0 8px rgba(16, 185, 129, 0.12);
 }
 
@@ -85,8 +91,9 @@
   background-color: rgba(234, 179, 8, 0.15);
   color: var(--mljr-warning-dark);
   box-shadow:
-    3px 3px 6px rgba(234, 179, 8, 0.12),
-    -2px -2px 5px rgba(255, 255, 255, 0.8);
+    3px 3px 6px rgba(234, 179, 8, 0.15),
+    inset -3px -3px 6px rgba(120, 80, 5, 0.06),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.45);
 }
 
 .dark .mljr-badge-warning,
@@ -94,8 +101,9 @@
   background-color: rgba(234, 179, 8, 0.2);
   color: var(--mljr-warning-light);
   box-shadow:
-    3px 3px 6px rgba(0, 0, 0, 0.25),
-    -2px -2px 5px rgba(68, 64, 60, 0.1),
+    3px 3px 6px rgba(0, 0, 0, 0.3),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.15),
+    inset 3px 3px 6px rgba(255, 200, 150, 0.06),
     0 0 8px rgba(234, 179, 8, 0.12);
 }
 
@@ -104,8 +112,9 @@
   background-color: rgba(239, 68, 68, 0.15);
   color: var(--mljr-error-dark);
   box-shadow:
-    3px 3px 6px rgba(239, 68, 68, 0.12),
-    -2px -2px 5px rgba(255, 255, 255, 0.8);
+    3px 3px 6px rgba(239, 68, 68, 0.15),
+    inset -3px -3px 6px rgba(120, 30, 30, 0.06),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.45);
 }
 
 .dark .mljr-badge-error,
@@ -113,8 +122,9 @@
   background-color: rgba(239, 68, 68, 0.2);
   color: var(--mljr-error-light);
   box-shadow:
-    3px 3px 6px rgba(0, 0, 0, 0.25),
-    -2px -2px 5px rgba(68, 64, 60, 0.1),
+    3px 3px 6px rgba(0, 0, 0, 0.3),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.15),
+    inset 3px 3px 6px rgba(255, 200, 150, 0.06),
     0 0 8px rgba(239, 68, 68, 0.12);
 }
 
@@ -123,8 +133,9 @@
   background-color: rgba(59, 130, 246, 0.15);
   color: var(--mljr-info-dark);
   box-shadow:
-    3px 3px 6px rgba(59, 130, 246, 0.12),
-    -2px -2px 5px rgba(255, 255, 255, 0.8);
+    3px 3px 6px rgba(59, 130, 246, 0.15),
+    inset -3px -3px 6px rgba(30, 60, 120, 0.06),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.45);
 }
 
 .dark .mljr-badge-info,
@@ -132,8 +143,9 @@
   background-color: rgba(59, 130, 246, 0.2);
   color: var(--mljr-info-light);
   box-shadow:
-    3px 3px 6px rgba(0, 0, 0, 0.25),
-    -2px -2px 5px rgba(68, 64, 60, 0.1),
+    3px 3px 6px rgba(0, 0, 0, 0.3),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.15),
+    inset 3px 3px 6px rgba(255, 200, 150, 0.06),
     0 0 8px rgba(59, 130, 246, 0.12);
 }
 
@@ -143,15 +155,17 @@
   color: white;
   box-shadow:
     3px 3px 6px rgba(249, 115, 22, 0.25),
-    -3px -3px 6px rgba(255, 255, 255, 0.8);
+    inset -3px -3px 6px rgba(120, 50, 10, 0.12),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.3);
 }
 
 .mljr-badge-secondary-solid {
   background: var(--mljr-gradient-secondary);
   color: white;
   box-shadow:
-    3px 3px 6px rgba(20, 184, 166, 0.25),
-    -3px -3px 6px rgba(255, 255, 255, 0.8);
+    3px 3px 6px rgba(168, 85, 247, 0.25),
+    inset -3px -3px 6px rgba(80, 30, 140, 0.12),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.3);
 }
 
 .mljr-badge-success-solid {
@@ -159,7 +173,8 @@
   color: white;
   box-shadow:
     3px 3px 6px rgba(16, 185, 129, 0.25),
-    -3px -3px 6px rgba(255, 255, 255, 0.8);
+    inset -3px -3px 6px rgba(5, 100, 60, 0.12),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.3);
 }
 
 .mljr-badge-warning-solid {
@@ -167,7 +182,8 @@
   color: var(--mljr-gray-900);
   box-shadow:
     3px 3px 6px rgba(234, 179, 8, 0.25),
-    -3px -3px 6px rgba(255, 255, 255, 0.8);
+    inset -3px -3px 6px rgba(120, 80, 5, 0.12),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.3);
 }
 
 .mljr-badge-error-solid {
@@ -175,7 +191,8 @@
   color: white;
   box-shadow:
     3px 3px 6px rgba(239, 68, 68, 0.25),
-    -3px -3px 6px rgba(255, 255, 255, 0.8);
+    inset -3px -3px 6px rgba(120, 30, 30, 0.12),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.3);
 }
 
 .mljr-badge-info-solid {
@@ -183,7 +200,8 @@
   color: white;
   box-shadow:
     3px 3px 6px rgba(59, 130, 246, 0.25),
-    -3px -3px 6px rgba(255, 255, 255, 0.8);
+    inset -3px -3px 6px rgba(30, 60, 120, 0.12),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.3);
 }
 
 /* Dark mode for solid badges */
@@ -191,7 +209,8 @@
 [data-theme="dark"] .mljr-badge-primary-solid {
   box-shadow:
     3px 3px 6px rgba(0, 0, 0, 0.35),
-    -3px -3px 6px rgba(68, 64, 60, 0.1),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.15),
+    inset 3px 3px 6px rgba(255, 200, 150, 0.08),
     0 0 10px rgba(249, 115, 22, 0.2);
 }
 
@@ -199,15 +218,17 @@
 [data-theme="dark"] .mljr-badge-secondary-solid {
   box-shadow:
     3px 3px 6px rgba(0, 0, 0, 0.35),
-    -3px -3px 6px rgba(68, 64, 60, 0.1),
-    0 0 10px rgba(20, 184, 166, 0.2);
+    inset -3px -3px 6px rgba(0, 0, 0, 0.15),
+    inset 3px 3px 6px rgba(255, 200, 150, 0.06),
+    0 0 10px rgba(168, 85, 247, 0.2);
 }
 
 .dark .mljr-badge-success-solid,
 [data-theme="dark"] .mljr-badge-success-solid {
   box-shadow:
     3px 3px 6px rgba(0, 0, 0, 0.35),
-    -3px -3px 6px rgba(68, 64, 60, 0.1),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.15),
+    inset 3px 3px 6px rgba(255, 200, 150, 0.06),
     0 0 10px rgba(16, 185, 129, 0.2);
 }
 
@@ -215,7 +236,8 @@
 [data-theme="dark"] .mljr-badge-warning-solid {
   box-shadow:
     3px 3px 6px rgba(0, 0, 0, 0.35),
-    -3px -3px 6px rgba(68, 64, 60, 0.1),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.15),
+    inset 3px 3px 6px rgba(255, 200, 150, 0.06),
     0 0 10px rgba(234, 179, 8, 0.2);
 }
 
@@ -223,7 +245,8 @@
 [data-theme="dark"] .mljr-badge-error-solid {
   box-shadow:
     3px 3px 6px rgba(0, 0, 0, 0.35),
-    -3px -3px 6px rgba(68, 64, 60, 0.1),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.15),
+    inset 3px 3px 6px rgba(255, 200, 150, 0.06),
     0 0 10px rgba(239, 68, 68, 0.2);
 }
 
@@ -231,7 +254,8 @@
 [data-theme="dark"] .mljr-badge-info-solid {
   box-shadow:
     3px 3px 6px rgba(0, 0, 0, 0.35),
-    -3px -3px 6px rgba(68, 64, 60, 0.1),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.15),
+    inset 3px 3px 6px rgba(255, 200, 150, 0.06),
     0 0 10px rgba(59, 130, 246, 0.2);
 }
 
@@ -280,6 +304,23 @@
   border-radius: var(--mljr-radius-full);
   background-color: currentColor;
   box-shadow: 0 0 4px currentColor;
+}
+
+/* Badge Icon */
+.mljr-badge-icon {
+  width: 0.875rem;
+  height: 0.875rem;
+  flex-shrink: 0;
+}
+
+.mljr-badge-sm .mljr-badge-icon {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.mljr-badge-lg .mljr-badge-icon {
+  width: 1rem;
+  height: 1rem;
 }
 
 /* Removable Badge */

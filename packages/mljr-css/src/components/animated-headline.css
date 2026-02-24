@@ -1,0 +1,118 @@
+/* =====================================================
+   AnimatedHeadline - Rotating/animated text component
+   ===================================================== */
+
+.mljr-animated-headline {
+  display: inline;
+}
+
+.mljr-animated-word-wrapper {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  vertical-align: bottom;
+  white-space: nowrap;
+}
+
+/* Typing cursor */
+.mljr-animated-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: currentColor;
+  margin-left: 1px;
+  vertical-align: text-bottom;
+  animation: mljr-cursor-blink 0.75s step-end infinite;
+}
+
+/* Fade animation */
+.mljr-animated-word-fade {
+  display: inline-block;
+  animation: mljr-word-fade-in 0.5s ease forwards;
+}
+
+.mljr-animated-word-fade-out {
+  animation: mljr-word-fade-out 0.5s ease forwards;
+}
+
+/* Slide animation */
+.mljr-animated-word-slide {
+  display: inline-block;
+  animation: mljr-word-slide-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.mljr-animated-word-slide-out {
+  animation: mljr-word-slide-out 0.3s cubic-bezier(0.64, 0, 0.78, 0) forwards;
+}
+
+/* Flip animation */
+.mljr-animated-word-flip {
+  display: inline-block;
+  transform-origin: bottom center;
+  animation: mljr-word-flip-in 0.5s ease forwards;
+}
+
+.mljr-animated-word-flip-out {
+  animation: mljr-word-flip-out 0.4s ease forwards;
+}
+
+/* Highlight variant */
+.mljr-animated-highlight {
+  position: relative;
+  display: inline-block;
+  color: white;
+  padding: 0 0.25em;
+  z-index: 0;
+}
+
+.mljr-animated-highlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--mljr-gradient-primary);
+  border-radius: var(--mljr-radius-sm);
+  z-index: -1;
+  transform-origin: left center;
+  animation: mljr-highlight-expand 0.4s ease forwards;
+}
+
+/* Keyframes */
+@keyframes mljr-cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes mljr-word-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes mljr-word-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes mljr-word-slide-in {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes mljr-word-slide-out {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-100%); opacity: 0; }
+}
+
+@keyframes mljr-word-flip-in {
+  from { transform: rotateX(-90deg); opacity: 0; }
+  to { transform: rotateX(0deg); opacity: 1; }
+}
+
+@keyframes mljr-word-flip-out {
+  from { transform: rotateX(0deg); opacity: 1; }
+  to { transform: rotateX(90deg); opacity: 0; }
+}
+
+@keyframes mljr-highlight-expand {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}

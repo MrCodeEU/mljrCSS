@@ -13,8 +13,11 @@
   <p class="mljr-lead mljr-mb-6" style="max-width: 600px; margin: 0 auto;">
     {m.hero_subtitle()}
   </p>
-  <div class="mljr-flex mljr-justify-center mljr-gap-4">
+  <div class="mljr-flex mljr-justify-center mljr-gap-4 mljr-flex-wrap">
     <Button variant="primary" size="lg">{m.hero_documentation()}</Button>
     <Button variant="outline-secondary" size="lg">{m.hero_github()}</Button>
+    <a href="/components/tester" class="mljr-btn mljr-btn-outline-primary mljr-btn-lg">
+      Component Tester
+    </a>
   </div>
 </section>

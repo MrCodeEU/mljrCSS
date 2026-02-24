@@ -1,0 +1,169 @@
+/* ============================================
+   MLJR CSS Framework - Calendar Component
+   Claymorphism: Full month calendar view
+   ============================================ */
+
+.mljr-calendar {
+  display: inline-flex;
+  flex-direction: column;
+  background: var(--mljr-bg);
+  border: 1.5px solid var(--mljr-border);
+  border-radius: var(--mljr-radius-xl);
+  box-shadow: var(--mljr-clay-shadow);
+  padding: var(--mljr-space-4);
+  font-family: var(--mljr-font-sans);
+  font-size: var(--mljr-text-sm);
+  user-select: none;
+  min-width: 280px;
+}
+
+/* Header */
+.mljr-calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--mljr-space-3);
+}
+
+.mljr-calendar-title {
+  font-size: var(--mljr-text-base);
+  font-weight: 700;
+  color: var(--mljr-text);
+}
+
+.mljr-calendar-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  background: var(--mljr-bg-secondary);
+  border: 1px solid var(--mljr-border);
+  border-radius: var(--mljr-radius-md);
+  color: var(--mljr-text);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--mljr-transition-fast);
+  box-shadow: var(--mljr-clay-shadow-sm);
+}
+
+.mljr-calendar-nav-btn:hover {
+  background: var(--mljr-primary-100);
+  color: var(--mljr-primary-700);
+  border-color: var(--mljr-primary-200);
+}
+
+/* Grid */
+.mljr-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+/* Weekday headers */
+.mljr-calendar-weekday {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--mljr-space-1) 0;
+  font-size: var(--mljr-text-xs);
+  font-weight: 600;
+  color: var(--mljr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: var(--mljr-space-1);
+}
+
+/* Day cells */
+.mljr-calendar-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: 100%;
+  aspect-ratio: 1;
+  min-height: 2.25rem;
+  background: none;
+  border: none;
+  border-radius: var(--mljr-radius-md);
+  color: var(--mljr-text);
+  font-family: inherit;
+  font-size: var(--mljr-text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--mljr-transition-fast);
+  position: relative;
+}
+
+.mljr-calendar-day:hover:not(:disabled) {
+  background: var(--mljr-bg-secondary);
+  color: var(--mljr-primary-600);
+}
+
+.mljr-calendar-day-today {
+  color: var(--mljr-primary-600);
+  font-weight: 700;
+  background: var(--mljr-primary-50);
+}
+
+.mljr-calendar-day-selected {
+  background: var(--mljr-primary-500) !important;
+  color: white !important;
+  box-shadow: var(--mljr-clay-btn);
+  font-weight: 700;
+}
+
+.mljr-calendar-day-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.mljr-calendar-day-empty {
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Event dots */
+.mljr-calendar-day-events {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  justify-content: center;
+}
+
+.mljr-calendar-event-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: var(--mljr-radius-full);
+  background: var(--mljr-secondary-500);
+  flex-shrink: 0;
+}
+
+/* Dark mode */
+.dark .mljr-calendar,
+[data-theme="dark"] .mljr-calendar {
+  background: var(--mljr-bg);
+  border-color: var(--mljr-border);
+  box-shadow: var(--mljr-clay-shadow);
+}
+
+.dark .mljr-calendar-day-today,
+[data-theme="dark"] .mljr-calendar-day-today {
+  background: rgba(249, 115, 22, 0.15);
+  color: var(--mljr-primary-400);
+}
+
+.dark .mljr-calendar-day:hover:not(:disabled),
+[data-theme="dark"] .mljr-calendar-day:hover:not(:disabled) {
+  background: var(--mljr-bg-tertiary);
+  color: var(--mljr-primary-400);
+}
+
+.dark .mljr-calendar-nav-btn:hover,
+[data-theme="dark"] .mljr-calendar-nav-btn:hover {
+  background: rgba(249, 115, 22, 0.15);
+  color: var(--mljr-primary-300);
+  border-color: rgba(249, 115, 22, 0.3);
+}

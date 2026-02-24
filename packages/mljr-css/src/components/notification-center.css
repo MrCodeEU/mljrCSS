@@ -1,0 +1,306 @@
+/* ============================================
+   MLJR CSS Framework - Notification Center
+   Claymorphism: Bell icon + notification panel
+   ============================================ */
+
+.mljr-notification-center {
+  position: relative;
+  display: inline-flex;
+}
+
+.mljr-notification-bell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--mljr-bg-secondary);
+  border: 1.5px solid var(--mljr-border);
+  border-radius: var(--mljr-radius-lg);
+  color: var(--mljr-text);
+  cursor: pointer;
+  transition: all var(--mljr-transition-fast);
+  box-shadow: var(--mljr-clay-shadow-sm);
+}
+
+.mljr-notification-bell:hover {
+  background: var(--mljr-primary-100);
+  color: var(--mljr-primary-700);
+  border-color: var(--mljr-primary-200);
+  box-shadow: var(--mljr-clay-shadow);
+}
+
+.mljr-notification-bell:focus-visible {
+  outline: 2px solid var(--mljr-primary-500);
+  outline-offset: 2px;
+}
+
+.mljr-notification-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 1.125rem;
+  height: 1.125rem;
+  padding: 0 4px;
+  background: var(--mljr-error);
+  color: white;
+  border-radius: var(--mljr-radius-full);
+  font-size: 0.625rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(239, 68, 68, 0.4);
+  border: 1.5px solid var(--mljr-bg);
+}
+
+/* Panel */
+.mljr-notification-panel {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  z-index: var(--mljr-z-dropdown, 1000);
+  width: 340px;
+  max-width: 90vw;
+  background: var(--mljr-frosted-bg-strong, var(--mljr-bg));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--mljr-frosted-border, var(--mljr-border));
+  border-radius: var(--mljr-radius-xl);
+  box-shadow: var(--mljr-clay-shadow-lg);
+  overflow: hidden;
+  animation: mljr-notif-panel-in 0.15s ease-out;
+}
+
+@keyframes mljr-notif-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Panel header */
+.mljr-notification-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--mljr-space-3) var(--mljr-space-4);
+  border-bottom: 1px solid var(--mljr-border);
+}
+
+.mljr-notification-panel-title {
+  font-size: var(--mljr-text-base);
+  font-weight: 700;
+  color: var(--mljr-text);
+}
+
+.mljr-notification-panel-actions {
+  display: flex;
+  gap: var(--mljr-space-2);
+}
+
+.mljr-notification-action-btn {
+  background: none;
+  border: none;
+  font-family: var(--mljr-font-sans);
+  font-size: var(--mljr-text-xs);
+  font-weight: 500;
+  color: var(--mljr-primary-600);
+  cursor: pointer;
+  padding: var(--mljr-space-1) var(--mljr-space-2);
+  border-radius: var(--mljr-radius-sm);
+  transition: all var(--mljr-transition-fast);
+}
+
+.mljr-notification-action-btn:hover {
+  background: var(--mljr-primary-50);
+  color: var(--mljr-primary-700);
+}
+
+/* Notification list */
+.mljr-notification-list {
+  max-height: 380px;
+  overflow-y: auto;
+}
+
+.mljr-notification-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.mljr-notification-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mljr-notification-list::-webkit-scrollbar-thumb {
+  background: var(--mljr-border-strong);
+  border-radius: var(--mljr-radius-full);
+}
+
+/* Notification item */
+.mljr-notification-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--mljr-space-3);
+  padding: var(--mljr-space-3) var(--mljr-space-4);
+  border-bottom: 1px solid var(--mljr-border);
+  cursor: pointer;
+  transition: background var(--mljr-transition-fast);
+  position: relative;
+}
+
+.mljr-notification-item:last-child {
+  border-bottom: none;
+}
+
+.mljr-notification-item:hover {
+  background: var(--mljr-bg-secondary);
+}
+
+.mljr-notification-item-unread {
+  background: rgba(249, 115, 22, 0.04);
+}
+
+.mljr-notification-item-unread::before {
+  content: '';
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: var(--mljr-radius-full);
+  background: var(--mljr-primary-500);
+}
+
+.mljr-notification-item-unread .mljr-notification-item-body {
+  padding-left: 0.875rem;
+}
+
+.mljr-notification-type-icon {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--mljr-radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.mljr-notification-type-info .mljr-notification-type-icon {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--mljr-info, #3b82f6);
+}
+
+.mljr-notification-type-success .mljr-notification-type-icon {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--mljr-success, #10b981);
+}
+
+.mljr-notification-type-warning .mljr-notification-type-icon {
+  background: rgba(234, 179, 8, 0.15);
+  color: var(--mljr-warning, #eab308);
+}
+
+.mljr-notification-type-error .mljr-notification-type-icon {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--mljr-error, #ef4444);
+}
+
+.mljr-notification-item-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.mljr-notification-item-title {
+  font-size: var(--mljr-text-sm);
+  font-weight: 600;
+  color: var(--mljr-text);
+  line-height: 1.3;
+  margin-bottom: 2px;
+}
+
+.mljr-notification-item-message {
+  font-size: var(--mljr-text-xs);
+  color: var(--mljr-text-muted);
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mljr-notification-item-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--mljr-space-2);
+  margin-top: 4px;
+}
+
+.mljr-notification-item-time {
+  font-size: var(--mljr-text-xs);
+  color: var(--mljr-text-muted);
+}
+
+.mljr-notification-item-actions {
+  display: flex;
+  gap: var(--mljr-space-1);
+  opacity: 0;
+  transition: opacity var(--mljr-transition-fast);
+}
+
+.mljr-notification-item:hover .mljr-notification-item-actions {
+  opacity: 1;
+}
+
+.mljr-notification-item-action {
+  background: none;
+  border: none;
+  color: var(--mljr-text-muted);
+  cursor: pointer;
+  padding: 2px;
+  border-radius: var(--mljr-radius-sm);
+  display: flex;
+  font-size: var(--mljr-text-xs);
+  transition: color var(--mljr-transition-fast);
+}
+
+.mljr-notification-item-action:hover {
+  color: var(--mljr-primary-600);
+}
+
+/* Empty state */
+.mljr-notification-empty {
+  padding: var(--mljr-space-8) var(--mljr-space-4);
+  text-align: center;
+  color: var(--mljr-text-muted);
+  font-size: var(--mljr-text-sm);
+}
+
+/* Dark mode */
+.dark .mljr-notification-panel,
+[data-theme="dark"] .mljr-notification-panel {
+  background: var(--mljr-bg-secondary);
+  border-color: var(--mljr-border);
+}
+
+.dark .mljr-notification-item-unread,
+[data-theme="dark"] .mljr-notification-item-unread {
+  background: rgba(249, 115, 22, 0.07);
+}
+
+.dark .mljr-notification-item:hover,
+[data-theme="dark"] .mljr-notification-item:hover {
+  background: var(--mljr-bg-tertiary);
+}
+
+.dark .mljr-notification-bell:hover,
+[data-theme="dark"] .mljr-notification-bell:hover {
+  background: rgba(249, 115, 22, 0.15);
+  color: var(--mljr-primary-300);
+}

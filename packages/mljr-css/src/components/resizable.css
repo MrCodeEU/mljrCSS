@@ -1,0 +1,82 @@
+/* ============================================
+   Resizable Component
+   Two-panel layout with draggable divider
+   ============================================ */
+
+.mljr-resizable {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--mljr-radius-lg);
+}
+
+.mljr-resizable-vertical {
+  flex-direction: column;
+}
+
+.mljr-resizable-panel {
+  overflow: auto;
+  min-width: 0;
+  min-height: 0;
+}
+
+/* Handle */
+.mljr-resizable-handle {
+  flex: 0 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--mljr-border);
+  transition: background 0.15s ease;
+  user-select: none;
+  touch-action: none;
+  z-index: 1;
+}
+
+.mljr-resizable-handle:hover,
+.mljr-resizable-handle[data-dragging="true"] {
+  background: var(--mljr-primary-400);
+}
+
+.mljr-resizable-handle-horizontal {
+  width: 6px;
+  cursor: col-resize;
+}
+
+.mljr-resizable-handle-vertical {
+  height: 6px;
+  cursor: row-resize;
+}
+
+/* Handle grip dots */
+.mljr-resizable-handle::after {
+  content: '';
+  display: block;
+  border-radius: var(--mljr-radius-full);
+  background: currentColor;
+  opacity: 0.4;
+  transition: opacity 0.15s ease;
+}
+
+.mljr-resizable-handle:hover::after,
+.mljr-resizable-handle[data-dragging="true"]::after {
+  opacity: 0.8;
+}
+
+.mljr-resizable-handle-horizontal::after {
+  width: 3px;
+  height: 24px;
+}
+
+.mljr-resizable-handle-vertical::after {
+  width: 24px;
+  height: 3px;
+}
+
+/* Dark mode */
+.dark .mljr-resizable-handle,
+[data-theme="dark"] .mljr-resizable-handle {
+  background: var(--mljr-border);
+}
