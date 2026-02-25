@@ -1,12 +1,27 @@
+import { vi } from 'vitest';
 import '@testing-library/jest-dom/vitest';
-import { expect, afterEach } from 'vitest';
-import { cleanup } from '@testing-library/svelte';
-import * as matchers from '@testing-library/jest-dom/matchers';
 
-// Extend Vitest's expect with jest-dom matchers
-expect.extend(matchers);
+// Mock IntersectionObserver: immediately reports all observed elements as visible.
+// Simulates the test-env assumption that elements are in the viewport.
+const mockIntersectionObserver = vi.fn().mockImplementation((callback: IntersectionObserverCallback) => ({
+  observe: vi.fn((element: Element) => {
+    callback([{ isIntersecting: true, target: element } as IntersectionObserverEntry], {} as IntersectionObserver);
+  }),
+  unobserve: vi.fn(),
+  disconnect: vi.fn(),
+}));
+global.IntersectionObserver = mockIntersectionObserver as unknown as typeof IntersectionObserver;
 
-// Cleanup after each test
-afterEach(() => {
-  cleanup();
+// Mock Web Animations API (not supported in happy-dom).
+HTMLElement.prototype.animate = vi.fn().mockReturnValue({
+  finished: Promise.resolve(undefined),
+  cancel: vi.fn(),
+  pause: vi.fn(),
+  play: vi.fn(),
+  reverse: vi.fn(),
+  finish: vi.fn(),
+  addEventListener: vi.fn(),
+  removeEventListener: vi.fn(),
+  onfinish: null,
+  oncancel: null,
 });

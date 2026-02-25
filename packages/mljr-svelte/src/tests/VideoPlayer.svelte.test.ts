@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render } from 'vitest-browser-svelte';
+import { render } from '@testing-library/svelte';
 import VideoPlayer from '../lib/components/display/VideoPlayer.svelte';
 
 describe('VideoPlayer', () => {

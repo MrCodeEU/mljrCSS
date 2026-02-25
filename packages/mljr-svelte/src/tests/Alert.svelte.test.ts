@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render } from 'vitest-browser-svelte';
+import { render } from '@testing-library/svelte';
 import Alert from '../lib/components/feedback/Alert.svelte';
 
 describe('Alert', () => {

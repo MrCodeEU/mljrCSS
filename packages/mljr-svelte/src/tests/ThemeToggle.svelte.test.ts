@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { render } from 'vitest-browser-svelte';
+import { render } from '@testing-library/svelte';
 import ThemeToggle from '../lib/components/layout/ThemeToggle.svelte';
 import { themeStore } from '../lib/stores/theme.svelte';
 

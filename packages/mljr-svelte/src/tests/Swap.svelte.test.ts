@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render } from 'vitest-browser-svelte';
+import { render } from '@testing-library/svelte';
 import Swap from '../lib/components/display/Swap.svelte';
 
 describe('Swap', () => {

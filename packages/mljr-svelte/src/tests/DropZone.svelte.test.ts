@@ -1,6 +1,5 @@
-import { describe, it, expect, vi } from 'vitest';
-import { render } from 'vitest-browser-svelte';
-import { userEvent } from '@vitest/browser/context';
+import { describe, it, expect } from 'vitest';
+import { render } from '@testing-library/svelte';
 import DropZone from '../lib/components/forms/DropZone.svelte';
 
 describe('DropZone', () => {

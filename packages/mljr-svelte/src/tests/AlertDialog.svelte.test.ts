@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
-import { render } from 'vitest-browser-svelte';
+import { render } from '@testing-library/svelte';
 import AlertDialog from '../lib/components/overlay/AlertDialog.svelte';
 
 function queryDialog(selector: string) {

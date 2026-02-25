@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { render } from 'vitest-browser-svelte';
+import { render } from '@testing-library/svelte';
+import { flushSync } from 'svelte';
 import UnifiedNav from '../lib/components/navigation/UnifiedNav.svelte';
 
 const categories = [
@@ -139,8 +140,7 @@ describe('UnifiedNav', () => {
     it('clicking menu button changes aria-expanded to false', async () => {
       const { container } = render(UnifiedNav, { categories });
       const menuBtn = container.querySelector('.nav-menu-btn') as HTMLElement;
-      menuBtn?.click();
-      await Promise.resolve();
+      flushSync(() => menuBtn?.click());
       expect(menuBtn?.getAttribute('aria-expanded')).toBe('false');
     });
   });

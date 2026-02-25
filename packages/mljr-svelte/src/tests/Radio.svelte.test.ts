@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render } from 'vitest-browser-svelte';
+import { render } from '@testing-library/svelte';
 import Radio from '../lib/components/forms/Radio.svelte';
 
 describe('Radio', () => {

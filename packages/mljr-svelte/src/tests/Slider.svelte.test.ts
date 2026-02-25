@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render } from 'vitest-browser-svelte';
+import { render } from '@testing-library/svelte';
 import Slider from '../lib/components/forms/Slider.svelte';
 
 describe('Slider', () => {

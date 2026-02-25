@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render } from 'vitest-browser-svelte';
+import { render } from '@testing-library/svelte';
 import CookieBanner from '../lib/components/overlay/CookieBanner.svelte';
 import { cookieStore } from '../lib/stores/cookies.svelte';
 

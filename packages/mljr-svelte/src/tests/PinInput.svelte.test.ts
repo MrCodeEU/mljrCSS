@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { render } from 'vitest-browser-svelte';
-import { userEvent } from '@vitest/browser/context';
+import { render } from '@testing-library/svelte';
+import userEvent from '@testing-library/user-event';
 import PinInput from '../lib/components/forms/PinInput.svelte';
 
 describe('PinInput', () => {

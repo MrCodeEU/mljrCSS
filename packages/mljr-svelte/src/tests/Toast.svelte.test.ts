@@ -1,5 +1,5 @@
 import { describe, it, expect, afterEach } from 'vitest';
-import { render } from 'vitest-browser-svelte';
+import { render } from '@testing-library/svelte';
 import Toast from '../lib/components/feedback/Toast.svelte';
 import { toastStore } from '../lib/stores/toast.svelte';
 

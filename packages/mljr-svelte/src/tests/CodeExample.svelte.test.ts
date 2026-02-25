@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { render } from 'vitest-browser-svelte';
+import { render } from '@testing-library/svelte';
+import { flushSync } from 'svelte';
 import CodeExample from '../lib/components/CodeExample.svelte';
 
 const sampleCode = `<Button variant="primary">Click me</Button>`;
@@ -47,10 +48,8 @@ describe('CodeExample', () => {
     it('sets aria-expanded back to false on second click', async () => {
       const { container } = render(CodeExample, { code: sampleCode });
       const toggle = container.querySelector('.code-example-toggle') as HTMLElement;
-      toggle?.click();
-      await Promise.resolve();
-      toggle?.click();
-      await Promise.resolve();
+      flushSync(() => toggle?.click());
+      flushSync(() => toggle?.click());
       expect(toggle?.getAttribute('aria-expanded')).toBe('false');
     });
   });

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render } from 'vitest-browser-svelte';
+import { render } from '@testing-library/svelte';
 import Calendar from '../lib/components/display/Calendar.svelte';
 
 describe('Calendar', () => {
@@ -94,9 +94,9 @@ describe('Calendar', () => {
   describe('Events', () => {
     it('renders event dots for dates with events', async () => {
       const events = [{ date: '2026-01-10', label: 'Team meeting' }];
+      // `events` is a reserved key in the Svelte 5 mount API (event handlers);
+      // must be passed under `props` to avoid being interpreted as listeners.
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      // `events` clashes with the Svelte 4 option name in vitest-browser-svelte@0.1.x;
-      // wrapping under `props` is the documented workaround; cast bypasses the stale type.
       const { container } = render(Calendar, { props: { events, month: 0, year: 2026 } } as any);
       const dots = container.querySelectorAll('.mljr-calendar-event-dot');
       expect(dots.length).toBeGreaterThan(0);

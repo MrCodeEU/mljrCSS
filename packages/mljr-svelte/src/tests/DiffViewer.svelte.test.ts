@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render } from 'vitest-browser-svelte';
+import { render } from '@testing-library/svelte';
 import DiffViewer from '../lib/components/display/DiffViewer.svelte';
 
 const before = `function hello() {

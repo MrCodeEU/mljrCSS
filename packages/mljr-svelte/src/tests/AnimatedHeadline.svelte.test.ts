@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render } from 'vitest-browser-svelte';
+import { render } from '@testing-library/svelte';
 import AnimatedHeadline from '../lib/components/display/AnimatedHeadline.svelte';
 
 const words = ['hello', 'world', 'svelte'];

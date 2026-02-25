@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render } from 'vitest-browser-svelte';
+import { render } from '@testing-library/svelte';
 import AboutPage from '../lib/components/layout/AboutPage.svelte';
 import type { AboutStat, AboutValue, AboutTeamMember } from '../lib/components/layout/AboutPage.svelte';
 

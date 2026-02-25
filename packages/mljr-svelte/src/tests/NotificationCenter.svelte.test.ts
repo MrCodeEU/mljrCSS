@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render } from 'vitest-browser-svelte';
+import { render } from '@testing-library/svelte';
 import NotificationCenter from '../lib/components/overlay/NotificationCenter.svelte';
 import type { Notification } from '../lib/components/overlay/NotificationCenter.svelte';
 
