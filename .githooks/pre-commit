@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# Pre-commit hook: mirrors the CI quality job locally for fast feedback.
+# E2E (Playwright) tests are intentionally excluded — run those manually or let CI handle them.
+
+set -euo pipefail
+
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT"
+
+# Colours
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+CYAN='\033[0;36m'
+BOLD='\033[1m'
+NC='\033[0m'
+
+step() { echo -e "\n${CYAN}${BOLD}▶ $1${NC}"; }
+ok()   { echo -e "${GREEN}✔ $1${NC}"; }
+fail() { echo -e "${RED}✖ $1${NC}"; exit 1; }
+
+echo -e "${BOLD}Pre-commit checks (mirrors CI quality job)${NC}"
+echo "─────────────────────────────────────────"
+
+# 1. Build
+step "Build all packages"
+pnpm build || fail "Build failed"
+ok "Build passed"
+
+# 2. Type check
+step "Type check (mljr-svelte)"
+pnpm --filter mljr-svelte check || fail "Type check failed"
+ok "Type check passed"
+
+# 3. Unit tests
+step "Unit tests (vitest)"
+pnpm --filter mljr-svelte test || fail "Unit tests failed"
+ok "Unit tests passed"
+
+echo -e "\n${GREEN}${BOLD}✔ All checks passed — committing.${NC}\n"

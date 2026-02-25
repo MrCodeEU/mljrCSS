@@ -35,7 +35,7 @@ describe('CookieBanner', () => {
     it('shows Deny All button when banner is open', async () => {
       cookieStore.openBanner();
       const { container } = render(CookieBanner, { categories: testCategories });
-      expect(container.textContent).toMatch(/deny all/i);
+      expect(container.textContent).toMatch(/deny optional/i);
     });
 
     it('shows Customize button when multiple categories', async () => {

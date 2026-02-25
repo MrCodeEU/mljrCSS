@@ -17,7 +17,8 @@
     "clean": "turbo run clean && rm -rf node_modules",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "turbo run build"
+    "release": "turbo run build",
+    "prepare": "git config core.hooksPath .githooks"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.1",

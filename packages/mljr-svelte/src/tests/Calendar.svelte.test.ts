@@ -94,7 +94,10 @@ describe('Calendar', () => {
   describe('Events', () => {
     it('renders event dots for dates with events', async () => {
       const events = [{ date: '2026-01-10', label: 'Team meeting' }];
-      const { container } = render(Calendar, { events, month: 0, year: 2026 });
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // `events` clashes with the Svelte 4 option name in vitest-browser-svelte@0.1.x;
+      // wrapping under `props` is the documented workaround; cast bypasses the stale type.
+      const { container } = render(Calendar, { props: { events, month: 0, year: 2026 } } as any);
       const dots = container.querySelectorAll('.mljr-calendar-event-dot');
       expect(dots.length).toBeGreaterThan(0);
     });
