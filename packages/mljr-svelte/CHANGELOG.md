@@ -1,5 +1,16 @@
 # mljr-svelte
 
+## 1.1.1
+
+### Patch Changes
+
+- fix: resolve vitest post-teardown errors from @iconify/svelte
+
+  Stub @iconify/svelte with a lightweight mock component in the vitest config.
+  This eliminates async fetch/setTimeout callbacks that fired after happy-dom
+  tore down the test window, causing vitest to exit with code 1 on CI despite
+  all tests passing.
+
 ## 1.1.0
 
 ### Minor Changes
