@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitest/config';
 import { sveltekit } from '@sveltejs/kit/vite';
+import path from 'path';
 
 export default defineConfig({
   plugins: [sveltekit()],
@@ -28,6 +29,7 @@ export default defineConfig({
     alias: {
       $lib: '/src/lib',
       $app: '/src/app',
+      '@iconify/svelte': path.resolve(__dirname, 'src/tests/__mocks__/IconMock.svelte'),
     },
   },
 });
