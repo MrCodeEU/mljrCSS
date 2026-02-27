@@ -15,6 +15,9 @@ dist/
 .DS_Store
 Thumbs.db
 
+# Syncthing conflict files
+*.sync-conflict-*
+
 # Logs
 *.log
 npm-debug.log*
