@@ -1,4 +1,4 @@
-import { browser } from '$app/environment';
+const browser = typeof window !== 'undefined';
 
 export interface CookieCookieDetail {
   name: string;

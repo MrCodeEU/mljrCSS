@@ -194,7 +194,7 @@
     }
   });
 
-  import { browser } from '$app/environment';
+  const browser = typeof window !== 'undefined';
 </script>
 
 <div class="mljr-phone-input {className}" class:has-error={!!error} class:is-disabled={disabled}>

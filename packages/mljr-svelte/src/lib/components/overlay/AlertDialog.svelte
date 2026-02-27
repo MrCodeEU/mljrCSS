@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import { browser } from '$app/environment';
+  const browser = typeof window !== 'undefined';
 
   type AlertDialogVariant = 'default' | 'danger' | 'warning';
 

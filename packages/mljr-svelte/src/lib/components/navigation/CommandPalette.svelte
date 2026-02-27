@@ -1,6 +1,6 @@
 <script lang="ts">
   import Icon from '../layout/Icon.svelte';
-  import { browser } from '$app/environment';
+  const browser = typeof window !== 'undefined';
 
   interface Command {
     id: string;

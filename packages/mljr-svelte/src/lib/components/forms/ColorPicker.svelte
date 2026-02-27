@@ -168,7 +168,7 @@
     format = formats[(currentIndex + 1) % formats.length];
   }
 
-  import { browser } from '$app/environment';
+  const browser = typeof window !== 'undefined';
   
   function handleClickOutside(event: MouseEvent) {
     const target = event.target as HTMLElement;

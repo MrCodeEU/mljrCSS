@@ -208,7 +208,7 @@
     }
   }
 
-  import { browser } from '$app/environment';
+  const browser = typeof window !== 'undefined';
   
   $effect(() => {
     if (browser && isOpen) {

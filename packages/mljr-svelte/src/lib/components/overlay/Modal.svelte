@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
   import { untrack } from 'svelte';
-  import { browser } from '$app/environment';
+  const browser = typeof window !== 'undefined';
 
   type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | 'full';
 
