@@ -429,7 +429,8 @@
     position: absolute;
     top: calc(100% + var(--mljr-space-2));
     left: 0;
-    min-width: 280px;
+    min-width: min(280px, calc(100vw - 1rem));
+    max-width: calc(100vw - 1rem);
     max-height: 320px;
     background: var(--mljr-bg);
     border-radius: var(--mljr-radius-xl);

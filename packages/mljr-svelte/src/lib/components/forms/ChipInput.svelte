@@ -192,7 +192,7 @@
         onblur={handleBlur}
         onpaste={handlePaste}
         class="chip-input-field"
-        style="flex: 1; min-width: 80px; background: transparent; border: none; outline: none; padding: 0; font-size: inherit; font-family: inherit; color: inherit;"
+        style="flex: 1; min-width: min(80px, 30%); background: transparent; border: none; outline: none; padding: 0; font-size: inherit; font-family: inherit; color: inherit;"
         aria-label={placeholder}
         autocomplete="off"
       />

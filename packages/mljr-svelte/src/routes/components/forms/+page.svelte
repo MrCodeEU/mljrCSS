@@ -29,7 +29,7 @@
   ];
 
   const inputExample = `<script>
-  import { Input } from '@mljr/svelte';
+  import { Input } from '$lib';
   let email = $state('');
 <\/script>
 

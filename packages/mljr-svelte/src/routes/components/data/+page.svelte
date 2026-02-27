@@ -24,7 +24,7 @@
   ];
 
   const cardExample = `<script>
-  import { Card } from '@mljr/svelte';
+  import { Card } from '$lib';
 <\/script>
 
 <!-- Simple card -->
@@ -70,7 +70,7 @@
   ];
 
   const tableExample = `<script>
-  import { Table } from '@mljr/svelte';
+  import { Table } from '$lib';
 
   const data = [
     { id: 1, name: 'Alice', role: 'Admin' },

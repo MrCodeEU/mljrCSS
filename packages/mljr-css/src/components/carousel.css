@@ -157,6 +157,25 @@
   box-shadow: 0 0 12px rgba(249, 115, 22, 0.4);
 }
 
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .mljr-carousel-btn {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  /* Expand indicator tap area */
+  .mljr-carousel-indicator {
+    position: relative;
+  }
+
+  .mljr-carousel-indicator::after {
+    content: '';
+    position: absolute;
+    inset: -10px;
+  }
+}
+
 /* Fade variant */
 .mljr-carousel-fade .mljr-carousel-inner {
   position: relative;

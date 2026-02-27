@@ -243,6 +243,14 @@
   color: white;
 }
 
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .mljr-alert-close {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+}
+
 /* Dark mode */
 .dark .mljr-alert,
 [data-theme="dark"] .mljr-alert {

@@ -452,7 +452,8 @@
     position: absolute;
     top: calc(100% + var(--mljr-space-2));
     left: 0;
-    width: 280px;
+    width: min(280px, calc(100vw - 1rem));
+    max-width: calc(100vw - 1rem);
     padding: var(--mljr-space-4);
     background: var(--mljr-bg);
     border-radius: var(--mljr-radius-xl);
@@ -484,8 +485,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2rem;
-    height: 2rem;
+    width: 2.75rem;
+    height: 2.75rem;
     padding: 0;
     background: var(--mljr-bg-secondary);
     border: none;

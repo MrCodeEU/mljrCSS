@@ -221,6 +221,8 @@
   /* Card variant */
   .mljr-countdown-card .mljr-countdown-units {
     gap: var(--mljr-space-4);
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .mljr-countdown-card .mljr-countdown-unit {
@@ -228,7 +230,7 @@
     border-radius: var(--mljr-radius-lg);
     padding: var(--mljr-space-4) var(--mljr-space-6);
     box-shadow: var(--mljr-clay-shadow);
-    min-width: 5rem;
+    min-width: clamp(3.5rem, 18vw, 5rem);
   }
 
   .mljr-countdown-card .mljr-countdown-separator {

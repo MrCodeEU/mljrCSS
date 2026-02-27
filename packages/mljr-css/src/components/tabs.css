@@ -307,3 +307,37 @@
 .mljr-tab-closable {
   padding-right: var(--mljr-space-2);
 }
+
+/* Mobile responsive */
+@media (max-width: 640px) {
+  /* Ensure tabs list scrolls horizontally on mobile */
+  .mljr-tabs-list {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+  }
+
+  .mljr-tabs-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Ensure adequate touch targets */
+  .mljr-tab {
+    min-height: 44px;
+    padding: var(--mljr-space-2) var(--mljr-space-3);
+  }
+
+  /* Vertical tabs stack to horizontal on mobile */
+  .mljr-tabs-vertical {
+    flex-direction: column;
+  }
+
+  .mljr-tabs-vertical .mljr-tabs-list {
+    flex-direction: row;
+    min-width: unset;
+  }
+
+  .mljr-tabs-vertical .mljr-tabs-content {
+    padding: 0;
+  }
+}

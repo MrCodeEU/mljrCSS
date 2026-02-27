@@ -286,6 +286,27 @@
     0 0 0 3px var(--mljr-secondary-200);
 }
 
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .mljr-checkbox-input,
+  .mljr-radio-input {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .mljr-checkbox,
+  .mljr-radio,
+  .mljr-switch {
+    min-height: 44px;
+    gap: var(--mljr-space-3);
+  }
+
+  .mljr-radio-group-horizontal {
+    flex-direction: column;
+    gap: var(--mljr-space-2);
+  }
+}
+
 /* Dark mode adjustments */
 .dark .mljr-checkbox-input,
 .dark .mljr-radio-input,

@@ -200,6 +200,29 @@
   margin: 0 var(--mljr-space-1);
 }
 
+/* Mobile: wrap items and reduce min-width to prevent overflow */
+@media (max-width: 640px) {
+  .mljr-dock {
+    flex-wrap: wrap;
+    gap: var(--mljr-space-1);
+    padding: var(--mljr-space-2);
+  }
+
+  .mljr-dock-item {
+    min-width: 44px;
+    padding: var(--mljr-space-2);
+  }
+
+  .mljr-dock-lg .mljr-dock-item {
+    min-width: 52px;
+    padding: var(--mljr-space-2) var(--mljr-space-3);
+  }
+
+  .mljr-dock-label {
+    font-size: 9px;
+  }
+}
+
 /* Zoom effect on hover (macOS-like) */
 .mljr-dock-zoom .mljr-dock-item:hover {
   transform: translateY(-8px) scale(1.2);

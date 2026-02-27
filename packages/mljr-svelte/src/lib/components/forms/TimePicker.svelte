@@ -395,7 +395,8 @@
     border-radius: var(--mljr-radius-lg);
     box-shadow: var(--mljr-clay-shadow);
     padding: var(--mljr-space-4);
-    min-width: 280px;
+    min-width: min(280px, calc(100vw - 1rem));
+    max-width: calc(100vw - 1rem);
   }
 
   .mljr-time-picker-controls {
@@ -415,8 +416,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2rem;
-    height: 2rem;
+    width: 2.75rem;
+    height: 2.75rem;
     background: var(--mljr-bg-secondary);
     border: none;
     border-radius: var(--mljr-radius-sm);

@@ -485,6 +485,23 @@
   color: var(--mljr-text-muted);
 }
 
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .mljr-number-btn {
+    width: 2.75rem;
+    min-height: 44px;
+  }
+
+  .mljr-search-clear {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .mljr-drop-zone {
+    padding: var(--mljr-space-6);
+  }
+}
+
 /* Dark mode */
 .dark .mljr-input,
 .dark .mljr-textarea,

@@ -324,6 +324,12 @@
     padding: var(--mljr-space-2);
   }
 
+  @media (max-width: 640px) {
+    .mljr-command-palette-results {
+      max-height: 50dvh;
+    }
+  }
+
   .mljr-command-palette-section {
     margin-bottom: var(--mljr-space-2);
   }

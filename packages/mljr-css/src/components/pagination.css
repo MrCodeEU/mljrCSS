@@ -194,9 +194,23 @@
     justify-content: center;
   }
 
+  .mljr-pagination-item {
+    min-width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .mljr-pagination-sm .mljr-pagination-item {
+    min-width: 2.5rem;
+    height: 2.5rem;
+  }
+
   .mljr-pagination-controls {
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
+  }
+
+  .mljr-pagination-info {
+    font-size: var(--mljr-text-xs);
   }
 }

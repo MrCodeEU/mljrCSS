@@ -90,6 +90,15 @@
   padding: var(--mljr-space-2) var(--mljr-space-4);
 }
 
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .mljr-breadcrumb-link {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
 /* Dark mode */
 .dark .mljr-breadcrumb-contained,
 [data-theme="dark"] .mljr-breadcrumb-contained {

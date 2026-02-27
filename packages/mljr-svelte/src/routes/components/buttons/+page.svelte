@@ -22,7 +22,7 @@
   ];
 
   const buttonExample = `<script>
-  import { Button } from '@mljr/svelte';
+  import { Button } from '$lib';
 <\/script>
 
 <!-- Variants -->
@@ -86,7 +86,7 @@
           events={chipEvents}
           exampleTitle="💻 Chip Usage"
           example={`<script>
-  import { Chip } from '@mljr/svelte';
+  import { Chip } from '$lib';
 <\/script>
 
 <Chip label="Design" variant="primary" />

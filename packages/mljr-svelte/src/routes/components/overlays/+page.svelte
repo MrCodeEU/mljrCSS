@@ -28,7 +28,7 @@
   ];
 
   const modalExample = `<script>
-  import { Modal, Button } from '@mljr/svelte';
+  import { Modal, Button } from '$lib';
   let open = $state(false);
 <\/script>
 

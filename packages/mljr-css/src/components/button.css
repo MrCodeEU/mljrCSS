@@ -325,6 +325,23 @@
   }
 }
 
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .mljr-btn {
+    white-space: normal;
+    min-height: 44px;
+  }
+
+  .mljr-btn-xs,
+  .mljr-btn-sm {
+    min-height: 36px;
+  }
+
+  .mljr-btn-group {
+    flex-wrap: wrap;
+  }
+}
+
 /* Dark mode adjustments */
 .dark .mljr-btn,
 [data-theme="dark"] .mljr-btn {

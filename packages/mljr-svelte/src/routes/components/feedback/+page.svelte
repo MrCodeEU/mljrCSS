@@ -23,7 +23,7 @@
   ];
 
   const toastExample = `<script>
-  import { Toast, toastStore } from '@mljr/svelte';
+  import { Toast, toastStore } from '$lib';
 <\/script>
 
 <!-- Mount once in your layout -->

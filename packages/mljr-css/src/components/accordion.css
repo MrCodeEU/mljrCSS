@@ -197,6 +197,14 @@
   font-size: var(--mljr-text-base);
 }
 
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .mljr-accordion-trigger {
+    min-height: 44px;
+    padding: var(--mljr-space-3) var(--mljr-space-4);
+  }
+}
+
 /* Dark mode */
 .dark .mljr-accordion,
 [data-theme="dark"] .mljr-accordion {

@@ -98,6 +98,24 @@
   pointer-events: auto;
 }
 
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .mljr-tooltip-content {
+    white-space: normal;
+    max-width: min(280px, calc(100vw - var(--mljr-space-8)));
+  }
+
+  /* On mobile, left/right tooltips fall back to top to prevent overflow */
+  .mljr-tooltip-left .mljr-tooltip-content,
+  .mljr-tooltip-right .mljr-tooltip-content {
+    left: 50%;
+    right: auto;
+    top: auto;
+    bottom: calc(100% + 10px);
+    transform: translateX(-50%);
+  }
+}
+
 /* Dark mode */
 .dark .mljr-tooltip-content,
 [data-theme="dark"] .mljr-tooltip-content {

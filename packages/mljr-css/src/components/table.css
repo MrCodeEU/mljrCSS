@@ -248,6 +248,25 @@
   background: linear-gradient(135deg, var(--mljr-primary-600), var(--mljr-primary-700)) !important;
 }
 
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .mljr-table-filter-bar {
+    flex-wrap: wrap;
+    gap: var(--mljr-space-2);
+  }
+
+  .mljr-table-pagination {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--mljr-space-3);
+  }
+
+  .mljr-table-pagination-btn {
+    min-width: 44px;
+    height: 44px;
+  }
+}
+
 /* Dark mode */
 .dark .mljr-table-wrapper,
 [data-theme="dark"] .mljr-table-wrapper {

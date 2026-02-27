@@ -226,6 +226,24 @@
   padding: var(--mljr-space-3) var(--mljr-space-4);
 }
 
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .mljr-dropdown-menu {
+    max-width: calc(100vw - var(--mljr-space-4));
+  }
+
+  /* Submenus stack below instead of to the right on mobile */
+  .mljr-dropdown-submenu .mljr-dropdown-menu {
+    position: static;
+    margin-left: var(--mljr-space-4);
+    margin-top: var(--mljr-space-1);
+  }
+
+  .mljr-dropdown-item {
+    min-height: 44px;
+  }
+}
+
 /* Dark mode */
 .dark .mljr-dropdown-menu,
 [data-theme="dark"] .mljr-dropdown-menu {

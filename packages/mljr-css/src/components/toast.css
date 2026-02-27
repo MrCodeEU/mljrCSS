@@ -315,6 +315,28 @@
   transform: translateY(0);
 }
 
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .mljr-toast-container {
+    padding: var(--mljr-space-2);
+    gap: var(--mljr-space-2);
+  }
+
+  .mljr-toast-container-top-center,
+  .mljr-toast-container-bottom-center {
+    left: 0;
+    right: 0;
+    transform: none;
+    width: 100%;
+  }
+
+  .mljr-toast {
+    min-width: 0;
+    max-width: calc(100vw - var(--mljr-space-4));
+    width: calc(100vw - var(--mljr-space-4));
+  }
+}
+
 /* Dark mode */
 .dark .mljr-toast,
 [data-theme="dark"] .mljr-toast {
